@@ -373,7 +373,7 @@ width: 70px;
 margin-left: 60px;
 }
 .banner {
-background-image: url(../IMGS/banner2mob.jpg);
+background-image: url(../img/banner2mob.jpg);
 background-size: contain;
 background-repeat: no-repeat;
 background-position: top;
@@ -606,15 +606,15 @@ width: 250px;
   background-size: 120%;  
   opacity: 0.8;  
 }
-.categ_1{ background-image: url(../IMGS/frutas.png);  }
-.categ_2{ background-image: url(../IMGS/abacaxi.png); }
-.categ_3{ background-image: url(../IMGS/orta.png);    }
-.categ_4{ background-image: url(../IMGS/cenouras.png);}
+.categ_1{ background-image: url(../img/frutas.png);  }
+.categ_2{ background-image: url(../img/abacaxi.png); }
+.categ_3{ background-image: url(../img/orta.png);    }
+.categ_4{ background-image: url(../img/cenouras.png);}
 
-.categ_5{ background-image: url(../IMGS/massas.png);  }
-.categ_6{ background-image: url(../IMGS/sopa.png); }
-.categ_7{ background-image: url(../IMGS/frutas.png);    }
-.categ_8{ background-image: url(../IMGS/fruit.png);}
+.categ_5{ background-image: url(../img/massas.png);  }
+.categ_6{ background-image: url(../img/sopa.png); }
+.categ_7{ background-image: url(../img/frutas.png);    }
+.categ_8{ background-image: url(../img/fruit.png);}
 
   /* Aplicado em receitas */
  
@@ -831,7 +831,7 @@ width: 250px;
 }
 
 .banner-receita1{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5) , rgba(0, 0, 0, 0.5)),  url(../IMGS/banner2.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5) , rgba(0, 0, 0, 0.5)),  url(../img/banner2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 25vh;
@@ -1454,7 +1454,7 @@ justify-content: space-between;
 height: 350px;
 }
 .esquerda-galeria {
-background-image: url(../IMGS/bgesquerda.jpg);
+background-image: url(../img/bgesquerda.jpg);
 background-size: cover;
 background-position: right;
 background-repeat: no-repeat;
