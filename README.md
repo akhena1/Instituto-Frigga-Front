@@ -1,2 +1,2 @@
 # Instituto-Frigga-Front
-Projeto executado no curso CODEXP da Escola Senai de Informática, em ReactJS. 
+Front end em ReactJS referente ao Projeto Instituto Frigga que foi feito na Escola SENAI de Informática
