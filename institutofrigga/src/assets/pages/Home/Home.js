@@ -13,7 +13,7 @@ class Home extends Component {
         return (
             <body>
                 <main>
-
+                
                     <div className="banner">
                         <p className="bannerTitle">
                             Precisa de uma renda extra?
