@@ -23,7 +23,7 @@ class Entrar extends Component {
             <section class="esquerda_login">
               <form method="POST" id="form_login">
                 <figure>
-                  <img src="IMGS/iconperfil.svg" alt="icone do perfil" />
+                  <img src={IconLogin}alt="icone do perfil" />
                 </figure>
                 <div class="form-control">
                   <div class="input-group">
