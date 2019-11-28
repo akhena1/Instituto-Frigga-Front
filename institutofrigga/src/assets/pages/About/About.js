@@ -5,6 +5,8 @@ import aimg2 from '../../img/negocio.jpg'
 import aimg3 from '../../img/4.jpg'
 import aimg4 from '../../img/66.jpg'
 import aimg5 from '../../img/marmita.jpg'
+import Header from '../../Components/Header/Header';
+import Footer from '../../Components/Footer/Footer';
 
 
 
@@ -12,6 +14,7 @@ class About extends Component{
     render(){
         return(
             <div>
+                <Header/>
                  <section class="container-assunto1">
             <div>
                 <img src={aimg} alt="Mulher segurando morango"/>
@@ -80,6 +83,7 @@ class About extends Component{
                 </div>
             </div>
         </section>
+        <Footer/>
             </div>
         );
     }

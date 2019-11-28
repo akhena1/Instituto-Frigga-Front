@@ -5,6 +5,8 @@ import rimg2 from '../../img/receita5.jpg'
 import rimg3 from '../../img/receita7.jpg'
 import rimg4 from '../../img/receita2.jpg'
 import rimg5 from '../../img/receita4.jpg'
+import Header from '../../Components/Header/Header';
+import Footer from '../../Components/Footer/Footer';
 
 
 
@@ -14,6 +16,7 @@ class Receita extends Component {
         return (
             
       <div>
+        <Header/>
     <section className="container_geral">
 
 <section className="container-categorias">
@@ -115,7 +118,9 @@ class Receita extends Component {
     </div>
 </section>
 </section>
+     <Footer/>
       </div>
+      
         );
     }
 }
