@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import rimg from '../../img/frutas.png';
+import rimg from '../../img/receita2.jpg'
+import rimg1 from '../../img/receita4.jpg'
+import rimg2 from '../../img/receita5.jpg'
+import rimg3 from '../../img/receita7.jpg'
+import rimg4 from '../../img/receita2.jpg'
+import rimg5 from '../../img/receita4.jpg'
 
 
 
@@ -46,11 +51,11 @@ class Receita extends Component {
     <div className="categorias_mobile">
         <div className="categ_mobile">
             <p>LEGUMES</p>
-            <a href="#"><img src={rimg} title="#" alt="legumes"/></a>
+            <a href="#"><img src="img/frutas.png" title="#" alt="legumes"/></a>
         </div>
         <div className="categ_mobile">
             <p>FRUTAS</p>
-            <a href="#"><img src="img/abacaxi.png"  alt="frutas"/></a>
+            <a href="#"><img src="img/abacaxi.png" title="#" alt="frutas"/></a>
         </div>
         <div className="categ_mobile">
             <p>MASSAS</p>
@@ -67,42 +72,42 @@ class Receita extends Component {
 <section className="container-receitas">
     <h3 className="receita-la">Cantinho das Receitas</h3>
     <div className="card_receitas">
-        <img src="img/receita2.jpg" alt="imagem de salada de queijo"/>
+        <img src={rimg} alt="imagem de salada de queijo"/>
         <div className="nav-r">
             <p> Salada com queijo...</p>
             <a href="receita-2.html" title="login">Leia mais</a>
         </div>
     </div>
     <div className="card_receitas">
-        <img src="img/receita4.jpg" alt="imagem de frango"/>
+        <img src={rimg1} alt="imagem de frango"/>
         <div className="nav-r">
             <p>Frango em Crosta de Chia...</p>
             <a href="receita-2.html" title="login">Leia mais</a>
         </div>
     </div>
     <div className="card_receitas">
-        <img src="img/receita5.jpg" alt="imagem de bolo de carne de frango com chia"/>
+        <img src={rimg2} alt="imagem de bolo de carne de frango com chia"/>
         <div className="nav-r">
             <p>Bolo de carne de frango com chia...</p>
             <a href="receita-2.html" title="login">Leia mais</a>
         </div>
     </div>
     <div className="card_receitas">
-        <img src="img/receita7.jpg" alt="imagem de coxinha Fitness"/>
+        <img src={rimg3} alt="imagem de coxinha Fitness"/>
         <div className="nav-r">
             <p>Coxinha Fitness...</p>
             <a href="receita-2.html" title="login">Leia mais</a>
         </div>
     </div>
     <div className="card_receitas">
-        <img src="img/receita2.jpg" alt="imagem de salada de queijo"/>
+        <img src={rimg4} alt="imagem de salada de queijo"/>
         <div className="nav-r">
             <p>Salada com queijo...</p>
             <a href="receita-2.html" title="login">Leia mais</a>
         </div>
     </div>
     <div className="card_receitas">
-        <img src="img/receita4.jpg" alt="imagem de frango"/>
+        <img src={rimg5} alt="imagem de frango"/>
         <div className="nav-r">
             <p>Frango em Crosta de Chia...</p>
             <a href="receita-2.html" title="login">Leia mais</a>
