@@ -3,12 +3,14 @@ import I1 from '../../img/pepino.png';
 import I2 from '../../img/p1.jpg';
 import I3 from '../../img/p3.png';
 import Footer from '../../Components/Footer/Footer';
+import Header from '../../Components/Header/Header';
 
 
 class Produto extends Component {
     render(){
         return (
             <div>
+                <Header/>
                 <main>
 
         <section className="container_geral">
