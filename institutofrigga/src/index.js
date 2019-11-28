@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Home from './assets/pages/Home/Home';
@@ -15,7 +14,7 @@ import NotFound from '../src/assets/pages/NotFound/NotFound'
 import {Route, HashRouter as Router, Switch, } from 'react-router-dom';
 import './assets/css/estilo.css';
 
- const Rotas = (
+const Rotas = (
     <Router>
         <div>
             <Switch>
@@ -27,8 +26,8 @@ import './assets/css/estilo.css';
                 <Route path = "/receitas" component={Receita}/>
                 <Route path = "/receita" component={Receita}/>
                 
-                {/* <Route path = "/receita/" component={VerReceita}/>
-                <Route path = "/receitas/" component={VerReceita}/> */}
+                <Route path = "/receita/" component={VerReceita}/>
+                <Route path = "/receitas/" component={VerReceita}/>
 
                 <Route path = "/perfil" component={Perfil}/>
 

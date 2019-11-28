@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Header from '../../Components/Header/Header';
+import Footer from '../../Components/Footer/Footer';
 import r1 from '../../img/r1.jpg';
 import r2 from '../../img/r2.jpg';
 import r3 from '../../img/r3.jpg';
@@ -6,8 +8,6 @@ import p1 from '../../img/tm.png';
 import p2 from '../../img/p2.png';
 import p3 from '../../img/p3.png';
 import p4 from '../../img/p4.png';
-import Header from '../../Components/Header/Header';
-import Footer from '../../Components/Footer/Footer';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
 
@@ -166,13 +166,3 @@ class Home extends Component {
     }
 }
 export default Home;
-
-
-
-
-
-
-
-
-
-

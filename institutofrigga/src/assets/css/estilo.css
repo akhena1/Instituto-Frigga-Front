@@ -931,6 +931,9 @@ body {
   border: #3dca41 solid 1px;
   border-radius: 4px;
   }
+  textarea{
+    height: 80px;
+  }
   .product_recipes h3 {
   text-align: center;
   padding: 30px;
@@ -973,6 +976,9 @@ body {
   background-color: var(--cinza);
   border: none;
   color: white;
+  }
+  .btn_incluir_imagem{
+    margin-right: 8px;
   }
   .btn_incluir_imagem:hover {
   background-color: var(--verde);
