@@ -27,8 +27,8 @@ class Header extends Component {
                                 <Link to ="/about">Quem Somos</Link>
                             </ul>
                             <div className="menu2">
-                                <Link to ="/perfil">Perfil</Link>
-                                <Link to ="/entrar">Entrar</Link>
+                            <Link to ="/perfil">Perfil</Link>
+                            <Link to ="/entrar">Entrar</Link>
                             </div>
                         </div>
                     </div>

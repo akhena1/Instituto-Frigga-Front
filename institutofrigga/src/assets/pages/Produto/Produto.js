@@ -107,7 +107,6 @@ class Produto extends Component {
                     <img src={I2} alt="imagem de tomates"/>
                     <div className="nav-p nav-p-isa">
                         <p>tomates<br></br> R$ 9,99</p>
-                        <input type="number" name="qtd" value="1"/>
                         <a href="login.html" title="login">Encomendar</a>
                     </div>
                 </div>
