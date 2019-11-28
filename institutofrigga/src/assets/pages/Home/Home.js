@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Header from '../../Components/Header/Header';
+import Footer from '../../Components/Footer/Footer';
 import r1 from '../../img/r1.jpg';
 import r2 from '../../img/r2.jpg';
 import r3 from '../../img/r3.jpg';
@@ -12,8 +14,9 @@ class Home extends Component {
     render() {
         return (
             <body>
+                <Header />
                 <main>
-                
+
                     <div className="banner">
                         <p className="bannerTitle">
                             Precisa de uma renda extra?
@@ -80,6 +83,7 @@ class Home extends Component {
                         </section>
                     </div>
                 </main>
+                <Footer />
             </body>
         );
     }

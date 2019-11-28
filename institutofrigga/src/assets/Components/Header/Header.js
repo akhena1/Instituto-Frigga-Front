@@ -15,7 +15,7 @@ class Header extends Component {
                     </button>
                     <img className="logorodapeweb" src={LogoWeb} alt=" Logo  do instituto" />
                     <img className="logohmob" src="IMGS/definitivo-fundo-preto.png" alt="logo do instituto" />
-                    <a href="perfil.html">Perfil</a>
+                    <Link to ="/perfil">Perfil</Link>
                 </div>
                 <nav>
                     <div className="navbar-container">
@@ -27,8 +27,8 @@ class Header extends Component {
                                 <Link to ="/about">Quem Somos</Link>
                             </ul>
                             <div className="menu2">
-                                <a href="perfil.html" title="botão acessar perfil de usuário">Perfil</a>
-                                <a href="login.html" title="Botão entrar">Entrar</a>
+                                <Link to ="/perfil">Perfil</Link>
+                                <Link to ="/entrar">Entrar</Link>
                             </div>
                         </div>
                     </div>
