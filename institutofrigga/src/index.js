@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Home from './assets/pages/Home/Home';
@@ -12,6 +11,7 @@ import Entrar from './assets/pages/Entrar/Entrar';
 import About from './assets/pages/About/About';
 import {Route, BrowserRouter as Router, Switch, } from 'react-router-dom';
 import './assets/css/estilo.css';
+import NotFound from '../src/assets/pages/NotFound/NotFound';
 
  const Rotas = (
     <Router>
@@ -34,11 +34,7 @@ import './assets/css/estilo.css';
 
                 <Route path = "/about" component={About}/>
 
-
-                {/*<Route component={NotFound}/>*/}
-
-                {/* <Route component={NotFound}/> */}
-
+                <Route component={NotFound}/>
             </Switch>
         </div>
     </Router>

@@ -6,12 +6,15 @@ import p1 from '../../img/tm.png';
 import p2 from '../../img/p2.png';
 import p3 from '../../img/p3.png';
 import p4 from '../../img/p4.png';
+import Header from '../../Components/Header/Header';
+import Footer from '../../Components/Footer/Footer';
 
 
 class Home extends Component {
     render() {
         return (
             <body>
+                <Header/>
                 <main>
                     <div className="banner">
                         <p className="bannerTitle">
@@ -106,6 +109,7 @@ class Home extends Component {
                         </section>
                     </div>
                 </main>
+                <Footer/>
             </body>
         );
     }
