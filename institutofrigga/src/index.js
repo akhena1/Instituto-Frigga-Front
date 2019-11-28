@@ -9,11 +9,8 @@ import VerReceita from './assets/pages/VerReceita/VerReceita';
 import Perfil from './assets/pages/Perfil/Perfil';
 import Entrar from './assets/pages/Entrar/Entrar';
 import About from './assets/pages/About/About';
-import {Route, BrowserRouter as Router, Switch, } from 'react-router-dom';
-import './assets/css/estilo.css';
 import NotFound from '../src/assets/pages/NotFound/NotFound';
 
- const Rotas = (
     <Router>
         <div>
             <Switch>
@@ -25,8 +22,8 @@ import NotFound from '../src/assets/pages/NotFound/NotFound';
                 <Route path = "/receitas" component={Receita}/>
                 <Route path = "/receita" component={Receita}/>
                 
-                {/* <Route path = "/receita/" component={VerReceita}/>
-                <Route path = "/receitas/" component={VerReceita}/> */}
+                <Route path = "/receita/" component={VerReceita}/>
+                <Route path = "/receitas/" component={VerReceita}/>
 
                 <Route path = "/perfil" component={Perfil}/>
 
