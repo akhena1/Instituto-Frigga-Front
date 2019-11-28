@@ -35,7 +35,7 @@ import './assets/css/estilo.css';
 
                 <Route path = "/about" component={About}/>
 
-                {/* <Route component={NotFound}/> */}
+                <Route component={NotFound}/>
             </Switch>
         </div>
     </Router>
