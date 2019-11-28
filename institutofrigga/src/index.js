@@ -12,7 +12,43 @@ import About from './assets/pages/About/About';
 import NotFound from '../src/assets/pages/NotFound/NotFound';
 import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
 import './assets/css/estilo.css';
+import { usuarioAutenticado, parseJwt } from '../src/assets/services/auth';
 
+const PermissaoAdmin = ({ component : Component }) => (
+    <Route 
+        render={props =>
+            usuarioAutenticado() && parseJwt().Role === "Administrador" ? (
+                <Component {...props}/>
+            ) : (
+                <Redirect to={{ pathname : "/Entrar"}}/>
+            )
+        }
+    />
+)
+
+const PermissaoFornecedor = ({ component : Component }) => (
+    <Route 
+        render={props =>
+            usuarioAutenticado() && parseJwt().Role === "Fornecedor" ? (
+                <Component {...props}/>
+            ) : (
+                <Redirect to={{ pathname : "/Entrar"}}/>
+            )
+        }
+    />
+)
+
+const PermissaoCliente = ({ component : Component }) => (
+    <Route 
+        render={props =>
+            usuarioAutenticado() && parseJwt().Role === "Cliente" ? (
+                <Component {...props}/>
+            ) : (
+                <Redirect to={{ pathname : "/Entrar"}}/>
+            )
+        }
+    />
+)
 const Rotas = (
     <Router>
         <div>

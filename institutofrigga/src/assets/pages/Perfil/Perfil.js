@@ -1,8 +1,80 @@
 import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
-import iconPerfil from '../../img/iconperfil.svg'
+import iconPerfil from '../../img/iconperfil.svg';
+import api from '../../services/api';
+
 class Perfil extends Component {
+  constructor(){
+    super()
+    this.state = {
+        
+        listaPerfil     : [],
+        listaOferta     : [],
+        
+        postPerfil : {
+            Nome: "",
+            Celular: "",
+            Email: ""
+        },
+
+        postTabelaOFerta: {
+
+        },
+
+        putTabelaOferta: {
+          Nome: "",
+          Celular: "",
+          Email: ""
+        },
+
+        putPerfil : {
+          Nome: "",
+          Celular: "",
+          Email: ""
+        },
+
+        erroMsg : "",
+        successMsg : "",
+        modal: false,
+
+    }
+
+
+
+}
+
+toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+}
+
+componentDidMount(){
+    this.getPerfil();
+    this.getOferta();
+}
+
+
+//#region GETs
+getEventos = () =>{
+    api.get('/evento')
+    .then(response => {
+        if(response.status === 200){
+            this.setState({ listaEventos : response.data })
+        }
+    })
+}
+
+getCategorias = () => {
+    api.get('/categoria')
+    .then(response => {
+        if(response.status === 200){
+            this.setState({ listaCategorias : response.data })
+        }
+    })
+}
+//#endregion
   render() {
     return (
       <main>
@@ -26,10 +98,6 @@ class Perfil extends Component {
                         <input type="email" placeholder="Digite seu email..." name="email" aria-label="digitar email"
                   required />
               </label><br />
-              <label><p>Descrição</p>
-                <textarea name="descricao" placeholder="Descreva um pouco sobre você..."
-                  aria-label="Descreva um pouco sobre você"></textarea>
-              </label>
               <div>
                 <button type="submit" class="btn_editar_perfil" alt="botao editar perfil">Editar Perfil</button>
               </div>
