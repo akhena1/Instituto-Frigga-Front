@@ -8,22 +8,53 @@ import p3 from '../../img/p3.png';
 import p4 from '../../img/p4.png';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
+import api from '../../services/api';
+import { Link } from 'react-router-dom';
 
 
 class Home extends Component {
+
+    constructor() {
+        super()
+        this.state = {
+            listaReceita: [],
+            listaOferta: [],
+            
+            
+            
+
+
+            
+        }
+    }
+    getReceita = () => {
+        api.get('/receita')
+            .then(response => {
+                if (response.status === 200) {
+                    this.setState({ listaReceita: response.data })
+                }
+                console.log(response);
+            })
+
+    }
+
+    componentDidMount() {
+        this.getReceita()
+    }
+
     render() {
         return (
-            <body>
-                <Header/>
+            <div>
+                <Header />
                 <main>
-                
+
                     <div className="banner">
                         <p className="bannerTitle">
                             Precisa de uma renda extra?
             </p>
                         <p className="banner-txt">Que tal começar a vender marmitas<br />
-                            feitas com produtos orgânicos? Você<br />
-                            ganha uma grana extra e ainda coopera <br />
+                            feitas com produtos orgânicos? Você<br/>
+                            ganha uma grana extra e ainda coopera <br/>
                             para um   mundo   mais   sustentável!</p>
                         <a href="about.html">
                             Saiba mais!
@@ -35,21 +66,67 @@ class Home extends Component {
                     </div>
                     <div className="container">
                         <section className="receitas">
-                            <a href="#" className="card-receita">
-                                <img src={r1} alt="Imagem de um prato de comida" />
-                                <p className="position">Salada de Legumes<br /> Gourmet
-                    </p>
-                            </a>
-                            <a href="#" className="card-receita">
-                                <img src={r2} alt="Imagem de um prato de salada" />
-                                <p className="position">Refogado de frango<br /> com cenoura</p>
-                            </a>
-                            <a href="#" className="card-receita">
-                                <img src={r3} alt="Prato de comida" />
-                                <p className="position">Salada de repolho<br /> com beterraba e abobora</p>
-                            </a>
-                            <div className="btn-seemore"><a href="receitas.html"> Ver mais</a></div>
+                            {
+                                this.state.listaReceita.map(
+                                    function (r) {
+                                        
+                                            return (
+                                                <Link to={'/receita'} key={r.receitaId} className="card-receita">
+                                                    <img  src={"http://localhost:5000/arquivos/" + r.imagemReceita}/>
+                                                    <p className="position">{r.nome}</p>
+                                                </Link>  
+                                        )  
+                                        
+                                         
+                                    }   
+                                )   
+                            }
+                            
+
+                            {/*  <a href="#" className="card-receita">
+                                                {
+                                                    this.state.listaReceita.map(
+                                                        function(r){
+                                                            return(
+                                                                <>
+                                                                    <img src={"C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\ImagensReceita\\" + r.ImagemReceita} alt="Imagem de um prato de comida" />
+                                                                    <p className="position">{r.nome}</p>
+                                                                </>
+                                                                
+                                                            )
+                                                        }
+                                                    )
+                                                }
+                                                
+                                            </a>
+                                            <a href="#" className="card-receita">
+                                                {
+                                                    this.state.listaReceita.map(
+                                                        function(r){
+                                                            return(
+                                                                <>
+                                                                    <img src={"C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\ImagensReceita\\" + r.ImagemReceita} alt="Imagem de um prato de comida" />
+                                                                    <p className="position">{r.nome}</p>
+                                                                </>
+                                                                
+                                                            )
+                                                        }
+                                                    )
+                                                }
+                                                
+                                            </a> */}
+                            <div className="btn-seemore"><Link to="/receita">Ver mais</Link></div>
+
+
+
+
+
                         </section>
+
+
+
+
+
                         <section className="container-produtos">
                             <div className="card-produto">
                                 <img src={p1} alt="imagem de tomates" />
@@ -79,12 +156,12 @@ class Home extends Component {
                                     <a href="login.html">Encomendar</a>
                                 </div>
                             </div>
-                            <div className="btn-seemore"><a href="produtos.html" className="btn-seemore">Ver mais..</a></div>
+                            <div className="btn-seemore"><Link to="produtos.html" className="btn-seemore">Ver mais..</Link></div>
                         </section>
                     </div>
                 </main>
-                <Footer/>
-            </body>
+                <Footer />
+            </div>
         );
     }
 }

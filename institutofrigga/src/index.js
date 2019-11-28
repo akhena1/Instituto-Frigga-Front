@@ -12,7 +12,7 @@ import Entrar from './assets/pages/Entrar/Entrar';
 import About from './assets/pages/About/About';
 import NotFound from '../src/assets/pages/NotFound/NotFound'
 // Redirect
-import {Route, BrowserRouter as Router, Switch, } from 'react-router-dom';
+import {Route, HashRouter as Router, Switch, } from 'react-router-dom';
 import './assets/css/estilo.css';
 
  const Rotas = (
