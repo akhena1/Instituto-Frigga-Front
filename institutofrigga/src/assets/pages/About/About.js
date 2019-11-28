@@ -26,7 +26,6 @@ class About extends Component {
                         </div>
                     </section>
 
-
                     <section class="container-assunto1 container-assunto2">
                         <div>
                             <h2>Um pouco mais sobre o projeto social </h2>

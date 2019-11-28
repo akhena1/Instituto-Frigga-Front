@@ -4,7 +4,16 @@ import Footer from '../../Components/Footer/Footer';
 import IconLogin from '../../img/iconperfil.svg'
 
 
+
 class Entrar extends Component {
+  constructor () {
+    super () 
+    this.state = {
+      
+
+
+    }
+  }
     render() {
         return (
           <body>
