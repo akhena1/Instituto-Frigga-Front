@@ -16,7 +16,7 @@ class Home extends Component {
             <body>
                 <Header/>
                 <main>
-
+                
                     <div className="banner">
                         <p className="bannerTitle">
                             Precisa de uma renda extra?
