@@ -247,8 +247,9 @@ class Perfil extends Component {
                 </th>
                 <th>Nome do produto</th>
                 <th>Categoria</th>
-                <th>Quantidade</th>
+                <th>Peso</th>
                 <th>Preço/kg</th>
+                <th> Qtd Estoque</th>
                 <th class="void "></th>
               </thead>
               <tbody>
@@ -275,6 +276,7 @@ class Perfil extends Component {
                   <td>Frutas</td>
                   <td>1KG</td>
                   <td>R$8,90</td>
+                  <td>10</td>
                   <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
@@ -285,6 +287,7 @@ class Perfil extends Component {
                   <td>Frutas</td>
                   <td>1KG</td>
                   <td>R$8,90</td>
+                  <td>10</td>
                   <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
@@ -295,6 +298,7 @@ class Perfil extends Component {
                   <td>Frutas</td>
                   <td>1KG</td>
                   <td>R$8,90</td>
+                  <td>10</td>
                   <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
@@ -305,6 +309,7 @@ class Perfil extends Component {
                   <td>Frutas</td>
                   <td>1KG</td>
                   <td>R$8,90</td>
+                  <td>10</td>
                   <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
@@ -315,6 +320,7 @@ class Perfil extends Component {
                   <td>Frutas</td>
                   <td>1KG</td>
                   <td>R$8,90</td>
+                  <td>10</td>
                   <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
@@ -325,6 +331,7 @@ class Perfil extends Component {
                   <td>Frutas</td>
                   <td>1KG</td>
                   <td>R$8,90</td>
+                  <td>10</td>
                   <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
@@ -335,6 +342,7 @@ class Perfil extends Component {
                   <td>Frutas</td>
                   <td>1KG</td>
                   <td>R$8,90</td>
+                  <td>10</td>
                   <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
@@ -345,12 +353,13 @@ class Perfil extends Component {
                   <td>Frutas</td>
                   <td>1KG</td>
                   <td>R$8,90</td>
+                  <td>10</td>
                   <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
-                  <td class="bg-pager" colspan="6">
+                  <td class="bg-pager" colspan="7">
                     <div class="tablepager">
                       <a href="#">Anterior</a>
                       <div class="numtablepager">

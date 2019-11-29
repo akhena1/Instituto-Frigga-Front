@@ -82,7 +82,7 @@ api.post("/login", usuario)
         <main>
           <div className="container_login">
             <section className="esquerda_login">
-              <form onSubmit={this.realizarLogin.bind(this)} method="POST" id="form_login">
+              <form method="POST" id="form_login">
                 <figure>
                   <img src={IconLogin}alt="icone do perfil" />
                 </figure>
@@ -90,12 +90,12 @@ api.post("/login", usuario)
                   <div className="input-group">
                     <label for="usuarioCadastro">Usuario</label>
                     <input className="input_login" type="text" placeholder="E-mail ou Cpf..."
-                      aria-label="Digite seu e-mail ou cpf" name="email" id="usuarioCadastro"  value={this.state.email} onChange={this.atualizaEstado} required />
+                      aria-label="Digite seu e-mail ou cpf" name="usuario" id="usuarioCadastro" required />
                   </div>
                   <div className="input-group">
                     <label for="senhaCadastro">Senha</label>
                     <input className="input_login" type="password" placeholder="Senha..." aria-label="Digite a sua senha"
-                      name="senha" id="senhaCadastro" value={this.state.senha} onChange={this.atualizaEstado} required />
+                      name="senha" id="senhaCadastro" required />
                   </div>
                   <div className="buttonsContainer">
                     <button className="btn_login" type="submit">Entrar</button>

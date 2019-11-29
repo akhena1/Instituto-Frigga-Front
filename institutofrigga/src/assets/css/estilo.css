@@ -292,6 +292,8 @@ color: #FFFFFF;
 text-decoration: none;
 color: #121212;
 font-family: var(--fonte1);
+margin-top:20px;
+margin-bottom:20px;
 }
 
 .btn-seemore a {
