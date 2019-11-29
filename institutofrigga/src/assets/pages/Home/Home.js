@@ -32,10 +32,19 @@ class Home extends Component {
             })
 
     }
-    
+    getOferta = () => {
+        api.get('/oferta')
+            .then(response => {
+                if (response.status === 200) {
+                    this.setState({ listaOferta: response.data })
+                }
+                console.log(response)
+            })
+    }
 
     componentDidMount() {
-        this.getReceita()
+        this.getReceita();
+        this.getOferta();
     }
 
     render() {
@@ -85,9 +94,9 @@ class Home extends Component {
                                     function (o) {
                                         return (
                                             <div className="card-produto">
-                                                <img src={"http://localhost:5000/arquivos/" + o.imagemOferta} />
+                                                <img src={"http://localhost:5000/arquivos/" + o.imagemProduto} />
                                                 <div className="nav-p">
-                                                    <p>Nome do Produto<br />{o.preco}</p>
+                                                    <p>{o.produto.tipo}<br/>R${o.preco}</p>
                                                     <Link to="/Entrar">Encomendar</Link>
                                                 </div>
                                             </div>

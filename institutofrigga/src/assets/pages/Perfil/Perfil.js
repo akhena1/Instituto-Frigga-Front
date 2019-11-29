@@ -247,7 +247,7 @@ getCategorias = () => {
               </tbody>
               <tfoot>
                 <tr>
-                  <td class="bg-pager" colspan="7">
+                  <td class="bg-pager" colSpan="7">
                     <div class="tablepager">
                       <a href="#">Anterior</a>
                       <div class="numtablepager">
@@ -391,7 +391,7 @@ getCategorias = () => {
               </tbody>
               <tfoot>
                 <tr>
-                  <td class="bg-pager" colspan="5">
+                  <td class="bg-pager" colSpan="5">
                     <div class="tablepager">
                       <a href="#">Anterior</a>
                       <div class="numtablepager">
