@@ -20,11 +20,6 @@ class Home extends Component {
             listaReceita: [],
             listaOferta: [],
             
-            
-            
-
-
-            
         }
     }
     getReceita = () => {
@@ -51,14 +46,14 @@ class Home extends Component {
                     <div className="banner">
                         <p className="bannerTitle">
                             Precisa de uma renda extra?
-            </p>
+                        </p>
                         <p className="banner-txt">Que tal começar a vender marmitas<br />
                             feitas com produtos orgânicos? Você<br/>
                             ganha uma grana extra e ainda coopera <br/>
                             para um   mundo   mais   sustentável!</p>
                         <a href="about.html">
                             Saiba mais!
-            </a>
+                        </a>
                     </div>
                     <div className="titulos">
                         <h2>Receitas recentes</h2>
