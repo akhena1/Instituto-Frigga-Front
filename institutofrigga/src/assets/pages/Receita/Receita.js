@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
+import Header from '../../Components/Header/Header';
+import Footer from '../../Components/Footer/Footer';
 import rimg from '../../img/receita2.jpg'
 import rimg1 from '../../img/receita4.jpg'
 import rimg2 from '../../img/receita5.jpg'
 import rimg3 from '../../img/receita7.jpg'
 import rimg4 from '../../img/receita2.jpg'
 import rimg5 from '../../img/receita4.jpg'
-import Header from '../../Components/Header/Header';
-import Footer from '../../Components/Footer/Footer';
 import api from '../../services/api';
-import { withRouter } from "react-router-dom";
+//import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 
@@ -155,12 +155,14 @@ class Receita extends Component {
                         </div>
                     </section>
                 </section>
-                <Footer />
+                <Footer/>
             </div>
 
         );
     }
 }
+
+
 export default Receita;
 
    {/* {

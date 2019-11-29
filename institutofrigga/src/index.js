@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Home from './assets/pages/Home/Home';
@@ -15,8 +14,44 @@ import NotFound from '../src/assets/pages/NotFound/NotFound'
 import { withRouter } from "react-router-dom";
 import {Route, BrowserRouter as Router, Switch, } from 'react-router-dom';
 import './assets/css/estilo.css';
+import { usuarioAutenticado, parseJwt } from '../src/assets/services/auth';
 
- const Rotas = (
+/* const PermissaoAdmin = ({ component : Component }) => (
+    <Route 
+        render={props =>
+            usuarioAutenticado() && parseJwt().Role === "Administrador" ? (
+                <Component {...props}/>
+            ) : (
+                <Redirect to={{ pathname : "/Entrar"}}/>
+            )
+        }
+    />
+)
+
+const PermissaoFornecedor = ({ component : Component }) => (
+    <Route 
+        render={props =>
+            usuarioAutenticado() && parseJwt().Role === "Fornecedor" ? (
+                <Component {...props}/>
+            ) : (
+                <Redirect to={{ pathname : "/Entrar"}}/>
+            )
+        }
+    />
+)
+
+const PermissaoCliente = ({ component : Component }) => (
+    <Route 
+        render={props =>
+            usuarioAutenticado() && parseJwt().Role === "Cliente" ? (
+                <Component {...props}/>
+            ) : (
+                <Redirect to={{ pathname : "/Entrar"}}/>
+            )
+        }
+    />
+) */
+const Rotas = (
     <Router>
         <div>
             <Switch>
@@ -37,7 +72,7 @@ import './assets/css/estilo.css';
 
                 <Route path = "/about" component={About}/>
 
-                {/* <Route component={NotFound}/> */}
+                <Route component={NotFound}/>
             </Switch>
         </div>
     </Router>
