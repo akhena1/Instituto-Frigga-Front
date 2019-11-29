@@ -13,7 +13,43 @@ import NotFound from '../src/assets/pages/NotFound/NotFound'
 // Redirect
 import {Route, HashRouter as Router, Switch, } from 'react-router-dom';
 import './assets/css/estilo.css';
+import { usuarioAutenticado, parseJwt } from '../src/assets/services/auth';
 
+const PermissaoAdmin = ({ component : Component }) => (
+    <Route 
+        render={props =>
+            usuarioAutenticado() && parseJwt().Role === "Administrador" ? (
+                <Component {...props}/>
+            ) : (
+                <Redirect to={{ pathname : "/Entrar"}}/>
+            )
+        }
+    />
+)
+
+const PermissaoFornecedor = ({ component : Component }) => (
+    <Route 
+        render={props =>
+            usuarioAutenticado() && parseJwt().Role === "Fornecedor" ? (
+                <Component {...props}/>
+            ) : (
+                <Redirect to={{ pathname : "/Entrar"}}/>
+            )
+        }
+    />
+)
+
+const PermissaoCliente = ({ component : Component }) => (
+    <Route 
+        render={props =>
+            usuarioAutenticado() && parseJwt().Role === "Cliente" ? (
+                <Component {...props}/>
+            ) : (
+                <Redirect to={{ pathname : "/Entrar"}}/>
+            )
+        }
+    />
+)
 const Rotas = (
     <Router>
         <div>

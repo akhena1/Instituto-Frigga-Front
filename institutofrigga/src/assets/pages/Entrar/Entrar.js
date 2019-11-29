@@ -1,19 +1,80 @@
 import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
-import IconLogin from '../../img/iconperfil.svg'
-
+import IconLogin from '../../img/iconperfil.svg';
+import api from '../../services/api';
+import { parseJwt } from '../../services/auth';
 
 
 class Entrar extends Component {
   constructor() {
     super()
     this.state = {
-
-
-
+      email: "",
+      senha: "",
+      cpf_cnpj: "",
+      Nome: "",
+      Nascimento: "",
+      Cidade: "",
+      Cep: "",
+      Bairro: "",
+      Endereço: "",
+      Numero: "",
+      erroMensagem : "",
+      isLoading : false
     }
   }
+
+  atualizaEstado = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+}
+
+realizarLogin(event){
+  event.preventDefault();
+  this.setState({ erroMensagem : '' })
+  this.setState({ isLoading : true })
+  let usuario = {
+    email: this.state.email,
+    senha: this.state.senha
+}
+api.post("/login", usuario)
+        .then(response => {
+          if (response.status === 200) {
+            localStorage.setItem('usuario-frigga', response.data.token)
+            this.setState({ isLoading : false })
+
+            console.log("Meu token é: " + response.data.token)
+            var base64 = localStorage.getItem('usuario-frigga').split('.')[1]
+              
+                console.log(base64)
+
+               
+                console.log(window.atob(base64))
+
+               
+                console.log(JSON.parse(window.atob(base64)))
+
+              
+                console.log(parseJwt().Role)
+
+                if (parseJwt().Role === 'Administrador') {
+                    this.props.history.push('/');
+                }
+                else if ((parseJwt().Role === 'Fornecedor')) {
+                    this.props.history.push('/Produtos');
+                } else {
+                  this.props.history.push('/Receitas');
+                }
+            }
+            
+        })
+        .catch(erro => {
+          console.log("Erro: ", erro)
+          this.setState({ erroMensagem : 'E-mail ou senha inválidos!' })
+          this.setState({ isLoading : false })
+      })
+  }
+
   render() {
     return (
       <body>
@@ -21,7 +82,11 @@ class Entrar extends Component {
         <main>
           <div className="container_login">
             <section className="esquerda_login">
+<<<<<<< HEAD
               <form method="POST" id="form_login">
+=======
+              <form onSubmit={this.realizarLogin.bind(this)} method="POST" id="form_login">
+>>>>>>> b9e0501216495aa5b05c732dad73a5bfc464d4f0
                 <figure>
                   <img src={IconLogin}alt="icone do perfil" />
                 </figure>
@@ -29,12 +94,20 @@ class Entrar extends Component {
                   <div className="input-group">
                     <label for="usuarioCadastro">Usuario</label>
                     <input className="input_login" type="text" placeholder="E-mail ou Cpf..."
+<<<<<<< HEAD
                       aria-label="Digite seu e-mail ou cpf" name="usuario" id="usuarioCadastro" required />
+=======
+                      aria-label="Digite seu e-mail ou cpf" name="email" id="usuarioCadastro"  value={this.state.email} onChange={this.atualizaEstado} required />
+>>>>>>> b9e0501216495aa5b05c732dad73a5bfc464d4f0
                   </div>
                   <div className="input-group">
                     <label for="senhaCadastro">Senha</label>
                     <input className="input_login" type="password" placeholder="Senha..." aria-label="Digite a sua senha"
+<<<<<<< HEAD
                       name="senha" id="senhaCadastro" required />
+=======
+                      name="senha" id="senhaCadastro" value={this.state.senha} onChange={this.atualizaEstado} required />
+>>>>>>> b9e0501216495aa5b05c732dad73a5bfc464d4f0
                   </div>
                   <div className="buttonsContainer">
                     <button className="btn_login" type="submit">Entrar</button>
