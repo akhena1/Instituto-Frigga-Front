@@ -19,7 +19,7 @@ class Home extends Component {
         this.state = {
             listaReceita: [],
             listaOferta: [],
-            
+
         }
     }
     getReceita = () => {
@@ -32,6 +32,7 @@ class Home extends Component {
             })
 
     }
+    
 
     componentDidMount() {
         this.getReceita()
@@ -48,8 +49,8 @@ class Home extends Component {
                             Precisa de uma renda extra?
                         </p>
                         <p className="banner-txt">Que tal começar a vender marmitas<br />
-                            feitas com produtos orgânicos? Você<br/>
-                            ganha uma grana extra e ainda coopera <br/>
+                            feitas com produtos orgânicos? Você<br />
+                            ganha uma grana extra e ainda coopera <br />
                             para um   mundo   mais   sustentável!</p>
                         <a href="about.html">
                             Saiba mais!
@@ -64,66 +65,37 @@ class Home extends Component {
                             {
                                 this.state.listaReceita.map(
                                     function (r) {
-                                        
-                                            return (
-                                                <Link to={'/receita'} key={r.receitaId} className="card-receita">
-                                                    <img  src={"http://localhost:5000/arquivos/" + r.imagemReceita}/>
-                                                    <p className="position">{r.nome}</p>
-                                                </Link>  
-                                        )  
-                                        
-                                         
-                                    }   
-                                )   
+                                        return (
+                                            <Link to={'/receita'} key={r.receitaId} className="card-receita">
+                                                <img src={"http://localhost:5000/arquivos/" + r.imagemReceita} />
+                                                <p className="position">{r.nome}</p>
+                                            </Link>
+                                        )
+                                    }
+                                )
                             }
-                            
-
-                            {/*  <a href="#" className="card-receita">
-                                                {
-                                                    this.state.listaReceita.map(
-                                                        function(r){
-                                                            return(
-                                                                <>
-                                                                    <img src={"C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\ImagensReceita\\" + r.ImagemReceita} alt="Imagem de um prato de comida" />
-                                                                    <p className="position">{r.nome}</p>
-                                                                </>
-                                                                
-                                                            )
-                                                        }
-                                                    )
-                                                }
-                                                
-                                            </a>
-                                            <a href="#" className="card-receita">
-                                                {
-                                                    this.state.listaReceita.map(
-                                                        function(r){
-                                                            return(
-                                                                <>
-                                                                    <img src={"C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\ImagensReceita\\" + r.ImagemReceita} alt="Imagem de um prato de comida" />
-                                                                    <p className="position">{r.nome}</p>
-                                                                </>
-                                                                
-                                                            )
-                                                        }
-                                                    )
-                                                }
-                                                
-                                            </a> */}
                             <div className="btn-seemore"><Link to="/receita">Ver mais</Link></div>
-
-
-
-
-
                         </section>
 
 
-
-
-
                         <section className="container-produtos">
-                            <div className="card-produto">
+
+                            {
+                                this.state.listaOferta.map(
+                                    function (o) {
+                                        return (
+                                            <div className="card-produto">
+                                                <img src={"http://localhost:5000/arquivos/" + o.imagemOferta} />
+                                                <div className="nav-p">
+                                                    <p>Nome do Produto<br />{o.preco}</p>
+                                                    <Link to="/Entrar">Encomendar</Link>
+                                                </div>
+                                            </div>
+                                        );
+                                    }
+                                )
+                            }
+                            {/* <div className="card-produto">
                                 <img src={p1} alt="imagem de tomates" />
                                 <div className="nav-p">
                                     <p>Tomates italianos<br /> R$ 12,49</p>
@@ -150,9 +122,13 @@ class Home extends Component {
                                     <p>Cenouras<br /> R$ 11,19</p>
                                     <a href="login.html">Encomendar</a>
                                 </div>
-                            </div>
+                            </div> */}
+
                             <div className="btn-seemore"><Link to="produtos.html" className="btn-seemore">Ver mais..</Link></div>
                         </section>
+
+
+
                     </div>
                 </main>
                 <Footer />

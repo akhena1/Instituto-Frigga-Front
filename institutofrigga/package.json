@@ -4,10 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
-<<<<<<< HEAD
-=======
     "local": "^0.3.3",
->>>>>>> b9e0501216495aa5b05c732dad73a5bfc464d4f0
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",

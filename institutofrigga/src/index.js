@@ -15,7 +15,7 @@ import {Route, HashRouter as Router, Switch, } from 'react-router-dom';
 import './assets/css/estilo.css';
 import { usuarioAutenticado, parseJwt } from '../src/assets/services/auth';
 
-const PermissaoAdmin = ({ component : Component }) => (
+/* const PermissaoAdmin = ({ component : Component }) => (
     <Route 
         render={props =>
             usuarioAutenticado() && parseJwt().Role === "Administrador" ? (
@@ -49,7 +49,7 @@ const PermissaoCliente = ({ component : Component }) => (
             )
         }
     />
-)
+) */
 const Rotas = (
     <Router>
         <div>

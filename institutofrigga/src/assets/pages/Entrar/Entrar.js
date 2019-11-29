@@ -82,11 +82,7 @@ api.post("/login", usuario)
         <main>
           <div className="container_login">
             <section className="esquerda_login">
-<<<<<<< HEAD
               <form method="POST" id="form_login">
-=======
-              <form onSubmit={this.realizarLogin.bind(this)} method="POST" id="form_login">
->>>>>>> b9e0501216495aa5b05c732dad73a5bfc464d4f0
                 <figure>
                   <img src={IconLogin}alt="icone do perfil" />
                 </figure>
@@ -94,20 +90,12 @@ api.post("/login", usuario)
                   <div className="input-group">
                     <label for="usuarioCadastro">Usuario</label>
                     <input className="input_login" type="text" placeholder="E-mail ou Cpf..."
-<<<<<<< HEAD
                       aria-label="Digite seu e-mail ou cpf" name="usuario" id="usuarioCadastro" required />
-=======
-                      aria-label="Digite seu e-mail ou cpf" name="email" id="usuarioCadastro"  value={this.state.email} onChange={this.atualizaEstado} required />
->>>>>>> b9e0501216495aa5b05c732dad73a5bfc464d4f0
                   </div>
                   <div className="input-group">
                     <label for="senhaCadastro">Senha</label>
                     <input className="input_login" type="password" placeholder="Senha..." aria-label="Digite a sua senha"
-<<<<<<< HEAD
                       name="senha" id="senhaCadastro" required />
-=======
-                      name="senha" id="senhaCadastro" value={this.state.senha} onChange={this.atualizaEstado} required />
->>>>>>> b9e0501216495aa5b05c732dad73a5bfc464d4f0
                   </div>
                   <div className="buttonsContainer">
                     <button className="btn_login" type="submit">Entrar</button>
