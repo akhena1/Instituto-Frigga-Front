@@ -12,6 +12,7 @@ import Entrar from './assets/pages/Entrar/Entrar';
 import About from './assets/pages/About/About';
 import NotFound from '../src/assets/pages/NotFound/NotFound'
 // Redirect
+import { withRouter } from "react-router-dom";
 import {Route, BrowserRouter as Router, Switch, } from 'react-router-dom';
 import './assets/css/estilo.css';
 
@@ -27,8 +28,8 @@ import './assets/css/estilo.css';
                 <Route path = "/receitas" component={Receita}/>
                 <Route path = "/receita" component={Receita}/>
                 
-                {/* <Route path = "/receita/" component={VerReceita}/>
-                <Route path = "/receitas/" component={VerReceita}/> */}
+                <Route path = "/verreceita/" component={VerReceita}/>
+                <Route path = "/verreceitas/" component={VerReceita}/>
 
                 <Route path = "/perfil" component={Perfil}/>
 
