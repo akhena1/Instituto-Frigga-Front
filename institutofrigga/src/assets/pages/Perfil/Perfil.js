@@ -5,76 +5,171 @@ import iconPerfil from '../../img/iconperfil.svg';
 import api from '../../services/api';
 
 class Perfil extends Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
-        
-        listaPerfil     : [],
-        listaOferta     : [],
-        
-        postPerfil : {
-            Nome: "",
-            Celular: "",
-            Email: ""
-        },
 
-        postTabelaOFerta: {
+      listaPerfil: [],
+      listaOferta: [],
+      listaReceita: []
 
-        },
+      // postPerfil : {
+      //     Nome: "",
+      //     Celular: "",
+      //     Email: ""
+      // },
 
-        putTabelaOferta: {
-          Nome: "",
-          Celular: "",
-          Email: ""
-        },
+      // putPerfil : {
+      //   Nome: "",
+      //   Celular: "",
+      //   Email: ""
+      // },
 
-        putPerfil : {
-          Nome: "",
-          Celular: "",
-          Email: ""
-        },
+      // postTabelaOFerta: {
+      //   Nome: "",
+      //   Celular: "",
+      //   Email: ""
+      // },
 
-        erroMsg : "",
-        successMsg : "",
-        modal: false,
+      // putTabelaOferta: {
+      //   Nome: "",
+      //   Celular: "",
+      //   Email: ""
+      // },
+
+
+      // erroMsg : "",
+      // successMsg : "",
+      // modal: false
 
     }
 
+  }
 
+  // atualizaEstado = (event) => {
+  //   this.setState({ [event.target.name]: event.target.value });
+  // }
 
-}
+  // toggle = () => {
+  //     this.setState({
+  //       modal: !this.state.modal
+  //     });
+  // }
 
-toggle = () => {
-    this.setState({
-      modal: !this.state.modal
-    });
-}
-
-componentDidMount(){
+  componentDidMount() {
     this.getPerfil();
     this.getOferta();
-}
+    this.getReceita()
+  }
 
 
-//#region GETs
-getEventos = () =>{
-    api.get('/evento')
-    .then(response => {
-        if(response.status === 200){
-            this.setState({ listaEventos : response.data })
+  //#region GETs
+  getPerfil = () => {
+    api.get('/endereco')
+      .then(response => {
+        if (response.status === 200) {
+          this.setState({ listaPerfil: response.data })
         }
-    })
-}
+      })
+  }
 
-getCategorias = () => {
-    api.get('/categoria')
-    .then(response => {
-        if(response.status === 200){
-            this.setState({ listaCategorias : response.data })
+  getReceita = () => {
+    api.get('/receitas')
+      .then(response => {
+        if (response.status === 200) {
+          this.setState({ listaReceita: response.data })
         }
-    })
-}
-//#endregion
+      })
+  }
+
+  getOferta = () => {
+    api.get('/oferta')
+      .then(response => {
+        if (response.status === 200) {
+          this.setState({ listaOFerta: response.data })
+        }
+      })
+  }
+  //#endregion
+
+  //#region POSTs
+  //    postSetState = (input) =>{
+  //     this.setState({
+  //         postEvento : {
+  //             ...this.state.postPerfil, ...this.state.postTabelaOFerta, [input.target.name] : input.target.value
+  //         }
+  //     })
+  // }
+
+  //     postPerfil = (p) => {
+
+  //       p.preventDefault();
+  //       api.post('/perfil', this.state.postEvento)
+  //         .then(response => {
+  //             console.log(response);
+  //         })
+  //         .catch(error => {
+  //             console.log(error);
+  //             this.setState({ erroMsg : "Não foi possível cadastrar evento" });
+  //         })
+
+  //         setTimeout(() => {
+  //             this.getEventos();
+  //         }, 1500);
+
+
+  //     }
+
+  //     postTabelaOFerta = (o) => {
+  //       o.preventDefault();
+  //       api.post('/evento', this.state.postEvento)
+  //         .then(response => {
+  //             console.log(response);
+  //         })
+  //         .catch(error => {
+  //             console.log(error);
+  //             this.setState({ erroMsg : "Não foi possível cadastrar evento" });
+  //         })
+
+  //         setTimeout(() => {
+  //             this.getEventos();
+  //         }, 1500);
+  //     }
+
+  //#endregion
+
+  //#region DELETE
+  //   deleteEvento(id){
+
+  //     this.setState({ successMsg : "" })
+
+  //     api.delete('/perfil/'+id)
+  //     .then(response => {
+  //         if(response.status === 200){
+  //             this.setState({ successMsg : "Excluído com sucesso" })
+
+  //             setTimeout(() => {
+  //                 this.getEventos();
+  //             }, 1500);
+  //         }
+  //     })
+  //     api.delete('/perfil/'+id)
+  //     .then(response => {
+  //         if(response.status === 200){
+  //             this.setState({ successMsg : "Excluído com sucesso" })
+
+  //             setTimeout(() => {
+  //                 this.getEventos();
+  //             }, 1500);
+  //         }
+  //     })
+  //     .catch(error => {
+  //         console.log(error);
+  //         this.setState({ erroMsg : "Falha ao excluir" })
+  //     })
+
+  // }
+  //#endregion
   render() {
     return (
       <main>
@@ -107,7 +202,7 @@ getCategorias = () => {
 
 
         <section class="product_recipes">
-          <h3>Cadastrar Produto</h3>
+          <h2>Cadastrar Produto</h2>
           <div class="card_profile">
             <div class="imagem_incluir">
               <p>Clique para<br />
@@ -148,7 +243,7 @@ getCategorias = () => {
             <table>
               <thead>
                 <th>
-                  <div>Imagem</div>
+                  {/* <div>Imagem</div> */}
                 </th>
                 <th>Nome do produto</th>
                 <th>Categoria</th>
@@ -157,6 +252,21 @@ getCategorias = () => {
                 <th class="void "></th>
               </thead>
               <tbody>
+                {
+                  this.state.listaOferta.map(
+                    function (o) {
+                      return (
+                        <tr key={o.oferta_id}>
+                          <td>{o.oferta_id}</td>
+                          <td>{o.produto.titulo}</td>
+                          <td>{o.produto.categoria.titulo}</td>
+                          <td>{o.preco}</td>
+                          <td>{o.peso}</td>
+                        </tr>
+                      )
+                    }.bind(this)
+                  )
+                }
                 <tr >
                   <td>
                     <div id="table_img"></div>
@@ -256,7 +366,7 @@ getCategorias = () => {
 
             </table>
           </div>
-          <h3>Cadastrar Receitas</h3>
+          <h2>Cadastrar Receitas</h2>
           <div class="card_profile">
             <div class="imagem_incluir">
               <p>Clique para<br />
@@ -309,6 +419,19 @@ getCategorias = () => {
                 <th class="void "></th>
               </thead>
               <tbody>
+                {/* {
+                  this.state.listaEventos.map(
+                    function (r) {
+                      return (
+                        <tr key={r.receita_id}>
+                          <td>{r.receita_id}</td>
+                          <td>{r.nome}</td>
+                          <td>{r.categoria_receita_id}</td>
+                        </tr>
+                      )
+                    }.bind(this)
+                  )
+                } */}
                 <tr>
                   <td>
                     <div id="table_img"></div>

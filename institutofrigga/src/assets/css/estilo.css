@@ -1249,7 +1249,7 @@ body {
   }
   
   .formulario_login label,
-  h3 {
+  h2 {
     text-align: center;
     margin: auto;
     font-family: var(--fonte1);
