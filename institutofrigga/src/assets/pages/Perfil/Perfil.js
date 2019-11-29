@@ -39,9 +39,6 @@ class Perfil extends Component {
         modal: false,
 
     }
-
-
-
 }
 
 toggle = () => {
@@ -54,7 +51,6 @@ componentDidMount(){
     this.getPerfil();
     this.getOferta();
 }
-
 
 //#region GETs
 getEventos = () =>{
