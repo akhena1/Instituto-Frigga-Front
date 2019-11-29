@@ -192,7 +192,7 @@ opacity: 0.6;
     margin-right: 240px;
 }
 .titulos h2{
-    margin-left: 57px;
+    margin-left: 90px;
     align-self: flex-end;
     font-size: 30px;
 
@@ -202,7 +202,7 @@ opacity: 0.6;
     font-size: 60px;
     color: white;
     line-height: 1.8;
-    margin-left: 40px;
+    margin-left: 20px;
     word-spacing: 10px;
     font-weight: bold;
     margin-bottom: 90px;
@@ -212,17 +212,17 @@ opacity: 0.6;
     font-size: 35px;
     color: #003D02;
     line-height: 1.8;
-    margin-left: 40px;
+    margin-left: 20px;
     word-spacing: 10px;
     font-weight: bold;
 }
 .banner a{
   font-family: var(--fonte2);
-    font-size: 45px;
+    font-size: 55px;
     line-height: 1.8;
     margin-left: 40px;
     word-spacing: 8px;
-    color: #363636;
+    color: white;
     text-decoration: none;
     align-self: center;
     margin-top: 100px;

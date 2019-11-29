@@ -66,7 +66,7 @@ class Home extends Component {
                         </a>
                     </div>
                     <div className="titulos">
-                        <h2>Receitas recentes</h2>
+                        <h2>Receitas</h2>
                         <h1>Produtos recentes</h1>
                     </div>
                     <div className="container">
@@ -94,7 +94,7 @@ class Home extends Component {
                                     function (o) {
                                         return (
                                             <div className="card-produto">
-                                                <img src={"http://localhost:5000/arquivos/" + o.imagemProduto} />
+                                                <img src={"http://localhost:5000/arquivos/" + o.imagemProduto}/>
                                                 <div className="nav-p">
                                                     <p>{o.produto.tipo}<br/>R${o.preco}</p>
                                                     <Link to="/Entrar">Encomendar</Link>
@@ -104,34 +104,7 @@ class Home extends Component {
                                     }
                                 )
                             }
-                            {/* <div className="card-produto">
-                                <img src={p1} alt="imagem de tomates" />
-                                <div className="nav-p">
-                                    <p>Tomates italianos<br /> R$ 12,49</p>
-                                    <a href="login.html">Encomendar</a>
-                                </div>
-                            </div>
-                            <div className="card-produto">
-                                <img src={p2} alt="imagem de beterrabas" />
-                                <div className="nav-p">
-                                    <p>Beterrabas<br /> R$ 9,99</p>
-                                    <a href="login.html">Encomendar</a>
-                                </div>
-                            </div>
-                            <div className="card-produto">
-                                <img src={p3} alt="imagem de um alface" />
-                                <div className="nav-p">
-                                    <p>Alface crespa<br /> R$ 3,99</p>
-                                    <a href="login.html">Encomendar</a>
-                                </div>
-                            </div>
-                            <div className="card-produto">
-                                <img src={p4} alt="imagem de cenouras" />
-                                <div className="nav-p">
-                                    <p>Cenouras<br /> R$ 11,19</p>
-                                    <a href="login.html">Encomendar</a>
-                                </div>
-                            </div> */}
+                           
 
                             <div className="btn-seemore"><Link to="produtos.html" className="btn-seemore">Ver mais..</Link></div>
                         </section>
