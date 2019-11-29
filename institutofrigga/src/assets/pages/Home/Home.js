@@ -8,82 +8,113 @@ import p1 from '../../img/tm.png';
 import p2 from '../../img/p2.png';
 import p3 from '../../img/p3.png';
 import p4 from '../../img/p4.png';
+import api from '../../services/api';
+import { Link } from 'react-router-dom';
+
 
 class Home extends Component {
+
+    constructor() {
+        super()
+        this.state = {
+            listaReceita: [],
+            listaOferta: [],
+
+        }
+    }
+    getReceita = () => {
+        api.get('/receita')
+            .then(response => {
+                if (response.status === 200) {
+                    this.setState({ listaReceita: response.data })
+                }
+                console.log(response);
+            })
+
+    }
+    getOferta = () => {
+        api.get('/oferta')
+            .then(response => {
+                if (response.status === 200) {
+                    this.setState({ listaOferta: response.data })
+                }
+                console.log(response)
+            })
+    }
+
+    componentDidMount() {
+        this.getReceita();
+        this.getOferta();
+    }
+
     render() {
         return (
-            <body>
-                <Header/>
+            <div>
+                <Header />
                 <main>
-                
+
                     <div className="banner">
                         <p className="bannerTitle">
                             Precisa de uma renda extra?
-            </p>
+                        </p>
                         <p className="banner-txt">Que tal começar a vender marmitas<br />
                             feitas com produtos orgânicos? Você<br />
                             ganha uma grana extra e ainda coopera <br />
                             para um   mundo   mais   sustentável!</p>
                         <a href="about.html">
                             Saiba mais!
-            </a>
+                        </a>
                     </div>
                     <div className="titulos">
-                        <h2>Receitas recentes</h2>
+                        <h2>Receitas</h2>
                         <h1>Produtos recentes</h1>
                     </div>
                     <div className="container">
                         <section className="receitas">
-                            <a href="#" className="card-receita">
-                                <img src={r1} alt="Imagem de um prato de comida" />
-                                <p className="position">Salada de Legumes<br /> Gourmet
-                    </p>
-                            </a>
-                            <a href="#" className="card-receita">
-                                <img src={r2} alt="Imagem de um prato de salada" />
-                                <p className="position">Refogado de frango<br /> com cenoura</p>
-                            </a>
-                            <a href="#" className="card-receita">
-                                <img src={r3} alt="Prato de comida" />
-                                <p className="position">Salada de repolho<br /> com beterraba e abobora</p>
-                            </a>
-                            <div className="btn-seemore"><a href="receitas.html"> Ver mais</a></div>
+                            {
+                                this.state.listaReceita.map(
+                                    function (r) {
+                                        return (
+                                            <Link to={'/receita'} key={r.receitaId} className="card-receita">
+                                                <img src={"http://localhost:5000/arquivos/" + r.imagemReceita} />
+                                                <p className="position">{r.nome}</p>
+                                            </Link>
+                                        )
+                                    }
+                                )
+                            }
+                            <div className="btn-seemore"><Link to="/receita">Ver mais</Link></div>
                         </section>
+
+
                         <section className="container-produtos">
-                            <div className="card-produto">
-                                <img src={p1} alt="imagem de tomates" />
-                                <div className="nav-p">
-                                    <p>Tomates italianos<br /> R$ 12,49</p>
-                                    <a href="login.html">Encomendar</a>
-                                </div>
-                            </div>
-                            <div className="card-produto">
-                                <img src={p2} alt="imagem de beterrabas" />
-                                <div className="nav-p">
-                                    <p>Beterrabas<br /> R$ 9,99</p>
-                                    <a href="login.html">Encomendar</a>
-                                </div>
-                            </div>
-                            <div className="card-produto">
-                                <img src={p3} alt="imagem de um alface" />
-                                <div className="nav-p">
-                                    <p>Alface crespa<br /> R$ 3,99</p>
-                                    <a href="login.html">Encomendar</a>
-                                </div>
-                            </div>
-                            <div className="card-produto">
-                                <img src={p4} alt="imagem de cenouras" />
-                                <div className="nav-p">
-                                    <p>Cenouras<br /> R$ 11,19</p>
-                                    <a href="login.html">Encomendar</a>
-                                </div>
-                            </div>
-                            <div className="btn-seemore"><a href="produtos.html" className="btn-seemore">Ver mais..</a></div>
+
+                            {
+                                this.state.listaOferta.map(
+                                    function (o) {
+                                        return (
+                                            <div className="card-produto">
+                                                <img src={"http://localhost:5000/arquivos/" + o.imagemProduto}/>
+                                                <div className="nav-p">
+                                                    <p>{o.produto.tipo}<br/>R${o.preco}</p>
+                                                    <Link to="/Entrar">Encomendar</Link>
+                                                </div>
+                                            </div>
+                                        );
+                                    }
+                                )
+                            }
+                           
+
+                            <div className="btn-seemore"><Link to="produtos.html" className="btn-seemore">Ver mais..</Link></div>
                         </section>
+
+
+
                     </div>
                 </main>
-                <Footer/>
-            </body>
+                <Footer />
+            </div>
         );
     }
 }

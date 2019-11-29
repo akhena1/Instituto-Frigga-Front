@@ -9,12 +9,13 @@ import VerReceita from './assets/pages/VerReceita/VerReceita';
 import Perfil from './assets/pages/Perfil/Perfil';
 import Entrar from './assets/pages/Entrar/Entrar';
 import About from './assets/pages/About/About';
-import NotFound from '../src/assets/pages/NotFound/NotFound';
-import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
+import NotFound from '../src/assets/pages/NotFound/NotFound'
+// Redirect
+import {Route, HashRouter as Router, Switch, } from 'react-router-dom';
 import './assets/css/estilo.css';
 import { usuarioAutenticado, parseJwt } from '../src/assets/services/auth';
 
-const PermissaoAdmin = ({ component : Component }) => (
+/* const PermissaoAdmin = ({ component : Component }) => (
     <Route 
         render={props =>
             usuarioAutenticado() && parseJwt().Role === "Administrador" ? (
@@ -48,7 +49,7 @@ const PermissaoCliente = ({ component : Component }) => (
             )
         }
     />
-)
+) */
 const Rotas = (
     <Router>
         <div>
