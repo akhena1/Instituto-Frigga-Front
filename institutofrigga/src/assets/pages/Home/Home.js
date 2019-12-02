@@ -32,13 +32,25 @@ class Home extends Component {
             })
 
     }
-    
-
-    componentDidMount() {
-        this.getReceita()
+    getOferta = () => {
+        api.get('/oferta')
+            .then(response => {
+                if (response.status === 200) {
+                    this.setState({ listaOferta: response.data })
+                }
+                console.log(response)
+            })
     }
 
+    componentDidMount() {
+        this.getReceita();
+        this.getOferta();
+    }
+
+
     render() {
+        let contOferta = 0;
+        let contReceita = 0;
         return (
             <div>
                 <Header />
@@ -57,7 +69,7 @@ class Home extends Component {
                         </a>
                     </div>
                     <div className="titulos">
-                        <h2>Receitas recentes</h2>
+                        <h2>Receitas</h2>
                         <h1>Produtos recentes</h1>
                     </div>
                     <div className="container">
@@ -65,12 +77,15 @@ class Home extends Component {
                             {
                                 this.state.listaReceita.map(
                                     function (r) {
-                                        return (
-                                            <Link to={'/receita'} key={r.receitaId} className="card-receita">
-                                                <img src={"http://localhost:5000/arquivos/" + r.imagemReceita} />
-                                                <p className="position">{r.nome}</p>
-                                            </Link>
-                                        )
+                                        if (contReceita < 4) {
+                                            contReceita++
+                                            return (
+                                                <Link to={'/receita'} key={r.receitaId} className="card-receita">
+                                                    <img src={"http://localhost:5000/arquivos/" + r.imagemReceita} />
+                                                    <p className="position">{r.nome}</p>
+                                                </Link>
+                                            );
+                                        }
                                     }
                                 )
                             }
@@ -83,46 +98,26 @@ class Home extends Component {
                             {
                                 this.state.listaOferta.map(
                                     function (o) {
-                                        return (
-                                            <div className="card-produto">
-                                                <img src={"http://localhost:5000/arquivos/" + o.imagemOferta} />
-                                                <div className="nav-p">
-                                                    <p>Nome do Produto<br />{o.preco}</p>
-                                                    <Link to="/Entrar">Encomendar</Link>
+                                        if (contOferta < 4) {
+                                            contOferta++
+                                            return (
+
+                                                <div className="card-produto">
+                                                    <img src={"http://localhost:5000/arquivos/" + o.imagemProduto} />
+                                                    <div className="nav-p">
+                                                        <p>{o.produto.tipo}<br />R${o.preco}</p>
+                                                        <Link to="/Entrar">Encomendar</Link>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        );
+                                            );
+
+                                        } else {
+                                            return (<></>)
+                                        }
                                     }
                                 )
                             }
-                            {/* <div className="card-produto">
-                                <img src={p1} alt="imagem de tomates" />
-                                <div className="nav-p">
-                                    <p>Tomates italianos<br /> R$ 12,49</p>
-                                    <a href="login.html">Encomendar</a>
-                                </div>
-                            </div>
-                            <div className="card-produto">
-                                <img src={p2} alt="imagem de beterrabas" />
-                                <div className="nav-p">
-                                    <p>Beterrabas<br /> R$ 9,99</p>
-                                    <a href="login.html">Encomendar</a>
-                                </div>
-                            </div>
-                            <div className="card-produto">
-                                <img src={p3} alt="imagem de um alface" />
-                                <div className="nav-p">
-                                    <p>Alface crespa<br /> R$ 3,99</p>
-                                    <a href="login.html">Encomendar</a>
-                                </div>
-                            </div>
-                            <div className="card-produto">
-                                <img src={p4} alt="imagem de cenouras" />
-                                <div className="nav-p">
-                                    <p>Cenouras<br /> R$ 11,19</p>
-                                    <a href="login.html">Encomendar</a>
-                                </div>
-                            </div> */}
+
 
                             <div className="btn-seemore"><Link to="produtos.html" className="btn-seemore">Ver mais..</Link></div>
                         </section>
