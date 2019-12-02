@@ -65,7 +65,7 @@ class Perfil extends Component {
 
   //#region GETs
   getPerfil = () => {
-    api.get('/endereco')
+    api.get('/usuario')
       .then(response => {
         if (response.status === 200) {
           this.setState({ listaPerfil: response.data })
@@ -74,7 +74,7 @@ class Perfil extends Component {
   }
 
   getReceita = () => {
-    api.get('/receitas')
+    api.get('/receita')
       .then(response => {
         if (response.status === 200) {
           this.setState({ listaReceita: response.data })
@@ -86,7 +86,7 @@ class Perfil extends Component {
     api.get('/oferta')
       .then(response => {
         if (response.status === 200) {
-          this.setState({ listaOFerta: response.data })
+          this.setState({ listaOferta: response.data })
         }
       })
   }
@@ -174,12 +174,12 @@ class Perfil extends Component {
     return (
       <main>
         <Header />
-        <section class="profile">
-          <div class="profile_icone">
+        <section className="profile">
+          <div className="profile_icone">
             <h1>Perfil</h1>
             <img src={iconPerfil} alt="icone usuario" />
           </div>
-          <div class="profile_dados">
+          <div className="profile_dados">
             <form method="POST" id="form_dados">
               <label>Nome
                         <input type="text" placeholder="Digite seu nome..." name="nome" aria-label="digitar nome"
@@ -194,27 +194,27 @@ class Perfil extends Component {
                   required />
               </label><br />
               <div>
-                <button type="submit" class="btn_editar_perfil" alt="botao editar perfil">Editar Perfil</button>
+                <button type="submit" className="btn_editar_perfil" alt="botao editar perfil">Editar Perfil</button>
               </div>
             </form>
           </div>
         </section>
 
 
-        <section class="product_recipes">
+        <section className="product_recipes">
           <h2>Cadastrar Produto</h2>
-          <div class="card_profile">
-            <div class="imagem_incluir">
+          <div className="card_profile">
+            <div className="imagem_incluir">
               <p>Clique para<br />
                 incluir Imagem</p>
-              <button type="submit" alt="botao incluir imagem" class="btn_incluir_imagem">+</button>
+              <button type="submit" alt="botao incluir imagem" className="btn_incluir_imagem">+</button>
             </div>
             <form method="POST" id="form_product">
               <label>
                 <input type="text" placeholder="Nome do produto..." name="produto"
                   aria-label="digite nome produto ou selecione" required />
               </label>
-              <label for="categoriaproduto"></label>
+              <label ></label>
               <select name="categoriaproduto" id="categoria_produto">
                 <option value="1">Categoria</option>
                 <option value="2">Farinhas, Cereais e Complementos</option>
@@ -223,7 +223,7 @@ class Perfil extends Component {
                 <option value="5">Grãos</option>
                 <option value="6">Adicionar Categoria</option>
               </select>
-              <label for="peso"></label>
+              <label ></label>
               <select name="peso" id="peso">
                 <option value="1">1 Kg</option>
                 <option value="2">2 kg</option>
@@ -235,40 +235,40 @@ class Perfil extends Component {
                 <input type="text" name="preco" aria-label="incluir preço por quilo"
                   placeholder="Preço por Kg..." required />
               </label>
-              <button type="submit" alt="botao cadastrar produtos" class="btn_cadastrar_produto">Cadastrar</button>
+              <button type="submit" alt="botao cadastrar produtos" className="btn_cadastrar_produto">Cadastrar</button>
             </form>
           </div>
 
-          <div class="tabela_produtos">
+          <div className="tabela_produtos">
             <table>
               <thead>
-                <th>
-                  {/* <div>Imagem</div> */}
-                </th>
-                <th>Nome do produto</th>
-                <th>Categoria</th>
-                <th>Peso</th>
-                <th>Preço/kg</th>
-                <th> Qtd Estoque</th>
-                <th class="void "></th>
+                <tr>
+                  <th>Nome do produto</th>
+                  <th>Categoria</th>
+                  <th>Peso</th>
+                  <th>Preço/kg</th>
+                  <th> Qtd Estoque</th>
+                  <th className="void "></th>
+                </tr>
               </thead>
               <tbody>
-                {
-                  this.state.listaOferta.map(
-                    function (o) {
-                      return (
-                        <tr key={o.oferta_id}>
-                          <td>{o.oferta_id}</td>
-                          <td>{o.produto.titulo}</td>
-                          <td>{o.produto.categoria.titulo}</td>
-                          <td>{o.preco}</td>
+              {
+                this.state.listaOferta.map(
+                  function (o) {
+                    return (
+                        <tr key={o.ofertaId}>
+                          <td>{o.produto.tipo}</td>
+                          <td>{o.produto.categoriaProdutoId}</td>
                           <td>{o.peso}</td>
+                          <td>{o.preco}</td>
+                          <td>{o.quantidade}</td>
+                          <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                         </tr>
-                      )
-                    }.bind(this)
-                  )
-                }
-                <tr >
+                    )
+                  }.bind(this)
+                )
+              }
+               {/* <tr>
                   <td>
                     <div id="table_img"></div>
                   </td>
@@ -277,7 +277,7 @@ class Perfil extends Component {
                   <td>1KG</td>
                   <td>R$8,90</td>
                   <td>10</td>
-                  <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
+                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
                   <td>
@@ -288,7 +288,7 @@ class Perfil extends Component {
                   <td>1KG</td>
                   <td>R$8,90</td>
                   <td>10</td>
-                  <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
+                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
                   <td>
@@ -299,7 +299,7 @@ class Perfil extends Component {
                   <td>1KG</td>
                   <td>R$8,90</td>
                   <td>10</td>
-                  <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
+                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
                   <td>
@@ -310,7 +310,7 @@ class Perfil extends Component {
                   <td>1KG</td>
                   <td>R$8,90</td>
                   <td>10</td>
-                  <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
+                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
                   <td>
@@ -321,7 +321,7 @@ class Perfil extends Component {
                   <td>1KG</td>
                   <td>R$8,90</td>
                   <td>10</td>
-                  <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
+                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
                   <td>
@@ -332,7 +332,7 @@ class Perfil extends Component {
                   <td>1KG</td>
                   <td>R$8,90</td>
                   <td>10</td>
-                  <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
+                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
                   <td>
@@ -343,7 +343,7 @@ class Perfil extends Component {
                   <td>1KG</td>
                   <td>R$8,90</td>
                   <td>10</td>
-                  <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
+                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
                   <td>
@@ -354,15 +354,15 @@ class Perfil extends Component {
                   <td>1KG</td>
                   <td>R$8,90</td>
                   <td>10</td>
-                  <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
-                </tr>
-              </tbody>
+                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
+              </tr> */}
+                </tbody>
               <tfoot>
                 <tr>
-                  <td class="bg-pager" colSpan="7">
-                    <div class="tablepager">
+                  <td className="bg-pager" colSpan="7">
+                    <div className="tablepager">
                       <a href="#">Anterior</a>
-                      <div class="numtablepager">
+                      <div className="numtablepager">
                         <a href="#">1</a>
                         <a href="#">2</a>
                         <a href="#">3</a></div>
@@ -376,18 +376,18 @@ class Perfil extends Component {
             </table>
           </div>
           <h2>Cadastrar Receitas</h2>
-          <div class="card_profile">
-            <div class="imagem_incluir">
+          <div className="card_profile">
+            <div className="imagem_incluir">
               <p>Clique para<br />
                 incluir Imagem</p>
-              <button type="submit" alt="botao incluir imagem" class="btn_incluir_imagem">+</button>
+              <button type="submit" alt="botao incluir imagem" className="btn_incluir_imagem">+</button>
             </div>
             <form method="POST" id="form_recipes">
               <label>
                 <input type="text" placeholder="Nome receita..." name="usuario"
                   aria-label="Digitar nome da receita" required />
               </label>
-              <label for="categoriareceita"></label>
+              <label></label>
               <select name="categoriareceita" id="categoria_receita">
                 <option value="1">Categoria</option>
                 <option value="2">Farinhas, Cereais e Complementos</option>
@@ -396,7 +396,7 @@ class Perfil extends Component {
                 <option value="5">Grãos</option>
                 <option value="6">Adicionar Categoria</option>
               </select>
-              <div class="box">
+              <div className="box">
                 <label>
                   <textarea name="ingredientes" placeholder="Ingredientes..."
                     aria-label="incluir ingredientes"></textarea>
@@ -408,7 +408,7 @@ class Perfil extends Component {
               </div>
 
             </form>
-            <button type="submit" alt="botao cadastrar receitas" class="btn_cadastrar_receita">Inserir receita
+            <button type="submit" alt="botao cadastrar receitas" className="btn_cadastrar_receita">Inserir receita
                         <div id="bg"></div>
             </button>
 
@@ -416,39 +416,42 @@ class Perfil extends Component {
 
 
 
-          <div class="tabela_receitas">
+          <div className="tabela_receitas">
             <table>
               <thead>
-                <th>
+                <tr>
+                {/* <th>
                   <div>Imagem</div>
-                </th>
+                </th> */}
                 <th>Nome da receita</th>
                 <th>Categoria</th>
-                <th class="void"></th>
-                <th class="void "></th>
+                <th className="void"></th>
+                <th className="void "></th>
+                </tr>
               </thead>
               <tbody>
-                {/* {
-                  this.state.listaEventos.map(
+                 {
+                  this.state.listaReceita.map(
                     function (r) {
                       return (
-                        <tr key={r.receita_id}>
-                          <td>{r.receita_id}</td>
+                        <tr key={r.receitaId}>
                           <td>{r.nome}</td>
-                          <td>{r.categoria_receita_id}</td>
+                          <td>{r.categoriaReceita.tipoReceita}</td>
+                          <td><a className="verreceitas" href="#">Ver receita</a></td>
+                          <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                         </tr>
                       )
                     }.bind(this)
                   )
-                } */}
-                <tr>
+                }
+                {/* <tr>
                   <td>
                     <div id="table_img"></div>
                   </td>
                   <td>Salada de legumes Gourmet</td>
                   <td>Saladas</td>
-                  <td><a class="verreceitas" href="#">Ver receita</a></td>
-                  <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
+                  <td><a className="verreceitas" href="#">Ver receita</a></td>
+                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
                   <td>
@@ -456,8 +459,8 @@ class Perfil extends Component {
                   </td>
                   <td>Salada de legumes Gourmet</td>
                   <td>Saladas</td>
-                  <td><a class="verreceitas" href="#">Ver receita</a></td>
-                  <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
+                  <td><a className="verreceitas" href="#">Ver receita</a></td>
+                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
                   <td>
@@ -465,8 +468,8 @@ class Perfil extends Component {
                   </td>
                   <td>Salada de legumes Gourmet</td>
                   <td>Saladas</td>
-                  <td><a class="verreceitas" href="#">Ver receita</a></td>
-                  <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
+                  <td><a className="verreceitas" href="#">Ver receita</a></td>
+                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
                   <td>
@@ -474,8 +477,8 @@ class Perfil extends Component {
                   </td>
                   <td>Salada de legumes Gourmet</td>
                   <td>Saladas</td>
-                  <td><a class="verreceitas" href="#">Ver receita</a></td>
-                  <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
+                  <td><a className="verreceitas" href="#">Ver receita</a></td>
+                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
                   <td>
@@ -483,8 +486,8 @@ class Perfil extends Component {
                   </td>
                   <td>Salada de legumes Gourmet</td>
                   <td>Saladas</td>
-                  <td><a class="verreceitas" href="#">Ver receita</a></td>
-                  <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
+                  <td><a className="verreceitas" href="#">Ver receita</a></td>
+                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
                   <td>
@@ -492,8 +495,8 @@ class Perfil extends Component {
                   </td>
                   <td>Salada de legumes Gourmet</td>
                   <td>Saladas</td>
-                  <td><a class="verreceitas" href="#">Ver receita</a></td>
-                  <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
+                  <td><a className="verreceitas" href="#">Ver receita</a></td>
+                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
                   <td>
@@ -501,8 +504,8 @@ class Perfil extends Component {
                   </td>
                   <td>Salada de legumes Gourmet</td>
                   <td>Saladas</td>
-                  <td><a class="verreceitas" href="#">Ver receita</a></td>
-                  <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
+                  <td><a className="verreceitas" href="#">Ver receita</a></td>
+                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                 </tr>
                 <tr>
                   <td>
@@ -510,16 +513,16 @@ class Perfil extends Component {
                   </td>
                   <td>Salada de legumes Gourmet</td>
                   <td>Saladas</td>
-                  <td><a class="verreceitas" href="#">Ver receita</a></td>
-                  <td class="delete"><button type="reset"><i class="fas fa-trash"></i></button>Excluir</td>
-                </tr>
+                  <td><a className="verreceitas" href="#">Ver receita</a></td>
+                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
+                </tr> */}
               </tbody>
               <tfoot>
                 <tr>
-                  <td class="bg-pager" colSpan="5">
-                    <div class="tablepager">
+                  <td className="bg-pager" colSpan="5">
+                    <div className="tablepager">
                       <a href="#">Anterior</a>
-                      <div class="numtablepager">
+                      <div className="numtablepager">
                         <a href="#">1</a>
                         <a href="#">2</a>
                         <a href="#">3</a></div>
