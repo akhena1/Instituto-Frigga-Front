@@ -9,7 +9,8 @@ import VerReceita from '../src/pages/VerReceita/VerReceita';
 import Perfil from '../src/pages/Perfil/Perfil';
 import Entrar from '../src/pages/Entrar/Entrar';
 import About from '../src/pages/About/About';
-import NotFound from '../src/pages/NotFound/NotFound'
+import NotFound from '../src/pages/NotFound/NotFound';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 // Redirect
 import {Route, HashRouter as Router, Switch, } from 'react-router-dom';
 import './assets/css/estilo.css';
@@ -62,8 +63,8 @@ const Rotas = (
                 <Route path = "/receitas" component={Receita}/>
                 <Route path = "/receita" component={Receita}/>
                 
-               {/*  <Route path = "/receita/" component={VerReceita}/>
-                <Route path = "/receitas/" component={VerReceita}/> */}
+                <Route path = "/receita/" component={VerReceita}/>
+                <Route path = "/receitas/" component={VerReceita}/>
 
                 <Route path = "/perfil" component={Perfil}/>
 

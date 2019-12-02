@@ -4,6 +4,8 @@ import Footer from '../../Components/Footer/Footer';
 import iconPerfil from '../../assets/img/iconperfil.svg';
 import api from '../../services/api';
 
+
+
 class Perfil extends Component {
   constructor() {
     super()
@@ -90,7 +92,6 @@ class Perfil extends Component {
         }
       })
   }
-  //#endregion
 
   //#region POSTs
   //    postSetState = (input) =>{
@@ -262,7 +263,8 @@ class Perfil extends Component {
                           <td>{o.peso}</td>
                           <td>{o.preco}</td>
                           <td>{o.quantidade}</td>
-                          <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
+                          <td className="delete"><button>
+                           <i color="primary" size="sm" className="fas fa-trash "></i> </button>Excluir</td>
                         </tr>
                     )
                   }.bind(this)
