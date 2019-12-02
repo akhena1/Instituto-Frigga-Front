@@ -259,12 +259,12 @@ class Perfil extends Component {
                     return (
                         <tr key={o.ofertaId}>
                           <td>{o.produto.tipo}</td>
-                          <td>{o.produto.categoriaProdutoId}</td>
+                          <td>{o.produto.categoriaProduto.tipoProduto}</td>
                           <td>{o.peso}</td>
                           <td>{o.preco}</td>
                           <td>{o.quantidade}</td>
                           <td className="delete"><button>
-                           <i color="primary" size="sm" className="fas fa-trash "></i> </button>Excluir</td>
+                           <i color="primary" size="sm" className="fas fa-trash size-sm"></i> </button>Excluir</td>
                         </tr>
                     )
                   }.bind(this)
