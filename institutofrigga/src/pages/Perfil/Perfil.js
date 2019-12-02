@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
-import iconPerfil from '../../img/iconperfil.svg';
+import iconPerfil from '../../assets/img/iconperfil.svg';
 import api from '../../services/api';
+
+
 
 class Perfil extends Component {
   constructor() {
@@ -90,7 +92,6 @@ class Perfil extends Component {
         }
       })
   }
-  //#endregion
 
   //#region POSTs
      atualizaEstado = (input) =>{
