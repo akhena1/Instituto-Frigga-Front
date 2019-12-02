@@ -1051,17 +1051,25 @@ body {
   color: white;
   background-color: var(--cinza);
   }
-  .editar button:hover {
-  color: red;
+  .editar button, .delete button {
+  background-color: white;
+  font-size: 17px;
+  border: none;
+  }
+
+td button i {
+  margin-right: 5px;
+}
+
+  .editar button:hover, .delete button:hover {
+    color: red;
   }
   .editar {
     background-color: white;
     color: black;
     height: 30px;
   }
-  .delete button:hover {
-  color: red;
-  }
+ 
   .delete {
   background-color: white;
   color: black;
