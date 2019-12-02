@@ -891,6 +891,11 @@ body {
   flex-direction: column;
   width: 1200px;
   }
+  .product_recipes h2{
+    margin-bottom: 20px;
+  }
+  
+
   .profile h1 {
   padding-bottom: 60px;
   font-family: var(--fonte1);

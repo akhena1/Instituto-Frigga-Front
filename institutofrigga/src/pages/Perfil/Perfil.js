@@ -204,17 +204,12 @@ class Perfil extends Component {
         <section className="product_recipes">
           <h2>Cadastrar Produto</h2>
           <div className="card_profile">
-            <div className="imagem_incluir">
-              <p>Clique para<br />
-                incluir Imagem</p>
-              <button type="submit" alt="botao incluir imagem" className="btn_incluir_imagem">+</button>
-            </div>
             <form method="POST" id="form_product">
               <label>
                 <input type="text" placeholder="Nome do produto..." name="produto"
                   aria-label="digite nome produto ou selecione" required />
               </label>
-              <label ></label>
+              <label >
               <select name="categoriaproduto" id="categoria_produto">
                 <option value="1">Categoria</option>
                 <option value="2">Farinhas, Cereais e Complementos</option>
@@ -223,17 +218,35 @@ class Perfil extends Component {
                 <option value="5">Grãos</option>
                 <option value="6">Adicionar Categoria</option>
               </select>
-              <label ></label>
-              <select name="peso" id="peso">
-                <option value="1">1 Kg</option>
-                <option value="2">2 kg</option>
-                <option value="3">3 kg</option>
-                <option value="4">5 kg</option>
-                <option value="4">10 kg</option>
-              </select>
+              </label>
+              <button type="submit" alt="botao cadastrar produtos" className="btn_cadastrar_produto">Cadastrar</button>
+            </form>
+          </div>
+
+
+          <div className="card_profile">
+            <div className="imagem_incluir">
+              <p>Clique para<br />
+                incluir Imagem</p>
+              <button type="submit" alt="botao incluir imagem" className="btn_incluir_imagem">+</button>
+            </div>
+            <form method="POST" id="form_product">
+              <label >
+                <select name="peso" id="peso">
+                  <option value="1">1 Kg</option>
+                  <option value="2">2 kg</option>
+                  <option value="3">3 kg</option>
+                  <option value="4">5 kg</option>
+                  <option value="4">10 kg</option>
+                </select>
+              </label>
               <label>
                 <input type="text" name="preco" aria-label="incluir preço por quilo"
                   placeholder="Preço por Kg..." required />
+              </label>
+              <label>
+                <input type="text" name="quantidade" aria-label="incluir quantidade"
+                  placeholder="Quantidade..." required />
               </label>
               <button type="submit" alt="botao cadastrar produtos" className="btn_cadastrar_produto">Cadastrar</button>
             </form>
