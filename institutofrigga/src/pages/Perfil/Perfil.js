@@ -293,13 +293,8 @@ class Perfil extends Component {
                           <td>{o.peso}</td>
                           <td>{o.preco}</td>
                           <td>{o.quantidade}</td>
-<<<<<<< HEAD
-                          <td className="delete"><button>
-                           <i color="primary" size="sm" className="fas fa-trash size-sm"></i> </button>Excluir</td>
-=======
                           <td className="editar"><button type="submit"><i className="fas fa-edit"></i>Editar</button></td> 
                           <td className="delete"><button type="reset"><i className="fas fa-trash"></i>Excluir</button></td>
->>>>>>> e0f83e3058476de7d94d1f74a09bd7fd91ce1d23
                         </tr>
                     )
                   }.bind(this)
