@@ -940,10 +940,11 @@ body {
   padding: 30px;
   text-transform: uppercase;
   }
-  .card_profile p {
+  .card_profile p, .card_profile_1 p{
   margin-right: 10px;
   }
-  .card_profile {
+
+  .card_profile, .card_profile_1 {
   width: 1200px;
   display: flex;
   justify-content: center;
@@ -954,14 +955,23 @@ body {
   -webkit-box-shadow: 5px 5px 30px -15px rgba(204, 204, 204, 204.75);
   -moz-box-shadow: 5px 5px 30px -15px rgba(204, 204, 204, 204.75);
   box-shadow: 5px 5px 30px -15px rgba(204, 204, 204, 204.75);
-  }
+  }  
 
   .card_profile input,
+  select,
+  .card_profile_1 input,
   select {
   padding: 7px;
   margin: 10px;
   border: #3dca41 solid 1px;
   border-radius: 4px;
+  }
+  .card_profile_1 input,
+  select{
+  width: 100px;
+  }
+  .card_profile_1 select{
+    width: 140px;;
   }
   .imagem_incluir {
   display: flex;

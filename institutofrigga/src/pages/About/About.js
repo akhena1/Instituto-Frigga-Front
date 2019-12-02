@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
-import aimg from '../../img/q.jpg';
-import aimg1 from '../../img/9.jpg';
-import aimg2 from '../../img/negocio.jpg';
-import aimg3 from '../../img/4.jpg';
-import aimg4 from '../../img/66.jpg';
-import aimg5 from '../../img/marmita.jpg';
+import aimg from '../../assets/img/q.jpg';
+import aimg1 from '../../assets/img/9.jpg';
+import aimg2 from '../../assets/img/negocio.jpg';
+import aimg3 from '../../assets/img/4.jpg';
+import aimg4 from '../../assets/img/66.jpg';
+import aimg5 from '../../assets/img/marmita.jpg';
 import {Link} from 'react-router-dom'
 
 

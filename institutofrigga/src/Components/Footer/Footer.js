@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import LogoRodapeMobile from '../../img/LOGO-SEM-FONTE.png'
-import LogoRodapeWeb from '../../img/definitivo-fundo-preto.png'
-import IconFacebook from '../../img/facebook.svg'
-import IconInstagram from '../../img/instagram.svg'
-import IconTwitter from '../../img/twitter.svg'
+import LogoRodapeMobile from '../../assets/img/LOGO-SEM-FONTE.png'
+import LogoRodapeWeb from '../../assets/img/definitivo-fundo-preto.png'
+import IconFacebook from '../../assets/img/facebook.svg'
+import IconInstagram from '../../assets/img/instagram.svg'
+import IconTwitter from '../../assets/img/twitter.svg'
 
 class Footer extends Component {
     render() {

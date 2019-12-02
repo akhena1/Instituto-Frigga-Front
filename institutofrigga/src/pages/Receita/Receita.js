@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
-import rimg from '../../img/receita2.jpg'
-import rimg1 from '../../img/receita4.jpg'
-import rimg2 from '../../img/receita5.jpg'
-import rimg3 from '../../img/receita7.jpg'
-import rimg4 from '../../img/receita2.jpg'
-import rimg5 from '../../img/receita4.jpg'
+import rimg from '../../assets/img/receita2.jpg'
+import rimg1 from '../../assets/img/receita4.jpg'
+import rimg2 from '../../assets/img/receita5.jpg'
+import rimg3 from '../../assets/img/receita7.jpg'
+import rimg4 from '../../assets/img/receita2.jpg'
+import rimg5 from '../../assets/img/receita4.jpg'
 
 
 class Receita extends Component {
