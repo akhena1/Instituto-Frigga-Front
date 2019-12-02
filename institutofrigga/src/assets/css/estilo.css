@@ -1423,6 +1423,13 @@ width: 600px;
 text-align: center;
 font-family: var(--fonte2);
 }
+.aboutTitle{
+  margin-bottom: 90px; 
+  font-size: 35px;
+}
+.divAboutTitle{
+  margin-bottom: 100px;
+}
 .depoimento {
 display: flex;
 flex-direction: column;
