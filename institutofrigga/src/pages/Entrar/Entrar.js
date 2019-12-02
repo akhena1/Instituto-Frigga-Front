@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
-import IconLogin from '../../img/iconperfil.svg';
+import IconLogin from '../../assets/img/iconperfil.svg';
 import api from '../../services/api';
 import { parseJwt } from '../../services/auth';
 
