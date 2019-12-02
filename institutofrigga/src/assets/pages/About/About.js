@@ -7,84 +7,86 @@ import aimg2 from '../../img/negocio.jpg';
 import aimg3 from '../../img/4.jpg';
 import aimg4 from '../../img/66.jpg';
 import aimg5 from '../../img/marmita.jpg';
+import {Link} from 'react-router-dom'
 
 
 
 class About extends Component {
     render() {
         return (
-         
-                <div>
-                   <Header />
-                    <section class="container-assunto1">
-                        <div>
-                            <img src={aimg} alt="Mulher segurando morango" />
-                        </div>
-                        <div>
-                            <h1>Quem Somos</h1>
-                            <p>Fala sobre a instituição no geral</p>
-                        </div>
-                    </section>
 
-                    <section class="container-assunto1 container-assunto2">
-                        <div>
-                            <h2>Um pouco mais sobre o projeto social </h2>
-                            <p>Texto explicando sobre projeto social feito com a ONG e <br></br>a ligação com os produtores como
-                                parceiros diretos
-                    <br></br>Texto explicando sobre projeto social feito com a ONG e <br></br>a ligação com os produtores como
-                                                        parceiros diretos
-                    <br></br>Texto explicando sobre projeto social feito com a ONG e <br></br>a ligação com os produtores como
-                                                        parceiros diretos
-                    <br></br>Texto explicando sobre projeto social feito com a ONG e <br></br>a ligação com os produtores como
-                                                        parceiros diretos
-                </p>
-                        </div>
-                        <div>
-                            <img src={aimg1} alt="Laranjeira" />
-                        </div>
-                    </section>
+            <div>
+                <Header />
+                <section className="container-assunto1">
+                    <div>
+                        <img src={aimg} alt="Mulher segurando morango" />
+                    </div>
+                    <div className="divAboutTitle">
+                        <h1 className="aboutTitle">Quem Somos</h1>
+                        <p>
 
+                            O Instituto Frigga é uma iniciativa que nasceu
+                             de uma fusão<br/> de ONGS e Cooperativas , e tem como
+                            objetivo democratizar<br/> o acesso à produtos orgânicos
+                            e ajudar pessoas de baixa renda!
+                            </p>
+                    </div>
+                </section>
 
-                    <section class="container-assunto1">
-                        <div>
-                            <img src={aimg2} alt="homem segurando tablet" />
-                        </div>
-                        <div>
-                            <h2>Nosso diferencial</h2>
-                            <p>Texto explicando sobre projeto social feito com a ONG e <br></br>a ligação com os produtores como
-                                parceiros diretos
-                    <br></br>Texto explicando sobre projeto social feito com a ONG e <br></br>a ligação com os produtores como
-                                                        parceiros diretos
-                    <br></br>Texto explicando sobre projeto social feito com a ONG e <br></br>a ligação com os produtores como
-                                                        parceiros diretos
-                    <br></br>Texto explicando sobre projeto social feito com a ONG e <br></br>a ligação com os produtores como
-                                                        parceiros diretos
-                </p>
-                        </div>
-
-                    </section>
-
-                    <section class="container-depoimento">
-                        <div class="depoimento">
-                            <img src={aimg3} alt="Pessoas que participaram do projeto" />
-                            <h3>Depoimentos</h3>
-                        </div>
-                    </section>
+                <section className="container-assunto1 container-assunto2">
+                    <div className="divAboutTitle">
+                        <h2 className="aboutTitle">Um pouco mais sobre o projeto social </h2>
+                        <p>
+                        Nós sabemos como é dificil dar o primeiro passo,
+                        por isso pensamos<br/> em uma solução para você que
+                        desejar iniciar algo novo<br/> e precisa de um empurrãozinho!
+                        Nós lhe fornecemos um kit inicial<br/>para você começar suas vendas!
+                        <br/><br/><br/>Entre em contato conosco pelo email: institutofrigga@email.org.br
+                       </p>
+                    </div>
+                    <div>
+                        <img src={aimg1} alt="Laranjeira" />
+                    </div>
+                </section>
 
 
-                    <section class="container-galeria-texto">
-                        <h3>Galeria</h3>
-                        <div class="container-galeria">
-                            <div class="esquerda-galeria"></div>
+                <section className="container-assunto1">
+                    <div>
+                        <img src={aimg2} alt="homem segurando tablet" />
+                    </div>
+                    <div className="divAboutTitle">
+                        <h2 className="aboutTitle">Nosso diferencial</h2>
+                        <p>
+                        Aqui os pequenos produtores tem espaço! Todo nosso estoque<br/>
+                        é fornecido por pessoas que acreditam e contribuem
+                        para um<br/> mundo mais sustentável! Produtos de qualidade
+                        por um preço<br/> que cabe no seu bolso. <Link to="/entrar"> Faça parte disso!</Link>
+                       </p>
+                    </div>
 
-                            <div class="direita-galeria">
-                                <img src={aimg4} alt="Mulher" />
-                                <img src={aimg5} alt="Marmita" />
-                            </div>
+                </section>
+
+                <section className="container-depoimento">
+                    <div className="depoimento">
+                        <img src={aimg3} alt="Pessoas que participaram do projeto" />
+                        <h3>Depoimentos</h3>
+                    </div>
+                </section>
+
+
+                <section className="container-galeria-texto">
+                    <h3>Galeria</h3>
+                    <div className="container-galeria">
+                        <div className="esquerda-galeria"></div>
+
+                        <div className="direita-galeria">
+                            <img src={aimg4} alt="Mulher" />
+                            <img src={aimg5} alt="Marmita" />
                         </div>
-                    </section>
-                    <Footer />
-                </div>
+                    </div>
+                </section>
+                <Footer />
+            </div>
         );
     }
 }

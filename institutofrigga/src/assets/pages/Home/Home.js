@@ -47,7 +47,10 @@ class Home extends Component {
         this.getOferta();
     }
 
+
     render() {
+        let contOferta = 0;
+        let contReceita = 0;
         return (
             <div>
                 <Header />
@@ -74,12 +77,15 @@ class Home extends Component {
                             {
                                 this.state.listaReceita.map(
                                     function (r) {
-                                        return (
-                                            <Link to={'/receita'} key={r.receitaId} className="card-receita">
-                                                <img src={"http://localhost:5000/arquivos/" + r.imagemReceita} />
-                                                <p className="position">{r.nome}</p>
-                                            </Link>
-                                        )
+                                        if (contReceita < 4) {
+                                            contReceita++
+                                            return (
+                                                <Link to={'/receita'} key={r.receitaId} className="card-receita">
+                                                    <img src={"http://localhost:5000/arquivos/" + r.imagemReceita} />
+                                                    <p className="position">{r.nome}</p>
+                                                </Link>
+                                            );
+                                        }
                                     }
                                 )
                             }
@@ -92,19 +98,26 @@ class Home extends Component {
                             {
                                 this.state.listaOferta.map(
                                     function (o) {
-                                        return (
-                                            <div className="card-produto">
-                                                <img src={"http://localhost:5000/arquivos/" + o.imagemProduto}/>
-                                                <div className="nav-p">
-                                                    <p>{o.produto.tipo}<br/>R${o.preco}</p>
-                                                    <Link to="/Entrar">Encomendar</Link>
+                                        if (contOferta < 4) {
+                                            contOferta++
+                                            return (
+
+                                                <div className="card-produto">
+                                                    <img src={"http://localhost:5000/arquivos/" + o.imagemProduto} />
+                                                    <div className="nav-p">
+                                                        <p>{o.produto.tipo}<br />R${o.preco}</p>
+                                                        <Link to="/Entrar">Encomendar</Link>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        );
+                                            );
+
+                                        } else {
+                                            return (<></>)
+                                        }
                                     }
                                 )
                             }
-                           
+
 
                             <div className="btn-seemore"><Link to="produtos.html" className="btn-seemore">Ver mais..</Link></div>
                         </section>

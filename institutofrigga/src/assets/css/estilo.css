@@ -225,7 +225,7 @@ opacity: 0.6;
     color: white;
     text-decoration: none;
     align-self: center;
-    margin-top: 100px;
+    margin-top: 65px;
     margin-right: 350px;
 }
 .banner a:hover{
@@ -378,7 +378,7 @@ background-image: url(../img/banner2mob.jpg);
 background-size: contain;
 background-repeat: no-repeat;
 background-position: top;
-top: 0;
+top: 200;
 height: 500px;
 }
 .rodape-container {
@@ -1421,6 +1421,13 @@ width: 600px;
 .container-assunto1 p, .container-assunto2 p {
 text-align: center;
 font-family: var(--fonte2);
+}
+.aboutTitle{
+  margin-bottom: 90px; 
+  font-size: 35px;
+}
+.divAboutTitle{
+  margin-bottom: 100px;
 }
 .depoimento {
 display: flex;
