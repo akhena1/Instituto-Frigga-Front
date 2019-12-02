@@ -64,13 +64,13 @@ class Perfil extends Component {
     this.getReceita()
   }
 
-
   //#region GETs
   getPerfil = () => {
     api.get('/usuario')
       .then(response => {
         if (response.status === 200) {
           this.setState({ listaPerfil: response.data })
+
         }
       })
   }
@@ -94,48 +94,64 @@ class Perfil extends Component {
   }
 
   //#region POSTs
-  //    postSetState = (input) =>{
-  //     this.setState({
-  //         postEvento : {
-  //             ...this.state.postPerfil, ...this.state.postTabelaOFerta, [input.target.name] : input.target.value
-  //         }
-  //     })
-  // }
+     atualizaEstado = (input) =>{
+      this.setState({
+          postEvento : {
+              ...this.state.postPerfil, ...this.state.postTabelaOFerta, [input.target.name] : input.target.value
+          }
+      })
+  }
 
-  //     postPerfil = (p) => {
+      postPerfil = (p) => {
 
-  //       p.preventDefault();
-  //       api.post('/perfil', this.state.postEvento)
-  //         .then(response => {
-  //             console.log(response);
-  //         })
-  //         .catch(error => {
-  //             console.log(error);
-  //             this.setState({ erroMsg : "Não foi possível cadastrar evento" });
-  //         })
+        p.preventDefault();
+        api.post('/perfil', this.state.postPerfil)
+          .then(response => {
+              console.log(response);
+          })
+          .catch(error => {
+              console.log(error);
+              this.setState({ erroMsg : "Não foi possível cadastrar usuário" });
+          })
 
-  //         setTimeout(() => {
-  //             this.getEventos();
-  //         }, 1500);
+          setTimeout(() => {
+              this.getPerfil();
+          }, 1500);
 
 
-  //     }
+      }
 
-  //     postTabelaOFerta = (o) => {
-  //       o.preventDefault();
-  //       api.post('/evento', this.state.postEvento)
-  //         .then(response => {
-  //             console.log(response);
-  //         })
-  //         .catch(error => {
-  //             console.log(error);
-  //             this.setState({ erroMsg : "Não foi possível cadastrar evento" });
-  //         })
+      postTabelaOFerta = (o) => {
+        o.preventDefault();
+        api.post('/oferta', this.state.postTabelaOFerta)
+          .then(response => {
+              console.log(response);
+          })
+          .catch(error => {
+              console.log(error);
+              this.setState({ erroMsg : "Não foi possível cadastrar oferta" });
+          })
 
-  //         setTimeout(() => {
-  //             this.getEventos();
-  //         }, 1500);
-  //     }
+          setTimeout(() => {
+              this.getOferta();
+          }, 1500);
+      }
+
+      postTabelaReceita = (r) => {
+        r.preventDefault();
+        api.post('/ogrtys', this.state.postTabelaReceita)
+          .then(response => {
+              console.log(response);
+          })
+          .catch(error => {
+              console.log(error);
+              this.setState({ erroMsg : "Não foi possível cadastrar receita" });
+          })
+
+          setTimeout(() => {
+              this.getReceita();
+          }, 1500);
+      }
 
   //#endregion
 
@@ -205,17 +221,12 @@ class Perfil extends Component {
         <section className="product_recipes">
           <h2>Cadastrar Produto</h2>
           <div className="card_profile">
-            <div className="imagem_incluir">
-              <p>Clique para<br />
-                incluir Imagem</p>
-              <button type="submit" alt="botao incluir imagem" className="btn_incluir_imagem">+</button>
-            </div>
             <form method="POST" id="form_product">
               <label>
                 <input type="text" placeholder="Nome do produto..." name="produto"
                   aria-label="digite nome produto ou selecione" required />
               </label>
-              <label ></label>
+              <label >
               <select name="categoriaproduto" id="categoria_produto">
                 <option value="1">Categoria</option>
                 <option value="2">Farinhas, Cereais e Complementos</option>
@@ -224,17 +235,35 @@ class Perfil extends Component {
                 <option value="5">Grãos</option>
                 <option value="6">Adicionar Categoria</option>
               </select>
-              <label ></label>
-              <select name="peso" id="peso">
-                <option value="1">1 Kg</option>
-                <option value="2">2 kg</option>
-                <option value="3">3 kg</option>
-                <option value="4">5 kg</option>
-                <option value="4">10 kg</option>
-              </select>
+              </label>
+              <button type="submit" alt="botao cadastrar produtos" className="btn_cadastrar_produto">Cadastrar</button>
+            </form>
+          </div>
+
+
+          <div className="card_profile">
+            <div className="imagem_incluir">
+              <p>Clique para<br />
+                incluir Imagem</p>
+              <button type="submit" alt="botao incluir imagem" className="btn_incluir_imagem">+</button>
+            </div>
+            <form method="POST" id="form_product">
+              <label >
+                <select name="peso" id="peso">
+                  <option value="1">1 Kg</option>
+                  <option value="2">2 kg</option>
+                  <option value="3">3 kg</option>
+                  <option value="4">5 kg</option>
+                  <option value="4">10 kg</option>
+                </select>
+              </label>
               <label>
                 <input type="text" name="preco" aria-label="incluir preço por quilo"
                   placeholder="Preço por Kg..." required />
+              </label>
+              <label>
+                <input type="text" name="quantidade" aria-label="incluir quantidade"
+                  placeholder="Quantidade..." required />
               </label>
               <button type="submit" alt="botao cadastrar produtos" className="btn_cadastrar_produto">Cadastrar</button>
             </form>
@@ -250,6 +279,7 @@ class Perfil extends Component {
                   <th>Preço/kg</th>
                   <th> Qtd Estoque</th>
                   <th className="void "></th>
+                  <th className="void "></th>
                 </tr>
               </thead>
               <tbody>
@@ -263,8 +293,13 @@ class Perfil extends Component {
                           <td>{o.peso}</td>
                           <td>{o.preco}</td>
                           <td>{o.quantidade}</td>
+<<<<<<< HEAD
                           <td className="delete"><button>
                            <i color="primary" size="sm" className="fas fa-trash size-sm"></i> </button>Excluir</td>
+=======
+                          <td className="editar"><button type="submit"><i className="fas fa-edit"></i>Editar</button></td> 
+                          <td className="delete"><button type="reset"><i className="fas fa-trash"></i>Excluir</button></td>
+>>>>>>> e0f83e3058476de7d94d1f74a09bd7fd91ce1d23
                         </tr>
                     )
                   }.bind(this)

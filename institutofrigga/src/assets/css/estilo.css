@@ -344,7 +344,6 @@ font-family: arial;
 }
 /* Fim do main by Gus */
 
-
 /* Media Queries - HOME */
 @media(max-width:1169px) {
 /*  START Header responsivo para Tablet */
@@ -892,6 +891,11 @@ body {
   flex-direction: column;
   width: 1200px;
   }
+  .product_recipes h2{
+    margin-bottom: 20px;
+  }
+  
+
   .profile h1 {
   padding-bottom: 60px;
   font-family: var(--fonte1);
@@ -1051,9 +1055,25 @@ body {
   color: white;
   background-color: var(--cinza);
   }
-  .delete button:hover {
-  color: red;
+  .editar button, .delete button {
+  background-color: white;
+  font-size: 17px;
+  border: none;
   }
+
+td button i {
+  margin-right: 5px;
+}
+
+  .editar button:hover, .delete button:hover {
+    color: red;
+  }
+  .editar {
+    background-color: white;
+    color: black;
+    height: 30px;
+  }
+ 
   .delete {
   background-color: white;
   color: black;
@@ -1069,12 +1089,12 @@ body {
   td a:hover {
   color: var(--cinza);
   }
-  .delete button {
+  /* .delete button {
   background: none;
   border: none;
   color: var(--cinza);
   margin-right: 10px;
-  }
+  } */
   
   .tablepager {
   display: flex;
@@ -1315,95 +1335,6 @@ body {
   @media screen and (max-width: 768px) {
   }
 /* END NAKKAT */
-
-/* Gus Table */
-table,
-td,
-th {
-border: 2px solid #D9BD9C;
-border-collapse: collapse;
-padding: 8px;
-font-family: var(--fonte1);
-font-size: 20px;
-background-color: #006D03;
-color: white;
-text-align: center;
-}
-
-table th {
-color: white;
-background-color: var(--cinza);
-}
-
-.delete button:hover {
-color: red;
-}
-
-.delete {
-background-color: white;
-color: black;
-height: 30px;
-;
-}
-
-.void {
-background-color: white;
-}
-
-td .verreceitas {
-text-decoration: none;
-color: white;
-}
-
-td a:hover {
-color: #ccc;
-}
-
-.delete button {
-background: none;
-border: none;
-color: var(--cinza);
-margin-right: 10px;
-}
-
-.tablepager {
-display: flex;
-justify-content: space-around;
-font-weight: bold;
-}
-
-.bg-pager {
-background-color: var(--cinza);
-}
-
-.bg-pager a {
-text-decoration: none;
-color: white;
-}
-
-.bg-pager a:hover {
-color: #006D03;
-}
-
-.tabela_produtos {
-display: flex;
-justify-content: center;
-}
-
-.tabela_receitas {
-display: flex;
-justify-content: center;
-}
-
-table {
-margin-top: 30px;
-margin-bottom: 30px;
-font-family: var(--fonte1);
-width: 60vw;
-}
-/* table end */
-
-
 
 /*  Quem somos */
 /*Larissa*/
