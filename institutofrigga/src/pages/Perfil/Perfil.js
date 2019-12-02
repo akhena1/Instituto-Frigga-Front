@@ -94,48 +94,64 @@ class Perfil extends Component {
   }
 
   //#region POSTs
-  //    postSetState = (input) =>{
-  //     this.setState({
-  //         postEvento : {
-  //             ...this.state.postPerfil, ...this.state.postTabelaOFerta, [input.target.name] : input.target.value
-  //         }
-  //     })
-  // }
+     atualizaEstado = (input) =>{
+      this.setState({
+          postEvento : {
+              ...this.state.postPerfil, ...this.state.postTabelaOFerta, [input.target.name] : input.target.value
+          }
+      })
+  }
 
-  //     postPerfil = (p) => {
+      postPerfil = (p) => {
 
-  //       p.preventDefault();
-  //       api.post('/perfil', this.state.postEvento)
-  //         .then(response => {
-  //             console.log(response);
-  //         })
-  //         .catch(error => {
-  //             console.log(error);
-  //             this.setState({ erroMsg : "Não foi possível cadastrar evento" });
-  //         })
+        p.preventDefault();
+        api.post('/perfil', this.state.postPerfil)
+          .then(response => {
+              console.log(response);
+          })
+          .catch(error => {
+              console.log(error);
+              this.setState({ erroMsg : "Não foi possível cadastrar usuário" });
+          })
 
-  //         setTimeout(() => {
-  //             this.getEventos();
-  //         }, 1500);
+          setTimeout(() => {
+              this.getPerfil();
+          }, 1500);
 
 
-  //     }
+      }
 
-  //     postTabelaOFerta = (o) => {
-  //       o.preventDefault();
-  //       api.post('/evento', this.state.postEvento)
-  //         .then(response => {
-  //             console.log(response);
-  //         })
-  //         .catch(error => {
-  //             console.log(error);
-  //             this.setState({ erroMsg : "Não foi possível cadastrar evento" });
-  //         })
+      postTabelaOFerta = (o) => {
+        o.preventDefault();
+        api.post('/oferta', this.state.postTabelaOFerta)
+          .then(response => {
+              console.log(response);
+          })
+          .catch(error => {
+              console.log(error);
+              this.setState({ erroMsg : "Não foi possível cadastrar oferta" });
+          })
 
-  //         setTimeout(() => {
-  //             this.getEventos();
-  //         }, 1500);
-  //     }
+          setTimeout(() => {
+              this.getOferta();
+          }, 1500);
+      }
+
+      postTabelaReceita = (r) => {
+        r.preventDefault();
+        api.post('/ogrtys', this.state.postTabelaReceita)
+          .then(response => {
+              console.log(response);
+          })
+          .catch(error => {
+              console.log(error);
+              this.setState({ erroMsg : "Não foi possível cadastrar receita" });
+          })
+
+          setTimeout(() => {
+              this.getReceita();
+          }, 1500);
+      }
 
   //#endregion
 
@@ -263,6 +279,7 @@ class Perfil extends Component {
                   <th>Preço/kg</th>
                   <th> Qtd Estoque</th>
                   <th className="void "></th>
+                  <th className="void "></th>
                 </tr>
               </thead>
               <tbody>
@@ -276,8 +293,8 @@ class Perfil extends Component {
                           <td>{o.peso}</td>
                           <td>{o.preco}</td>
                           <td>{o.quantidade}</td>
-                          <td className="delete"><button>
-                           <i color="primary" size="sm" className="fas fa-trash "></i> </button>Excluir</td>
+                          <td className="editar"><button type="submit"><i className="fas fa-edit"></i>Editar</button></td> 
+                          <td className="delete"><button type="reset"><i className="fas fa-trash"></i>Excluir</button></td>
                         </tr>
                     )
                   }.bind(this)
