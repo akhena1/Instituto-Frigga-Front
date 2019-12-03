@@ -22,7 +22,7 @@ class Receita extends Component {
     constructor() {
         super();
         this.state = {
-            listarCategoriaReceita: [],
+            listaCategoriaReceita: [],
             listarReceita: [],
         }
     }
@@ -33,9 +33,10 @@ class Receita extends Component {
     }
 
     getCategoriaReceita = () => {
-        api.get('/categoria').then(response => {
+        api.get('/categoriareceita').then(response => {
             if (response.status === 200) {
                 this.setState({ listarCategoriaReceita: response.data })
+                console.log(response)
             }
         })
     }
@@ -47,6 +48,7 @@ class Receita extends Component {
             }
         })
     }
+    
 
     render() {
         return (
@@ -111,7 +113,25 @@ class Receita extends Component {
                     <section className="container-receitas">
                      
                         <h3 className="receita-la">Cantinho das Receitas</h3>
-                        <div className="card_receitas">
+
+                        {
+                            this.state.listarReceita.map(
+                                function (r) {
+                                    return (
+                            <div key={r.receitaId} className="card_receitas">
+                            <img src={"http://localhost:5000/Arquivos/" + r.imagemReceita} />
+                            <div className="nav-r">
+                                <p>{r.nome}</p>
+                                <Link to={{ pathname: '/verreceita', state: { receitaId: r.receitaId} }} >Leia mais</Link>
+                            </div>
+                        </div>
+                                    )
+                                }
+                            )
+                        } 
+
+
+                         {/* <div className="card_receitas">
                             <img src={rimg} alt="imagem de salada de queijo" />
                             <div className="nav-r">
                                 <p> Salada com queijo...</p>
@@ -152,7 +172,7 @@ class Receita extends Component {
                                 <p>Frango em Crosta de Chia...</p>
                                 <Link to="/verreceita" href="receita-2.html" title="login">Leia mais</Link>
                             </div>
-                        </div>
+                        </div>  */}
                     </section>
                 </section>
                 <Footer/>
@@ -165,13 +185,5 @@ class Receita extends Component {
 
 export default Receita;
 
-   {/* {
-                            this.state.listaReceita.map(
-                                function (r) {
 
-                                    return (
-                                         key={r.receitaId} className="card-receitas">
-                                    )
-                                }
-                            )
-                        } */}
+   

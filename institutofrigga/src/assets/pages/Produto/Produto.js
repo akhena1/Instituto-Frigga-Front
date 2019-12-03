@@ -111,15 +111,10 @@ class Produto extends Component {
                     </div>
                 </div>
             </section>
-
-
         </section>
-
-
     </main>
             <Footer/>
-            </div>
-            
+            </div>   
         );
     }
 }
