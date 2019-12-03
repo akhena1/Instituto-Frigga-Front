@@ -62,8 +62,8 @@ const Rotas = (
                 <Route path = "/receitas" component={Receita}/>
                 <Route path = "/receita" component={Receita}/>
                 
-                <Route path = "/receita/" component={VerReceita}/>
-                <Route path = "/receitas/" component={VerReceita}/>
+                {/* <Route path = "/receita/" component={VerReceita}/>
+                <Route path = "/receitas/" component={VerReceita}/> */}
 
                 <Route path = "/perfil" component={Perfil}/>
 
