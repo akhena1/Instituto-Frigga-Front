@@ -64,13 +64,8 @@ const Rotas = (
                 <Route path = "/receitas" component={Receita}/>
                 <Route path = "/receita" component={Receita}/>
                 
-<<<<<<< HEAD
                 {/* <Route path = "/receita/" component={VerReceita}/>
                 <Route path = "/receitas/" component={VerReceita}/> */}
-=======
-                <Route path = "/verreceita/" component={VerReceita}/>
-                <Route path = "/verreceitas/" component={VerReceita}/>
->>>>>>> cb93da846b7e19dbda7700306af471254b37abcc
 
                 <Route path = "/perfil" component={Perfil}/>
 
