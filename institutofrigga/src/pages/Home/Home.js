@@ -9,7 +9,7 @@ import p2 from '../../img/p2.png';
 import p3 from '../../img/p3.png';
 import p4 from '../../img/p4.png'; */
 import api from '../../services/api';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 class Home extends Component {
@@ -52,8 +52,8 @@ class Home extends Component {
         let contOferta = 0;
         let contReceita = 0;
         return (
-            <div>
-                <Header />
+            <body>
+                <Header/>
                 <main>
 
                     <div className="banner">
@@ -126,8 +126,8 @@ class Home extends Component {
 
                     </div>
                 </main>
-                <Footer />
-            </div>
+                <Footer/>
+            </body>
         );
     }
 }
