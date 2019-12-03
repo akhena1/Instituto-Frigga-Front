@@ -151,28 +151,38 @@ class Perfil extends Component {
             <h1>Perfil</h1>
             <img src={iconPerfil} alt="icone usuario" />
           </div>
+
           <div className="profile_dados">
-            <form method="POST" id="form_dados">
-              <label>Nome
-                        <input type="text" placeholder="Digite seu nome..." name="nome" aria-label="digitar nome"
-                  required />
-              </label>
-              <label>Celular
-                        <input type="tel" placeholder="Digite seu telefone..." name="telefone"
-                  aria-label="digitar telefone" required />
-              </label>
-              <label>Email
-                        <input type="email" placeholder="Digite seu email..." name="email" aria-label="digitar email"
-                  required />
-              </label><br />
-              <div>
-                <button type="submit" className="btn_editar_perfil" alt="botao editar perfil">Editar Perfil</button>
+
+              <div className="bloco">
+                <div className="data_data">
+                  Nome:
+                </div>
+                <div className="info_data">
+                  Beltrano da Silva
+                </div>
               </div>
-            </form>
+             
+                <div className="bloco">
+                  <div className="data_data">
+                    Telefone:
+                  </div>
+                  <div className="info_data">
+                    (11) 9999-9999
+                  </div>
+                </div>
+
+                <div className="bloco">
+                  <div className="data_data">
+                   E-mail:
+                  </div>
+                  <div className="info_data">
+                   beltrano@gmail.com
+                 </div>
+                </div>
+
           </div>
         </section>
-
-
         <section className="product_recipes">
           <h2>Cadastrar Produto</h2>
           <div className="card_profile">

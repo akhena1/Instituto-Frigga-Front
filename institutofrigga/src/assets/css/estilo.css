@@ -930,12 +930,23 @@ body {
   flex-direction: column;
   align-items: center;
   }
-
   .profile_dados {
   width: 500px;
-  align-items: center;
+  font-size: 25px;
   }
-  .profile_dados label {
+  .profile_dados div{
+    margin-bottom: 40px;
+  }
+  /* Atualizações */
+.bloco{
+  width: 500px;
+  display: flex;
+}
+.data_data, .info_data{
+  width: 250px;
+}
+
+.profile_dados label {
   display: flex;
   flex-direction: column;
   font-family: var(--fonte1);
