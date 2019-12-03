@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import MenuSanduiche from '../../img/menu-button-of-three-horizontal-lines.png';
-import LogoWeb from '../../img/definitivo-fundo-preto.png';
+import MenuSanduiche from '../../assets/img/menu-button-of-three-horizontal-lines.png';
+import LogoWeb from '../../assets/img/definitivo-fundo-preto.png';
+import LogoMob from '../../assets/img/definitivo-fundo-preto.png';
 import {Link} from 'react-router-dom';
 
 class Header extends Component {
@@ -14,7 +15,7 @@ class Header extends Component {
                         <p>MENU</p>
                     </button>
                     <img className="logorodapeweb" src={LogoWeb} alt=" Logo  do instituto" />
-                    <img className="logohmob" src="IMGS/definitivo-fundo-preto.png" alt="logo do instituto" />
+                    <img className="logohmob" src={LogoMob} alt="logo do instituto" />
                     <Link to ="/perfil">Perfil</Link>
                 </div>
                 <nav>

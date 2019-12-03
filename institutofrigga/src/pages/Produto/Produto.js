@@ -1,7 +1,14 @@
+<<<<<<< HEAD:institutofrigga/src/assets/pages/Produto/Produto.js
 import React, { Component } from 'react';
 import I1 from '../../img/pepino.png';
 import I2 from '../../img/p1.jpg';
 import I3 from '../../img/p3.png';
+=======
+import React, {Component} from 'react';
+import I1 from '../../assets/img/pepino.png';
+import I2 from '../../assets/img/p1.jpg';
+import I3 from '../../assets/img/p3.png';
+>>>>>>> cb93da846b7e19dbda7700306af471254b37abcc:institutofrigga/src/pages/Produto/Produto.js
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import api from '../../services/api'
@@ -175,12 +182,21 @@ class Produto extends Component {
                         <p>tomates<br></br> R$ 9,99</p>
                         <a href="login.html" title="login">Encomendar</a>
                     </div>
+<<<<<<< HEAD:institutofrigga/src/assets/pages/Produto/Produto.js
                 </div> */}
                         </section>
                     </section>
                 </main>
                 <Footer />
             </div>
+=======
+                </div>
+            </section>
+        </section>
+    </main>
+            <Footer/>
+            </div>   
+>>>>>>> cb93da846b7e19dbda7700306af471254b37abcc:institutofrigga/src/pages/Produto/Produto.js
         );
     }
 }

@@ -192,7 +192,7 @@ opacity: 0.6;
     margin-right: 240px;
 }
 .titulos h2{
-    margin-left: 57px;
+    margin-left: 90px;
     align-self: flex-end;
     font-size: 30px;
 
@@ -202,7 +202,7 @@ opacity: 0.6;
     font-size: 60px;
     color: white;
     line-height: 1.8;
-    margin-left: 40px;
+    margin-left: 20px;
     word-spacing: 10px;
     font-weight: bold;
     margin-bottom: 90px;
@@ -212,20 +212,20 @@ opacity: 0.6;
     font-size: 35px;
     color: #003D02;
     line-height: 1.8;
-    margin-left: 40px;
+    margin-left: 20px;
     word-spacing: 10px;
     font-weight: bold;
 }
 .banner a{
   font-family: var(--fonte2);
-    font-size: 45px;
+    font-size: 55px;
     line-height: 1.8;
     margin-left: 40px;
     word-spacing: 8px;
-    color: #363636;
+    color: white;
     text-decoration: none;
     align-self: center;
-    margin-top: 100px;
+    margin-top: 65px;
     margin-right: 350px;
 }
 .banner a:hover{
@@ -344,7 +344,6 @@ font-family: arial;
 }
 /* Fim do main by Gus */
 
-
 /* Media Queries - HOME */
 @media(max-width:1169px) {
 /*  START Header responsivo para Tablet */
@@ -379,7 +378,7 @@ background-image: url(../img/banner2mob.jpg);
 background-size: contain;
 background-repeat: no-repeat;
 background-position: top;
-top: 0;
+top: 200;
 height: 500px;
 }
 .rodape-container {
@@ -892,6 +891,11 @@ body {
   flex-direction: column;
   width: 1200px;
   }
+  .product_recipes h2{
+    margin-bottom: 20px;
+  }
+  
+
   .profile h1 {
   padding-bottom: 60px;
   font-family: var(--fonte1);
@@ -941,10 +945,11 @@ body {
   padding: 30px;
   text-transform: uppercase;
   }
-  .card_profile p {
+  .card_profile p, .card_profile_1 p{
   margin-right: 10px;
   }
-  .card_profile {
+
+  .card_profile, .card_profile_1 {
   width: 1200px;
   display: flex;
   justify-content: center;
@@ -955,14 +960,23 @@ body {
   -webkit-box-shadow: 5px 5px 30px -15px rgba(204, 204, 204, 204.75);
   -moz-box-shadow: 5px 5px 30px -15px rgba(204, 204, 204, 204.75);
   box-shadow: 5px 5px 30px -15px rgba(204, 204, 204, 204.75);
-  }
+  }  
 
   .card_profile input,
+  select,
+  .card_profile_1 input,
   select {
   padding: 7px;
   margin: 10px;
   border: #3dca41 solid 1px;
   border-radius: 4px;
+  }
+  .card_profile_1 input,
+  select{
+  width: 100px;
+  }
+  .card_profile_1 select{
+    width: 140px;;
   }
   .imagem_incluir {
   display: flex;
@@ -1041,9 +1055,25 @@ body {
   color: white;
   background-color: var(--cinza);
   }
-  .delete button:hover {
-  color: red;
+  .editar button, .delete button {
+  background-color: white;
+  font-size: 17px;
+  border: none;
   }
+
+td button i {
+  margin-right: 5px;
+}
+
+  .editar button:hover, .delete button:hover {
+    color: red;
+  }
+  .editar {
+    background-color: white;
+    color: black;
+    height: 30px;
+  }
+ 
   .delete {
   background-color: white;
   color: black;
@@ -1059,12 +1089,12 @@ body {
   td a:hover {
   color: var(--cinza);
   }
-  .delete button {
+  /* .delete button {
   background: none;
   border: none;
   color: var(--cinza);
   margin-right: 10px;
-  }
+  } */
   
   .tablepager {
   display: flex;
@@ -1251,7 +1281,7 @@ body {
   }
   
   .formulario_login label,
-  h3 {
+  h2 {
     text-align: center;
     margin: auto;
     font-family: var(--fonte1);
@@ -1306,95 +1336,6 @@ body {
   }
 /* END NAKKAT */
 
-/* Gus Table */
-table,
-td,
-th {
-border: 2px solid #D9BD9C;
-border-collapse: collapse;
-padding: 8px;
-font-family: var(--fonte1);
-font-size: 20px;
-background-color: #006D03;
-color: white;
-text-align: center;
-}
-
-table th {
-color: white;
-background-color: var(--cinza);
-}
-
-.delete button:hover {
-color: red;
-}
-
-.delete {
-background-color: white;
-color: black;
-height: 30px;
-;
-}
-
-.void {
-background-color: white;
-}
-
-td .verreceitas {
-text-decoration: none;
-color: white;
-}
-
-td a:hover {
-color: #ccc;
-}
-
-.delete button {
-background: none;
-border: none;
-color: var(--cinza);
-margin-right: 10px;
-}
-
-.tablepager {
-display: flex;
-justify-content: space-around;
-font-weight: bold;
-}
-
-.bg-pager {
-background-color: var(--cinza);
-}
-
-.bg-pager a {
-text-decoration: none;
-color: white;
-}
-
-.bg-pager a:hover {
-color: #006D03;
-}
-
-.tabela_produtos {
-display: flex;
-justify-content: center;
-}
-
-.tabela_receitas {
-display: flex;
-justify-content: center;
-}
-
-table {
-margin-top: 30px;
-margin-bottom: 30px;
-font-family: var(--fonte1);
-width: 60vw;
-}
-/* table end */
-
-
-
 /*  Quem somos */
 /*Larissa*/
 .container-assunto1, .container-assunto2{
@@ -1422,6 +1363,13 @@ width: 600px;
 .container-assunto1 p, .container-assunto2 p {
 text-align: center;
 font-family: var(--fonte2);
+}
+.aboutTitle{
+  margin-bottom: 90px; 
+  font-size: 35px;
+}
+.divAboutTitle{
+  margin-bottom: 100px;
 }
 .depoimento {
 display: flex;

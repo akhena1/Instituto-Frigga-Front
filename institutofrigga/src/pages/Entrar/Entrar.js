@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
-import IconLogin from '../../img/iconperfil.svg';
+import IconLogin from '../../assets/img/iconperfil.svg';
 import api from '../../services/api';
 import { parseJwt } from '../../services/auth';
 
@@ -143,7 +143,7 @@ api.post("/login", usuario)
                   </div>
                 </div>
                 <div className="form-control">
-                  <h3>Endereço</h3>
+                  <h2>Endereço</h2>
                   <div className="input-group">
                     <label for="cidade">Cidade</label>
                     <input className="input_login" type="text" placeholder="Ex: SP" aria-label="Digite sua cidade" name="cidade"
