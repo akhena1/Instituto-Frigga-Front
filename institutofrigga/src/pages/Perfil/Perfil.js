@@ -3,6 +3,7 @@ import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import iconPerfil from '../../assets/img/iconperfil.svg';
 import api from '../../services/api';
+import { MDBBtn, MDBInput, MDBAlert, MDBModal} from "mdbreact";
 
 
 
@@ -88,6 +89,8 @@ class Perfil extends Component {
       })
   }
 
+  //#endRegion
+
   //#region POSTs
 
 
@@ -95,68 +98,91 @@ class Perfil extends Component {
   //#endregion
 
   //#region DELETE
-  //   deleteEvento(id){
+    deleteEvento(id){
 
-  //     this.setState({ successMsg : "" })
+      this.setState({ successMsg : "" })
 
-  //     api.delete('/perfil/'+id)
-  //     .then(response => {
-  //         if(response.status === 200){
-  //             this.setState({ successMsg : "Excluído com sucesso" })
+      api.delete('/oferta'+id)
+      .then(response => {
+          if(response.status === 200){
+              this.setState({ successMsg : "Excluído com sucesso" })
 
-  //             setTimeout(() => {
-  //                 this.getEventos();
-  //             }, 1500);
-  //         }
-  //     })
-  //     api.delete('/perfil/'+id)
-  //     .then(response => {
-  //         if(response.status === 200){
-  //             this.setState({ successMsg : "Excluído com sucesso" })
+              setTimeout(() => {
+                  this.getEventos();
+              }, 1500);
+          }
+      })
+      api.delete('/receita/'+id)
+      .then(response => {
+          if(response.status === 200){
+              this.setState({ successMsg : "Excluído com sucesso" })
 
-  //             setTimeout(() => {
-  //                 this.getEventos();
-  //             }, 1500);
-  //         }
-  //     })
-  //     .catch(error => {
-  //         console.log(error);
-  //         this.setState({ erroMsg : "Falha ao excluir" })
-  //     })
+              setTimeout(() => {
+                  this.getEventos();
+              }, 1500);
+          }
+      })
+      .catch(error => {
+          console.log(error);
+          this.setState({ erroMsg : "Falha ao excluir" })
+      })
 
-  // }
+  }
   //#endregion
   render() {
     return (
       <main>
         <Header />
         <section className="profile">
+        {
+                                this.state.erroMsg && 
+                                <MDBAlert color="danger" >
+                                    {this.state.erroMsg}
+                                </MDBAlert>
+                            }
+                        
+                            {
+                            this.state.successMsg && 
+                                <MDBAlert color="success" >
+                                    {this.state.successMsg}
+                                </MDBAlert>
+                            }
           <div className="profile_icone">
             <h1>Perfil</h1>
             <img src={iconPerfil} alt="icone usuario" />
           </div>
+
           <div className="profile_dados">
-            <form method="POST" id="form_dados">
-              <label>Nome
-                        <input type="text" placeholder="Digite seu nome..." name="nome" aria-label="digitar nome"
-                  required />
-              </label>
-              <label>Celular
-                        <input type="tel" placeholder="Digite seu telefone..." name="telefone"
-                  aria-label="digitar telefone" required />
-              </label>
-              <label>Email
-                        <input type="email" placeholder="Digite seu email..." name="email" aria-label="digitar email"
-                  required />
-              </label><br />
-              <div>
-                <button type="submit" className="btn_editar_perfil" alt="botao editar perfil">Editar Perfil</button>
+
+              <div className="bloco">
+                <div className="data_data">
+                  Nome:
+                </div>
+                <div className="info_data">
+                  Beltrano da Silva
+                </div>
               </div>
-            </form>
+             
+                <div className="bloco">
+                  <div className="data_data">
+                    Telefone:
+                  </div>
+                  <div className="info_data">
+                    (11) 9999-9999
+                  </div>
+                </div>
+
+                <div className="bloco">
+                  <div className="data_data">
+                   E-mail:
+                  </div>
+                  <div className="info_data">
+                   beltrano@gmail.com
+                 </div>
+                </div>
+
           </div>
         </section>
-
-
         <section className="product_recipes">
           <h2>Cadastrar Produto</h2>
           <div className="card_profile">

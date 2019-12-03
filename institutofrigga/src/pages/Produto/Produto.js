@@ -178,7 +178,7 @@ class Produto extends Component {
                                     </Modal>
                                 </div>
                             }
-                            {/* <div className="card_produtoisa">
+                            <div className="card_produtoisa">
                     <img src={I1} alt="imagem de pepino"/>
                     <div className="nav-p nav-p-isa">
                         <p>Pepino<br></br> R$ 10,25</p>
@@ -224,7 +224,7 @@ class Produto extends Component {
                         <p>tomates<br></br> R$ 9,99</p>
                         <a href="login.html" title="login">Encomendar</a>
                     </div>
-                </div> */}
+                </div>
                         </section>
                     </section>
                 </main>
