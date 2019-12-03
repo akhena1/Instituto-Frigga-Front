@@ -1,18 +1,12 @@
-<<<<<<< HEAD:institutofrigga/src/assets/pages/Produto/Produto.js
 import React, { Component } from 'react';
-import I1 from '../../img/pepino.png';
-import I2 from '../../img/p1.jpg';
-import I3 from '../../img/p3.png';
-=======
-import React, {Component} from 'react';
 import I1 from '../../assets/img/pepino.png';
 import I2 from '../../assets/img/p1.jpg';
 import I3 from '../../assets/img/p3.png';
->>>>>>> cb93da846b7e19dbda7700306af471254b37abcc:institutofrigga/src/pages/Produto/Produto.js
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import api from '../../services/api'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Modal from 'react-responsive-modal';
 
 
 class Produto extends Component {
@@ -24,14 +18,18 @@ class Produto extends Component {
             listarProduto: [],
             listarUsuario: [],
             Preco: [],
+
+            open: false
         }
     }
 
-    toggle = () => {
-        this.setState({
-          modal: !this.state.modal
-        });
-    }
+    onOpenModal = () => {
+        this.setState({ open: true });
+    };
+
+    onCloseModal = () => {
+        this.setState({ open: false });
+    };
 
     componentDidMount() {
         this.getOferta();
@@ -71,7 +69,7 @@ class Produto extends Component {
     }
 
     render() {
-
+        const { open } = this.state;
         return (
 
             <div>
@@ -127,14 +125,58 @@ class Produto extends Component {
                                 this.state.listarOferta.map(function (of) {
                                     return (
                                         <div key={of.ofertaId} className="card_produtoisa">
-                                        <img src={"http://localhost:5000/Arquivos/" + of.imagemProduto} alt={of.tipo}/>
-                                        <div className="nav-p nav-p-isa">
-                                            <p>{of.tipo}<br></br>{of.preco}</p>
-                                            <Link to="/entrar" title="login">Reservar</Link>
+                                            <img src={"http://localhost:5000/Arquivos/" + of.imagemProduto} alt={of.tipo} />
+                                            <div className="nav-p nav-p-isa">
+                                                <p>{of.tipo}<br></br> R$ {of.preco}</p>
+                                                <button class title="login">Reservar</button>
+                                            </div>
                                         </div>
-                                    </div>
                                     );
-                                })
+                                }.bind(this))
+                            }
+                            {
+
+                                <div>
+                                    <button onClick={this.onOpenModal}>Open modal</button>
+                                    <Modal open={open} onClose={this.onCloseModal} center>
+                                        {
+                                            this.state.listarOferta.map(function (o) {
+                                                return (
+                                                    <div>
+
+                                                        <div className="containerModalProduto">
+                                                            <div className="imgModalProduto">
+                                                                <img src={"http://localhost:5000/Arquivos/" + o.imagemProduto} alt={o.tipo} />
+                                                            </div>
+                                                            <div>
+                                                                <h1>{o.produto.tipo}</h1>
+                                                                <h2>Dados do produtor para contato</h2>
+                                                                <p>Nome: {o.usuario.nome}</p>
+                                                                <p>Email:{o.usuario.email}</p>
+                                                                <p>Telefone:{o.usuario.telefone}</p>
+                                                            </div>
+
+                                                        </div>
+                                                        <div className="containerModalProduto2">
+                                                            <div className="precoPesoProduto">
+                                                                <p>Preço: R$ {o.preco}</p>
+                                                                <p>Peso: {o.peso}KG</p>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div className="containerModalProduto3">
+                                                            <button>
+
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                );
+                                            }
+                                            )
+                                        }
+                                    </Modal>
+                                </div>
                             }
                             {/* <div className="card_produtoisa">
                     <img src={I1} alt="imagem de pepino"/>
@@ -182,21 +224,12 @@ class Produto extends Component {
                         <p>tomates<br></br> R$ 9,99</p>
                         <a href="login.html" title="login">Encomendar</a>
                     </div>
-<<<<<<< HEAD:institutofrigga/src/assets/pages/Produto/Produto.js
                 </div> */}
                         </section>
                     </section>
                 </main>
                 <Footer />
             </div>
-=======
-                </div>
-            </section>
-        </section>
-    </main>
-            <Footer/>
-            </div>   
->>>>>>> cb93da846b7e19dbda7700306af471254b37abcc:institutofrigga/src/pages/Produto/Produto.js
         );
     }
 }

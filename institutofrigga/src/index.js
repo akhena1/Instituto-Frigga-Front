@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import './index.css';
+import './assets/css/estilo.css';
+import './assets/css/modalProduto.css'
 import * as serviceWorker from './serviceWorker';
 import Home from '../src/pages/Home/Home';
 import Produto from '../src/pages/Produto/Produto';
@@ -10,11 +13,10 @@ import Perfil from '../src/pages/Perfil/Perfil';
 import Entrar from '../src/pages/Entrar/Entrar';
 import About from '../src/pages/About/About';
 import NotFound from '../src/pages/NotFound/NotFound';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+
 // Redirect
 import { withRouter } from "react-router-dom";
 import {Route, BrowserRouter as Router, Switch, } from 'react-router-dom';
-import './assets/css/estilo.css';
 import { usuarioAutenticado, parseJwt } from '../src/services/auth';
 
 /* const PermissaoAdmin = ({ component : Component }) => (
@@ -64,13 +66,8 @@ const Rotas = (
                 <Route path = "/receitas" component={Receita}/>
                 <Route path = "/receita" component={Receita}/>
                 
-<<<<<<< HEAD
-                {/* <Route path = "/receita/" component={VerReceita}/>
-                <Route path = "/receitas/" component={VerReceita}/> */}
-=======
                 <Route path = "/verreceita/" component={VerReceita}/>
                 <Route path = "/verreceitas/" component={VerReceita}/>
->>>>>>> cb93da846b7e19dbda7700306af471254b37abcc
 
                 <Route path = "/perfil" component={Perfil}/>
 

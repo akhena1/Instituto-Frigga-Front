@@ -18,7 +18,7 @@ class Home extends Component {
         super()
         this.state = {
             listaReceita: [],
-            listaOferta: [],
+            listaOferta: []
 
         }
     }
@@ -102,11 +102,11 @@ class Home extends Component {
                                             contOferta++
                                             return (
 
-                                                <div className="card-produto">
+                                                <div key={o.ofertaId} className="card-produto">
                                                     <img src={"http://localhost:5000/arquivos/" + o.imagemProduto} />
                                                     <div className="nav-p">
                                                         <p>{o.produto.tipo}<br />R${o.preco}</p>
-                                                        <Link to="/Entrar">Encomendar</Link>
+                                                        <Link to="/Entrar">Reservar</Link>
                                                     </div>
                                                 </div>
                                             );

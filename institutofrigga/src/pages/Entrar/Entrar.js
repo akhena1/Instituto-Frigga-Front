@@ -88,12 +88,12 @@ api.post("/login", usuario)
                 </figure>
                 <div className="form-control">
                   <div className="input-group">
-                    <label for="usuarioCadastro">Usuario</label>
+                    <label>Usuario</label>
                     <input className="input_login" type="text" placeholder="E-mail ou Cpf..."
                       aria-label="Digite seu e-mail ou cpf" name="usuario" id="usuarioCadastro" required />
                   </div>
                   <div className="input-group">
-                    <label for="senhaCadastro">Senha</label>
+                    <label>Senha</label>
                     <input className="input_login" type="password" placeholder="Senha..." aria-label="Digite a sua senha"
                       name="senha" id="senhaCadastro" required />
                   </div>
@@ -109,35 +109,35 @@ api.post("/login", usuario)
               <form method="POST" id="form_cadastro">
                 <div className="form-control">
                   <div className="input-group radio-group">
-                    <label for="cadastroCliente"><input type="radio" value="cliente" name="cadastro" id="cadastroCliente" />
+                    <label><input type="radio" value="cliente" name="cadastro" id="cadastroCliente" />
                       Cliente</label>
-                    <label for="cadastroFornecedor">
+                    <label>
                       <input type="radio" value="fornecedor" name="cadastro" id="cadastroFornecedor" />
                       Fornecedor
               </label>
                   </div>
                   <div className="input-group">
-                    <label for="email">E-mail</label>
+                    <label>E-mail</label>
                     <input className="input_login" type="email" placeholder="E-mail ou Cpf..."
                       aria-label="Digite seu e-mail ou cpf" id="email" name="email" required />
                   </div>
                   <div className="input-group">
-                    <label for="senha">Senha</label>
+                    <label>Senha</label>
                     <input className="input_login" type="password" placeholder="Senha..." aria-label="Digite a sua senha"
                       name="senha" id="senha" required />
                   </div>
                   <div className="input-group">
-                    <label for="cnpj">Cpf/Cnpj</label>
+                    <label >Cpf/Cnpj</label>
                     <input className="input_login" type="text" placeholder="Ex: 123.321.45-10" aria-label="Digite seu Cnpj"
                       name="cpf/cnpj" id="cpf/cnpj" required />
                   </div>
                   <div className="input-group">
-                    <label for="nome">Nome</label>
+                    <label >Nome</label>
                     <input className="input_login" type="text" placeholder="Ex: Joao" aria-label="Digite seu nome" name="nome"
                       id="nome" required />
                   </div>
                   <div className="input-group">
-                    <label for="nascimento">Nascimento</label>
+                    <label >Nascimento</label>
                     <input className="input_login" type="text" placeholder="Ex: 27/03/1990"
                       aria-label="Digite a data de nascimento" name="nascimento" id="nascimento" required />
                   </div>
@@ -145,12 +145,12 @@ api.post("/login", usuario)
                 <div className="form-control">
                   <h2>Endereço</h2>
                   <div className="input-group">
-                    <label for="cidade">Cidade</label>
+                    <label>Cidade</label>
                     <input className="input_login" type="text" placeholder="Ex: SP" aria-label="Digite sua cidade" name="cidade"
                       id="cidade" required />
                   </div>
                   <div className="input-group">
-                    <label for="cnpj">Cep</label>
+                    <label >Cep</label>
                     <input className="input_login" type="text" placeholder="Ex: 080-60-090" aria-label="Digite seu Cnpj"
                       name="cep" id="cep" required />
                   </div>
@@ -160,12 +160,12 @@ api.post("/login", usuario)
                       name="bairro" id="bairro" required />
                   </div>
                   <div className="input-group">
-                    <label for="endereco">Endereço</label>
+                    <label>Endereço</label>
                     <input className="input_login" type="text" placeholder="Ex: Rua Albuquerque de Sas"
                       aria-label="Digite seu endereço" name="endereco" id="endereco" required />
                   </div>
                   <div className="input-group">
-                    <label for="numero">Número</label>
+                    <label >Número</label>
                     <input className="input_login" type="text" placeholder="Ex: 138 " aria-label="Digite seu número" name="numero"
                       id="numero" required />
                   </div>

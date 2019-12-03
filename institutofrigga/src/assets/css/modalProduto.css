@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.containerModalProduto{
+    display: flex;
+    width: 790px;
+    justify-content: space-around;
+}
+.precoPesoProduto{
+    display: flex;
+    width: 328px;
+    justify-content: space-between;
+    font-size: 30px;
+    margin-top: 6px;
+    margin-left: 50px;
+}
