@@ -52,11 +52,6 @@ class Perfil extends Component {
   //   this.setState({ [event.target.name]: event.target.value });
   // }
 
-  // toggle = () => {
-  //     this.setState({
-  //       modal: !this.state.modal
-  //     });
-  // }
 
   componentDidMount() {
     this.getPerfil();
@@ -94,64 +89,8 @@ class Perfil extends Component {
   }
 
   //#region POSTs
-     atualizaEstado = (input) =>{
-      this.setState({
-          postEvento : {
-              ...this.state.postPerfil, ...this.state.postTabelaOFerta, [input.target.name] : input.target.value
-          }
-      })
-  }
-
-      postPerfil = (p) => {
-
-        p.preventDefault();
-        api.post('/perfil', this.state.postPerfil)
-          .then(response => {
-              console.log(response);
-          })
-          .catch(error => {
-              console.log(error);
-              this.setState({ erroMsg : "Não foi possível cadastrar usuário" });
-          })
-
-          setTimeout(() => {
-              this.getPerfil();
-          }, 1500);
 
 
-      }
-
-      postTabelaOFerta = (o) => {
-        o.preventDefault();
-        api.post('/oferta', this.state.postTabelaOFerta)
-          .then(response => {
-              console.log(response);
-          })
-          .catch(error => {
-              console.log(error);
-              this.setState({ erroMsg : "Não foi possível cadastrar oferta" });
-          })
-
-          setTimeout(() => {
-              this.getOferta();
-          }, 1500);
-      }
-
-      postTabelaReceita = (r) => {
-        r.preventDefault();
-        api.post('/ogrtys', this.state.postTabelaReceita)
-          .then(response => {
-              console.log(response);
-          })
-          .catch(error => {
-              console.log(error);
-              this.setState({ erroMsg : "Não foi possível cadastrar receita" });
-          })
-
-          setTimeout(() => {
-              this.getReceita();
-          }, 1500);
-      }
 
   //#endregion
 
