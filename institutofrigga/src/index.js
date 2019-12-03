@@ -12,7 +12,8 @@ import About from '../src/pages/About/About';
 import NotFound from '../src/pages/NotFound/NotFound';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 // Redirect
-import {Route, HashRouter as Router, Switch, } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
+import {Route, BrowserRouter as Router, Switch, } from 'react-router-dom';
 import './assets/css/estilo.css';
 import { usuarioAutenticado, parseJwt } from '../src/services/auth';
 
@@ -63,8 +64,8 @@ const Rotas = (
                 <Route path = "/receitas" component={Receita}/>
                 <Route path = "/receita" component={Receita}/>
                 
-                <Route path = "/receita/" component={VerReceita}/>
-                <Route path = "/receitas/" component={VerReceita}/>
+                {/* <Route path = "/receita/" component={VerReceita}/>
+                <Route path = "/receitas/" component={VerReceita}/> */}
 
                 <Route path = "/perfil" component={Perfil}/>
 

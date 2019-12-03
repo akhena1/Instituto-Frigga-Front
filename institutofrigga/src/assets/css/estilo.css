@@ -317,7 +317,12 @@ padding: 10px 15px;
 text-align: center;
 margin-bottom: 30px;
 margin-top: 30px;
-width: 250px;
+}
+.receitas::after{  
+  width:200px;   
+  height:40px;   
+  background:#ff0000;
+  z-index: 0;
 }
 .receitas h2 {
 margin-bottom: 5px;
@@ -338,10 +343,18 @@ font-family: var(--fonte1);
 }
 .position {
 position: relative;
-top: -50px;
+top: -63px;
 color: white;
 font-family: arial;
+padding:20px;
+background-color: rgba(0,0,0,0.6) ;
 }
+ .position::after{
+     content:"";
+     width:200px;   
+     height:40px;   
+     background:#ff0000;
+} 
 /* Fim do main by Gus */
 
 /* Media Queries - HOME */
