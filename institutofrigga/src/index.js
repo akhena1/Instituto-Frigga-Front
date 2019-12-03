@@ -2,19 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import Home from './assets/pages/Home/Home';
-import Produto from './assets/pages/Produto/Produto';
-import Receita from './assets/pages/Receita/Receita';
-import VerReceita from './assets/pages/VerReceita/VerReceita'; 
-import Perfil from './assets/pages/Perfil/Perfil';
-import Entrar from './assets/pages/Entrar/Entrar';
-import About from './assets/pages/About/About';
-import NotFound from '../src/assets/pages/NotFound/NotFound'
+import Home from '../src/pages/Home/Home';
+import Produto from '../src/pages/Produto/Produto';
+import Receita from '../src/pages/Receita/Receita';
+import VerReceita from '../src/pages/VerReceita/VerReceita'; 
+import Perfil from '../src/pages/Perfil/Perfil';
+import Entrar from '../src/pages/Entrar/Entrar';
+import About from '../src/pages/About/About';
+import NotFound from '../src/pages/NotFound/NotFound';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 // Redirect
 import { withRouter } from "react-router-dom";
 import {Route, BrowserRouter as Router, Switch, } from 'react-router-dom';
 import './assets/css/estilo.css';
-import { usuarioAutenticado, parseJwt } from '../src/assets/services/auth';
+import { usuarioAutenticado, parseJwt } from '../src/services/auth';
 
 /* const PermissaoAdmin = ({ component : Component }) => (
     <Route 

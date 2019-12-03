@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
+<<<<<<< HEAD:institutofrigga/src/assets/pages/Receita/Receita.js
 import rimg from '../../img/receita2.jpg'
 import rimg1 from '../../img/receita4.jpg'
 import rimg2 from '../../img/receita5.jpg'
@@ -15,6 +16,14 @@ import { Link } from "react-router-dom";
 
 
 
+=======
+import rimg from '../../assets/img/receita2.jpg'
+import rimg1 from '../../assets/img/receita4.jpg'
+import rimg2 from '../../assets/img/receita5.jpg'
+import rimg3 from '../../assets/img/receita7.jpg'
+import rimg4 from '../../assets/img/receita2.jpg'
+import rimg5 from '../../assets/img/receita4.jpg'
+>>>>>>> be1dcf2270c397d51eb44604c17c124c9a1bbe46:institutofrigga/src/pages/Receita/Receita.js
 
 
 class Receita extends Component {
