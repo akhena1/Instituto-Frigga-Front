@@ -77,7 +77,7 @@ class Home extends Component {
                             {
                                 this.state.listaReceita.map(
                                     function (r) {
-                                        if (contReceita < 4) {
+                                        if (contReceita < 3) {
                                             contReceita++
                                             return (
                                                 <Link to={'/receita'} key={r.receitaId} className="card-receita">
