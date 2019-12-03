@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-// import I1 from '../../img/pepino.png';
-// import I2 from '../../img/p1.jpg';
-// import I3 from '../../img/p3.png';
+import I1 from '../../assets/img/pepino.png';
+import I2 from '../../assets/img/p1.jpg';
+import I3 from '../../assets/img/p3.png';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import api from '../../services/api'
@@ -129,7 +129,7 @@ class Produto extends Component {
                                     );
                                 })
                             }
-                            {/* <div className="card_produtoisa">
+                            <div className="card_produtoisa">
                     <img src={I1} alt="imagem de pepino"/>
                     <div className="nav-p nav-p-isa">
                         <p>Pepino<br></br> R$ 10,25</p>
@@ -175,7 +175,7 @@ class Produto extends Component {
                         <p>tomates<br></br> R$ 9,99</p>
                         <a href="login.html" title="login">Encomendar</a>
                     </div>
-                </div> */}
+                </div>
                         </section>
                     </section>
                 </main>
