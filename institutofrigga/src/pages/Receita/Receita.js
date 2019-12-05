@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
-// import rimg from '../../img/receita2.jpg'
-// import rimg1 from '../../img/receita4.jpg'
-// import rimg2 from '../../img/receita5.jpg'
-// import rimg3 from '../../img/receita7.jpg'
-// import rimg4 from '../../img/receita2.jpg'
-// import rimg5 from '../../img/receita4.jpg'
+import rimg from '../../assets/img/receita2.jpg'
+import rimg1 from '../../assets/img/receita4.jpg'
+import rimg2 from '../../assets/img/receita5.jpg'
+import rimg3 from '../../assets/img/receita7.jpg'
+import rimg4 from '../../assets/img/receita2.jpg'
+import rimg5 from '../../assets/img/receita4.jpg'
 import api from '../../services/api';
 //import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -48,7 +48,7 @@ class Receita extends Component {
             }
         })
     }
-    
+
 
     render() {
         return (
@@ -111,27 +111,27 @@ class Receita extends Component {
                     </section>
 
                     <section className="container-receitas">
-                     
+
                         <h3 className="receita-la">Cantinho das Receitas</h3>
 
                         {
                             this.state.listarReceita.map(
                                 function (r) {
                                     return (
-                            <div key={r.receitaId} className="card_receitas">
-                            <img src={"http://localhost:5000/Arquivos/" + r.imagemReceita} />
-                            <div className="nav-r">
-                                <p>{r.nome}</p>
-                                <Link to={{ pathname: '/verreceita', state: { receitaId: r.receitaId} }} >Leia mais</Link>
-                            </div>
-                        </div>
+                                        <div key={r.receitaId} className="card_receitas">
+                                            <img src={"http://localhost:5000/Arquivos/" + r.imagemReceita} />
+                                            <div className="nav-r">
+                                                <p>{r.nome}</p>
+                                                <Link to={{ pathname: '/verreceita', state: { receitaId: r.receitaId } }} >Leia mais</Link>
+                                            </div>
+                                        </div>
                                     )
                                 }
                             )
-                        } 
+                        }
 
 
-                         {/* <div className="card_receitas">
+                        <div className="card_receitas">
                             <img src={rimg} alt="imagem de salada de queijo" />
                             <div className="nav-r">
                                 <p> Salada com queijo...</p>
@@ -172,10 +172,10 @@ class Receita extends Component {
                                 <p>Frango em Crosta de Chia...</p>
                                 <Link to="/verreceita" href="receita-2.html" title="login">Leia mais</Link>
                             </div>
-                        </div>  */}
+                        </div>
                     </section>
                 </section>
-                <Footer/>
+                <Footer />
             </div>
 
         );
@@ -186,4 +186,4 @@ class Receita extends Component {
 export default Receita;
 
 
-   
+

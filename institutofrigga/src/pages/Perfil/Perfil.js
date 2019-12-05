@@ -210,11 +210,7 @@ class Perfil extends Component {
                 <input type="text" name="preco" aria-label="incluir preço por quilo"
                   placeholder="Preço por Kg..." required />
               </label>
-              <label>
-                <input type="text" name="quantidade" aria-label="incluir quantidade"
-                  placeholder="Quantidade..." required />
-              </label>
-              <button type="submit" alt="botao cadastrar produtos" className="btn_cadastrar_produto">Cadastrar</button>
+              <button type="submit" alt="botao cadastrar produtos" className="btn_cadastrar_produto">Finalizar</button>
             </form>
           </div>
 

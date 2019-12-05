@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-// import I1 from '../../img/pepino.png';
-// import I2 from '../../img/p1.jpg';
-// import I3 from '../../img/p3.png';
+import I1 from '../../assets/img/pepino.png';
+import I2 from '../../assets/img/p1.jpg';
+import I3 from '../../assets/img/p3.png';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import api from '../../services/api'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class Produto extends Component {
@@ -22,7 +22,7 @@ class Produto extends Component {
 
     toggle = () => {
         this.setState({
-          modal: !this.state.modal
+            modal: !this.state.modal
         });
     }
 
@@ -120,62 +120,62 @@ class Produto extends Component {
                                 this.state.listarOferta.map(function (of) {
                                     return (
                                         <div key={of.ofertaId} className="card_produtoisa">
-                                        <img src={"http://localhost:5000/Arquivos/" + of.imagemProduto} alt={of.tipo}/>
-                                        <div className="nav-p nav-p-isa">
-                                            <p>{of.tipo}<br></br>{of.preco}</p>
-                                            <Link to="/entrar" title="login">Reservar</Link>
+                                            <img src={"http://localhost:5000/Arquivos/" + of.imagemProduto} alt={of.tipo} />
+                                            <div className="nav-p nav-p-isa">
+                                                <p>{of.tipo}<br></br>{of.preco}</p>
+                                                <Link to="/entrar" title="login">Reservar</Link>
+                                            </div>
                                         </div>
-                                    </div>
                                     );
                                 })
                             }
-                            {/* <div className="card_produtoisa">
-                    <img src={I1} alt="imagem de pepino"/>
-                    <div className="nav-p nav-p-isa">
-                        <p>Pepino<br></br> R$ 10,25</p>
-                        
-                        <a href="login.html" title="login">Encomendar</a>
-                    </div>
-                </div>
-                <div className="card_produtoisa">
-                    <img src={I2} alt="imagem de tomates"/>
-                    <div className="nav-p nav-p-isa">
-                        <p>tomates<br></br> R$ 9,99</p>
-                        <a href="login.html" title="login">Encomendar</a>
-                    </div>
-                </div>
-                <div className="card_produtoisa">
-                    <img src={I3} alt="imagem de uma alface"/>
-                    <div className="nav-p nav-p-isa">
-                        <p>Alface<br></br> R$ 3,99</p>
-                        <a href="login.html" title="login">Encomendar</a>
-                    </div>
-                </div>
-                <div className="card_produtoisa">
-                    <img src={I3} alt="imagem de alface"/>
-                    <div className="nav-p nav-p-isa">
-                        <p>Alface<br></br> R$ 3,99</p>
-                        <a href="login.html" title="login">Encomendar</a>
-                    </div>
-                </div>
+                            <div className="card_produtoisa">
+                                <img src={I1} alt="imagem de pepino" />
+                                <div className="nav-p nav-p-isa">
+                                    <p>Pepino<br></br> R$ 10,25</p>
 
-                <div className="card_produtoisa"
-                >
-                    <img src={I1} alt="imagem de pepino"/>
-                    <div className="nav-p nav-p-isa">
-                        <p> Pepino<br></br> R$ 10,25 </p>
-                        <a href="login.html" title="login">Encomendar</a>
-                    </div>
+                                    <a href="login.html" title="login">Encomendar</a>
+                                </div>
+                            </div>
+                            <div className="card_produtoisa">
+                                <img src={I2} alt="imagem de tomates" />
+                                <div className="nav-p nav-p-isa">
+                                    <p>tomates<br></br> R$ 9,99</p>
+                                    <a href="login.html" title="login">Encomendar</a>
+                                </div>
+                            </div>
+                            <div className="card_produtoisa">
+                                <img src={I3} alt="imagem de uma alface" />
+                                <div className="nav-p nav-p-isa">
+                                    <p>Alface<br></br> R$ 3,99</p>
+                                    <a href="login.html" title="login">Encomendar</a>
+                                </div>
+                            </div>
+                            <div className="card_produtoisa">
+                                <img src={I3} alt="imagem de alface" />
+                                <div className="nav-p nav-p-isa">
+                                    <p>Alface<br></br> R$ 3,99</p>
+                                    <a href="login.html" title="login">Encomendar</a>
+                                </div>
+                            </div>
 
-                </div>
+                            <div className="card_produtoisa"
+                            >
+                                <img src={I1} alt="imagem de pepino" />
+                                <div className="nav-p nav-p-isa">
+                                    <p> Pepino<br></br> R$ 10,25 </p>
+                                    <a href="login.html" title="login">Encomendar</a>
+                                </div>
 
-                <div className="card_produtoisa">
-                    <img src={I2} alt="imagem de tomates"/>
-                    <div className="nav-p nav-p-isa">
-                        <p>tomates<br></br> R$ 9,99</p>
-                        <a href="login.html" title="login">Encomendar</a>
-                    </div>
-                </div> */}
+                            </div>
+
+                            <div className="card_produtoisa">
+                                <img src={I2} alt="imagem de tomates" />
+                                <div className="nav-p nav-p-isa">
+                                    <p>tomates<br></br> R$ 9,99</p>
+                                    <a href="login.html" title="login">Encomendar</a>
+                                </div>
+                            </div>
                         </section>
                     </section>
                 </main>
