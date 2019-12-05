@@ -13,66 +13,53 @@ class Entrar extends Component {
       email: "",
       senha: "",
       cpf_cnpj: "",
-      Nome: "",
-      Nascimento: "",
-      Cidade: "",
-      Cep: "",
-      Bairro: "",
-      Endereço: "",
-      Numero: "",
-      erroMensagem : "",
-      isLoading : false
+      nome: "",
+      dataNascimento: "",
+      cidade: "",
+      cep: "",
+      bairro: "",
+      endereço: "",
+      numero: "",
+      isLoading : false,
+
+      erroMensagem: ""
     }
   }
 
   atualizaEstado = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
-}
+    this.setState({ [event.target.name] : event.target.value });
+  }
+  realizarLogin(event){
+    event.preventDefault();
 
-realizarLogin(event){
-  event.preventDefault();
-  this.setState({ erroMensagem : '' })
-  this.setState({ isLoading : true })
-  let usuario = {
-    email: this.state.email,
-    senha: this.state.senha
-}
-api.post("/login", usuario)
-        .then(response => {
-          if (response.status === 200) {
-            localStorage.setItem('usuario-frigga', response.data.token)
-            this.setState({ isLoading : false })
+    let usuario = {
+      email: this.state.email,
+      senha: this.state.senha
+    }
 
-            console.log("Meu token é: " + response.data.token)
-            var base64 = localStorage.getItem('usuario-frigga').split('.')[1]
-              
-                console.log(base64)
+    this.setState({ isLoading : true })
 
-               
-                console.log(window.atob(base64))
+    api.post("/login", usuario)
+      .then(response => {
+        if(response.status === 200){
+          localStorage.setItem('usuario-frigga', response.data.token)
+          this.setState({isLoading : false})
 
-               
-                console.log(JSON.parse(window.atob(base64)))
+          console.log("Meu token é: " + response.data.token)
 
-              
-                console.log(parseJwt().Role)
-
-                if (parseJwt().Role === 'Administrador') {
-                    this.props.history.push('/');
-                }
-                else if ((parseJwt().Role === 'Fornecedor')) {
-                    this.props.history.push('/Produtos');
-                } else {
-                  this.props.history.push('/Receitas');
-                }
-            }
-            
-        })
-        .catch(erro => {
-          console.log("Erro: ", erro)
-          this.setState({ erroMensagem : 'E-mail ou senha inválidos!' })
-          this.setState({ isLoading : false })
+          if(parseJwt().Role === 'Administrador'){
+            this.props.history.push('/perfil');
+          }else{
+            this.props.history.push('/produto')
+          }
+        }
       })
+      .catch(erro => {
+        console.log("Erro:", erro)
+        this.setState({ erroMensagem: "E-mail ou senha inválidos" })
+        this.setState({isLoading: false})
+      })
+
   }
 
   render() {
@@ -82,26 +69,55 @@ api.post("/login", usuario)
         <main>
           <div className="container_login">
             <section className="esquerda_login">
-              <form method="POST" id="form_login">
+              <form onSubmit={this.realizarLogin.bind(this)} id="form_login">
                 <figure>
                   <img src={IconLogin}alt="icone do perfil" />
                 </figure>
                 <div className="form-control">
                   <div className="input-group">
                     <label>Usuario</label>
-                    <input className="input_login" type="text" placeholder="E-mail ou Cpf..."
-                      aria-label="Digite seu e-mail ou cpf" name="usuario" id="usuarioCadastro" required />
+                    <input 
+                    className="input_login" 
+                    type="text" 
+                    placeholder="E-mail.."
+                    aria-label="Digite seu e-mail" 
+                    name="email" id="usuarioCadastro" 
+                    value={this.state.email}
+                    onChange={this.atualizaEstado}
+                    required />
                   </div>
                   <div className="input-group">
                     <label>Senha</label>
-                    <input className="input_login" type="password" placeholder="Senha..." aria-label="Digite a sua senha"
-                      name="senha" id="senhaCadastro" required />
+                    <input 
+                    className="input_login" 
+                    type="password" 
+                    placeholder="Senha..." 
+                    aria-label="Digite a sua senha"
+                    name="senha" 
+                    id="senhaCadastro" 
+                    value={this.state.senha}
+                    onChange={this.atualizaEstado}
+                    required />
                   </div>
-                  <div className="buttonsContainer">
+                  {/* <div className="buttonsContainer">
+                    <button className="btn_login" type="submit">Entrar</button>
+                  </div> */}
+
+                  {
+                    this.state.isLoading === true &&
+                    <div className="buttonsContainer">
+                      <button className="btn_login" type="submit" disabled>Carregando..</button>
+                    </div>
+                  }
+                  {
+                    this.state.isLoading === false &&
+                    <div className="buttonsContainer">
                     <button className="btn_login" type="submit">Entrar</button>
                   </div>
+                  }
                 </div>
               </form>
+              <p style={{ color : 'red' }}>{this.state.erroMensagem}</p>
             </section>
 
             <section className="direita_login">
@@ -155,7 +171,7 @@ api.post("/login", usuario)
                       name="cep" id="cep" required />
                   </div>
                   <div className="input-group">
-                    <label for="bairro">Bairro</label>
+                    <label >Bairro</label>
                     <input className="input_login" type="text" placeholder="Ex: 02789-089" aria-label="Digite seu bairro"
                       name="bairro" id="bairro" required />
                   </div>
