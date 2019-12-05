@@ -608,11 +608,11 @@ width: 250px;
     background-size: 100%;
     background-position: center; /*Direção do zoom do centro para fora*/
     cursor: pointer;
-    transition: background-size 0.5s ease-in;
-    -moz-transition: background-size 0.5s ease-in;
-    -ms-transition: background-size 0.5s ease-in;
-    -o-transition: background-size 0.5s ease-in; 
-    -webkit-transition: background-size 0.5s ease-out;
+    transition: background-size 0.2s ease-in;
+    -moz-transition: background-size 0.2s ease-in;
+    -ms-transition: background-size 0.2s ease-in;
+    -o-transition: background-size 0.2s ease-in; 
+    -webkit-transition: background-size 0.2s ease-out;
   }
   
   .categ_1:hover, .categ_2:hover, .categ_3:hover, .categ_4:hover,
