@@ -12,7 +12,8 @@ class VerReceita extends Component{
         }
     }
 
-    componentDidMount(){ 
+
+    componentDidMount(){
         this.getReceita();
     }
 
@@ -76,7 +77,9 @@ class VerReceita extends Component{
                             this.state.listarReceita.map(
                                 function (vr) {
                                     return ( 
-                                        <div>
+
+                                        <div key={vr.receitaId}>
+
                                 {/* key={vr.receitaId}        */}
                                 <p> {vr.modoDePreparo}</p>
                                 <h3 className="title_receit">Ingredientes</h3>
@@ -98,4 +101,9 @@ class VerReceita extends Component{
         );
     }
 }
+
 export default VerReceita;
+
+
+
+

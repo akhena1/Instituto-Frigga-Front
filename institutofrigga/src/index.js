@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import './index.css';
+import './assets/css/estilo.css';
+import './assets/css/modalProduto.css'
 import * as serviceWorker from './serviceWorker';
 import Home from '../src/pages/Home/Home';
 import Produto from '../src/pages/Produto/Produto';
@@ -10,11 +13,9 @@ import Perfil from '../src/pages/Perfil/Perfil';
 import Entrar from '../src/pages/Entrar/Entrar';
 import About from '../src/pages/About/About';
 import NotFound from '../src/pages/NotFound/NotFound';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-// Redirect
-import { withRouter } from "react-router-dom";
-import {Route, BrowserRouter as Router, Switch, } from 'react-router-dom';
-import './assets/css/estilo.css';
+
+
+import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
 import { usuarioAutenticado, parseJwt } from '../src/services/auth';
 
 /* const PermissaoAdmin = ({ component : Component }) => (
@@ -23,19 +24,19 @@ import { usuarioAutenticado, parseJwt } from '../src/services/auth';
             usuarioAutenticado() && parseJwt().Role === "Administrador" ? (
                 <Component {...props}/>
             ) : (
-                <Redirect to={{ pathname : "/Entrar"}}/>
+                <Redirect to={{ pathname : "/entrar"}}/>
             )
         }
     />
 )
 
-const PermissaoFornecedor = ({ component : Component }) => (
+const PermissaoProdutor = ({ component : Component }) => (
     <Route 
         render={props =>
-            usuarioAutenticado() && parseJwt().Role === "Fornecedor" ? (
+            usuarioAutenticado() && parseJwt().Role === "Produtor" ? (
                 <Component {...props}/>
             ) : (
-                <Redirect to={{ pathname : "/Entrar"}}/>
+                <Redirect to={{ pathname : "/entrar"}}/>
             )
         }
     />
@@ -47,11 +48,11 @@ const PermissaoCliente = ({ component : Component }) => (
             usuarioAutenticado() && parseJwt().Role === "Cliente" ? (
                 <Component {...props}/>
             ) : (
-                <Redirect to={{ pathname : "/Entrar"}}/>
+                <Redirect to={{ pathname : "/entrar"}}/>
             )
         }
     />
-) */
+)  */
 const Rotas = (
     <Router>
         <div>
@@ -60,18 +61,15 @@ const Rotas = (
                 
                 <Route path = "/produtos" component={Produto}/>
                 <Route path = "/produto" component={Produto}/>
-
                 <Route path = "/receitas" component={Receita}/>
                 <Route path = "/receita" component={Receita}/>
-                
-                {/* <Route path = "/receita/" component={VerReceita}/>
-                <Route path = "/receitas/" component={VerReceita}/> */}
+                <Route path = "/verreceita/" component={VerReceita}/>
 
+                <Route path = "/verreceitas/" component={VerReceita}/>
                 <Route path = "/perfil" component={Perfil}/>
-
                 <Route path = "/entrar" component={Entrar}/>
-
                 <Route path = "/about" component={About}/>
+
 
                 <Route component={NotFound}/>
             </Switch>

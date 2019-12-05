@@ -131,7 +131,8 @@ class Receita extends Component {
                         }
 
 
-                        <div className="card_receitas">
+
+                         <div className="card_receitas">
                             <img src={rimg} alt="imagem de salada de queijo" />
                             <div className="nav-r">
                                 <p> Salada com queijo...</p>
@@ -172,7 +173,10 @@ class Receita extends Component {
                                 <p>Frango em Crosta de Chia...</p>
                                 <Link to="/verreceita" href="receita-2.html" title="login">Leia mais</Link>
                             </div>
+
                         </div>
+
+ 
                     </section>
                 </section>
                 <Footer />

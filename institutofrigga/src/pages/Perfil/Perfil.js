@@ -3,6 +3,7 @@ import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import iconPerfil from '../../assets/img/iconperfil.svg';
 import api from '../../services/api';
+import { MDBBtn, MDBInput, MDBAlert, MDBModal} from "mdbreact";
 
 
 
@@ -88,6 +89,8 @@ class Perfil extends Component {
       })
   }
 
+  //#endRegion
+
   //#region POSTs
 
 
@@ -95,42 +98,55 @@ class Perfil extends Component {
   //#endregion
 
   //#region DELETE
-  //   deleteEvento(id){
+    deleteEvento(id){
 
-  //     this.setState({ successMsg : "" })
+      this.setState({ successMsg : "" })
 
-  //     api.delete('/perfil/'+id)
-  //     .then(response => {
-  //         if(response.status === 200){
-  //             this.setState({ successMsg : "Excluído com sucesso" })
+      api.delete('/oferta'+id)
+      .then(response => {
+          if(response.status === 200){
+              this.setState({ successMsg : "Excluído com sucesso" })
 
-  //             setTimeout(() => {
-  //                 this.getEventos();
-  //             }, 1500);
-  //         }
-  //     })
-  //     api.delete('/perfil/'+id)
-  //     .then(response => {
-  //         if(response.status === 200){
-  //             this.setState({ successMsg : "Excluído com sucesso" })
+              setTimeout(() => {
+                  this.getEventos();
+              }, 1500);
+          }
+      })
+      api.delete('/receita/'+id)
+      .then(response => {
+          if(response.status === 200){
+              this.setState({ successMsg : "Excluído com sucesso" })
 
-  //             setTimeout(() => {
-  //                 this.getEventos();
-  //             }, 1500);
-  //         }
-  //     })
-  //     .catch(error => {
-  //         console.log(error);
-  //         this.setState({ erroMsg : "Falha ao excluir" })
-  //     })
+              setTimeout(() => {
+                  this.getEventos();
+              }, 1500);
+          }
+      })
+      .catch(error => {
+          console.log(error);
+          this.setState({ erroMsg : "Falha ao excluir" })
+      })
 
-  // }
+  }
   //#endregion
   render() {
     return (
       <main>
         <Header />
         <section className="profile">
+        {
+                                this.state.erroMsg && 
+                                <MDBAlert color="danger" >
+                                    {this.state.erroMsg}
+                                </MDBAlert>
+                            }
+                        
+                            {
+                            this.state.successMsg && 
+                                <MDBAlert color="success" >
+                                    {this.state.successMsg}
+                                </MDBAlert>
+                            }
           <div className="profile_icone">
             <h1>Perfil</h1>
             <img src={iconPerfil} alt="icone usuario" />
