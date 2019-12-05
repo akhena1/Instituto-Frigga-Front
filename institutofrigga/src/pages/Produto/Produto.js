@@ -132,7 +132,7 @@ class Produto extends Component {
                                             </div>
                                         </div>
                                     );
-                                }.bind(this))
+                                }/* .bind(this) */)
                             }
                             {
 
