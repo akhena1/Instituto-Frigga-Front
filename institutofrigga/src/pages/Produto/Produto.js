@@ -10,8 +10,8 @@ import Modal from 'react-responsive-modal';
 
 
 class Produto extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             listarCategoriaProduto: [],
             listarOferta: [],
@@ -39,9 +39,11 @@ class Produto extends Component {
     }
 
     getOferta = () => {
+        let id = this.props.ofertaId;
         api.get('/oferta').then(response => {
             if (response.status === 200) {
                 this.setState({ listarOferta: response.data })
+                console.log(response.data)
             }
         })
     }
@@ -132,7 +134,7 @@ class Produto extends Component {
                                             </div>
                                         </div>
                                     );
-                                }.bind(this))
+                                })
                             }
                             {
 
@@ -146,7 +148,7 @@ class Produto extends Component {
 
                                                         <div className="containerModalProduto">
                                                             <div className="imgModalProduto">
-                                                                <img src={"http://localhost:5000/Arquivos/" + o.imagemProduto} alt={o.tipo} />
+                                                                <img src={"http://localhost:5000/Arquivos/" + o.imagemProduto} alt={o.produto.tipo} />
                                                             </div>
                                                             <div>
                                                                 <h1>{o.produto.tipo}</h1>
@@ -162,13 +164,15 @@ class Produto extends Component {
                                                                 <p>Preço: R$ {o.preco}</p>
                                                                 <p>Peso: {o.peso}KG</p>
                                                             </div>
-                                                            
-                                                        </div>
-                                                        <div className="containerModalProduto3">
-                                                            <button>
 
+                                                        </div>
+                                                        <div className="bordaCinzaModal"></div>
+                                                        <div className="divBtnModal">
+                                                            <button className="btnModalProduto">
+                                                                Ok
                                                             </button>
                                                         </div>
+
                                                     </div>
 
                                                 );
@@ -179,52 +183,52 @@ class Produto extends Component {
                                 </div>
                             }
                             <div className="card_produtoisa">
-                    <img src={I1} alt="imagem de pepino"/>
-                    <div className="nav-p nav-p-isa">
-                        <p>Pepino<br></br> R$ 10,25</p>
-                        
-                        <a href="login.html" title="login">Encomendar</a>
-                    </div>
-                </div>
-                <div className="card_produtoisa">
-                    <img src={I2} alt="imagem de tomates"/>
-                    <div className="nav-p nav-p-isa">
-                        <p>tomates<br></br> R$ 9,99</p>
-                        <a href="login.html" title="login">Encomendar</a>
-                    </div>
-                </div>
-                <div className="card_produtoisa">
-                    <img src={I3} alt="imagem de uma alface"/>
-                    <div className="nav-p nav-p-isa">
-                        <p>Alface<br></br> R$ 3,99</p>
-                        <a href="login.html" title="login">Encomendar</a>
-                    </div>
-                </div>
-                <div className="card_produtoisa">
-                    <img src={I3} alt="imagem de alface"/>
-                    <div className="nav-p nav-p-isa">
-                        <p>Alface<br></br> R$ 3,99</p>
-                        <a href="login.html" title="login">Encomendar</a>
-                    </div>
-                </div>
+                                <img src={I1} alt="imagem de pepino" />
+                                <div className="nav-p nav-p-isa">
+                                    <p>Pepino<br></br> R$ 10,25</p>
 
-                <div className="card_produtoisa"
-                >
-                    <img src={I1} alt="imagem de pepino"/>
-                    <div className="nav-p nav-p-isa">
-                        <p> Pepino<br></br> R$ 10,25 </p>
-                        <a href="login.html" title="login">Encomendar</a>
-                    </div>
+                                    <a href="login.html" title="login">Encomendar</a>
+                                </div>
+                            </div>
+                            <div className="card_produtoisa">
+                                <img src={I2} alt="imagem de tomates" />
+                                <div className="nav-p nav-p-isa">
+                                    <p>tomates<br></br> R$ 9,99</p>
+                                    <a href="login.html" title="login">Encomendar</a>
+                                </div>
+                            </div>
+                            <div className="card_produtoisa">
+                                <img src={I3} alt="imagem de uma alface" />
+                                <div className="nav-p nav-p-isa">
+                                    <p>Alface<br></br> R$ 3,99</p>
+                                    <a href="login.html" title="login">Encomendar</a>
+                                </div>
+                            </div>
+                            <div className="card_produtoisa">
+                                <img src={I3} alt="imagem de alface" />
+                                <div className="nav-p nav-p-isa">
+                                    <p>Alface<br></br> R$ 3,99</p>
+                                    <a href="login.html" title="login">Encomendar</a>
+                                </div>
+                            </div>
 
-                </div>
+                            <div className="card_produtoisa"
+                            >
+                                <img src={I1} alt="imagem de pepino" />
+                                <div className="nav-p nav-p-isa">
+                                    <p> Pepino<br></br> R$ 10,25 </p>
+                                    <a href="login.html" title="login">Encomendar</a>
+                                </div>
 
-                <div className="card_produtoisa">
-                    <img src={I2} alt="imagem de tomates"/>
-                    <div className="nav-p nav-p-isa">
-                        <p>tomates<br></br> R$ 9,99</p>
-                        <a href="login.html" title="login">Encomendar</a>
-                    </div>
-                </div>
+                            </div>
+
+                            <div className="card_produtoisa">
+                                <img src={I2} alt="imagem de tomates" />
+                                <div className="nav-p nav-p-isa">
+                                    <p>tomates<br></br> R$ 9,99</p>
+                                    <a href="login.html" title="login">Encomendar</a>
+                                </div>
+                            </div>
                         </section>
                     </section>
                 </main>

@@ -4,14 +4,52 @@
 }
 .containerModalProduto{
     display: flex;
-    width: 790px;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 680px;
+    margin-top: 20px;
+    margin-left: 20px;
+
+}
+.containerModalProduto p{
+    font-size: 25px;
+    margin-top: 15px;
+
+}
+.imgModalProduto img{
+    border-radius: 5px;
 }
 .precoPesoProduto{
     display: flex;
-    width: 328px;
+    width: 320px;
     justify-content: space-between;
     font-size: 30px;
     margin-top: 6px;
-    margin-left: 50px;
+    margin-left: 32px;
 }
+
+.bordaCinzaModal{
+    height: 1px;
+    width: 760px;
+    margin: auto;
+    background-color: #999494;
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+.divBtnModal{
+    display: flex;
+    width: 700px;
+    justify-content: flex-end;
+}
+.btnModalProduto{
+    background-color: #08D10F;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    box-shadow: 0px 1px 3px 0px rgba(112, 112, 112, 1);
+}
+.btnModalProduto:hover{
+    background-color: #006D03;
+    color: white;
+}
+
