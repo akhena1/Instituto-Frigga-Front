@@ -4,6 +4,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import './index.css';
 import './assets/css/estilo.css';
 import './assets/css/modalProduto.css'
+import './assets/css/entrar.css'
 import * as serviceWorker from './serviceWorker';
 import Home from '../src/pages/Home/Home';
 import Produto from '../src/pages/Produto/Produto';

@@ -64,9 +64,9 @@ class Home extends Component {
                             feitas com produtos orgânicos? Você<br />
                             ganha uma grana extra e ainda coopera <br />
                             para um   mundo   mais   sustentável!</p>
-                        <a href="about.html">
+                        <Link to="/about">
                             Saiba mais!
-                        </a>
+                        </Link>
                     </div>
                     <div className="titulos">
                         <h2>Receitas</h2>
