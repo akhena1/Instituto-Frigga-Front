@@ -4,6 +4,15 @@
 margin: 0;
 padding: 0;
 }
+:root {
+    --cinza: #363636;
+    --verde: #08D10F;
+    --laranja: #FF7B0A;
+    --branco: #ffffff;
+    --fonte1: 'Barlow Condensed', sans-serif;
+    --fonte2: 'Quicksand', sans-serif;
+    }
+    
 
 .container_login {
     font-family: var(--fontbarlow);

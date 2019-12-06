@@ -249,8 +249,8 @@ class Perfil extends Component {
                   function (o) {
                     return (
                         <tr key={o.ofertaId}>
-                          <td>{o.produto.tipo}</td>
-                          <td>{o.produto.categoriaProduto.tipoProduto}</td>
+                          <td>{/* {o.produto.tipo} */}</td>
+                          <td>{/* {o.produto.categoriaProduto.tipoProduto} */}</td>
                           <td>{o.peso}</td>
                           <td>{o.preco}</td>
                           <td>{o.quantidade}</td>
@@ -261,94 +261,6 @@ class Perfil extends Component {
                   }.bind(this)
                 )
               }
-               {/* <tr>
-                  <td>
-                    <div id="table_img"></div>
-                  </td>
-                  <td>Banana nanica</td>
-                  <td>Frutas</td>
-                  <td>1KG</td>
-                  <td>R$8,90</td>
-                  <td>10</td>
-                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div id="table_img"></div>
-                  </td>
-                  <td>Banana nanica</td>
-                  <td>Frutas</td>
-                  <td>1KG</td>
-                  <td>R$8,90</td>
-                  <td>10</td>
-                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div id="table_img"></div>
-                  </td>
-                  <td>Banana nanica</td>
-                  <td>Frutas</td>
-                  <td>1KG</td>
-                  <td>R$8,90</td>
-                  <td>10</td>
-                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div id="table_img"></div>
-                  </td>
-                  <td>Banana nanica</td>
-                  <td>Frutas</td>
-                  <td>1KG</td>
-                  <td>R$8,90</td>
-                  <td>10</td>
-                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div id="table_img"></div>
-                  </td>
-                  <td>Banana nanica</td>
-                  <td>Frutas</td>
-                  <td>1KG</td>
-                  <td>R$8,90</td>
-                  <td>10</td>
-                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div id="table_img"></div>
-                  </td>
-                  <td>Banana nanica</td>
-                  <td>Frutas</td>
-                  <td>1KG</td>
-                  <td>R$8,90</td>
-                  <td>10</td>
-                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div id="table_img"></div>
-                  </td>
-                  <td>Banana nanica</td>
-                  <td>Frutas</td>
-                  <td>1KG</td>
-                  <td>R$8,90</td>
-                  <td>10</td>
-                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div id="table_img"></div>
-                  </td>
-                  <td>Banana nanica</td>
-                  <td>Frutas</td>
-                  <td>1KG</td>
-                  <td>R$8,90</td>
-                  <td>10</td>
-                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
-              </tr> */}
                 </tbody>
               <tfoot>
                 <tr>
@@ -413,9 +325,6 @@ class Perfil extends Component {
             <table>
               <thead>
                 <tr>
-                {/* <th>
-                  <div>Imagem</div>
-                </th> */}
                 <th>Nome da receita</th>
                 <th>Categoria</th>
                 <th className="void"></th>
@@ -429,86 +338,14 @@ class Perfil extends Component {
                       return (
                         <tr key={r.receitaId}>
                           <td>{r.nome}</td>
-                          <td>{r.categoriaReceita.tipoReceita}</td>
+                          <td> {/* {r.categoriaReceita.tipoReceita} */}</td>
                           <td><a className="verreceitas" href="#">Ver receita</a></td>
                           <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
                         </tr>
                       )
-                    }.bind(this)
+                    }
                   )
                 }
-                {/* <tr>
-                  <td>
-                    <div id="table_img"></div>
-                  </td>
-                  <td>Salada de legumes Gourmet</td>
-                  <td>Saladas</td>
-                  <td><a className="verreceitas" href="#">Ver receita</a></td>
-                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div id="table_img"></div>
-                  </td>
-                  <td>Salada de legumes Gourmet</td>
-                  <td>Saladas</td>
-                  <td><a className="verreceitas" href="#">Ver receita</a></td>
-                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div id="table_img"></div>
-                  </td>
-                  <td>Salada de legumes Gourmet</td>
-                  <td>Saladas</td>
-                  <td><a className="verreceitas" href="#">Ver receita</a></td>
-                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div id="table_img"></div>
-                  </td>
-                  <td>Salada de legumes Gourmet</td>
-                  <td>Saladas</td>
-                  <td><a className="verreceitas" href="#">Ver receita</a></td>
-                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div id="table_img"></div>
-                  </td>
-                  <td>Salada de legumes Gourmet</td>
-                  <td>Saladas</td>
-                  <td><a className="verreceitas" href="#">Ver receita</a></td>
-                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div id="table_img"></div>
-                  </td>
-                  <td>Salada de legumes Gourmet</td>
-                  <td>Saladas</td>
-                  <td><a className="verreceitas" href="#">Ver receita</a></td>
-                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div id="table_img"></div>
-                  </td>
-                  <td>Salada de legumes Gourmet</td>
-                  <td>Saladas</td>
-                  <td><a className="verreceitas" href="#">Ver receita</a></td>
-                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div id="table_img"></div>
-                  </td>
-                  <td>Salada de legumes Gourmet</td>
-                  <td>Saladas</td>
-                  <td><a className="verreceitas" href="#">Ver receita</a></td>
-                  <td className="delete"><button type="reset"><i className="fas fa-trash"></i></button>Excluir</td>
-                </tr> */}
               </tbody>
               <tfoot>
                 <tr>

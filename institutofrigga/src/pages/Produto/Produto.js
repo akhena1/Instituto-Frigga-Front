@@ -154,9 +154,9 @@ class Produto extends Component {
                                                             <div>
                                                                 <h1>{o.produto.tipo}</h1>
                                                                 <h2>Dados do produtor para contato</h2>
-                                                                <p>Nome: {o.usuario.nome}</p>
-                                                                <p>Email:{o.usuario.email}</p>
-                                                                <p>Telefone:{o.usuario.telefone}</p>
+                                                                <p>Nome: {/* {o.usuario.nome} */}</p>
+                                                                <p>Email:{/* {o.usuario.email} */}</p>
+                                                                <p>Telefone:{/* {o.usuario.telefone} */}</p>
                                                             </div>
 
                                                         </div>
@@ -175,7 +175,7 @@ class Produto extends Component {
                                                     </div>
 
                                                 );
-                                            }
+                                            }.bind(this)
                                             )
                                         }
                                     </Modal>

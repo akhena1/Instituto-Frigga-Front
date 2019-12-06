@@ -2,9 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './index.css';
-import './assets/css/estilo.css';
-import './assets/css/modalProduto.css'
-import './assets/css/entrar.css'
+import './assets/css/header&footer.css';
+import './assets/css/modalProduto.css';
+import './assets/css/entrar.css';
+import './assets/css/home&produtos.css';
+import './assets/css/receita.css';
+import './assets/css/about.css';
+import './assets/css/perfil.css';
 import * as serviceWorker from './serviceWorker';
 import Home from '../src/pages/Home/Home';
 import Produto from '../src/pages/Produto/Produto';
@@ -19,7 +23,7 @@ import NotFound from '../src/pages/NotFound/NotFound';
 import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
 import { usuarioAutenticado, parseJwt } from '../src/services/auth';
 
-/* const PermissaoAdmin = ({ component : Component }) => (
+const PermissaoAdmin = ({ component : Component }) => (
     <Route 
         render={props =>
             usuarioAutenticado() && parseJwt().Role === "Administrador" ? (
@@ -53,7 +57,7 @@ const PermissaoCliente = ({ component : Component }) => (
             )
         }
     />
-)  */
+) 
 const Rotas = (
     <Router>
         <div>
