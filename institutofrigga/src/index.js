@@ -25,25 +25,25 @@ import {Route, BrowserRouter as Router, Switch, } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
-/* const PermissaoAdmin = ({ component : Component }) => (
+const PermissaoAdmin = ({ component : Component }) => (
     <Route 
         render={props =>
             usuarioAutenticado() && parseJwt().Role === "Administrador" ? (
                 <Component {...props}/>
             ) : (
-                <Redirect to={{ pathname : "/Entrar"}}/>
+                <Redirect to={{ pathname : "/entrar"}}/>
             )
         }
     />
 )
 
-const PermissaoFornecedor = ({ component : Component }) => (
+const PermissaoProdutor = ({ component : Component }) => (
     <Route 
         render={props =>
-            usuarioAutenticado() && parseJwt().Role === "Fornecedor" ? (
+            usuarioAutenticado() && parseJwt().Role === "Produtor" ? (
                 <Component {...props}/>
             ) : (
-                <Redirect to={{ pathname : "/Entrar"}}/>
+                <Redirect to={{ pathname : "/entrar"}}/>
             )
         }
     />
@@ -55,11 +55,11 @@ const PermissaoCliente = ({ component : Component }) => (
             usuarioAutenticado() && parseJwt().Role === "Cliente" ? (
                 <Component {...props}/>
             ) : (
-                <Redirect to={{ pathname : "/Entrar"}}/>
+                <Redirect to={{ pathname : "/entrar"}}/>
             )
         }
     />
-) */
+) 
 const Rotas = (
     <Router>
         <div>
@@ -68,18 +68,15 @@ const Rotas = (
                 
                 <Route path = "/produtos" component={Produto}/>
                 <Route path = "/produto" component={Produto}/>
-
                 <Route path = "/receitas" component={Receita}/>
                 <Route path = "/receita" component={Receita}/>
-                
-                <Route path = "/receita/" component={VerReceita}/>
-                <Route path = "/receitas/" component={VerReceita}/>
+                <Route path = "/verreceita/" component={VerReceita}/>
 
+                <Route path = "/verreceitas/" component={VerReceita}/>
                 <Route path = "/perfil" component={Perfil}/>
-
                 <Route path = "/entrar" component={Entrar}/>
-
                 <Route path = "/about" component={About}/>
+
 
                 <Route component={NotFound}/>
             </Switch>

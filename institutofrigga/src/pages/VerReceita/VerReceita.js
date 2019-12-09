@@ -4,20 +4,21 @@ import Footer from '../../Components/Footer/Footer';
 import api from '../../services/api';
 import { Link } from 'react-router-dom'
 
-class VerReceita extends Component{
+class VerReceita extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             listarReceita: [],
         }
     }
 
-    componentDidMount(){
+
+    componentDidMount() {
         this.getReceita();
     }
 
-    getReceita = () =>{
+    getReceita = () => {
 
         let id = this.props.location.state.receitaId
         api.get('/receita/'+id).then(response =>
@@ -99,6 +100,7 @@ class VerReceita extends Component{
         );
     }
 }
+
 export default VerReceita;
 
 

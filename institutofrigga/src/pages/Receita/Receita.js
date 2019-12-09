@@ -48,7 +48,7 @@ class Receita extends Component {
             }
         })
     }
-    
+
 
     render() {
         return (
@@ -111,7 +111,7 @@ class Receita extends Component {
                     </section>
 
                     <section className="container-receitas">
-                     
+
                         <h3 className="receita-la">Cantinho das Receitas</h3>
 
                         {
@@ -128,7 +128,8 @@ class Receita extends Component {
                                     )
                                 }
                             )
-                        } 
+                        }
+
 
 
                          <div className="card_receitas">
@@ -172,10 +173,13 @@ class Receita extends Component {
                                 <p>Frango em Crosta de Chia...</p>
                                 <Link to="/verreceita" href="receita-2.html" title="login">Leia mais</Link>
                             </div>
-                        </div> 
+
+                        </div>
+
+ 
                     </section>
                 </section>
-                <Footer/>
+                <Footer />
             </div>
 
         );
@@ -186,4 +190,4 @@ class Receita extends Component {
 export default Receita;
 
 
-   
+

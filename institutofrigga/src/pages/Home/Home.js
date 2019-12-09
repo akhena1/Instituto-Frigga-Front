@@ -18,7 +18,7 @@ class Home extends Component {
         super()
         this.state = {
             listaReceita: [],
-            listaOferta: [],
+            listaOferta: []
 
         }
     }
@@ -64,9 +64,9 @@ class Home extends Component {
                             feitas com produtos orgânicos? Você<br />
                             ganha uma grana extra e ainda coopera <br />
                             para um   mundo   mais   sustentável!</p>
-                        <a href="about.html">
+                        <Link to="/about">
                             Saiba mais!
-                        </a>
+                        </Link>
                     </div>
                     <div className="titulos">
                         <h2>Receitas</h2>
@@ -106,7 +106,7 @@ class Home extends Component {
                                                     <img src={"http://localhost:5000/arquivos/" + o.imagemProduto} alt='' />
                                                     <div className="nav-p">
                                                         <p>{o.produto.tipo}<br />R${o.preco}</p>
-                                                        <Link to="/Entrar">Encomendar</Link>
+                                                        <Link to="/Entrar">Reservar</Link>
                                                     </div>
                                                 </div>
                                             );

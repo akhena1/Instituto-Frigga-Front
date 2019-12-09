@@ -12,10 +12,14 @@ import {Link} from 'react-router-dom'
 
 
 class About extends Component {
+
     render() {
+        
         return (
 
             <div>
+                
+
                 <Header />
                 <section className="container-assunto1">
                     <div>
@@ -26,7 +30,7 @@ class About extends Component {
                         <p>
 
                             O Instituto Frigga é uma iniciativa que nasceu
-                             de uma fusão<br/> de ONGS e Cooperativas , e tem como
+                             de uma fusão<br/> de ONGS e Cooperativas  e tem como
                             objetivo democratizar<br/> o acesso à produtos orgânicos
                             e ajudar pessoas de baixa renda!
                             </p>
@@ -39,7 +43,7 @@ class About extends Component {
                         <p>
                         Nós sabemos como é dificil dar o primeiro passo,
                         por isso pensamos<br/> em uma solução para você que
-                        desejar iniciar algo novo<br/> e precisa de um empurrãozinho!
+                        deseja iniciar algo novo<br/> e precisa de um empurrãozinho!
                         Nós lhe fornecemos um kit inicial<br/>para você começar suas vendas!
                         <br/><br/><br/>Entre em contato conosco pelo email: institutofrigga@email.org.br
                        </p>
