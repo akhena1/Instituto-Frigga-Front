@@ -78,25 +78,25 @@ class Produto extends Component {
                                 <div className="align">
                                     <p>LEGUMES</p><br></br>
                                     <div className="categ_1">
-                                        <a href="#"></a>
+                                    <Link to = '#'></Link>
                                     </div>
                                 </div>
                                 <div className="align">
                                     <p>FRUTAS</p><br></br>
                                     <div className="categ_2">
-                                        <a href="#"></a>
+                                    <Link to = '#'></Link>
                                     </div>
                                 </div>
                                 <div className="align">
                                     <p>SAFRA DA SEMANA</p><br></br>
                                     <div className="categ_3">
-                                        <a href="#"></a>
+                                    <Link to = '#'></Link>
                                     </div>
                                 </div>
                                 <div className="align">
                                     <p>MAIS BUSCADOS</p><br></br>
                                     <div className="categ_4">
-                                        <a href="#"></a>
+                                    <Link to = '#'></Link>
                                     </div>
                                 </div>
                             </div>
@@ -105,11 +105,11 @@ class Produto extends Component {
                             <div className="categorias_mobile">
                                 <div className="categ_mobile">
                                     <p>LEGUMES</p>
-                                    <a href="#"><img src="IMGS/frutas.png" title="#" alt="legumes" /></a>
+                                    <Link to = '#'><img src="IMGS/frutas.png" title="#" alt="legumes" /></Link>
                                 </div>
                                 <div className="categ_mobile">
                                     <p>FRUTAS</p>
-                                    <a href="#"><img src="IMGS/abacaxi.png" title="#" alt="frutas" /></a>
+                                    <Link to = '#'><img src="IMGS/abacaxi.png" title="#" alt="frutas" /></Link>
                                 </div>
                             </div>
                         </section>

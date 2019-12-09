@@ -1089,7 +1089,11 @@ td button i {
   margin-right: 5px;
 }
 
-  .editar button:hover, .delete button:hover {
+  .editar button:hover{
+    color: var(--verde);
+  }
+  
+  .delete button:hover {
     color: red;
   }
   .editar {

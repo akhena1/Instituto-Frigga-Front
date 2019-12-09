@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import api from '../../services/api';
+import { Link } from 'react-router-dom'
 
 class VerReceita extends Component{
 
@@ -18,8 +19,8 @@ class VerReceita extends Component{
 
     getReceita = () =>{
 
-        let id = this.props.location.state.receitaId;
-        api.get('/receita/'+id) .then(response =>
+        let id = this.props.location.state.receitaId
+        api.get('/receita/'+id).then(response =>
             {
 
                 if(response.status === 200){
@@ -43,25 +44,25 @@ class VerReceita extends Component{
         <div className="align">
             <p>MASSAS</p><br></br>
             <div className="categ_5">
-                <a href="#"></a>
+                <Link to = '#'></Link>
             </div>
         </div>
         <div className="align">
             <p>SOPAS</p><br></br>
             <div className="categ_6">
-                <a href="#"></a>
+            <Link to = '#'></Link>
             </div>
         </div>
         <div className="align">
             <p>SALADAS</p><br></br>
             <div className="categ_7">
-                <a href="#"></a>
+            <Link to = '#'></Link>
             </div>
         </div>
         <div className="align">
             <p>SOBREMESA</p><br></br>
             <div className="categ_8">
-                <a href="#"></a>
+            <Link to = '#'></Link>
             </div>
         </div>
     </div>

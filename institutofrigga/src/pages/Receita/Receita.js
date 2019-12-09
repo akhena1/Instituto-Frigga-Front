@@ -64,25 +64,25 @@ class Receita extends Component {
                             <div className="align">
                                 <p>MASSAS</p><br></br>
                                 <div className="categ_5">
-                                    <a href="#"></a>
+                                <Link to = '#'></Link>
                                 </div>
                             </div>
                             <div className="align">
                                 <p>SOPAS</p><br></br>
                                 <div className="categ_6">
-                                    <a href="#"></a>
+                                <Link to = '#'></Link>
                                 </div>
                             </div>
                             <div className="align">
                                 <p>SALADAS</p><br></br>
                                 <div className="categ_7">
-                                    <a href="#"></a>
+                                <Link to = '#'></Link>
                                 </div>
                             </div>
                             <div className="align">
                                 <p>SOBREMESA</p><br></br>
                                 <div className="categ_8">
-                                    <a href="#"></a>
+                                <Link to = '#'></Link>
                                 </div>
                             </div>
                         </div>
@@ -92,19 +92,19 @@ class Receita extends Component {
                         <div className="categorias_mobile">
                             <div className="categ_mobile">
                                 <p>LEGUMES</p>
-                                <a href="#"><img src="img/frutas.png" title="#" alt="legumes" /></a>
+                                <Link to = '#'><img src="img/frutas.png" title="#" alt="legumes" /></Link>
                             </div>
                             <div className="categ_mobile">
                                 <p>FRUTAS</p>
-                                <a href="#"><img src="img/abacaxi.png" title="#" alt="frutas" /></a>
+                                <Link to = '#'><img src="img/abacaxi.png" title="#" alt="frutas" /></Link>
                             </div>
                             <div className="categ_mobile">
                                 <p>MASSAS</p>
-                                <a href="#"><img src="img/massas.png" title="#" alt="frutas" /></a>
+                                <Link to = '#'><img src="img/massas.png" title="#" alt="frutas" /></Link>
                             </div>
                             <div className="categ_mobile">
                                 <p>SALADAS</p>
-                                <a href="#"><img src="img/frutas.png" title="#" alt="frutas" /></a>
+                                <Link to = '#'><img src="img/frutas.png" title="#" alt="frutas" /></Link>
                             </div>
                         </div>
 
@@ -119,7 +119,7 @@ class Receita extends Component {
                                 function (r) {
                                     return (
                             <div key={r.receitaId} className="card_receitas">
-                            <img src={"http://localhost:5000/Arquivos/" + r.imagemReceita} />
+                            <img src={"http://localhost:5000/Arquivos/" + r.imagemReceita} alt=''/>
                             <div className="nav-r">
                                 <p>{r.nome}</p>
                                 <Link to={{ pathname: '/verreceita', state: { receitaId: r.receitaId} }} >Leia mais</Link>

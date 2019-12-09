@@ -1,7 +1,10 @@
+// Padrão
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import * as serviceWorker from './serviceWorker';
+
+//Páginas
+// import { usuarioAutenticado, parseJwt } from '../src/services/auth';
 import Home from '../src/pages/Home/Home';
 import Produto from '../src/pages/Produto/Produto';
 import Receita from '../src/pages/Receita/Receita';
@@ -10,12 +13,17 @@ import Perfil from '../src/pages/Perfil/Perfil';
 import Entrar from '../src/pages/Entrar/Entrar';
 import About from '../src/pages/About/About';
 import NotFound from '../src/pages/NotFound/NotFound';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-// Redirect
-import { withRouter } from "react-router-dom";
-import {Route, BrowserRouter as Router, Switch, } from 'react-router-dom';
+
+// Css
+import './index.css';
 import './assets/css/estilo.css';
-import { usuarioAutenticado, parseJwt } from '../src/services/auth';
+
+// Dependências necessárias
+import {Route, BrowserRouter as Router, Switch, } from 'react-router-dom';
+
+// React Font Awelsome Css
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 /* const PermissaoAdmin = ({ component : Component }) => (
     <Route 
