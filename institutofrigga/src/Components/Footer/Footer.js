@@ -19,15 +19,15 @@ class Footer extends Component {
         
               </div>
               <div className="redes">
-                <Link to ="#" className="facebook"></Link>
+                <Link to ="#" className="facebook">
                   <img src={IconFacebook} alt="Link para o Facebook"/>
-                  <p>Facebook</p>
-                <Link to ="#" className="instagram"></Link>
+                  <p>Facebook</p></Link>
+                <Link to ="#" className="instagram">
                   <img src={IconInstagram} alt="Link para o instagram"/>
-                  <p>Instagram</p>
-                <Link to = "#" className="twitter"></Link>
-                  <img src={IconTwitter} alt="Link para o twitter"/>
-                  <p>Twitter</p>
+                  <p>Instagram</p></Link>
+                <Link to = "#" className="twitter">
+                  <img src={IconTwitter} alt="Link para o titter"/>
+                  <p>Twitter</p></Link>
               </div>
             </div>
           </footer>

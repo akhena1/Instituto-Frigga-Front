@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
 //Páginas
-// import { usuarioAutenticado, parseJwt } from '../src/services/auth';
+import { usuarioAutenticado, parseJwt } from '../src/services/auth';
 import Home from '../src/pages/Home/Home';
 import Produto from '../src/pages/Produto/Produto';
 import Receita from '../src/pages/Receita/Receita';
@@ -16,10 +16,16 @@ import NotFound from '../src/pages/NotFound/NotFound';
 
 // Css
 import './index.css';
-import './assets/css/estilo.css';
+import './assets/css/entrar.css';
+import './assets/css/header&footer.css';
+import './assets/css/home&produtos.css';
+import './assets/css/modalProduto.css';
+import './assets/css/perfil.css';
+import './assets/css/about.css'
+import './assets/css/receita.css'
 
 // Dependências necessárias
-import {Route, BrowserRouter as Router, Switch, } from 'react-router-dom';
+import {Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
 // React Font Awelsome Css
 import '@fortawesome/fontawesome-free/css/all.min.css';
