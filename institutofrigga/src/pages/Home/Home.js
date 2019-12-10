@@ -35,10 +35,11 @@ class Home extends Component {
     getOferta = () => {
         api.get('/oferta')
             .then(response => {
+
                 if (response.status === 200) {
                     this.setState({ listaOferta: response.data })
                 }
-                console.log(response)
+                console.log(this.state.listaOferta)
             })
     }
 
@@ -104,9 +105,9 @@ class Home extends Component {
                                             return (
 
                                                 <div key={o.ofertaId} className="card-produto">
-                                                    <img src={"https://localhost:5001/arquivos/" + o.imagemProduto} alt='' />
+                                                    <img src={"http://localhost:5000/arquivos/" + o.imagemProduto} alt='' />
                                                     <div className="nav-p">
-                                                        <p>{o.produto.tipo}<br />R${o.preco}</p>
+                                                        <p>{o.produto.tipo} <br /> R${o.preco}</p>
                                                         <Link to="/Entrar">Reservar</Link>
                                                     </div>
                                                 </div>

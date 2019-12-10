@@ -3,7 +3,8 @@ import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import { Link } from "react-router-dom";
 import iconPerfil from '../../assets/img/iconperfil.svg';
-import api from '../../services/api';
+import {api,apiFormData} from '../../services/api';
+import { parseJwt } from '../../services/auth';
 
 
 
@@ -32,17 +33,18 @@ class Perfil extends Component {
       //   telefone: "",
       //   email: ""
       // },
-    
-      postProduto : {
+
+      postProduto: {
         tipo: "",
-        tipoProduto: "",
+        tipoProduto: ""
       },
 
       postOferta: {
-        produtoId:"",
+        produtoId: "",
         preco: "",
         peso: "",
-        quantidade: ""
+        imagemProduto: React.createRef(),
+        quantidade: "",
       },
 
       putOferta: {
@@ -100,7 +102,7 @@ class Perfil extends Component {
   getProduto = () => {
     console.log("Get Produto")
     api.get('/produto')
-      .then(response => { 
+      .then(response => {
         console.log(response)
         if (response.status === 200) {
           this.setState({ listaProduto: response.data }, () => console.log("Lista de Produtos: ", this.state.listaProduto))
@@ -113,7 +115,7 @@ class Perfil extends Component {
   getOferta = () => {
     console.log("Get Oferta")
     api.get('/oferta')
-      .then(response => { 
+      .then(response => {
         console.log(response)
         if (response.status === 200) {
           this.setState({ listaOferta: response.data }, () => console.log("Lista de Ofertas: ", this.state.listaOferta))
@@ -124,7 +126,7 @@ class Perfil extends Component {
   }
 
   getReceita = () => {
-    console.log("Get Receita")    
+    console.log("Get Receita")
     api.get('/receita')
       .then(response => {
         console.log(response)
@@ -165,25 +167,52 @@ class Perfil extends Component {
 
   //#region POSTs
 
-  atualizaEstado = (input) => {
+  atualizaEstadoProduto = (input) => {
     this.setState({
       postProduto: {
-        ...this.setState.postProduto, [input.target.name]: input.target.value,
-        postOferta: {
-          ...this.setState.postOferta, [input.target.name]: input.target.value,
-          postReceita: {
-            ...this.setState.postReceita, [input.target.name]: input.target.value
+        ...this.state.postProduto, [input.target.name]: input.target.value
       }
-    }
-  }
     })
+  }
+
+  atualizaEstadoOferta = (input) => {
+    this.setState({
+      postOferta: {
+        ...this.state.postOferta, [input.target.name]: input.target.value
+      }
+    })
+  }
+
+
+  atualizaEstadoReceita = input => {
+    this.setState({
+      postReceita: {
+        ...this.state.postReceita, [input.target.name]: input.target.value
+      }
+    })
+  }
+
+  // 02 - Adicionamos um setState específico
+  postSetStateFile = (input) =>{
+      this.setState({
+          postOferta : {
+              ...this.state.postOferta, [input.target.name] : input.target.files[0],
+          }   
+      })
   }
 
   postProduto = (p) => {
 
     p.preventDefault();
 
-    api.post('/produto', this.state.postProduto)
+    console.log("Produto do state: ", this.state.postProduto);
+
+    let produto = {
+      tipo: this.state.postProduto.tipo,
+      categoriaProdutoId: this.state.postProduto.tipoProduto
+    }
+
+    api.post('/produto', produto)
       .then(response => {
         console.log(response);
       })
@@ -196,14 +225,25 @@ class Perfil extends Component {
       this.getOferta();
     }, 1500);
   }
- 
+
   postOferta = (o) => {
 
     o.preventDefault();
+    console.log("Oferta do POST: ", this.state.postOferta);
 
-    api.post('/oferta', this.state.postOferta)
+
+    let ofertaForm = new FormData();
+
+    ofertaForm.set("produtoId", this.state.postOferta.produtoId);
+    ofertaForm.set('usuarioId', parseJwt().Id);
+    ofertaForm.set("preco", this.state.postOferta.preco);
+    ofertaForm.set("peso", this.state.postOferta.peso);
+    ofertaForm.set("quantidade", this.state.postOferta.quantidade);
+    ofertaForm.set('imagemProduto', this.state.postOferta.imagemProduto.current.files[0], this.state.postOferta.imagemProduto);
+
+    apiFormData.post('/oferta', ofertaForm)
       .then(response => {
-        console.log(response);
+        console.log("Oferta Post: ", response);
       })
       .catch(error => {
         console.log(error);
@@ -416,22 +456,22 @@ class Perfil extends Component {
           <section className="product_recipes">
             <h2>Cadastrar Produto</h2>
             <div className="card_profile">
-            <form onSubmit={this.postProduto}>
+              <form onSubmit={this.postProduto}>
                 <label>
                   <input type="text"
                     id="oferta__produto"
                     placeholder="Nome do produto..."
                     name="tipo"
-                    value={this.state.listaProduto.tipo}
-                    onChange={this.atualizaEstado}
+                    value={this.state.postProduto.tipo}
+                    onChange={this.atualizaEstadoProduto}
                     required />
                 </label>
                 <label >
                   <select
                     name="tipoProduto"
                     id="categoria__produto"
-                    value={this.state.listaCategoriaProduto.tipoProduto}
-                    onChange={this.atualizaEstado}>
+                    value={this.state.postProduto.tipoProduto}
+                    onChange={this.atualizaEstadoProduto}>
                     <option value="">Escolha uma categoria...</option>
                     {
                       this.state.listaCategoriaProduto.map(function (cp) {
@@ -441,58 +481,60 @@ class Perfil extends Component {
                             value={cp.categoriaProdutoId}
                           >
                             {cp.tipoProduto}
-                          </option> 
+                          </option>
                         )
                       })
                     }
                   </select>
-              </label>
+                </label>
                 <button
                   type="submit"
                   alt="botao cadastrar produtos"
                   className="btn_cadastrar_produto">
-                    Cadastrar
+                  Cadastrar
                 </button>
               </form>
             </div>
 
 
             <div className="card_profile">
-            <form onSubmit={this.postOferta}>
-              <div className="imagem_incluir">
-                <p>Clique para<br />
-                  incluir Imagem</p>
-                <button type="submit" alt="botao incluir imagem" className="btn_incluir_imagem">+</button>
-              </div>
-              <label >
+              <form onSubmit={this.postOferta}>
+                <div className="imagem_incluir">
+                  <p>Clique para<br />
+                    incluir Imagem</p>
+
+                  <input accept="image/*" type="file" name="imagemProduto" ref={this.state.postOferta.imagemProduto} onChange={this.postSetStateFile} /> 
+                  {/* <button type="submit" alt="botao incluir imagem" className="btn_incluir_imagem">+</button> */}
+                </div>
+                <label >
                   <select
-                    name="tipoProduto"
+                    name="produtoId"
                     id="categoria__produto"
-                    value={this.state.listaProduto.tipoProduto}
-                    onChange={this.atualizaEstado} >
+                    value={this.state.listaProduto.produtoId}
+                    onChange={this.atualizaEstadoOferta} >
                     <option value="">Produto a ser cadastrado</option>
                     {
                       this.state.listaProduto.map(function (p) {
                         return (
                           <option
-                          key={p.produtoId}
-                          value={p.produtoId}
+                            key={p.produtoId}
+                            value={p.produtoId}
                           >
                             {p.tipo}
-                          </option> 
+                          </option>
                         )
                       })
                     }
                   </select>
-              </label>
-                <label > 
+                </label>
+                <label >
                   <input
                     type="text"
                     name="peso"
                     id="peso__produto"
                     placeholder="Peso..."
-                    value={this.state.listaOferta.peso}
-                    onChange={this.atualizaEstado} required>
+                    value={this.state.postOferta.peso}
+                    onChange={this.atualizaEstadoOferta} required>
                   </input>
                 </label>
                 <label>
@@ -500,25 +542,25 @@ class Perfil extends Component {
                     type="text"
                     id="oferta__preco"
                     name="preco"
-                    value={this.state.listaOferta.preco}
+                    value={this.state.postOferta.preco}
                     placeholder="Preço por Kg..."
-                    onChange={this.atualizaEstado} required />
+                    onChange={this.atualizaEstadoOferta} required />
                 </label>
                 <label>
                   <input
                     type="text"
                     id="oferta__quantidade"
                     name="quantidade"
-                    value={this.state.listaOferta.quantidade}
+                    value={this.state.postOferta.quantidade}
                     placeholder="Quantidade..."
-                    onChange={this.atualizaEstado} required />
+                    onChange={this.atualizaEstadoOferta} required />
                 </label>
                 <button
                   type="submit"
                   alt="botao cadastrar produtos"
                   className="btn_cadastrar_produto"
-                  >
-                    Cadastrar</button>
+                >
+                  Cadastrar</button>
               </form>
             </div>
 
@@ -548,11 +590,11 @@ class Perfil extends Component {
                             <td>{o.quantidade}</td>
                             <td className="editar">
                               <button onClick={() => this.openModalOferta(o)}>
-                              <i className="fas fa-edit"></i>Editar
+                                <i className="fas fa-edit"></i>Editar
                               </button>
                             </td>
                             <td className="delete">
-                              <button   onClick={() => this.deleteOferta(o.ofertaId)}>
+                              <button onClick={() => this.deleteOferta(o.ofertaId)}>
                                 <i className="fas fa-trash"></i>Excluir
                               </ button>
                             </td>
@@ -567,13 +609,13 @@ class Perfil extends Component {
                   <tr>
                     <td className="bg-pager" colSpan="7">
                       <div className="tablepager">
-                         <Link to = '#'>Anterior</Link>
+                        <Link to='#'>Anterior</Link>
                         <div className="numtablepager">
-                        <Link to = '#'>1</Link>
-                        <Link to = '#'>2</Link>
-                        <Link to = '#'>3</Link>> 
+                          <Link to='#'>1</Link>
+                          <Link to='#'>2</Link>
+                          <Link to='#'>3</Link>>
                         </div>
-                        <Link to = '#'>Próxima</Link>
+                        <Link to='#'>Próxima</Link>
                       </div>
                     </td>
                   </tr>
@@ -597,7 +639,7 @@ class Perfil extends Component {
                     placeholder="Nome receita..."
                     name="nome"
                     value={this.state.listaReceita.nome}
-                    onChange={this.atualizaEstado}
+                    onChange={this.atualizaEstadoReceita}
                     required />
                 </label>
                 <label></label>
@@ -605,7 +647,7 @@ class Perfil extends Component {
                   name="tipoReceita"
                   id="categoria__receita"
                   value={this.state.listaReceita.tipoReceita}
-                  onChange={this.atualizaEstado}
+                  onChange={this.atualizaEstadoReceita}
                 >
                   <option value="">Escolha uma categoria...</option>
                   {
@@ -628,7 +670,7 @@ class Perfil extends Component {
                     name="ingredientes"
                     placeholder="Ingredientes..."
                     value={this.state.listaReceita.ingredientes}
-                    onChange={this.atualizaEstado}
+                    onChange={this.atualizaEstadoReceita}
                   />
                 </label>
                 <label>
@@ -638,7 +680,7 @@ class Perfil extends Component {
                     placeholder="Modo de preparo..."
                     id="modo__preparo"
                     value={this.state.listaReceita.modoDePreparo}
-                    onChange={this.atualizaEstado}
+                    onChange={this.atualizaEstadoReceita}
                   />
                 </label>
               </form>
@@ -669,14 +711,14 @@ class Perfil extends Component {
                           <tr key={r.receitaId}>
                             <td>{r.nome}</td>
                             <td>{r.categoriaReceita.tipoReceita}</td>
-                            <td> <Link to={{ pathname: '/verreceita', state: { receitaId: r.receitaId} }} >Ver Receita</Link></td>
+                            <td> <Link to={{ pathname: '/verreceita', state: { receitaId: r.receitaId } }} >Ver Receita</Link></td>
                             <td className="editar">
                               <button onClick={() => this.openModalReceita(r)}>
-                              <i className="fas fa-edit"></i>Editar
+                                <i className="fas fa-edit"></i>Editar
                               </button>
                             </td>
                             <td className="delete">
-                              <button   onClick={() => this.deleteReceita(r.receitaId)}>
+                              <button onClick={() => this.deleteReceita(r.receitaId)}>
                                 <i className="fas fa-trash"></i>Excluir
                               </ button>
                             </td>
@@ -690,13 +732,13 @@ class Perfil extends Component {
                   <tr>
                     <td className="bg-pager" colSpan="5">
                       <div className="tablepager">
-                      <Link to = '#'>Anterior</Link>
+                        <Link to='#'>Anterior</Link>
                         <div className="numtablepager">
                           <Link to='#'>1</Link>
                           <Link to='#'>1</Link>
                           <Link to='#'>1</Link>
-                          </div>
-                       <Link to = '#'>Próxima</Link>
+                        </div>
+                        <Link to='#'>Próxima</Link>
                       </div>
                     </td>
                   </tr>

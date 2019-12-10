@@ -7,7 +7,7 @@ import rimg2 from '../../assets/img/receita5.jpg'
 import rimg3 from '../../assets/img/receita7.jpg'
 import rimg4 from '../../assets/img/receita2.jpg'
 import rimg5 from '../../assets/img/receita4.jpg'
-import api from '../../services/api';
+import {api, apiFormData} from '../../services/api';
 //import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
