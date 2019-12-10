@@ -122,7 +122,7 @@ class Perfil extends Component {
     api.get('/categoriareceita')
       .then(response => {
         if (response.status === 200) {
-          this.setState({ listaOferta: response.data }, () => console.log("Lista de categorias(Receitas): ", this.state.listaCategoriaReceita))
+          this.setState({ listaOferta: response.data })
         }
       })
   }
@@ -457,12 +457,12 @@ class Perfil extends Component {
                       function (o) {
                         return (
                           <tr key={o.ofertaId}>
-                            <td>{o.tipo}</td>
+                            <td>{o.produtoId}</td>
                             <td>{o.tipoProduto}</td>
                             <td>{o.peso}</td>
                             <td>{o.preco}</td>
                             <td>{o.quantidade}</td>
-                            <td className="editar">
+                            {/* <td className="editar">
                               <button onClick={() => this.openModalOferta(o)}>
                               <i className="fas fa-edit"></i>Editar
                               </button>
@@ -471,10 +471,10 @@ class Perfil extends Component {
                               <button   onClick={() => this.deleteOferta(o.ofertaId)}>
                                 <i className="fas fa-trash"></i>Excluir
                               </ button>
-                            </td>
+                            </td> */}
                           </tr>
                         )
-                      }.bind(this)
+                      }
                     )
                   }
                 </tbody>
