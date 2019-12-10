@@ -44,6 +44,7 @@ padding: 0;
   }
   .form-control {
     min-width: 280px;
+    font-size: 18px;
   }
   .input-group {
     margin: 10px 0;

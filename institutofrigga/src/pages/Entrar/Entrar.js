@@ -13,13 +13,15 @@ class Entrar extends Component {
     this.state = {
       email: "",
       senha: "",
-      cpf_cnpj: "",
+
+      tipoUsuario: "",
+      cpfCnpj: "",
       nome: "",
-      dataNascimento: "",
       cidade: "",
       cep: "",
+      complemento: "",
       bairro: "",
-      endereço: "",
+      endereco: "",
       numero: "",
       isLoading: false,
 
@@ -28,6 +30,7 @@ class Entrar extends Component {
       open: false
     }
   }
+
 
   onOpenModal = () => {
     this.setState({ open: true });
@@ -43,14 +46,15 @@ class Entrar extends Component {
   realizarLogin(event) {
     event.preventDefault();
 
-    let usuario = {
+    let login = {
       email: this.state.email,
-      senha: this.state.senha
+      senha: this.state.senha,
     }
+
 
     this.setState({ isLoading: true })
 
-    api.post("/login", usuario)
+    api.post("/login", login)
       .then(response => {
         if (response.status === 200) {
           localStorage.setItem('usuario-frigga', response.data.token)
@@ -58,7 +62,7 @@ class Entrar extends Component {
 
           console.log("Meu token é: " + response.data.token)
 
-          if (parseJwt().Role === 'Administrador') {
+          if (parseJwt().Role === '1') {
             this.props.history.push('/perfil');
           } else {
             this.props.history.push('/produto')
@@ -73,12 +77,47 @@ class Entrar extends Component {
 
   }
 
+  postCadastro(event) {
+
+    event.preventDefault();
+    let usuario = {
+      TipoUsuarioId: this.state.tipoUsuario,
+      email: this.state.email,
+      senha: this.state.senha,
+      cpfCnpj: this.state.cpfCnpj,
+      Nome: this.state.nome
+    }
+    let endereco = {
+      Cep: this.state.cep,
+      Nome: this.state.endereco,
+      Numero: this.state.numero,
+      Complemento: this.state.complemento,
+      Cidade: this.state.cidade,
+      Bairro: this.state.bairro
+    }
+    api.post("/usuario", usuario)
+      .then(response => {
+        console.log(response)
+
+
+      })
+    setTimeout(() => {
+      api.post("/endereco", endereco)
+        .then(response => {
+          console.log(response)
+          window.alert("Cadastrado com sucesso")
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }, 500);
+
+  }
   render() {
     const { open } = this.state;
     return (
 
-      <body>
-        <div className="fundoLogin">
+      <div className="fundoLogin">
         <Header />
         <main>
           <div className="container_login">
@@ -95,7 +134,8 @@ class Entrar extends Component {
                       type="text"
                       placeholder="E-mail.."
                       aria-label="Digite seu e-mail"
-                      name="email" id="usuarioCadastro"
+                      name="email" 
+                      id="usuarioCadastro"
                       value={this.state.email}
                       onChange={this.atualizaEstado}
                       required />
@@ -113,10 +153,6 @@ class Entrar extends Component {
                       onChange={this.atualizaEstado}
                       required />
                   </div>
-                  {/* <div className="buttonsContainer">
-                    <button className="btn_login" type="submit">Entrar</button>
-                  </div> */}
-
                   {
                     this.state.isLoading === true &&
                     <div className="buttonsContainer">
@@ -140,69 +176,149 @@ class Entrar extends Component {
             <Modal open={open} onClose={this.onCloseModal} center>
               <section className="direita_login">
                 <h1> Cadastro </h1>
-                <form method="POST" id="form_cadastro">
+                <form onSubmit={this.postCadastro} id="form_cadastro">
                   <div className="form-control">
                     <div className="input-group radio-group">
-                      <label><input type="radio" value="cliente" name="cadastro" id="cadastroCliente" />
+                      <label><input
+                        onChange={this.atualizaEstado}
+                        type="radio"
+                        value={2}
+                        name="tipoUsuario"
+                        id="cadastroCliente" />
                         Cliente</label>
                       <label>
-                        <input type="radio" value="fornecedor" name="cadastro" id="cadastroFornecedor" />
+                        <input
+                          onChange={this.atualizaEstado}
+                          type="radio"
+                          value={3}
+                          name="tipoUsuario"
+                          id="cadastroFornecedor" />
                         Fornecedor
               </label>
                     </div>
                     <div className="input-group">
                       <label>E-mail</label>
-                      <input className="input_login" type="email" placeholder="E-mail ou Cpf..."
-                        aria-label="Digite seu e-mail ou cpf" id="email" name="email" required />
+                      <input
+                        onChange={this.atualizaEstado}
+                        className="input_login"
+                        type="email"
+                        placeholder="E-mail ou Cpf..."
+                        aria-label="Digite seu e-mail ou cpf"
+                        id="email"
+                        name="email"
+                        required />
                     </div>
                     <div className="input-group">
                       <label>Senha</label>
-                      <input className="input_login" type="password" placeholder="Senha..." aria-label="Digite a sua senha"
-                        name="senha" id="senha" required />
+                      <input
+                        onChange={this.atualizaEstado}
+                        className="input_login"
+                        type="password"
+                        placeholder="Senha..."
+                        aria-label="Digite a sua senha"
+                        name="senha"
+                        id="senha"
+                        required />
                     </div>
                     <div className="input-group">
                       <label >Cpf/Cnpj</label>
-                      <input className="input_login" type="text" placeholder="Ex: 123.321.45-10" aria-label="Digite seu Cnpj"
-                        name="cpf/cnpj" id="cpf/cnpj" required />
+                      <input
+                        onChange={this.atualizaEstado}
+                        className="input_login"
+                        type="text"
+                        placeholder="Ex: 123.321.45-10"
+                        aria-label="Digite seu Cnpj"
+                        name="cpfCnpj" id="cpf/cnpj" required />
                     </div>
                     <div className="input-group">
                       <label >Nome</label>
-                      <input className="input_login" type="text" placeholder="Ex: Joao" aria-label="Digite seu nome" name="nome"
-                        id="nome" required />
-                    </div>
-                    <div className="input-group">
-                      <label >Nascimento</label>
-                      <input className="input_login" type="text" placeholder="Ex: 27/03/1990"
-                        aria-label="Digite a data de nascimento" name="nascimento" id="nascimento" required />
+                      <input
+                        onChange={this.atualizaEstado}
+                        className="input_login"
+                        type="text"
+                        placeholder="Ex: Joao"
+                        aria-label="Digite seu nome"
+                        name="nome"
+                        id="nome"
+                        required />
                     </div>
                   </div>
                   <div className="form-control">
                     <h2>Endereço</h2>
                     <div className="input-group">
-                      <label>Cidade</label>
-                      <input className="input_login" type="text" placeholder="Ex: SP" aria-label="Digite sua cidade" name="cidade"
-                        id="cidade" required />
-                    </div>
-                    <div className="input-group">
                       <label >Cep</label>
-                      <input className="input_login" type="text" placeholder="Ex: 080-60-090" aria-label="Digite seu Cnpj"
-                        name="cep" id="cep" required />
-                    </div>
-                    <div className="input-group">
-                      <label >Bairro</label>
-                      <input className="input_login" type="text" placeholder="Ex: 02789-089" aria-label="Digite seu bairro"
-                        name="bairro" id="bairro" required />
+                      <input
+                        onChange={this.atualizaEstado}
+                        className="input_login"
+                        type="text"
+                        placeholder="Ex: 080-60-090"
+                        aria-label="Digite seu Cnpj"
+                        name="cep"
+                        id="cep"
+                        required />
                     </div>
                     <div className="input-group">
                       <label>Endereço</label>
-                      <input className="input_login" type="text" placeholder="Ex: Rua Albuquerque de Sas"
-                        aria-label="Digite seu endereço" name="endereco" id="endereco" required />
+                      <input
+                        onChange={this.atualizaEstado}
+                        className="input_login"
+                        type="text"
+                        placeholder="Ex: Rua Albuquerque de Sas"
+                        aria-label="Digite seu endereço"
+                        name="endereco"
+                        id="endereco"
+                        required />
                     </div>
                     <div className="input-group">
                       <label >Número</label>
-                      <input className="input_login" type="text" placeholder="Ex: 138 " aria-label="Digite seu número" name="numero"
-                        id="numero" required />
+                      <input
+                        onChange={this.atualizaEstado}
+                        className="input_login" 
+                        type="text" 
+                        placeholder="Ex: 138 " 
+                        aria-label="Digite seu número" 
+                        name="numero"
+                        id="numero" 
+                        required />
                     </div>
+                    <div className="input-group">
+                      <label >Complemento</label>
+                      <input 
+                        onChange={this.atualizaEstado}
+                        className="input_login" 
+                        type="text" 
+                        placeholder="Ex: apartamento 02 bloco 13 " 
+                        aria-label="Adicione um complemento"
+                        name="complemento"
+                        
+                        required />
+                    </div>
+                    <div className="input-group">
+                      <label>Cidade</label>
+                      <input
+                        onChange={this.atualizaEstado} 
+                        className="input_login" 
+                        type="text" 
+                        placeholder="Ex: SP" 
+                        aria-label="Digite sua cidade" 
+                        name="cidade"
+                        id="cidade" 
+                        required />
+                    </div>
+                    <div className="input-group">
+                      <label >Bairro</label>
+                      <input 
+                        onChange={this.atualizaEstado}
+                        className="input_login" 
+                        type="text" 
+                        placeholder="Ex: 02789-089" 
+                        aria-label="Digite seu bairro"
+                        name="bairro" 
+                        id="bairro" 
+                        required />
+                    </div>
+
+
                   </div>
                   <div className="buttonContainer">
                     <button type="submit" className="btn_login2">Cadastrar</button>
@@ -214,8 +330,7 @@ class Entrar extends Component {
           </div>
         </main>
         <Footer />
-        </div>
-      </body>
+      </div>
     );
   }
 }

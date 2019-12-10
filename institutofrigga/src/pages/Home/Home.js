@@ -49,7 +49,8 @@ class Home extends Component {
 
 
     render() {
-        let contOferta = 0;
+        var contOferta = 0;
+        var contReceita = 0;
         // let contReceita = 0;
         return (
             <body>
@@ -73,7 +74,7 @@ class Home extends Component {
                         <h1>Produtos recentes</h1>
                     </div>
                     <div className="container">
-                        {/* <section className="receitas">
+                         <section className="receitas">
                             {
                                 this.state.listaReceita.map(
                                     function (r) {
@@ -90,7 +91,7 @@ class Home extends Component {
                                 )
                             }
                             <div className="btn-seemore"><Link to="/receita">Ver mais</Link></div>
-                        </section> */}
+                        </section> 
 
 
                         <section className="container-produtos">
