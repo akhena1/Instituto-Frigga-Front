@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
 //Páginas
-import { usuarioAutenticado, parseJwt } from '../src/services/auth';
 import Home from '../src/pages/Home/Home';
 import Produto from '../src/pages/Produto/Produto';
 import Receita from '../src/pages/Receita/Receita';
@@ -25,47 +24,11 @@ import './assets/css/about.css'
 import './assets/css/receita.css'
 
 // Dependências necessárias
-import {Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 
 // React Font Awelsome Css
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-
-const PermissaoAdmin = ({ component : Component }) => (
-    <Route 
-        render={props =>
-            usuarioAutenticado() && parseJwt().Role === "Administrador" ? (
-                <Component {...props}/>
-            ) : (
-                <Redirect to={{ pathname : "/entrar"}}/>
-            )
-        }
-    />
-)
-
-const PermissaoProdutor = ({ component : Component }) => (
-    <Route 
-        render={props =>
-            usuarioAutenticado() && parseJwt().Role === "Produtor" ? (
-                <Component {...props}/>
-            ) : (
-                <Redirect to={{ pathname : "/entrar"}}/>
-            )
-        }
-    />
-)
-
-const PermissaoCliente = ({ component : Component }) => (
-    <Route 
-        render={props =>
-            usuarioAutenticado() && parseJwt().Role === "Cliente" ? (
-                <Component {...props}/>
-            ) : (
-                <Redirect to={{ pathname : "/entrar"}}/>
-            )
-        }
-    />
-) 
 const Rotas = (
     <Router>
         <div>
