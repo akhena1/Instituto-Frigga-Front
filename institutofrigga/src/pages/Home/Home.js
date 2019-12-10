@@ -51,9 +51,9 @@ class Home extends Component {
     render() {
         var contOferta = 0;
         var contReceita = 0;
-        // let contReceita = 0;
+        
         return (
-            <body>
+            <div>
                 <Header/>
                 <main>
 
@@ -82,7 +82,7 @@ class Home extends Component {
                                             contReceita++
                                             return (
                                                 <Link to={'/receita'} key={r.receitaId} className="card-receita">
-                                                    <img src={"http://localhost:5000/arquivos/" + r.imagemReceita} />
+                                                    <img src={"https://localhost:5001/arquivos/" + r.imagemReceita} />
                                                     <p className="position">{r.nome}</p>
                                                 </Link>
                                             );
@@ -103,8 +103,8 @@ class Home extends Component {
                                             contOferta++
                                             return (
 
-                                                <div className="card-produto">
-                                                    <img src={"http://localhost:5000/arquivos/" + o.imagemProduto} alt='' />
+                                                <div key={o.ofertaId} className="card-produto">
+                                                    <img src={"https://localhost:5001/arquivos/" + o.imagemProduto} alt='' />
                                                     <div className="nav-p">
                                                         <p>{o.produto.tipo}<br />R${o.preco}</p>
                                                         <Link to="/Entrar">Reservar</Link>
@@ -112,8 +112,6 @@ class Home extends Component {
                                                 </div>
                                             );
 
-                                        } else {
-                                            return (<></>)
                                         }
                                     }
                                 )
@@ -128,7 +126,7 @@ class Home extends Component {
                     </div>
                 </main>
                 <Footer/>
-            </body>
+            </div>
         );
     }
 }

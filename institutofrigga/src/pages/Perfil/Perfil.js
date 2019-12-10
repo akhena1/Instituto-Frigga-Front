@@ -34,7 +34,7 @@ class Perfil extends Component {
     
       postOferta: {
         tipoProduto: "",
-        tipo: "",
+        /* tipo: "", */
         preco: "",
         peso: "",
         quantidade: ""
@@ -149,15 +149,6 @@ class Perfil extends Component {
   postOferta = (o) => {
 
     o.preventDefault();
-
-    let ofertaFormData = new FormData();
-
-    ofertaFormData.set("tipo", this.state.postOferta.tipo);
-    ofertaFormData.set("tipoProduto", this.state.postOferta.tipoProduto);
-    ofertaFormData.set("preço", this.state.postOferta.preco)
-    ofertaFormData.set("peso", this.state.postOferta.peso)
-    ofertaFormData.set("quantidade", this.state.postOferta.quantidade)
-    ofertaFormData.set("usuarioId", parseJwt().Id);
 
     api.post('/oferta', this.state.ofertaFormData)
       .then(response => {
@@ -379,7 +370,7 @@ class Perfil extends Component {
                   <input type="text"
                     id="oferta__produto"
                     placeholder="Nome do produto..."
-                    name="Tipo"
+                    name="tipo"
                     value={this.state.listaOferta.tipo}
                     onChange={this.PostSetStateOferta}
                     required />

@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import I1 from '../../assets/img/pepino.png';
-import I2 from '../../assets/img/p1.jpg';
-import I3 from '../../assets/img/p3.png';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import api from '../../services/api'
@@ -149,18 +146,26 @@ class Produto extends Component {
                                                             <div>
                                                                 <h1>{this.state.modalOferta.tipo}</h1>
                                                                 <h2>Dados do produtor para contato</h2>
-                                                                <p>Nome: {this.state.modalOferta.nome}</p>
-                                                                <p>Email:{this.state.modalOferta.email}</p>
-                                                                <p>Telefone:{this.state.modalOferta.telefone}</p>
+                                                                {
+                                                                    this.state.listarUsuario.map(function(u){
+                                                                        return(
+                                                                            <div>
+                                                                            <p>Nome: {u.nome}</p>
+                                                                            <p>Email:{u.email}</p>
+                                                                            <p>Telefone:{u.telefone}</p>
+                                                                            </div>
+                                                                        )
+                                                                    })
+                                                                }
+                                                                
+                                                                <p>R$: {this.state.modalOferta.preco}</p>
                                                             </div>
                                                             <button>Ok</button>
 
                                                     </div>
 
-                                                );
-                                            }.bind(this)
-                                            )
-                                        }
+                                             
+                                        
                                     </Modal>
                                 </div>
                             }
