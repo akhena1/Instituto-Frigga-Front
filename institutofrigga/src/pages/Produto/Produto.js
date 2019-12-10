@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 
 
+
 class Produto extends Component {
     constructor(props) {
         super(props);
@@ -30,7 +31,6 @@ class Produto extends Component {
     onCloseModal = () => {
         this.setState({ open: false });
     };
-
     componentDidMount() {
         this.getOferta();
         this.getProduto();
@@ -85,25 +85,25 @@ class Produto extends Component {
                                 <div className="align">
                                     <p>LEGUMES</p><br></br>
                                     <div className="categ_1">
-                                        <a href="#"></a>
+                                    <Link to = '#'></Link>
                                     </div>
                                 </div>
                                 <div className="align">
                                     <p>FRUTAS</p><br></br>
                                     <div className="categ_2">
-                                        <a href="#"></a>
+                                    <Link to = '#'></Link>
                                     </div>
                                 </div>
                                 <div className="align">
                                     <p>SAFRA DA SEMANA</p><br></br>
                                     <div className="categ_3">
-                                        <a href="#"></a>
+                                    <Link to = '#'></Link>
                                     </div>
                                 </div>
                                 <div className="align">
                                     <p>MAIS BUSCADOS</p><br></br>
                                     <div className="categ_4">
-                                        <a href="#"></a>
+                                    <Link to = '#'></Link>
                                     </div>
                                 </div>
                             </div>
@@ -112,11 +112,11 @@ class Produto extends Component {
                             <div className="categorias_mobile">
                                 <div className="categ_mobile">
                                     <p>LEGUMES</p>
-                                    <a href="#"><img src="IMGS/frutas.png" title="#" alt="legumes" /></a>
+                                    <Link to = '#'><img src="IMGS/frutas.png" title="#" alt="legumes" /></Link>
                                 </div>
                                 <div className="categ_mobile">
                                     <p>FRUTAS</p>
-                                    <a href="#"><img src="IMGS/abacaxi.png" title="#" alt="frutas" /></a>
+                                    <Link to = '#'><img src="IMGS/abacaxi.png" title="#" alt="frutas" /></Link>
                                 </div>
                             </div>
                         </section>
@@ -129,6 +129,7 @@ class Produto extends Component {
                                         <div key={of.ofertaId} className="card_produtoisa">
                                             <img src={"http://localhost:5000/Arquivos/" + of.imagemProduto} alt={of.tipo} />
                                             <div className="nav-p nav-p-isa">
+
                                                 <p>{of.tipo}<br></br> R$ {of.preco}</p>
                                                 <button onClick={() => this.onOpenModal(of)}>Reservar</button>
                                             </div>
@@ -157,7 +158,7 @@ class Produto extends Component {
                                                     </div>
 
                                                 );
-                                            }
+                                            }.bind(this)
                                             )
                                         }
                                     </Modal>
@@ -216,7 +217,7 @@ class Produto extends Component {
                                 </div> */}
                             {/* </div> */}
                         </section>
-                    </section>
+                    </section>>
                 </main>
                 <Footer />
             </div>

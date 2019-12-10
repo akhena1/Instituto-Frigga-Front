@@ -1,10 +1,10 @@
+// Padrão
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import './index.css';
-import './assets/css/estilo.css';
-import './assets/css/modalProduto.css'
 import * as serviceWorker from './serviceWorker';
+
+//Páginas
+import { usuarioAutenticado, parseJwt } from '../src/services/auth';
 import Home from '../src/pages/Home/Home';
 import Produto from '../src/pages/Produto/Produto';
 import Receita from '../src/pages/Receita/Receita';
@@ -14,11 +14,24 @@ import Entrar from '../src/pages/Entrar/Entrar';
 import About from '../src/pages/About/About';
 import NotFound from '../src/pages/NotFound/NotFound';
 
+// Css
+import './index.css';
+import './assets/css/entrar.css';
+import './assets/css/header&footer.css';
+import './assets/css/home&produtos.css';
+import './assets/css/modalProduto.css';
+import './assets/css/perfil.css';
+import './assets/css/about.css'
+import './assets/css/receita.css'
 
-import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
-import { usuarioAutenticado, parseJwt } from '../src/services/auth';
+// Dependências necessárias
+import {Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
-/* const PermissaoAdmin = ({ component : Component }) => (
+// React Font Awelsome Css
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
+
+const PermissaoAdmin = ({ component : Component }) => (
     <Route 
         render={props =>
             usuarioAutenticado() && parseJwt().Role === "Administrador" ? (
@@ -52,7 +65,7 @@ const PermissaoCliente = ({ component : Component }) => (
             )
         }
     />
-)  */
+) 
 const Rotas = (
     <Router>
         <div>

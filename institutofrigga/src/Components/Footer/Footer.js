@@ -4,6 +4,7 @@ import LogoRodapeWeb from '../../assets/img/definitivo-fundo-preto.png'
 import IconFacebook from '../../assets/img/facebook.svg'
 import IconInstagram from '../../assets/img/instagram.svg'
 import IconTwitter from '../../assets/img/twitter.svg'
+import { Link } from 'react-router-dom'
 
 class Footer extends Component {
     render() {
@@ -18,18 +19,15 @@ class Footer extends Component {
         
               </div>
               <div className="redes">
-                <a href="#" className="facebook">
+                <Link to ="#" className="facebook">
                   <img src={IconFacebook} alt="Link para o Facebook"/>
-                  <p>Facebook</p>
-                </a>
-                <a href="#" className="instagram">
+                  <p>Facebook</p></Link>
+                <Link to ="#" className="instagram">
                   <img src={IconInstagram} alt="Link para o instagram"/>
-                  <p>Instagram</p>
-                </a>
-                <a href="#" className="twitter">
-                  <img src={IconTwitter} alt="Link para o twitter"/>
-                  <p>Twitter</p>
-                </a>
+                  <p>Instagram</p></Link>
+                <Link to = "#" className="twitter">
+                  <img src={IconTwitter} alt="Link para o titter"/>
+                  <p>Twitter</p></Link>
               </div>
             </div>
           </footer>

@@ -49,8 +49,9 @@ class Home extends Component {
 
 
     render() {
-        let contOferta = 0;
-        let contReceita = 0;
+        var contOferta = 0;
+        var contReceita = 0;
+        // let contReceita = 0;
         return (
             <body>
                 <Header/>
@@ -64,16 +65,16 @@ class Home extends Component {
                             feitas com produtos orgânicos? Você<br />
                             ganha uma grana extra e ainda coopera <br />
                             para um   mundo   mais   sustentável!</p>
-                        <a href="about.html">
+                        <Link to="/about">
                             Saiba mais!
-                        </a>
+                        </Link>
                     </div>
                     <div className="titulos">
                         <h2>Receitas</h2>
                         <h1>Produtos recentes</h1>
                     </div>
                     <div className="container">
-                        <section className="receitas">
+                         <section className="receitas">
                             {
                                 this.state.listaReceita.map(
                                     function (r) {
@@ -90,7 +91,7 @@ class Home extends Component {
                                 )
                             }
                             <div className="btn-seemore"><Link to="/receita">Ver mais</Link></div>
-                        </section>
+                        </section> 
 
 
                         <section className="container-produtos">
@@ -102,8 +103,8 @@ class Home extends Component {
                                             contOferta++
                                             return (
 
-                                                <div key={o.ofertaId} className="card-produto">
-                                                    <img src={"http://localhost:5000/arquivos/" + o.imagemProduto} />
+                                                <div className="card-produto">
+                                                    <img src={"http://localhost:5000/arquivos/" + o.imagemProduto} alt='' />
                                                     <div className="nav-p">
                                                         <p>{o.produto.tipo}<br />R${o.preco}</p>
                                                         <Link to="/Entrar">Reservar</Link>
