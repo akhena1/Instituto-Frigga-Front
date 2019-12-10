@@ -18,13 +18,13 @@ class Produto extends Component {
             listarProduto: [],
             listarUsuario: [],
             Preco: [],
-
+            modalOferta: [],
             open: false
         }
     }
 
-    onOpenModal = () => {
-        this.setState({ open: true });
+    onOpenModal = (oferta) => {
+        this.setState({ open: true, modalOferta: oferta });
     };
 
     onCloseModal = () => {
@@ -39,7 +39,7 @@ class Produto extends Component {
     }
 
     getOferta = () => {
-        let id = this.props.ofertaId;
+        
         api.get('/oferta').then(response => {
             if (response.status === 200) {
                 this.setState({ listarOferta: response.data })
@@ -130,48 +130,29 @@ class Produto extends Component {
                                             <img src={"http://localhost:5000/Arquivos/" + of.imagemProduto} alt={of.tipo} />
                                             <div className="nav-p nav-p-isa">
                                                 <p>{of.tipo}<br></br> R$ {of.preco}</p>
-                                                <button class title="login">Reservar</button>
+                                                <button onClick={() => this.onOpenModal(of)}>Reservar</button>
                                             </div>
                                         </div>
                                     );
-                                })
+                                }.bind(this))
                             }
                             {
 
                                 <div>
-                                    <button onClick={this.onOpenModal}>Open modal</button>
                                     <Modal open={open} onClose={this.onCloseModal} center>
-                                        {
-                                            this.state.listarOferta.map(function (o) {
-                                                return (
-                                                    <div>
 
                                                         <div className="containerModalProduto">
                                                             <div className="imgModalProduto">
-                                                                <img src={"http://localhost:5000/Arquivos/" + o.imagemProduto} alt={o.produto.tipo} />
+                                                                <img src={"http://localhost:5000/Arquivos/" + this.state.modalOferta.imagemProduto} alt={this.state.modalOferta.tipo} />
                                                             </div>
                                                             <div>
-                                                                <h1>{o.produto.tipo}</h1>
+                                                                <h1>{this.state.modalOferta.tipo}</h1>
                                                                 <h2>Dados do produtor para contato</h2>
-                                                                <p>Nome: {o.usuario.nome}</p>
-                                                                <p>Email:{o.usuario.email}</p>
-                                                                <p>Telefone:{o.usuario.telefone}</p>
+                                                                <p>Nome: {this.state.modalOferta.nome}</p>
+                                                                <p>Email:{this.state.modalOferta.email}</p>
+                                                                <p>Telefone:{this.state.modalOferta.telefone}</p>
                                                             </div>
-
-                                                        </div>
-                                                        <div className="containerModalProduto2">
-                                                            <div className="precoPesoProduto">
-                                                                <p>Preço: R$ {o.preco}</p>
-                                                                <p>Peso: {o.peso}KG</p>
-                                                            </div>
-
-                                                        </div>
-                                                        <div className="bordaCinzaModal"></div>
-                                                        <div className="divBtnModal">
-                                                            <button className="btnModalProduto">
-                                                                Ok
-                                                            </button>
-                                                        </div>
+                                                            <button>Ok</button>
 
                                                     </div>
 
@@ -182,15 +163,20 @@ class Produto extends Component {
                                     </Modal>
                                 </div>
                             }
-                            <div className="card_produtoisa">
-                                <img src={I1} alt="imagem de pepino" />
-                                <div className="nav-p nav-p-isa">
-                                    <p>Pepino<br></br> R$ 10,25</p>
-
-                                    <a href="login.html" title="login">Encomendar</a>
+                               {/* {this.state.listarOferta.map(function(o)){
+                                   return(
+                                    <div className="card_produtoisa">
+                                    <img src={I1} alt="imagem de pepino" />
+                                    <div className="nav-p nav-p-isa">
+                                        <p>Pepino<br></br> R$ 10,25</p>
+    
+                                        <a onClick={() => this.onOpenModal(o.ofertaId)}>Encomendar</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="card_produtoisa">
+
+                               )}}  */}
+                           
+                            {/* <div className="card_produtoisa">
                                 <img src={I2} alt="imagem de tomates" />
                                 <div className="nav-p nav-p-isa">
                                     <p>tomates<br></br> R$ 9,99</p>
@@ -227,8 +213,8 @@ class Produto extends Component {
                                 <div className="nav-p nav-p-isa">
                                     <p>tomates<br></br> R$ 9,99</p>
                                     <a href="login.html" title="login">Encomendar</a>
-                                </div>
-                            </div>
+                                </div> */}
+                            {/* </div> */}
                         </section>
                     </section>
                 </main>
