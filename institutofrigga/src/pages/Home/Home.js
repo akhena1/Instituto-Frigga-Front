@@ -82,7 +82,7 @@ class Home extends Component {
                                             contReceita++
                                             return (
                                                 <Link to={'/receita'} key={r.receitaId} className="card-receita">
-                                                    <img src={"https://localhost:5001/arquivos/" + r.imagemReceita} />
+                                                    <img src={"http://localhost:5000/arquivos/" + r.imagemReceita} alt=''/>
                                                     <p className="position">{r.nome}</p>
                                                 </Link>
                                             );

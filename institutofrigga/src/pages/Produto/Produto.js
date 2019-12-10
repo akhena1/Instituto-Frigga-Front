@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+// import I1 from '../../assets/img/pepino.png';
+// import I2 from '../../assets/img/p1.jpg';
+// import I3 from '../../assets/img/p3.png';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import api from '../../services/api'
