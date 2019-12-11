@@ -497,7 +497,7 @@ class Perfil extends Component {
                             </td>
                           </tr>
                         )
-                      }
+                      }.bind(this)
                     )
                   }
                 </tbody>

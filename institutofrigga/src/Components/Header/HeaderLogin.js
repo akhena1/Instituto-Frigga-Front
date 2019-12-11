@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import MenuSanduiche from '../../assets/img/menu-button-of-three-horizontal-lines.png';
-import LogoWeb from '../../assets/img/definitivo-fundo-preto.png';
-import LogoMob from '../../assets/img/definitivo-fundo-preto.png';
 import {Link, withRouter} from 'react-router-dom';
 import { usuarioAutenticado } from '../../services/auth';
 

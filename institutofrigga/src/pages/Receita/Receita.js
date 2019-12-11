@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
-import rimg from '../../assets/img/receita2.jpg'
-import rimg1 from '../../assets/img/receita4.jpg'
-import rimg2 from '../../assets/img/receita5.jpg'
-import rimg3 from '../../assets/img/receita7.jpg'
-import rimg4 from '../../assets/img/receita2.jpg'
-import rimg5 from '../../assets/img/receita4.jpg'
-import {api, apiFormData} from '../../services/api';
+import {api} from '../../services/api';
 //import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
