@@ -27,6 +27,7 @@ class Produto extends Component {
 
     onOpenModal = (oferta) => {
         this.setState({ open: true, modalOferta: oferta });
+        console.log(oferta);
     };
 
     onCloseModal = () => {
