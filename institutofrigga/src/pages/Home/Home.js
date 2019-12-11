@@ -10,6 +10,7 @@ import p3 from '../../img/p3.png';
 import p4 from '../../img/p4.png'; */
 import api from '../../services/api';
 import {Link} from 'react-router-dom';
+import { usuarioAutenticado } from '../../services/auth';
 
 
 class Home extends Component {
@@ -108,7 +109,15 @@ class Home extends Component {
                                                     <img src={"http://localhost:5000/arquivos/" + o.imagemProduto} alt='' />
                                                     <div className="nav-p">
                                                         <p>{o.produto.tipo} <br /> R${o.preco}</p>
-                                                        <Link to="/Entrar">Reservar</Link>
+                                                        {
+                                                            usuarioAutenticado()? (
+
+                                                                <Link to="/produto">Reservar</Link>
+
+                                                            ):(
+                                                                <Link to="/Entrar">Reservar</Link>
+                                                            )
+                                                        }
                                                     </div>
                                                 </div>
                                             );

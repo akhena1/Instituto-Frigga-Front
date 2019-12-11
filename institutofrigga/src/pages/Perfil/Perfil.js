@@ -3,7 +3,7 @@ import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import { Link } from "react-router-dom";
 import iconPerfil from '../../assets/img/iconperfil.svg';
-import {api,apiFormData} from '../../services/api';
+import { api, apiFormData } from '../../services/api';
 import { parseJwt } from '../../services/auth';
 
 
@@ -11,8 +11,8 @@ import { parseJwt } from '../../services/auth';
 
 
 class Perfil extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
 
       // listaPerfil: [],
@@ -78,25 +78,13 @@ class Perfil extends Component {
   }
 
   componentDidMount() {
-    // this.getPerfil();
-    this.getProduto();
     this.getOferta();
-    this.getReceita();
     this.getCategoriaProduto();
+    this.getProduto();
+    this.getReceita();
     this.getCategoriaReceita();
   }
 
-  //#region GETs
-
-  // getPerfil = () => {
-  //   api.get('/usuario')
-  //     .then(response => {
-  //       if (response.status === 200) {
-  //         this.setState({ listaPerfil: response.data })
-
-  //       }
-  //     })
-  // }
 
 
   getProduto = () => {
@@ -117,10 +105,14 @@ class Perfil extends Component {
     api.get('/oferta')
       .then(response => {
         console.log(response)
-        if (response.status === 200) {
-          this.setState({ listaOferta: response.data }, () => console.log("Lista de Ofertas: ", this.state.listaOferta))
-        }
-        setTimeout(500);
+        setTimeout(() => {
+          if (response.status === 200) {
+            this.setState({ listaOferta: response.data })
+          }
+        }, 500);
+
+
+        // console.log("Lista de Ofertas: ", this.state.listaOferta)
       })
       .catch(error => console.log(error))
   }
@@ -131,9 +123,10 @@ class Perfil extends Component {
       .then(response => {
         console.log(response)
         if (response.status === 200) {
-          this.setState({ listaReceita: response.data }, () => console.log("Lista de Receitas: ", this.state.listaReceita))
+          this.setState({ listaReceita: response.data })
         }
         setTimeout(500);
+        console.log("Lista de Receitas: ", this.state.listaReceita)
       })
       .catch(error => console.log(error))
   }
@@ -157,7 +150,7 @@ class Perfil extends Component {
       .then(response => {
         console.log(response)
         if (response.status === 200) {
-          this.setState({ listaOferta: response.data })
+          this.setState({ listaCategoriaReceita: response.data })
         }
         setTimeout(500);
       })
@@ -193,17 +186,17 @@ class Perfil extends Component {
   }
 
   // 02 - Adicionamos um setState específico
-  postSetStateFile = (input) =>{
-      this.setState({
-          postOferta : {
-              ...this.state.postOferta, [input.target.name] : input.target.files[0],
-          }   
-      })
+  postSetStateFile = (input) => {
+    this.setState({
+      postOferta: {
+        ...this.state.postOferta, [input.target.name]: input.target.files[0],
+      }
+    })
   }
 
   postProduto = (p) => {
 
-    p.preventDefault();
+
 
     console.log("Produto do state: ", this.state.postProduto);
 
@@ -276,7 +269,7 @@ class Perfil extends Component {
   //#endregion
 
   //#region DELETEs
-  deleteOferta(id) {
+  deleteOferta = (id) => {
 
     this.setState({ successMsg: "" })
 
@@ -296,7 +289,7 @@ class Perfil extends Component {
       })
   }
 
-  deleteReceita(id) {
+  deleteReceita = (id) => {
 
     this.setState({ successMsg: "" })
     api.delete('/receita/' + id)
@@ -314,102 +307,6 @@ class Perfil extends Component {
         this.setState({ erroMsg: "Falha ao excluir" })
       })
   }
-
-  //#endregion
-
-  //#region PUTs
-
-  // PutSetStateOferta = (input) => {
-  //   this.setState({
-  //     putOferta: {
-  //       ...this.setState.putOferta, [input.target.name]: input.target.value
-  //     }
-  //   })
-  // }
-
-  // PutSetStateReceita = (input) => {
-  //   this.setState({
-  //     putReceita: {
-  //       ...this.setState.putReceita, [input.target.name]: input.target.value
-  //     }
-  //   })
-  // }
-
-  // toggle = () => {
-  //   this.setState({
-  //     modal: !this.state.modal
-  //   });
-  // }
-
-  // openModalOferta = (o) => {
-  //   console.log("Abrindo modal")
-  //   this.toggle();
-  //   this.setState({ putOferta: o });
-  //   console.log("PUT", this.state.putOferta);
-  // }
-
-  // openModalReceita = (r) => {
-  //   this.toggle();
-  //   this.setState({ putReceita: r });
-  //   console.log("PUT", this.state.putReceita);
-  // }
-
-  // putOferta = (event) => {
-  //   event.preventDefault();
-  //   let oferta_id = this.state.putOferta.ofertaId;
-  //   let oferta_alterada = this.state.putOferta;
-
-
-  //   api.put('/oferta/' + oferta_id, oferta_alterada)
-  //     .then(() => {
-  //       this.setState({ successMsg: "Evento alterado com sucesso!" });
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //       this.setState({ erroMsg: "Falha ao alterar o Evento" });
-  //     })
-
-  //   this.toggle();
-
-  //   setTimeout(() => {
-  //     this.getOferta();
-  //   }, 1500);
-
-  //   setTimeout(() => {
-  //     this.setState({ successMsg: "" });
-  //     this.setState({ erroMsg: "" });
-  //   }, 1500);
-  // }
-
-  // putReceita = (event) => {
-  //   event.preventDefault();
-  //   let receita_id = this.state.putReceita.receitaId;
-  //   let receita_alterada = this.state.putReceita;
-
-
-  //   api.put('/receita/' + receita_id, receita_alterada)
-  //     .then(() => {
-  //       this.setState({ successMsg: "Receita alterado com sucesso!" });
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //       this.setState({ erroMsg: "Falha ao alterar a Receita" });
-  //     })
-
-  //   this.toggle();
-
-  //   setTimeout(() => {
-  //     this.getOferta();
-  //   }, 1500);
-
-  //   setTimeout(() => {
-  //     this.setState({ successMsg: "" });
-  //     this.setState({ erroMsg: "" });
-  //   }, 1500);
-
-  // }
-
-  //#endregion
 
   render() {
     return (
@@ -503,7 +400,7 @@ class Perfil extends Component {
                   <p>Clique para<br />
                     incluir Imagem</p>
 
-                  <input accept="image/*" type="file" name="imagemProduto" ref={this.state.postOferta.imagemProduto} onChange={this.postSetStateFile} /> 
+                  <input accept="image/*" type="file" name="imagemProduto" ref={this.state.postOferta.imagemProduto} onChange={this.postSetStateFile} />
                   {/* <button type="submit" alt="botao incluir imagem" className="btn_incluir_imagem">+</button> */}
                 </div>
                 <label >
@@ -583,12 +480,12 @@ class Perfil extends Component {
                       function (o) {
                         return (
                           <tr key={o.ofertaId}>
-                            <td>{o.produtoId}</td>
-                            <td>{o.tipoProduto}</td>
+                            <td>{o.produto.tipo}</td>
+                            <td>{o.produto.categoriaProduto.tipoProduto}</td>
                             <td>{o.peso}</td>
                             <td>{o.preco}</td>
                             <td>{o.quantidade}</td>
-                            {/* <td className="editar">
+                            <td className="editar">
                               <button onClick={() => this.openModalOferta(o)}>
                                 <i className="fas fa-edit"></i>Editar
                               </button>
@@ -597,7 +494,7 @@ class Perfil extends Component {
                               <button onClick={() => this.deleteOferta(o.ofertaId)}>
                                 <i className="fas fa-trash"></i>Excluir
                               </ button>
-                            </td> */}
+                            </td>
                           </tr>
                         )
                       }

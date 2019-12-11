@@ -34,7 +34,6 @@ class Produto extends Component {
     componentDidMount() {
         this.getOferta();
         this.getProduto();
-        this.getCategoriaProduto();
         this.getUsuario();
     }
 
@@ -54,18 +53,11 @@ class Produto extends Component {
             }
         })
     }
-    getCategoriaProduto = () => {
-        api.get('/categoriaproduto').then(response => {
-            if (response.status === 200) {
-                this.setState({ listarCategoriaReceita: response.data })
-            }
-        })
-    }
 
     getUsuario = () => {
         api.get('/usuario').then(response => {
             if (response.status === 200) {
-                this.setState({ listarReceita: response.data })
+                this.setState({ listarUsuario: response.data })
             }
         })
     }
@@ -149,17 +141,13 @@ class Produto extends Component {
                                                             <div>
                                                                 <h1>{this.state.modalOferta.tipo}</h1>
                                                                 <h2>Dados do produtor para contato</h2>
-                                                                {
-                                                                    this.state.listarUsuario.map(function(u){
-                                                                        return(
+                                                               
                                                                             <div>
-                                                                            <p>Nome: {u.nome}</p>
-                                                                            <p>Email:{u.email}</p>
-                                                                            <p>Telefone:{u.telefone}</p>
+                                                                            <p>Nome:</p>
+                                                                            <p>Email:</p>
+                                                                            <p>Telefone:</p>
                                                                             </div>
-                                                                        )
-                                                                    })
-                                                                }
+                                                              
                                                                 
                                                                 <p>R$: {this.state.modalOferta.preco}</p>
                                                             </div>
