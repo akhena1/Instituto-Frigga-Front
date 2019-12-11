@@ -88,40 +88,32 @@ class Perfil extends Component {
 
 
   getProduto = () => {
-    console.log("Get Produto")
     api.get('/produto')
       .then(response => {
-        console.log(response)
         if (response.status === 200) {
-          this.setState({ listaProduto: response.data }, () => console.log("Lista de Produtos: ", this.state.listaProduto))
+          this.setState({ listaProduto: response.data })
         }
         setTimeout(500);
+        console.log("Lista de Produtos: ", this.state.listaProduto)
       })
       .catch(error => console.log(error))
   }
 
   getOferta = () => {
-    console.log("Get Oferta")
     api.get('/oferta')
       .then(response => {
-        console.log(response)
-        setTimeout(() => {
-          if (response.status === 200) {
-            this.setState({ listaOferta: response.data })
-          }
-        }, 500);
-
-
-        // console.log("Lista de Ofertas: ", this.state.listaOferta)
+        if (response.status === 200) {
+          this.setState({ listaOferta: response.data })
+        }
+        setTimeout(500);
+        console.log("Lista de Ofertas: ", this.state.listaOferta)
       })
       .catch(error => console.log(error))
   }
 
   getReceita = () => {
-    console.log("Get Receita")
     api.get('/receita')
       .then(response => {
-        console.log(response)
         if (response.status === 200) {
           this.setState({ listaReceita: response.data })
         }
@@ -132,27 +124,25 @@ class Perfil extends Component {
   }
 
   getCategoriaProduto = () => {
-    console.log("Get Categoria Produto")
-    api.get('/categoriaproduto')
+    api.get('/categoriaProduto')
       .then(response => {
-        console.log(response)
         if (response.status === 200) {
-          this.setState({ listaCategoriaProduto: response.data }, () => console.log("Lista de categorias(Produtos): ", this.state.listaCategoriaProduto))
+          this.setState({ listaCategoriaProduto: response.data })
         }
         setTimeout(500);
+        console.log("Lista de categorias(Produto): ", this.state.listaCategoriaProduto)
       })
       .catch(error => console.log(error))
   }
 
   getCategoriaReceita = () => {
-    console.log("Get Categoria receita")
-    api.get('/categoriareceita')
+    api.get('/categoriaReceita')
       .then(response => {
-        console.log(response)
         if (response.status === 200) {
           this.setState({ listaCategoriaReceita: response.data })
         }
         setTimeout(500);
+        console.log("Lista de categorias(Receita): ", this.state.listaCategoriaReceita)
       })
       .catch(error => console.log(error))
   }
@@ -194,9 +184,15 @@ class Perfil extends Component {
     })
   }
 
+  postSetStateFileReceita = (input) => {
+    this.setState({
+      postReceita: {
+        ...this.state.postReceita, [input.target.name]: input.target.files[0],
+      }
+    })
+  }
+
   postProduto = (p) => {
-
-
 
     console.log("Produto do state: ", this.state.postProduto);
 
@@ -222,6 +218,7 @@ class Perfil extends Component {
   postOferta = (o) => {
 
     o.preventDefault();
+
     console.log("Oferta do POST: ", this.state.postOferta);
 
 
@@ -232,7 +229,8 @@ class Perfil extends Component {
     ofertaForm.set("preco", this.state.postOferta.preco);
     ofertaForm.set("peso", this.state.postOferta.peso);
     ofertaForm.set("quantidade", this.state.postOferta.quantidade);
-    ofertaForm.set('imagemProduto', this.state.postOferta.imagemProduto.current.files[0], this.state.postOferta.imagemProduto);
+    ofertaForm.set('imagemProdutosss', this.state.postOferta.imagemProduto.current.files[0]);
+    ofertaForm.set('imagemProduto', this.state.postOferta.imagemProduto.current.value);
 
     apiFormData.post('/oferta', ofertaForm)
       .then(response => {
@@ -252,7 +250,19 @@ class Perfil extends Component {
 
     r.preventDefault();
 
-    api.post('/receita', this.state.postReceita)
+    console.log("Receita do POST: ", this.state.postReceita);
+
+    let ReceitaForm = new FormData();
+
+    ReceitaForm.set("nome", this.state.postReceita.nome);
+    ReceitaForm.set("ingredientes", this.state.postReceita.ingredientes);
+    ReceitaForm.set('usuarioId', parseJwt().Id);
+    ReceitaForm.set("categoriaReceitaId", this.state.postReceita.categoriaReceitaId);
+    ReceitaForm.set("modoDePreparo", this.state.postReceita.modoDePreparo);
+    ReceitaForm.set('imagemReceitassss', this.state.postReceita.imagemReceita.current.files[0]);
+    ReceitaForm.set('imagemReceita', this.state.postReceita.imagemReceita.current.value);
+
+    api.post('/receita', ReceitaForm)
       .then(response => {
         console.log(response);
       })
@@ -399,9 +409,7 @@ class Perfil extends Component {
                 <div className="imagem_incluir">
                   <p>Clique para<br />
                     incluir Imagem</p>
-
                   <input accept="image/*" type="file" name="imagemProduto" ref={this.state.postOferta.imagemProduto} onChange={this.postSetStateFile} />
-                  {/* <button type="submit" alt="botao incluir imagem" className="btn_incluir_imagem">+</button> */}
                 </div>
                 <label >
                   <select
@@ -523,27 +531,27 @@ class Perfil extends Component {
             </div>
             <h2>Cadastrar Receitas</h2>
             <div className="card_profile">
-              <div className="imagem_incluir">
-                <p>Clique para<br />
-                  incluir Imagem</p>
-                <button type="submit" alt="botao incluir imagem" className="btn_incluir_imagem">+</button>
-              </div>
               <form onSubmit={this.postReceita}>
+              <div className="imagem_incluir">
+                  <p>Clique para<br />
+                    incluir Imagem</p>
+                  <input accept="image/*" type="file" name="imagemReceita" ref={this.state.postReceita.imagemReceita} onChange={this.postSetStateFileReceita} />
+            </div>
                 <label>
                   <input
                     type="text"
                     id="nome__receita"
                     placeholder="Nome receita..."
                     name="nome"
-                    value={this.state.listaReceita.nome}
+                    value={this.state.postReceita.nome}
                     onChange={this.atualizaEstadoReceita}
                     required />
                 </label>
                 <label></label>
                 <select
-                  name="tipoReceita"
+                  name="categoriaReceitaId"
                   id="categoria__receita"
-                  value={this.state.listaReceita.tipoReceita}
+                  value={this.state.postReceita.categoriaReceitaId}
                   onChange={this.atualizaEstadoReceita}
                 >
                   <option value="">Escolha uma categoria...</option>
@@ -566,7 +574,7 @@ class Perfil extends Component {
                     id="ingredientes"
                     name="ingredientes"
                     placeholder="Ingredientes..."
-                    value={this.state.listaReceita.ingredientes}
+                    value={this.state.postReceita.ingredientes}
                     onChange={this.atualizaEstadoReceita}
                   />
                 </label>
@@ -576,14 +584,14 @@ class Perfil extends Component {
                     name="modoDePreparo"
                     placeholder="Modo de preparo..."
                     id="modo__preparo"
-                    value={this.state.listaReceita.modoDePreparo}
+                    value={this.state.postReceita.modoDePreparo}
                     onChange={this.atualizaEstadoReceita}
                   />
                 </label>
-              </form>
               <button type="submit" alt="botao cadastrar receitas" className="btn_cadastrar_receita">Inserir receita
                         <div id="cadastro__receita"></div>
               </button>
+              </form>
             </div>
 
             <div className="tabela_receitas">
