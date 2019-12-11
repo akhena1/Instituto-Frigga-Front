@@ -7,6 +7,7 @@ import Header from '../../Components/Header/Header';
 import api from '../../services/api'
 import { Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
+import { usuarioAutenticado } from '../../services/auth';
 
 
 
@@ -123,7 +124,14 @@ class Produto extends Component {
                                             <div className="nav-p nav-p-isa">
 
                                                 <p>{of.tipo}<br></br> R$ {of.preco}</p>
-                                                <button onClick={() => this.onOpenModal(of)}>Reservar</button>
+                                                {
+                                                   usuarioAutenticado()? (
+                                                    <Link onClick={() => this.onOpenModal(of)}>Reservar</Link>
+                                                   ):(
+                                                    <Link to="/Entrar">Reservar</Link>
+                                                   ) 
+                                                }
+                                               
                                             </div>
                                         </div>
                                     );

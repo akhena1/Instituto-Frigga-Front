@@ -104,15 +104,9 @@ class Perfil extends Component {
     console.log("Get Oferta")
     api.get('/oferta')
       .then(response => {
-        console.log(response)
-        setTimeout(() => {
-          if (response.status === 200) {
+        console.log(response)         
             this.setState({ listaOferta: response.data })
-          }
-        }, 500);
-
-
-        // console.log("Lista de Ofertas: ", this.state.listaOferta)
+        console.log("Lista de Ofertas: ", this.state.listaOferta)
       })
       .catch(error => console.log(error))
   }
@@ -269,7 +263,7 @@ class Perfil extends Component {
   //#endregion
 
   //#region DELETEs
-  deleteOferta = (id) => {
+  deleteOferta = (id) =>{
 
     this.setState({ successMsg: "" })
 
@@ -277,10 +271,6 @@ class Perfil extends Component {
       .then(response => {
         if (response.status === 200) {
           this.setState({ successMsg: "Excluído com sucesso" })
-
-          setTimeout(() => {
-            this.getOferta();
-          }, 1500);
         }
       })
       .catch(error => {
@@ -289,7 +279,7 @@ class Perfil extends Component {
       })
   }
 
-  deleteReceita = (id) => {
+  deleteReceita(id){
 
     this.setState({ successMsg: "" })
     api.delete('/receita/' + id)
@@ -497,7 +487,7 @@ class Perfil extends Component {
                             </td>
                           </tr>
                         )
-                      }
+                      }.bind(this)
                     )
                   }
                 </tbody>
