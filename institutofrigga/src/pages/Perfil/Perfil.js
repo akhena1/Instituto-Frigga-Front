@@ -279,7 +279,7 @@ class Perfil extends Component {
   //#endregion
 
   //#region DELETEs
-  deleteOferta = (id) => {
+  deleteOferta = (id) =>{
 
     this.setState({ successMsg: "" })
 
@@ -287,10 +287,6 @@ class Perfil extends Component {
       .then(response => {
         if (response.status === 200) {
           this.setState({ successMsg: "Excluído com sucesso" })
-
-          setTimeout(() => {
-            this.getOferta();
-          }, 1500);
         }
       })
       .catch(error => {
@@ -299,7 +295,7 @@ class Perfil extends Component {
       })
   }
 
-  deleteReceita = (id) => {
+  deleteReceita(id){
 
     this.setState({ successMsg: "" })
     api.delete('/receita/' + id)

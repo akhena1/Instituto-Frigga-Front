@@ -4,6 +4,7 @@ import Header from '../../Components/Header/Header';
 import api from '../../services/api'
 import { Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
+import { usuarioAutenticado } from '../../services/auth';
 
 
 
@@ -16,13 +17,19 @@ class Produto extends Component {
             listarProduto: [],
             listarUsuario: [],
             Preco: [],
-            modalOferta: [],
+            modalOferta: {
+                usuario : {
+                    nome : "",
+                    telefone: ""
+                }
+            },
             open: false
         }
     }
 
     onOpenModal = (oferta) => {
         this.setState({ open: true, modalOferta: oferta });
+        
     };
 
     onCloseModal = () => {
@@ -120,7 +127,14 @@ class Produto extends Component {
                                             <div className="nav-p nav-p-isa">
 
                                                 <p>{of.tipo}<br></br> R$ {of.preco}</p>
-                                                <button onClick={() => this.onOpenModal(of)}>Reservar</button>
+                                                {
+                                                   usuarioAutenticado()? (
+                                                    <Link onClick={() => this.onOpenModal(of)}>Reservar</Link>
+                                                   ):(
+                                                    <Link to="/Entrar">Reservar</Link>
+                                                   ) 
+                                                }
+                                               
                                             </div>
                                         </div>
                                     );
@@ -140,9 +154,9 @@ class Produto extends Component {
                                                                 <h2>Dados do produtor para contato</h2>
                                                                
                                                                             <div>
-                                                                            <p>Nome:</p>
-                                                                            <p>Email:</p>
-                                                                            <p>Telefone:</p>
+                                                                            <p>Nome:{this.state.modalOferta.usuario.nome}</p>
+                                                                            
+                                                                            <p>Telefone:{this.state.modalOferta.usuario.telefone}</p>
                                                                             </div>
                                                               
                                                                 
