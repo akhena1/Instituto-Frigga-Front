@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import {api} from '../../services/api';
-//import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 

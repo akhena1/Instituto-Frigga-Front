@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../../Components/Header/HeaderLogin';
 import Footer from '../../Components/Footer/Footer';
 import IconLogin from '../../assets/img/iconperfil.svg';
-import api from '../../services/api';
+import api, { apiViaCep } from '../../services/api';
 import { parseJwt } from '../../services/auth';
 import Modal from 'react-responsive-modal';
 
@@ -31,7 +31,9 @@ class Entrar extends Component {
 
       erroMensagem: "",
 
-      open: false
+      open: false,
+      
+
     }
   }
 
@@ -143,10 +145,24 @@ class Entrar extends Component {
         this.setState({ erroMensagem: "E-mail ou senha inválidos" })
         this.setState({ isLoading: false })
       })
-    }, 600);
-
+    }, 600); 
    
 
+  }
+  checkCep = (c) => {
+    c.preventDefault();
+    apiViaCep.get(`${this.state.cep}/json/`)
+      .then(response => {  
+           this.setState( {endereco: response.data.logradouro} )
+           this.setState( {cidade: response.data.localidade} )
+           this.setState( {bairro: response.data.bairro} ) 
+      })
+        
+        
+         
+        
+        
+  
   }
   render() {
     const { open } = this.state;
@@ -308,7 +324,8 @@ class Entrar extends Component {
                         aria-label="Digite seu Cnpj"
                         name="cep"
                         id="cep"
-                        required />
+                         />
+                        <button onClick={this.checkCep} className="btn_login" >Verificar Cep</button>
                     </div>
                     <div className="input-group">
                       <label>Endereço</label>

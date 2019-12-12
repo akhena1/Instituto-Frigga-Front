@@ -8,8 +8,17 @@ import { usuarioAutenticado } from '../../services/auth';
 class Header extends Component {
     
     logout = () => {
-        localStorage.removeItem("usuario-frigga")
-        this.props.history.push("/entrar")
+        var exit = window.confirm("Deseja mesmo sair?")
+
+        if(exit === true){
+
+            localStorage.removeItem("usuario-frigga")
+            this.props.history.push("/entrar")
+            window.alert("Volte sempre!")
+        }else{
+            
+        }
+        
     }
     render() {
         return (
