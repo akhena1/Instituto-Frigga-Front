@@ -20,7 +20,12 @@ class Produto extends Component {
             listarProduto: [],
             listarUsuario: [],
             Preco: [],
-            modalOferta: [],
+            modalOferta: {
+                usuario : {
+                    nome : "",
+                    telefone: ""
+                }
+            },
             open: false
         }
     }
@@ -152,15 +157,15 @@ class Produto extends Component {
                                                                 <h2>Dados do produtor para contato</h2>
                                                                
                                                                             <div>
-                                                                            <p>Nome:</p>
-                                                                            <p>Email:</p>
-                                                                            <p>Telefone:</p>
+                                                                            <p>Nome:{this.state.modalOferta.usuario.nome}</p>
+                                                                            
+                                                                            <p>Telefone:{this.state.modalOferta.usuario.telefone}</p>
                                                                             </div>
                                                               
                                                                 
                                                                 <p>R$: {this.state.modalOferta.preco}</p>
                                                             </div>
-                                                            <button>Ok</button>
+                                                            
 
                                                     </div>
 
