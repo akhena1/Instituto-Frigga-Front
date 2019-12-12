@@ -38,7 +38,6 @@ class Produto extends Component {
     componentDidMount() {
         this.getOferta();
         this.getProduto();
-        this.getUsuario();
     }
 
     getOferta = () => {
@@ -54,14 +53,6 @@ class Produto extends Component {
         api.get('/produto').then(response => {
             if (response.status === 200) {
                 this.setState({ listarCategoriaReceita: response.data })
-            }
-        })
-    }
-
-    getUsuario = () => {
-        api.get('/usuario').then(response => {
-            if (response.status === 200) {
-                this.setState({ listarUsuario: response.data })
             }
         })
     }
@@ -126,7 +117,7 @@ class Produto extends Component {
                                             <img src={"http://localhost:5000/Arquivos/" + of.imagemProduto} alt={of.tipo} />
                                             <div className="nav-p nav-p-isa">
 
-                                                <p>{of.tipo}<br></br> R$ {of.preco}</p>
+                                                <p>{of.produto.tipo}<br></br> R$ {of.preco}</p>
                                                 {
                                                    usuarioAutenticado()? (
                                                     <Link onClick={() => this.onOpenModal(of)}>Reservar</Link>
@@ -157,72 +148,17 @@ class Produto extends Component {
                                                                             <p>Nome:{this.state.modalOferta.usuario.nome}</p>
                                                                             
                                                                             <p>Telefone:{this.state.modalOferta.usuario.telefone}</p>
-                                                                            </div>
-                                                              
-                                                                
+                                                                            </div>                
                                                                 <p>R$: {this.state.modalOferta.preco}</p>
                                                             </div>
-                                                            <button>Ok</button>
-
-                                                    </div>
-
-                                             
-                                        
+                                                            
+                                                    </div>                      
                                     </Modal>
                                 </div>
                             }
-                               {/* {this.state.listarOferta.map(function(o)){
-                                   return(
-                                    <div className="card_produtoisa">
-                                    <img src={I1} alt="imagem de pepino" />
-                                    <div className="nav-p nav-p-isa">
-                                        <p>Pepino<br></br> R$ 10,25</p>
-    
-                                        <a onClick={() => this.onOpenModal(o.ofertaId)}>Encomendar</a>
-                                    </div>
-                                </div>
-
-                               )}}  */}
+                              
                            
-                            {/* <div className="card_produtoisa">
-                                <img src={I2} alt="imagem de tomates" />
-                                <div className="nav-p nav-p-isa">
-                                    <p>tomates<br></br> R$ 9,99</p>
-                                    <a href="login.html" title="login">Encomendar</a>
-                                </div>
-                            </div>
-                            <div className="card_produtoisa">
-                                <img src={I3} alt="imagem de uma alface" />
-                                <div className="nav-p nav-p-isa">
-                                    <p>Alface<br></br> R$ 3,99</p>
-                                    <a href="login.html" title="login">Encomendar</a>
-                                </div>
-                            </div>
-                            <div className="card_produtoisa">
-                                <img src={I3} alt="imagem de alface" />
-                                <div className="nav-p nav-p-isa">
-                                    <p>Alface<br></br> R$ 3,99</p>
-                                    <a href="login.html" title="login">Encomendar</a>
-                                </div>
-                            </div>
-
-                            <div className="card_produtoisa"
-                            >
-                                <img src={I1} alt="imagem de pepino" />
-                                <div className="nav-p nav-p-isa">
-                                    <p> Pepino<br></br> R$ 10,25 </p>
-                                    <a href="login.html" title="login">Encomendar</a>
-                                </div>
-
-                            </div>
-
-                            <div className="card_produtoisa">
-                                <img src={I2} alt="imagem de tomates" />
-                                <div className="nav-p nav-p-isa">
-                                    <p>tomates<br></br> R$ 9,99</p>
-                                    <a href="login.html" title="login">Encomendar</a>
-                                </div> */}
-                            {/* </div> */}
+                           
                         </section>
                     </section>>
                 </main>
