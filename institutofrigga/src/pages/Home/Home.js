@@ -108,7 +108,7 @@ class Home extends Component {
                                                 <div key={o.ofertaId} className="card-produto">
                                                     <img src={"http://localhost:5000/arquivos/" + o.imagemProduto} alt='' />
                                                     <div className="nav-p">
-                                                        <p>{o.produto.tipo} <br /> R${o.preco}</p>
+                                                        <p>{o.tipo} <br /> R${o.preco}</p>
                                                         {
                                                             usuarioAutenticado()? (
 

@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
-import {api} from '../../services/api';
+import { api } from '../../services/api';
 //import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
-
-
-
-
-
 
 
 class Receita extends Component {
@@ -18,6 +13,8 @@ class Receita extends Component {
         this.state = {
             listaCategoriaReceita: [],
             listarReceita: [],
+            setStateFiltro: "",
+            setStateTodos: ""
         }
     }
 
@@ -29,7 +26,7 @@ class Receita extends Component {
     getCategoriaReceita = () => {
         api.get('/categoriareceita').then(response => {
             if (response.status === 200) {
-                this.setState({ listarCategoriaReceita: response.data })
+                this.setState({ listaCategoriaReceita: response.data })
                 console.log(response)
             }
         })
@@ -42,6 +39,33 @@ class Receita extends Component {
             }
         })
     }
+    getFiltro = () => {
+        if (this.atualizaSelect.value === "Todos") {
+            console.log(this.getReceita)
+        } else {
+            api.get('/categoriareceita' + this.state.setStateFiltro)
+                .then(response => {
+                    if (response.status === 200) {
+                        this.setState({ listaCategoriaReceita: response.data })
+                    }
+                })
+        }
+    }
+    atualizaSelect = (value) => {
+        this.setState({ setStateFiltro: value })
+        setTimeout(() => {
+            this.getFiltro(this.state.filtrarreceita)
+
+        }, 500);
+    }
+    filtrarListaPorCategoria = (idCategoria) => {
+        console.log("Id Categoria: ", idCategoria);
+        api.get("/filtro/filtrarreceita/" + idCategoria)
+            .then(response => {
+                this.setState({ listarReceita: response.data });
+            })
+            .catch(erro => console.log("Deu erro na busca de ofertas por id categoria: ", erro))
+    }
 
 
     render() {
@@ -50,18 +74,25 @@ class Receita extends Component {
             <div>
                 <Header />
                 <section className="container_geral">
-
                     <section className="container-categorias">
                         <h2>CATEGORIAS</h2>
                         <div className="bar_bar"></div>
                         <div className="categorias">
-                            <div className="align">
-                                <p>MASSAS</p><br></br>
-                                <div className="categ_5">
-                                <Link to = '#'></Link>
-                                </div>
-                            </div>
-                            <div className="align">
+                            {
+                                this.state.listaCategoriaReceita.map(lr => {
+                                    return (
+                                        <div className="align">
+                                            <p>{lr.tipoReceita}</p><br></br>
+                                            <div className="categ_1" onClick={() => this.filtrarListaPorCategoria(lr.categoriaReceitaId)}>
+
+                                            </div>
+                                        </div>
+
+                                    )
+                                }
+                                )
+                            }
+                            {/* <div className="align">
                                 <p>SOPAS</p><br></br>
                                 <div className="categ_6">
                                 <Link to = '#'></Link>
@@ -78,7 +109,7 @@ class Receita extends Component {
                                 <div className="categ_8">
                                 <Link to = '#'></Link>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </section>
 
@@ -86,19 +117,19 @@ class Receita extends Component {
                         <div className="categorias_mobile">
                             <div className="categ_mobile">
                                 <p>LEGUMES</p>
-                                <Link to = '#'><img src="img/frutas.png" title="#" alt="legumes" /></Link>
+                                <Link to='#'><img src="img/frutas.png" title="#" alt="legumes" /></Link>
                             </div>
                             <div className="categ_mobile">
                                 <p>FRUTAS</p>
-                                <Link to = '#'><img src="img/abacaxi.png" title="#" alt="frutas" /></Link>
+                                <Link to='#'><img src="img/abacaxi.png" title="#" alt="frutas" /></Link>
                             </div>
                             <div className="categ_mobile">
                                 <p>MASSAS</p>
-                                <Link to = '#'><img src="img/massas.png" title="#" alt="frutas" /></Link>
+                                <Link to='#'><img src="img/massas.png" title="#" alt="frutas" /></Link>
                             </div>
                             <div className="categ_mobile">
                                 <p>SALADAS</p>
-                                <Link to = '#'><img src="img/frutas.png" title="#" alt="frutas" /></Link>
+                                <Link to='#'><img src="img/frutas.png" title="#" alt="frutas" /></Link>
                             </div>
                         </div>
 
@@ -112,13 +143,13 @@ class Receita extends Component {
                             this.state.listarReceita.map(
                                 function (r) {
                                     return (
-                            <div key={r.receitaId} className="card_receitas">
-                            <img src={"http://localhost:5000/Arquivos/" + r.imagemReceita} alt=''/>
-                            <div className="nav-r">
-                                <p>{r.nome}</p>
-                                <Link to={{ pathname: '/verreceita', state: { receitaId: r.receitaId} }} >Leia mais</Link>
-                            </div>
-                        </div>
+                                        <div key={r.receitaId} className="card_receitas">
+                                            <img src={"http://localhost:5000/Arquivos/" + r.imagemReceita} alt='' />
+                                            <div className="nav-r">
+                                                <p>{r.nome}</p>
+                                                <Link to={{ pathname: '/verreceita', state: { receitaId: r.receitaId } }} >Leia mais</Link>
+                                            </div>
+                                        </div>
                                     )
                                 }
                             )
@@ -126,7 +157,7 @@ class Receita extends Component {
 
 
 
-                         {/* <div className="card_receitas">
+                        {/* <div className="card_receitas">
                             <img src={rimg} alt="imagem de salada de queijo" />
                             <div className="nav-r">
                                 <p> Salada com queijo...</p>
@@ -170,7 +201,7 @@ class Receita extends Component {
 
                         </div> */}
 
- 
+
                     </section>
                 </section>
                 <Footer />
@@ -182,6 +213,5 @@ class Receita extends Component {
 
 
 export default Receita;
-
 
 

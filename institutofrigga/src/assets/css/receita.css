@@ -195,3 +195,26 @@ padding: 0;
     letter-spacing: 1px;
     text-align: justify; /*alterado mig*/
   }
+
+  /* Responsivo ver receitas*/
+@media(max-width: 767px){
+  .banner-receita1{
+    width: 100vw;
+  } 
+  .h3titulo{
+    align-items: center;
+  }
+
+  .receita-text1 p{
+    width: 95%;
+    
+  }
+}
+@media(max-width: 1169px){
+  .banner-receita1{
+    width: 100vw;
+  } 
+  .receita-text1{
+    width: 95%; 
+  }
+}
