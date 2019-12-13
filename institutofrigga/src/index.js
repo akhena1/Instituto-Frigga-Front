@@ -20,8 +20,8 @@ import './assets/css/header&footer.css';
 import './assets/css/home&produtos.css';
 import './assets/css/modalProduto.css';
 import './assets/css/perfil.css';
-import './assets/css/about.css'
-import './assets/css/receita.css'
+import './assets/css/about.css';
+import './assets/css/receita.css';
 
 // Dependências necessárias
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';

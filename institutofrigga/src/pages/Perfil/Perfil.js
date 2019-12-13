@@ -21,7 +21,11 @@ class Perfil extends Component {
       listaReceita: [],
       listaCategoriaProduto: [],
       listaCategoriaReceita: [],
-
+      usuario: [],
+      Role: "",
+      nameId: "",
+      Telefone: "",
+      Emai: "",
       // postPerfil: {
       //   nome: "",
       //   telefone: "",
@@ -83,6 +87,7 @@ class Perfil extends Component {
     this.getProduto();
     this.getReceita();
     this.getCategoriaReceita();
+    console.log(parseJwt());
   }
 
 
@@ -104,8 +109,8 @@ class Perfil extends Component {
     console.log("Get Oferta")
     api.get('/oferta')
       .then(response => {
-        console.log(response)         
-            this.setState({ listaOferta: response.data })
+        console.log(response)
+        this.setState({ listaOferta: response.data })
         console.log("Lista de Ofertas: ", this.state.listaOferta)
       })
       .catch(error => console.log(error))
@@ -263,7 +268,7 @@ class Perfil extends Component {
   //#endregion
 
   //#region DELETEs
-  deleteOferta = (id) =>{
+  deleteOferta = (id) => {
 
     this.setState({ successMsg: "" })
 
@@ -279,7 +284,7 @@ class Perfil extends Component {
       })
   }
 
-  deleteReceita(id){
+  deleteReceita(id) {
 
     this.setState({ successMsg: "" })
     api.delete('/receita/' + id)
@@ -299,46 +304,57 @@ class Perfil extends Component {
   }
 
   render() {
-    return (
+    return(
       <>
         <Header />
         <main>
           <section className="profile">
             <div className="profile_icone">
               <h1>Perfil</h1>
-              <img src={iconPerfil} alt="icone usuario" />
+              <img src={iconPerfil} alt="icone usuario"/>
             </div>
+              {(this.state.usuario.map(element => {
+                return (
+                  <thead>
+                  <tr>
+                  <td>{element.Nome}</td>
+                  <td>{element.Telefone}</td>
+                  <td>{element.Email}</td>
+                  </tr>
+                </thead>)      
+                }))}
 
-            <div className="profile_dados">
+                <div className="profile_dados">
 
-              <div className="bloco">
-                <div className="data_data">
-                  Nome:
+                  <div className="bloco">
+                    <div className="data_data">
+                      Nome:
+</div>
+                    <div className="info_data">
+                    </div>
+                  </div>
+
+                  <div className="bloco">
+                    <div className="data_data">
+                      Telefone:
+                    </div>
+                    <div className="info_data">
+                    k
+                    </div>
+                  </div>
+
+                  <div className="bloco">
+                    <div className="data_data">
+                      E-mail:
+                    </div>
+                    <div className="info_data">
+                      a
+                    </div>
+                  </div>
                 </div>
-                <div className="info_data">
-                  Beltrano da Silva
-                </div>
-              </div>
 
-              <div className="bloco">
-                <div className="data_data">
-                  Telefone:
-                  </div>
-                <div className="info_data">
-                  (11) 9999-9999
-                  </div>
-              </div>
 
-              <div className="bloco">
-                <div className="data_data">
-                  E-mail:
-                  </div>
-                <div className="info_data">
-                  beltrano@gmail.com
-                 </div>
-              </div>
 
-            </div>
           </section>
           <section className="product_recipes">
             <h2>Cadastrar Produto</h2>
@@ -353,7 +369,7 @@ class Perfil extends Component {
                     onChange={this.atualizaEstadoProduto}
                     required />
                 </label>
-                <label >
+                <label>
                   <select
                     name="tipoProduto"
                     id="categoria__produto"
@@ -374,6 +390,8 @@ class Perfil extends Component {
                     }
                   </select>
                 </label>
+
+
                 <button
                   type="submit"
                   alt="botao cadastrar produtos"
@@ -414,7 +432,7 @@ class Perfil extends Component {
                     }
                   </select>
                 </label>
-                <label >
+                <label>
                   <input
                     type="text"
                     name="peso"
@@ -450,6 +468,7 @@ class Perfil extends Component {
                   Cadastrar</button>
               </form>
             </div>
+
 
             <div className="tabela_produtos">
               <table>
