@@ -24,27 +24,12 @@ class Perfil extends Component {
         tipoProduto: ""
       },
 
-      putProduto: {
-        tipo: "",
-        tipoProduto: ""
-      },
-
       postOferta: {
         produtoId: "",
         preco: "",
         peso: "",
         imagemProduto: React.createRef(),
         quantidade: "",
-      },
-
-      putOferta: {
-        ofertaId: null,
-        imagemProduto: React.createRef(),
-        usuarioId: parseJwt().Id,
-        produtoId: "",
-        preco: "",
-        peso: "",
-        quantidade: ""
       },
 
       postReceita: {
@@ -55,15 +40,6 @@ class Perfil extends Component {
         modoDePreparo: ""
       },
 
-      putReceita: {
-        imagemReceita: React.createRef(),
-        nome: "",
-        tipoReceita: "",
-        ingredientes: "",
-        modoDePreparo: ""
-      },
-      openReceita: false,
-      openOferta: false,
     }
 
   }
@@ -211,34 +187,9 @@ class Perfil extends Component {
     }, 1500);
   }
 
-  putProduto = (p) => {
-
-    console.log("Produto do state: ", this.state.putProduto);
-
-    let produto = {
-      tipo: this.state.putProduto.tipo,
-      categoriaProdutoId: this.state.putProduto.tipoProduto
-    }
-
-    api.put('/produto', produto)
-      .then(response => {
-        console.log(response);
-        window.alert("Produto alterado!")
-      })
-      .catch(error => {
-        console.log(error);
-        this.setState({ erroMsg: "Não foi possível alterar oferta" });
-      })
-
-    setTimeout(() => {
-      this.getOferta();
-    }, 1500);
-  }
-
   postOferta = (o) => {
 
-    o.preventDefault();
-
+    o.preventDefault()
     console.log("Oferta do POST: ", this.state.postOferta);
 
     let ofertaForm = new FormData();
@@ -295,94 +246,6 @@ class Perfil extends Component {
     }, 1500);
   }
 
-  atualizaEstadoPutOferta = (input) => {
-    this.setState({
-      putOferta: {
-        ...this.state.putOferta, [input.target.name]: input.target.value
-      }
-    })
-  }
-
-  atualizaEstadoPutProduto= (input) => {
-    this.setState({
-      putProduto: {
-        ...this.state.putProduto, [input.target.name]: input.target.value
-      }
-    })
-  }
-
-  atualizaEstadoPutReceita = (input) => {
-    this.setState({
-      putReceita: {
-        ...this.state.putReceita, [input.target.name]: input.target.value
-      }
-    })
-  }
-
-  putOferta = async (event) => {
-
-    event.preventDefault();
-
-    console.log(this.state.putOferta)
-
-    await Axios({
-      method: 'put',
-      headers: { 'Authorization': "bearer " + localStorage.getItem('usuario-frigga'), 'Content-Type': 'application/json' },
-      url: 'http://localhost:5000/api/oferta/' + this.state.putOferta.ofertaId,
-      data: JSON.stringify({
-        ofertaId: this.state.putOferta.ofertaId,
-        preco: this.state.putOferta.preco,
-        peso: this.state.putOferta.peso,
-        produtoId: this.state.putOferta.produtoId,
-        usuarioId: this.state.putOferta.usuarioId,
-        quantidade: this.state.putOferta.quantidade
-      }),
-    })
-      .then(response => {console.log(response)})
-      .catch(error => {console.log(error)});
-  }
-
-
-  openModalOferta = (o) => {
-
-
-    this.setState({ openOferta: true, modalOferta: o });
-    this.setState({ putOferta: o });
-
-    console.log("PUT", this.state.putOferta);
-  }
-
-  onCloseModal = () => {
-    this.setState({ openOferta: false });
-  };
-
-  putReceita = (event) => {
-
-    event.preventDefault();
-    let receita_Id = this.state.putReceita.receitaId;
-    let receitaAlterada = this.state.putReceita;
-
-
-    api.put('/receita/' + receita_Id, receitaAlterada)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error);
-      })
-
-    setTimeout(() => {
-      this.getOferta();
-    }, 1500);
-
-  }
-
-  openModalReceita = (r) => {
-
-    this.setState({ openReceita: true, modalOferta: r });
-    this.setState({ putReceita: r });
-    console.log("PUT", this.state.putReceita);
-  }
 
   deleteOferta(id) {
     api.delete('/oferta/' + id)
@@ -403,7 +266,7 @@ class Perfil extends Component {
       .then(response => {
         if (response.status === 200) {
           this.setState({ successMsg: "Excluído com sucesso" })
-            this.getReceita();
+          this.getReceita();
         }
       })
       .catch(error => {
@@ -420,37 +283,6 @@ class Perfil extends Component {
             <div className="profile_icone">
               <h1>Perfil</h1>
               <img src={iconPerfil} alt="icone usuario" />
-            </div>
-
-            <div className="profile_dados">
-
-              <div className="bloco">
-                <div className="data_data">
-                  Nome:
-                </div>
-                <div className="info_data">
-                  Beltrano da Silva
-                </div>
-              </div>
-
-              <div className="bloco">
-                <div className="data_data">
-                  Telefone:
-                  </div>
-                <div className="info_data">
-                  (11) 9999-9999
-                  </div>
-              </div>
-
-              <div className="bloco">
-                <div className="data_data">
-                  E-mail:
-                  </div>
-                <div className="info_data">
-                  beltrano@gmail.com
-                 </div>
-              </div>
-
             </div>
           </section>
           <section className="product_recipes">
@@ -572,7 +404,6 @@ class Perfil extends Component {
                     <th>Preço/kg</th>
                     <th>Qtd Estoque</th>
                     <th className="void "></th>
-                    <th className="void "></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -586,11 +417,6 @@ class Perfil extends Component {
                             <td>{o.peso}</td>
                             <td>{o.preco}</td>
                             <td>{o.quantidade}</td>
-                            <td className="editar">
-                              <button onClick={() => this.openModalOferta(o)}>
-                                <i className="fas fa-edit"></i>Editar
-                              </button>
-                            </td>
                             <td className="delete">
                               <button onClick={() => this.deleteOferta(o.ofertaId)}>
                                 <i className="fas fa-trash"></i>Excluir
@@ -695,7 +521,6 @@ class Perfil extends Component {
                     <th>Categoria</th>
                     <th className="void"></th>
                     <th className="void "></th>
-                    <th className="void "></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -707,11 +532,6 @@ class Perfil extends Component {
                             <td>{r.nome}</td>
                             <td>{r.categoriaReceita.tipoReceita}</td>
                             <td> <Link to={{ pathname: '/verreceita', state: { receitaId: r.receitaId } }} >Ver Receita</Link></td>
-                            <td className="editar">
-                              <button onClick={() => this.openModalReceita(r)}>
-                                <i className="fas fa-edit"></i>Editar
-                              </button>
-                            </td>
                             <td className="delete">
                               <button onClick={() => this.deleteReceita(r.receitaId)}>
                                 <i className="fas fa-trash"></i>Excluir
@@ -742,95 +562,6 @@ class Perfil extends Component {
             </div>
           </section>
         </main>
-
-        <Modal open={this.state.openOferta} onClose={this.onCloseModal} center>
-        <form onSubmit={this.putProduto}>
-            
-                  <input type="text"
-                    id="oferta__produto"
-                    placeholder="Nome do produto..."
-                    name="tipo"
-                    value={this.state.putProduto.tipo}
-                    onChange={this.atualizaEstadoPutProduto}
-                    required />
-          
-         
-                  <select
-                    name="tipoProduto"
-                    id="categoria__produto"
-                    value={this.state.putProduto.tipoProduto}
-                    onChange={this.atualizaEstadoPutProduto}>
-                    <option value="">Escolha uma categoria...</option>
-                    {
-                      this.state.listaCategoriaProduto.map(function (cp) {
-                        return (
-                          <option
-                            key={cp.categoriaProdutoId}
-                            value={cp.categoriaProdutoId}
-                          >
-                            {cp.tipoProduto}
-                          </option>
-                        )
-                      })
-                    }
-                  </select>
-                  </form>
-                  <form onSubmit = {this.putProduto}>
-            <input
-              label="Peso"
-              name="peso"
-              value={this.state.putOferta.peso}
-              onChange={this.atualizaEstadoPutOferta}
-            />
-            <input
-              label="Preco"
-              name="preco"
-              value={this.state.putOferta.preco}
-              onChange={this.atualizaEstadoPutOferta}
-            />
-            <input
-              label="Quantidade"
-              name="quantidade"
-              value={this.state.putOferta.quantidade}
-              onChange={this.atualizaEstadoPutOferta}
-            />
-            <button alt="botao salvar alterações" type="submit"> Salvar</button>
-            <button alt="botao fechar modal" onClose={this.onCloseModal}>  Fechar</button>
-         </form>
-        </Modal>
-        <Modal open={this.state.openReceita} onClose={this.onCloseModal} center>
-          <form onSubmit={this.putReceita}>
-            <input
-              label="Titulo"
-              name="nome"
-              value={this.state.putReceita.nome}
-              onChange={this.atualizaEstadoPutReceita}
-            />
-            <select
-              name="categoriaReceitaId"
-              id="categoria__receita"
-              value={this.state.postReceita.categoriaReceitaId}
-              onChange={this.atualizaEstadoReceita}
-            >
-              <option value="">Escolha uma categoria...</option>
-              {
-                this.state.listaCategoriaReceita.map(function (cr) {
-                  return (
-                    <option
-                      key={cr.categoriaReceitaId}
-                      value={cr.categoriaReceitaId}
-                    >
-                      {cr.tipoReceita}
-                    </option>
-                  )
-                })
-              }
-            </select>
-            <button alt="botao salvar alterações" type="submit"> Salvar</button>
-            <button alt="botao fechar modal" onClose={this.onCloseModal}>  Fechar</button>
-          </form>
-        </Modal>
-
         <Footer />
       </>
     )
