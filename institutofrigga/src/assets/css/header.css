@@ -20,13 +20,15 @@ header {
     display: flex;
     flex-direction: column;
 }
+
 /*Classe da nav*/
 .menu_global{
     background-color: var(--verde);
     width: 100%;
 }
 .menuzao_ttl {
-    margin: 0px;
+    display:flex; 
+    justify-content: center;
     /*Ao formatar o espa�o do menuzao_ttl, apresenta a faixa na tela*/
     width: 100%;
     /*Defino que o menuzao_ttl ocupar� largura de 100% da tela*/
@@ -45,8 +47,10 @@ header {
     list-style: none;
     /*cicle, square, upper-roman, lower-alpha*/
     font-family: var(--fonte1);
+    display: flex;
+    align-items: center;
 }
-.logotipo_fri .logotiporodapeweb{
+.logotipo_fri .logotipo_header{
     width: 300px;
 }
 .menuzao_ttl ul li {
@@ -64,7 +68,6 @@ header {
     /*Formatando os links. Os li sub-itens com links*/
     padding: 15px;
     /*Espa�amento entre Item e seu sub-item*/
-    display: block;
     text-decoration: none;
     /*overline, line-through, underline, underline overline*/
     text-align: center;
@@ -73,6 +76,7 @@ header {
     /*Cor de fundo*/
     color: var(--cinza);
     /*Cor fonte*/
+    margin-right: 50px;
 }
 .menuzao_ttl ul ul {
     /*Formatanto cada ul dentro da ul principal*/
@@ -140,6 +144,7 @@ justify-content: flex-end;}
     color: white;
     background-color: var(--cinza);
     padding: 6px 12px;
+    margin-right: 10px;
     border-radius: 5px;
     box-shadow: 0px 3px 6px 0px rgba(112, 112, 112, 1);
     font-size: 22px;
@@ -157,11 +162,65 @@ justify-content: flex-end;}
 .logotipo_fri a{
     display: none;
 }
+
+/* Footer logo */
+.logorodapeweb {
+width: 265px;
+margin-right: 130px;
+}
+.logorodapemob {
+display: none;
+}
+
+.logohmob {
+display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media(max-width:1169px) {
+  
     .menu_global{
        height: 0px;
        position: fixed;
        margin-top: 28px;
+    }
+    .logotipo_header, .logotipo_fri{
+        padding-left: 50px;
     }
     /*Comportamento quando tela ficar menor*/
     label[for="btt_menu"] {
@@ -174,6 +233,7 @@ justify-content: flex-end;}
         margin-left: 0px;
     }
     .menuzao_ttl {
+        display:block;
         width: 100%;
         margin-top: 30px;
         /* espa�amento do checkbox cm lista */
@@ -181,6 +241,13 @@ justify-content: flex-end;}
         /*some da tela o menuzao_ttl*/
         transition: all .5s;
         /*anima�ao ao surgir o menuzao_ttl*/
+    }
+    .menuzao_ttl ul{
+        display: block;
+    }
+    .menuzao_ttl a{
+        display: block;
+        margin-right: 0px;
     }
     .menuzao_ttl ul li {
         width: 100%;
@@ -197,7 +264,7 @@ justify-content: flex-end;}
         max-height: 200px;
     }
     .menuzao_2{
-        display: none;
+        display: none !important;
     }
    
     .logotipo_fri a{
@@ -211,26 +278,26 @@ justify-content: flex-end;}
         box-shadow: 0px 3px 6px 0px rgba(112, 112, 112, 1);
     }
     .logotipo_fri{
-        margin-left: 100px;
+    margin-left: 100px;
     }
-    .logoheaderweb {
-    width: 140px;
+
+}
+
+
+
+
+
+
+
+
+@media(max-width:768px){
+    header{
+        margin-top: 75px
     }
-    .logorodapeweb {
-    margin-right: 100px;
+    .logotipo_header, .logotipo_fri{
+        padding-left: 0px;
     }
 }
-    .logorodapeweb {
-    width: 265px;
-    margin-right: 130px;
-    }
-    .logorodapemob {
-    display: none;
-    }
-   
-    .logohmob {
-    display: none;
-    }
 
 
 

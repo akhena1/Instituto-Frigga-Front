@@ -11,14 +11,12 @@ class Header extends Component {
         var exit = window.confirm("Deseja mesmo sair?")
 
         if(exit === true){
-
             localStorage.removeItem("usuario-frigga")
             this.props.history.push("/entrar")
             window.alert("Volte sempre!")
         }else{
             
         }
-        
     }
     render() {
         return (
@@ -76,33 +74,27 @@ class Header extends Component {
 
                 
 <div class="menu_global">
-            <input type="checkbox" id="btt_menu"/>
-            <label for="btt_menu">&#9776;</label>  
-            
+    <input type="checkbox" id="btt_menu"/>
+    <label for="btt_menu">&#9776;</label>  
+    <nav class="menuzao_ttl">
+        <ul className="menuzao_1">
+            <Link to ="/">Home</Link>
+            <Link to ="/produtos">Produtos</Link>
+            <Link to ="/receitas">Receitas</Link>
+            <Link to ="/about">Quem Somos</Link>
+        </ul>
+        <ul class="menuzao_2">
+            <Link to ="/perfil">Perfil</Link>
+            <Link to ="/entrar">Entrar</Link>
+        </ul>
+    </nav>
+</div>
 
-            <nav class="menuzao_ttl">
-                <ul>
-                    <Link to ="/">Home</Link>
-                    <Link to ="/produtos">Produtos</Link>
-                    <Link to ="/receitas">Receitas</Link>
-                    <Link to ="/about">Quem Somos</Link>
-                </ul>
-                <ul class="menuzao_2">
-                    <Link to ="/entrar">Perfil</Link>
-                    <Link to ="/entrar">Entrar</Link>
-                </ul>
-            </nav>
-            </div>
-
-
-            <div class="logotipo_fri">
-                <img className="logotiporodapeweb" src={LogoWeb} alt=" Logo  do instituto" />
-                <Link to ="/entrar">Perfil</Link>
-            </div>
-
-                
-
-        </header>
+<div class="logotipo_fri">
+    <img className="logotipo_header" src={LogoWeb} alt=" Logo  do instituto" />
+    <Link to ="/entrar">Perfil</Link>
+</div>
+</header>
             
         );
     }
