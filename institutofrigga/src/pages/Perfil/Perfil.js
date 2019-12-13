@@ -13,7 +13,6 @@ class Perfil extends Component {
     super(props)
     this.state = {
 
-      // listaPerfil: [],
       listaProduto: [],
       listaOferta: [],
       listaReceita: [],
@@ -30,13 +29,21 @@ class Perfil extends Component {
       //   email: ""
       // },
 
+<<<<<<< HEAD
       // putPerfil: {
       //   nome: "",
       //   telefone: "",
       //   email: ""
       // },
 
+=======
+>>>>>>> 79bb6d0a2602d4f8e077bfcbad0f76059c6aaf08
       postProduto: {
+        tipo: "",
+        tipoProduto: ""
+      },
+
+      putProduto: {
         tipo: "",
         tipoProduto: ""
       },
@@ -54,16 +61,6 @@ class Perfil extends Component {
         imagemProduto: React.createRef(),
         usuarioId: parseJwt().Id,
         produtoId: "",
-        
-        preco: "",
-        peso: "",
-        quantidade: ""
-      },
-
-      putOfertaAlterada: {
-        imagemProduto: React.createRef(),
-        tipo: "",
-        tipoProduto: "",
         preco: "",
         peso: "",
         quantidade: ""
@@ -84,25 +81,11 @@ class Perfil extends Component {
         ingredientes: "",
         modoDePreparo: ""
       },
-
-      // modalOferta: {
-      //   usuario: {
-      //     tipoProduto: "",
-      //     tipo: "",
-      //     preco: "",
-      //     peso: "",
-      //     quantidade: ""
-      //   }
-      // },
       openReceita: false,
       openOferta: false,
     }
 
   }
-
-
-
-
 
   componentDidMount() {
     this.getOferta();
@@ -112,13 +95,6 @@ class Perfil extends Component {
     this.getCategoriaReceita();
     console.log(parseJwt());
   }
-   
-    
-    
-    
-    
-
-
 
   getProduto = () => {
     api.get('/produto')
@@ -194,7 +170,6 @@ class Perfil extends Component {
     })
   }
 
-
   atualizaEstadoReceita = input => {
     this.setState({
       postReceita: {
@@ -211,23 +186,8 @@ class Perfil extends Component {
     })
   }
 
-  atualizaArquivoPutOferta = (input) => {
-    this.setState({
-      postOferta: {
-        ...this.state.postOferta, [input.target.name]: input.target.files[0],
-      }
-    })
-  }
 
   atualizaArquivoReceita = (input) => {
-    this.setState({
-      postReceita: {
-        ...this.state.postReceita, [input.target.name]: input.target.files[0],
-      }
-    })
-  }
-
-  atualizaArquivoPutReceita = (input) => {
     this.setState({
       postReceita: {
         ...this.state.postReceita, [input.target.name]: input.target.files[0],
@@ -259,12 +219,35 @@ class Perfil extends Component {
     }, 1500);
   }
 
+  putProduto = (p) => {
+
+    console.log("Produto do state: ", this.state.putProduto);
+
+    let produto = {
+      tipo: this.state.putProduto.tipo,
+      categoriaProdutoId: this.state.putProduto.tipoProduto
+    }
+
+    api.put('/produto', produto)
+      .then(response => {
+        console.log(response);
+        window.alert("Produto alterado!")
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({ erroMsg: "Não foi possível alterar oferta" });
+      })
+
+    setTimeout(() => {
+      this.getOferta();
+    }, 1500);
+  }
+
   postOferta = (o) => {
 
     o.preventDefault();
 
     console.log("Oferta do POST: ", this.state.postOferta);
-
 
     let ofertaForm = new FormData();
 
@@ -328,6 +311,14 @@ class Perfil extends Component {
     })
   }
 
+  atualizaEstadoPutProduto= (input) => {
+    this.setState({
+      putProduto: {
+        ...this.state.putProduto, [input.target.name]: input.target.value
+      }
+    })
+  }
+
   atualizaEstadoPutReceita = (input) => {
     this.setState({
       putReceita: {
@@ -342,8 +333,6 @@ class Perfil extends Component {
     // event.preventDefault();
 
     console.log(this.state.putOferta)
-    let ofertaAlterada = this.state.putOferta;
-
 
    /*  await Axios({
       method: 'put',
@@ -359,6 +348,7 @@ class Perfil extends Component {
       }),
     })
       .then(response => {console.log(response)})
+<<<<<<< HEAD
       .catch(error => {console.log(error)}); */
 
     // api.put('/oferta/' + this.state.putOferta.ofertaId, {ofertaAlterada})
@@ -373,6 +363,9 @@ class Perfil extends Component {
     //   this.getOferta();
     // }, 1500);
 
+=======
+      .catch(error => {console.log(error)});
+>>>>>>> 79bb6d0a2602d4f8e077bfcbad0f76059c6aaf08
   }
 
 
@@ -439,7 +432,6 @@ class Perfil extends Component {
         if (response.status === 200) {
           this.setState({ successMsg: "Excluído com sucesso" })
             this.getReceita();
- 
         }
       })
       .catch(error => {
@@ -448,7 +440,11 @@ class Perfil extends Component {
   }
 
   render() {
+<<<<<<< HEAD
     return(
+=======
+    return (
+>>>>>>> 79bb6d0a2602d4f8e077bfcbad0f76059c6aaf08
       <>
         <Header />
         <main>
@@ -801,7 +797,7 @@ class Perfil extends Component {
                     placeholder="Nome do produto..."
                     name="tipo"
                     value={this.state.putProduto.tipo}
-                    onChange={this.atualizaEstadoProduto}
+                    onChange={this.atualizaEstadoPutProduto}
                     required />
           
          
@@ -809,7 +805,7 @@ class Perfil extends Component {
                     name="tipoProduto"
                     id="categoria__produto"
                     value={this.state.putProduto.tipoProduto}
-                    onChange={this.atualizaEstadoProduto}>
+                    onChange={this.atualizaEstadoPutProduto}>
                     <option value="">Escolha uma categoria...</option>
                     {
                       this.state.listaCategoriaProduto.map(function (cp) {
@@ -850,7 +846,6 @@ class Perfil extends Component {
         </Modal>
         <Modal open={this.state.openReceita} onClose={this.onCloseModal} center>
           <form onSubmit={this.putReceita}>
-            <input accept="image/*" type="file" name="imagemReceita" ref={this.state.putReceita.imagemReceita} onChange={this.atualizaArquivoPutReceita} />
             <input
               label="Titulo"
               name="nome"
@@ -877,8 +872,8 @@ class Perfil extends Component {
                 })
               }
             </select>
-            <button type="submit"> Salvar</button>
-            <button type="reset">  Fechar</button>
+            <button alt="botao salvar alterações" type="submit"> Salvar</button>
+            <button alt="botao fechar modal" onClose={this.onCloseModal}>  Fechar</button>
           </form>
         </Modal>
 
