@@ -339,7 +339,7 @@ class Perfil extends Component {
   //#region DELETEs
   deleteOferta = (id) => {
 
-    event.preventDefault();
+    // event.preventDefault();
 
     console.log(this.state.putOferta)
     let ofertaAlterada = this.state.putOferta;
