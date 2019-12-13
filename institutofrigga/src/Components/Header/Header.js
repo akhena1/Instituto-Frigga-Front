@@ -2,29 +2,27 @@ import React, { Component } from 'react';
 import MenuSanduiche from '../../assets/img/menu-button-of-three-horizontal-lines.png';
 import LogoWeb from '../../assets/img/definitivo-fundo-preto.png';
 import LogoMob from '../../assets/img/definitivo-fundo-preto.png';
-import {Link, withRouter} from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { usuarioAutenticado } from '../../services/auth';
 
 class Header extends Component {
-    
+
     logout = () => {
         var exit = window.confirm("Deseja mesmo sair?")
 
-        if(exit === true){
+        if (exit === true) {
             localStorage.removeItem("usuario-frigga")
             this.props.history.push("/entrar")
             window.alert("Volte sempre!")
-        }else{
-            
+        } else {
+
         }
     }
     render() {
         return (
-            
+
             <header>
-             {/* <div className="logo">
-                <input type="checkbox" id="bt_menu"/>
-                <label for="bt_menu">&#9776;</label>
+                {/* <div className="logo">
                      <button className="botao-menu" type="menu" id="bt_menu"><img src={MenuSanduiche}
                         alt="Ícone de Menu" />
                         <p>MENU</p>
@@ -70,32 +68,53 @@ class Header extends Component {
                     }
                 </nav>  */}
 
-
-
-                
-<div class="menu_global">
-    <input type="checkbox" id="btt_menu"/>
-    <label for="btt_menu">&#9776;</label>  
-    <nav class="menuzao_ttl">
-        <ul className="menuzao_1">
-            <Link to ="/">Home</Link>
-            <Link to ="/produtos">Produtos</Link>
-            <Link to ="/receitas">Receitas</Link>
-            <Link to ="/about">Quem Somos</Link>
-        </ul>
-        <ul class="menuzao_2">
-            <Link to ="/perfil">Perfil</Link>
-            <Link to ="/entrar">Entrar</Link>
-        </ul>
-    </nav>
-</div>
-
-<div class="logotipo_fri">
-    <img className="logotipo_header" src={LogoWeb} alt=" Logo  do instituto" />
-    <Link to ="/entrar">Perfil</Link>
-</div>
-</header>
-            
+                <div class="menu_global">
+                    <input type="checkbox" id="btt_menu" />
+                    <label for="btt_menu">&#9776;</label>
+                    {usuarioAutenticado() ? (
+                        <nav class="menuzao_ttl">
+                            <ul className="menuzao_1">
+                                <Link to="/">Home</Link>
+                                <Link to="/produtos">Produtos</Link>
+                                <Link to="/receitas">Receitas</Link>
+                                <Link to="/about">Quem Somos</Link>
+                            </ul>
+                            <ul class="menuzao_2">
+                                <Link to="/perfil">Perfil</Link>
+                                <Link style={{
+                                    backgroundColor: 'white',
+                                    color: 'black'
+                                }} onClick={this.logout} to="/entrar">SAIR</Link>
+                            </ul>
+                        </nav>
+                    ) : (
+                            <nav class="menuzao_ttl">
+                                <ul className="menuzao_1">
+                                    <Link to="/">Home</Link>
+                                    <Link to="/produtos">Produtos</Link>
+                                    <Link to="/receitas">Receitas</Link>
+                                    <Link to="/about">Quem Somos</Link>
+                                </ul>
+                                <ul class="menuzao_2">
+                                    <Link to="/perfil">Perfil</Link>
+                                    <Link to="/entrar">Entrar</Link>
+                                </ul>
+                            </nav>
+                        )
+                    }
+                </div>
+                {usuarioAutenticado() ? (
+                    <div class="logotipo_fri">
+                        <img className="logotipo_header" src={LogoWeb} alt=" Logo  do instituto" />
+                        <Link to="/entrar">Sair</Link>
+                    </div>
+                ):(
+                    <div class="logotipo_fri">
+                        <img className="logotipo_header" src={LogoWeb} alt=" Logo  do instituto" />
+                        <Link to="/entrar">Entrar</Link>
+                    </div>
+                )}
+            </header>
         );
     }
 }
