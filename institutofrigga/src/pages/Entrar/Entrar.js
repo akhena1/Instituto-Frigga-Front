@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../../Components/Header/HeaderLogin';
+import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import IconLogin from '../../assets/img/iconperfil.svg';
 import api, { apiViaCep } from '../../services/api';
@@ -169,7 +169,7 @@ class Entrar extends Component {
     return (
 
       <div className="fundoLogin">
-        <Header />
+        <Header/>
         <main>
           <div className="container_login">
             <section className="esquerda_login">
