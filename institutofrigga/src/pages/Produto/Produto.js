@@ -23,7 +23,9 @@ class Produto extends Component {
                     telefone: ""
                 }
             },
-            open: false
+            open: false,
+            setStateFiltro:  "",
+            setStateTodos: ""
         }
     }
 
@@ -38,6 +40,9 @@ class Produto extends Component {
     componentDidMount() {
         this.getOferta();
         this.getProduto();
+        this.getCategoriaProduto();
+        this.getUsuario();
+        this.getFilltro();
     }
 
     getOferta = () => {
@@ -57,6 +62,50 @@ class Produto extends Component {
         })
     }
 
+    getCategoriaProduto = () => {
+        api.get('/categoriaproduto').then(response => {
+            if (response.status === 200) {
+                this.setState({ listarCategoriaProduto: response.data })
+            }
+        })
+    }
+
+    getUsuario = () => {
+        api.get('/usuario').then(response => {
+            if (response.status === 200) {
+                this.setState({ listarUsuario: response.data })
+            }
+        })
+    }
+
+    getFilltro = () =>{
+        if(this.atualizaSelect.value === "Todos"){
+            console.log(this.getProduto)
+        }else{
+            api.get('/categoriaproduto' + this.state.setStateFiltro)
+            .then(response =>{
+                if(response.status === 200){
+                    this.setState({listarCategoriaProduto : response.data})
+                }
+            })
+        }
+    }
+    atualizaSelect = (value) =>{
+        this.setState({setStateFiltro : value})
+        setTimeout(() => {
+            this.getFiltro(this.state.filtrooferta)
+            
+        }, 500);
+    }
+    filtrarListaPorCategoria = (idCategoria) =>{
+        console.log("Id Categoria: ", idCategoria);
+        api.get("/filtro/filtrooferta/" + idCategoria)
+        .then(response =>{
+            this.setState({listarOferta : response.data});
+        })
+        .catch(erro => console.log("Deu erro na busca de ofertas por id categoria: ", erro))
+    }
+
     render() {
         const { open } = this.state;
         return (
@@ -69,13 +118,21 @@ class Produto extends Component {
                             <h2>CATEGORIAS</h2>
                             <div className="bar_bar"></div>
                             <div className="categorias">
-                                <div className="align">
-                                    <p>LEGUMES</p><br></br>
-                                    <div className="categ_1">
-                                    <Link to = '#'></Link>
+                                {
+                                    this.state.listarCategoriaProduto.map(fo =>{
+                                        return(
+                                    <div className="align">
+                                    <p>{fo.tipoProduto}</p><br></br>
+                                    <div className="categ_1" onClick={() => this.filtrarListaPorCategoria(fo.categoriaProdutoId)}>
+                                    
                                     </div>
                                 </div>
-                                <div className="align">
+
+                                        )
+                                    })
+                                }
+                                
+                                {/* <div className="align">
                                     <p>FRUTAS</p><br></br>
                                     <div className="categ_2">
                                     <Link to = '#'></Link>
@@ -92,7 +149,7 @@ class Produto extends Component {
                                     <div className="categ_4">
                                     <Link to = '#'></Link>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </section>
                         <section className="container_mobile">
@@ -117,7 +174,7 @@ class Produto extends Component {
                                             <img src={"http://localhost:5000/Arquivos/" + of.imagemProduto} alt={of.tipo} />
                                             <div className="nav-p nav-p-isa">
 
-                                                <p>{of.produto.tipo}<br></br> R$ {of.preco}</p>
+                                                <p>{of.tipo}<br></br> R$ {of.preco}</p>
                                                 {
                                                    usuarioAutenticado()? (
                                                     <Link onClick={() => this.onOpenModal(of)}>Reservar</Link>
@@ -145,14 +202,18 @@ class Produto extends Component {
                                                                 <h2>Dados do produtor para contato</h2>
                                                                
                                                                             <div>
-                                                                            <p>Nome:{this.state.modalOferta.usuario.nome}</p>
+                                                                            <p>Nome:{this.state.modalOferta.usuario.nome} </p>
                                                                             
                                                                             <p>Telefone:{this.state.modalOferta.usuario.telefone}</p>
                                                                             </div>                
                                                                 <p>R$: {this.state.modalOferta.preco}</p>
                                                             </div>
                                                             
-                                                    </div>                      
+
+                                                    </div>
+
+                                             
+                                        
                                     </Modal>
                                 </div>
                             }
