@@ -25,6 +25,7 @@ import './assets/css/modalProduto.css';
 import './assets/css/perfil.css';
 import './assets/css/about.css'
 import './assets/css/receita.css'
+import './assets/css/header.css'    
 
 // Dependências necessárias
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';

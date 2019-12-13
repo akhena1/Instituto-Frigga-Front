@@ -20,17 +20,7 @@ class Perfil extends Component {
       listaCategoriaProduto: [],
       listaCategoriaReceita: [],
 
-      // postPerfil: {
-      //   nome: "",
-      //   telefone: "",
-      //   email: ""
-      // },
-
-      // putPerfil: {
-      //   nome: "",
-      //   telefone: "",
-      //   email: ""
-      // },
+      
 
       postProduto: {
         tipo: "",
@@ -101,12 +91,27 @@ class Perfil extends Component {
 
 
   componentDidMount() {
-    this.getOferta();
-    this.getCategoriaProduto();
-    this.getProduto();
-    this.getReceita();
-    this.getCategoriaReceita();
+    setTimeout(() => {
+      this.getOferta();
+    }, 50);
+    setTimeout(() => {
+      this.getCategoriaProduto();
+    }, 100);
+    setTimeout(() => {
+      this.getProduto();
+    }, 150);
+    setTimeout(() => {
+      this.getReceita();
+    }, 200);
+    setTimeout(() => {
+      this.getCategoriaReceita();
+    }, 250);
   }
+   
+    
+    
+    
+    
 
 
 
@@ -239,6 +244,7 @@ class Perfil extends Component {
     api.post('/produto', produto)
       .then(response => {
         console.log(response);
+        window.alert("Produto cadastrado, agora exponha sua oferta!")
       })
       .catch(error => {
         console.log(error);
@@ -425,9 +431,9 @@ class Perfil extends Component {
     api.delete('/receita/' + id)
       .then(response => {
         if (response.status === 200) {
-          setTimeout(() => {
+          this.setState({ successMsg: "Excluído com sucesso" })
             this.getReceita();
-          }, 1500);
+ 
         }
       })
       .catch(error => {
