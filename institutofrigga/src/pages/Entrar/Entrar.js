@@ -169,7 +169,7 @@ class Entrar extends Component {
     return (
 
       <div className="fundoLogin">
-        <Header />
+        <Header/>
         <main>
           <div className="container_login">
             <section className="esquerda_login">

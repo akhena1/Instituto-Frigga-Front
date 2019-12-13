@@ -68,18 +68,18 @@ class Header extends Component {
                     }
                 </nav>  */}
 
-                <div class="menu_global">
+                <div className="menu_global">
                     <input type="checkbox" id="btt_menu" />
-                    <label for="btt_menu">&#9776;</label>
+                    <label htmlFor="btt_menu">&#9776;</label>
                     {usuarioAutenticado() ? (
-                        <nav class="menuzao_ttl">
+                        <nav className="menuzao_ttl">
                             <ul className="menuzao_1">
                                 <Link to="/">Home</Link>
                                 <Link to="/produtos">Produtos</Link>
                                 <Link to="/receitas">Receitas</Link>
                                 <Link to="/about">Quem Somos</Link>
                             </ul>
-                            <ul class="menuzao_2">
+                            <ul className="menuzao_2">
                                 <Link to="/perfil">Perfil</Link>
                                 <Link style={{
                                     backgroundColor: 'white',
@@ -88,14 +88,14 @@ class Header extends Component {
                             </ul>
                         </nav>
                     ) : (
-                            <nav class="menuzao_ttl">
+                            <nav className="menuzao_ttl">
                                 <ul className="menuzao_1">
                                     <Link to="/">Home</Link>
                                     <Link to="/produtos">Produtos</Link>
                                     <Link to="/receitas">Receitas</Link>
                                     <Link to="/about">Quem Somos</Link>
                                 </ul>
-                                <ul class="menuzao_2">
+                                <ul className="menuzao_2">
                                     <Link to="/perfil">Perfil</Link>
                                     <Link to="/entrar">Entrar</Link>
                                 </ul>
@@ -104,12 +104,12 @@ class Header extends Component {
                     }
                 </div>
                 {usuarioAutenticado() ? (
-                    <div class="logotipo_fri">
+                    <div className="logotipo_fri">
                         <img className="logotipo_header" src={LogoWeb} alt=" Logo  do instituto" />
                         <Link to="/entrar">Sair</Link>
                     </div>
                 ):(
-                    <div class="logotipo_fri">
+                    <div className="logotipo_fri">
                         <img className="logotipo_header" src={LogoWeb} alt=" Logo  do instituto" />
                         <Link to="/entrar">Entrar</Link>
                     </div>
