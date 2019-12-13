@@ -119,6 +119,7 @@ body {
     -webkit-box-shadow: 5px 5px 30px -15px rgba(204, 204, 204, 204.75);
     -moz-box-shadow: 5px 5px 30px -15px rgba(204, 204, 204, 204.75);
     box-shadow: 5px 5px 30px -15px rgba(204, 204, 204, 204.75);
+    margin: auto;
     }  
   
     .card_profile input,
@@ -350,6 +351,7 @@ body {
     width: 700px;
     display: flex;
     flex-direction: column;
+    margin: auto;
     }
     .card_profile form {
     display: flex;

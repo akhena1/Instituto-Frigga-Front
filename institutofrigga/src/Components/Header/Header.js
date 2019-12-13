@@ -4,6 +4,7 @@ import LogoWeb from '../../assets/img/definitivo-fundo-preto.png';
 import LogoMob from '../../assets/img/definitivo-fundo-preto.png';
 import { Link, withRouter } from 'react-router-dom';
 import { usuarioAutenticado, parseJwt } from '../../services/auth';
+import iconPerfil from '../../assets/img/iconperfil.svg';
 
 class Header extends Component {
 
@@ -80,6 +81,10 @@ class Header extends Component {
                                 <Link to="/about">Quem Somos</Link>
                             </ul>
                             <ul className="menuzao_2">
+                                <div className="divPHeader">
+                                    <p className="pHeader">{`Bem vindo:${parseJwt().Nome}`}</p>
+                                </div>
+
                                 <Link to="/perfil">Painel</Link>
                                 <Link style={{
                                     backgroundColor: 'white',
@@ -96,7 +101,9 @@ class Header extends Component {
                                 <Link to="/about">Quem Somos</Link>
                             </ul>
                             <ul className="menuzao_2">
-
+                                <div className="divPHeader">
+                                    <p className="pHeader">{`Bem vindo:${parseJwt().Nome}`}</p>
+                                </div>
                                 <Link to="/perfil">Painel</Link>
                                 <Link style={{
                                     backgroundColor: 'white',
@@ -115,6 +122,9 @@ class Header extends Component {
                                     </ul>
                                     <ul className="menuzao_2">
 
+                                        <div className="divPHeader">
+                                            <p className="pHeader">{`Bem vindo:${parseJwt().Nome}`}</p>
+                                        </div>
                                         <Link to="/perfil">MinhasReceitas</Link>
                                         <Link style={{
                                             backgroundColor: 'white',

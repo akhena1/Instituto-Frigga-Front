@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import { Link } from "react-router-dom";
-import iconPerfil from '../../assets/img/iconperfil.svg';
+
 import Axios from 'axios';
 import { api, apiFormData } from '../../services/api';
 import { parseJwt, usuarioAutenticado } from '../../services/auth';
@@ -378,9 +378,9 @@ class Perfil extends Component {
       <>
         <Header />
         <main>
-          {usuarioAutenticado() && parseJwt().Role}
-          <section className="product_recipes">
-            <h2>Cadastrar Produto</h2>
+          {usuarioAutenticado() && parseJwt().Role === "2"?(""):(
+            <div>
+              <h2>Cadastrar Produto</h2>
             <div className="card_profile">
               <form onSubmit={this.postProduto}>
                 <label>
@@ -529,6 +529,11 @@ class Perfil extends Component {
               </table>
 
             </div>
+            </div>
+            
+          )}
+          <section className="product_recipes">
+            
             <h2>Cadastrar Receitas</h2>
             <div className="card_profile">
               <form onSubmit={this.postReceita}>
@@ -629,93 +634,7 @@ class Perfil extends Component {
           </section>
         </main>
 
-        <Modal open={this.state.openOferta} onClose={this.onCloseModal} center>
-          <form onSubmit={this.putProduto}>
-
-            <input type="text"
-              id="oferta__produto"
-              placeholder="Nome do produto..."
-              name="tipo"
-              value={this.state.putProduto.tipo}
-              onChange={this.atualizaEstadoPutProduto}
-              required />
-
-
-            <select
-              name="tipoProduto"
-              id="categoria__produto"
-              value={this.state.putProduto.tipoProduto}
-              onChange={this.atualizaEstadoPutProduto}>
-              <option value="">Escolha uma categoria...</option>
-              {
-                this.state.listaCategoriaProduto.map(function (cp) {
-                  return (
-                    <option
-                      key={cp.categoriaProdutoId}
-                      value={cp.categoriaProdutoId}
-                    >
-                      {cp.tipoProduto}
-                    </option>
-                  )
-                })
-              }
-            </select>
-          </form>
-          <form onSubmit={this.putProduto}>
-            <input
-              label="Peso"
-              name="peso"
-              value={this.state.putOferta.peso}
-              onChange={this.atualizaEstadoPutOferta}
-            />
-            <input
-              label="Preco"
-              name="preco"
-              value={this.state.putOferta.preco}
-              onChange={this.atualizaEstadoPutOferta}
-            />
-            <input
-              label="Quantidade"
-              name="quantidade"
-              value={this.state.putOferta.quantidade}
-              onChange={this.atualizaEstadoPutOferta}
-            />
-            <button alt="botao salvar alterações" type="submit"> Salvar</button>
-            <button alt="botao fechar modal" onClose={this.onCloseModal}>  Fechar</button>
-          </form>
-        </Modal>
-        <Modal open={this.state.openReceita} onClose={this.onCloseModal} center>
-          <form onSubmit={this.putReceita}>
-            <input
-              label="Titulo"
-              name="nome"
-              value={this.state.putReceita.nome}
-              onChange={this.atualizaEstadoPutReceita}
-            />
-            <select
-              name="categoriaReceitaId"
-              id="categoria__receita"
-              value={this.state.postReceita.categoriaReceitaId}
-              onChange={this.atualizaEstadoReceita}
-            >
-              <option value="">Escolha uma categoria...</option>
-              {
-                this.state.listaCategoriaReceita.map(function (cr) {
-                  return (
-                    <option
-                      key={cr.categoriaReceitaId}
-                      value={cr.categoriaReceitaId}
-                    >
-                      {cr.tipoReceita}
-                    </option>
-                  )
-                })
-              }
-            </select>
-            <button alt="botao salvar alterações" type="submit"> Salvar</button>
-            <button alt="botao fechar modal" onClose={this.onCloseModal}>  Fechar</button>
-          </form>
-        </Modal>
+      
 
         <Footer />
       </>
