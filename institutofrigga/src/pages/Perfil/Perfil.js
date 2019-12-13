@@ -23,24 +23,9 @@ class Perfil extends Component {
       nameId: "",
       Telefone: "",
       Emai: "",
-      // postPerfil: {
-      //   nome: "",
-      //   telefone: "",
-      //   email: ""
-      // },
 
-      // putPerfil: {
-      //   nome: "",
-      //   telefone: "",
-      //   email: ""
-      // },
 
       postProduto: {
-        tipo: "",
-        tipoProduto: ""
-      },
-
-      putProduto: {
         tipo: "",
         tipoProduto: ""
       },
@@ -53,16 +38,6 @@ class Perfil extends Component {
         quantidade: "",
       },
 
-      putOferta: {
-        ofertaId: null,
-        imagemProduto: React.createRef(),
-        usuarioId: parseJwt().Id,
-        produtoId: "",
-        preco: "",
-        peso: "",
-        quantidade: ""
-      },
-
       postReceita: {
         imagemReceita: React.createRef(),
         nome: "",
@@ -71,15 +46,6 @@ class Perfil extends Component {
         modoDePreparo: ""
       },
 
-      putReceita: {
-        imagemReceita: React.createRef(),
-        nome: "",
-        tipoReceita: "",
-        ingredientes: "",
-        modoDePreparo: ""
-      },
-      openReceita: false,
-      openOferta: false,
     }
 
   }
@@ -216,34 +182,9 @@ class Perfil extends Component {
     }, 1500);
   }
 
-  putProduto = (p) => {
-
-    console.log("Produto do state: ", this.state.putProduto);
-
-    let produto = {
-      tipo: this.state.putProduto.tipo,
-      categoriaProdutoId: this.state.putProduto.tipoProduto
-    }
-
-    api.put('/produto', produto)
-      .then(response => {
-        console.log(response);
-        window.alert("Produto alterado!")
-      })
-      .catch(error => {
-        console.log(error);
-        this.setState({ erroMsg: "Não foi possível alterar oferta" });
-      })
-
-    setTimeout(() => {
-      this.getOferta();
-    }, 1500);
-  }
-
   postOferta = (o) => {
 
-    o.preventDefault();
-
+    o.preventDefault()
     console.log("Oferta do POST: ", this.state.postOferta);
 
     let ofertaForm = new FormData();
@@ -560,7 +501,6 @@ class Perfil extends Component {
                     <th>Preço/kg</th>
                     <th>Qtd Estoque</th>
                     <th className="void "></th>
-                    <th className="void "></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -574,11 +514,6 @@ class Perfil extends Component {
                             <td>{o.peso}</td>
                             <td>{o.preco}</td>
                             <td>{o.quantidade}</td>
-                            <td className="editar">
-                              <button onClick={() => this.openModalOferta(o)}>
-                                <i className="fas fa-edit"></i>Editar
-                              </button>
-                            </td>
                             <td className="delete">
                               <button onClick={() => this.deleteOferta(o.ofertaId)}>
                                 <i className="fas fa-trash"></i>Excluir
@@ -667,7 +602,6 @@ class Perfil extends Component {
                     <th>Categoria</th>
                     <th className="void"></th>
                     <th className="void "></th>
-                    <th className="void "></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -679,11 +613,6 @@ class Perfil extends Component {
                             <td>{r.nome}</td>
                             <td>{r.categoriaReceita.tipoReceita}</td>
                             <td> <Link to={{ pathname: '/verreceita', state: { receitaId: r.receitaId } }} >Ver Receita</Link></td>
-                            <td className="editar">
-                              <button onClick={() => this.openModalReceita(r)}>
-                                <i className="fas fa-edit"></i>Editar
-                              </button>
-                            </td>
                             <td className="delete">
                               <button onClick={() => this.deleteReceita(r.receitaId)}>
                                 <i className="fas fa-trash "></i>Excluir
