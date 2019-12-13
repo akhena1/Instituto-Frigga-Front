@@ -319,7 +319,7 @@ class Perfil extends Component {
     })
   }
 
-  putOferta = async (event) => {
+  /* putOferta = async (event) => {
 
     event.preventDefault();
 
@@ -340,7 +340,7 @@ class Perfil extends Component {
     })
       .then(response => {console.log(response)})
       .catch(error => {console.log(error)});
-  }
+  } */
 
 
   openModalOferta = (o) => {
