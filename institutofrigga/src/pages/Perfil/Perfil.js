@@ -29,15 +29,12 @@ class Perfil extends Component {
       //   email: ""
       // },
 
-<<<<<<< HEAD
       // putPerfil: {
       //   nome: "",
       //   telefone: "",
       //   email: ""
       // },
 
-=======
->>>>>>> 79bb6d0a2602d4f8e077bfcbad0f76059c6aaf08
       postProduto: {
         tipo: "",
         tipoProduto: ""
@@ -348,7 +345,6 @@ class Perfil extends Component {
       }),
     })
       .then(response => {console.log(response)})
-<<<<<<< HEAD
       .catch(error => {console.log(error)}); */
 
     // api.put('/oferta/' + this.state.putOferta.ofertaId, {ofertaAlterada})
@@ -363,9 +359,6 @@ class Perfil extends Component {
     //   this.getOferta();
     // }, 1500);
 
-=======
-      .catch(error => {console.log(error)});
->>>>>>> 79bb6d0a2602d4f8e077bfcbad0f76059c6aaf08
   }
 
 
@@ -440,11 +433,7 @@ class Perfil extends Component {
   }
 
   render() {
-<<<<<<< HEAD
     return(
-=======
-    return (
->>>>>>> 79bb6d0a2602d4f8e077bfcbad0f76059c6aaf08
       <>
         <Header />
         <main>
