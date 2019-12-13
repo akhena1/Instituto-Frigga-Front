@@ -13,14 +13,11 @@ class Perfil extends Component {
     super(props)
     this.state = {
 
-      // listaPerfil: [],
       listaProduto: [],
       listaOferta: [],
       listaReceita: [],
       listaCategoriaProduto: [],
       listaCategoriaReceita: [],
-
-      
 
       postProduto: {
         tipo: "",
@@ -71,10 +68,6 @@ class Perfil extends Component {
 
   }
 
-
-
-
-
   componentDidMount() {
     setTimeout(() => {
       this.getOferta();
@@ -92,13 +85,6 @@ class Perfil extends Component {
       this.getCategoriaReceita();
     }, 250);
   }
-   
-    
-    
-    
-    
-
-
 
   getProduto = () => {
     api.get('/produto')
@@ -176,7 +162,6 @@ class Perfil extends Component {
     })
   }
 
-
   atualizaEstadoReceita = input => {
     this.setState({
       postReceita: {
@@ -193,23 +178,8 @@ class Perfil extends Component {
     })
   }
 
-  atualizaArquivoPutOferta = (input) => {
-    this.setState({
-      postOferta: {
-        ...this.state.postOferta, [input.target.name]: input.target.files[0],
-      }
-    })
-  }
 
   atualizaArquivoReceita = (input) => {
-    this.setState({
-      postReceita: {
-        ...this.state.postReceita, [input.target.name]: input.target.files[0],
-      }
-    })
-  }
-
-  atualizaArquivoPutReceita = (input) => {
     this.setState({
       postReceita: {
         ...this.state.postReceita, [input.target.name]: input.target.files[0],
@@ -253,11 +223,11 @@ class Perfil extends Component {
     api.put('/produto', produto)
       .then(response => {
         console.log(response);
-        window.alert("Produto cadastrado, agora exponha sua oferta!")
+        window.alert("Produto alterado!")
       })
       .catch(error => {
         console.log(error);
-        this.setState({ erroMsg: "Não foi possível cadastrar oferta" });
+        this.setState({ erroMsg: "Não foi possível alterar oferta" });
       })
 
     setTimeout(() => {
@@ -270,7 +240,6 @@ class Perfil extends Component {
     o.preventDefault();
 
     console.log("Oferta do POST: ", this.state.postOferta);
-
 
     let ofertaForm = new FormData();
 
@@ -355,8 +324,6 @@ class Perfil extends Component {
     event.preventDefault();
 
     console.log(this.state.putOferta)
- 
-
 
     await Axios({
       method: 'put',
@@ -373,19 +340,6 @@ class Perfil extends Component {
     })
       .then(response => {console.log(response)})
       .catch(error => {console.log(error)});
-
-    // api.put('/oferta/' + this.state.putOferta.ofertaId, {ofertaAlterada})
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   })
-
-    // setTimeout(() => {
-    //   this.getOferta();
-    // }, 1500);
-
   }
 
 
@@ -450,7 +404,6 @@ class Perfil extends Component {
         if (response.status === 200) {
           this.setState({ successMsg: "Excluído com sucesso" })
             this.getReceita();
- 
         }
       })
       .catch(error => {
@@ -847,7 +800,6 @@ class Perfil extends Component {
         </Modal>
         <Modal open={this.state.openReceita} onClose={this.onCloseModal} center>
           <form onSubmit={this.putReceita}>
-            <input accept="image/*" type="file" name="imagemReceita" ref={this.state.putReceita.imagemReceita} onChange={this.atualizaArquivoPutReceita} />
             <input
               label="Titulo"
               name="nome"
@@ -874,8 +826,8 @@ class Perfil extends Component {
                 })
               }
             </select>
-            <button type="submit"> Salvar</button>
-            <button type="reset">  Fechar</button>
+            <button alt="botao salvar alterações" type="submit"> Salvar</button>
+            <button alt="botao fechar modal" onClose={this.onCloseModal}>  Fechar</button>
           </form>
         </Modal>
 
