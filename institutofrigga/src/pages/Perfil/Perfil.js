@@ -3,12 +3,10 @@ import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import { Link } from "react-router-dom";
 import iconPerfil from '../../assets/img/iconperfil.svg';
+import Axios from 'axios';
 import { api, apiFormData } from '../../services/api';
 import { parseJwt } from '../../services/auth';
-
-
-
-
+import Modal from 'react-responsive-modal';
 
 class Perfil extends Component {
   constructor(props) {
@@ -48,14 +46,27 @@ class Perfil extends Component {
       },
 
       putOferta: {
-        tipoProduto: "",
+        ofertaId: null,
+        imagemProduto: React.createRef(),
+        usuarioId: parseJwt().Id,
+        produtoId: "",
+        
+        preco: "",
+        peso: "",
+        quantidade: ""
+      },
+
+      putOfertaAlterada: {
+        imagemProduto: React.createRef(),
         tipo: "",
+        tipoProduto: "",
         preco: "",
         peso: "",
         quantidade: ""
       },
 
       postReceita: {
+        imagemReceita: React.createRef(),
         nome: "",
         tipoReceita: "",
         ingredientes: "",
@@ -63,19 +74,31 @@ class Perfil extends Component {
       },
 
       putReceita: {
+        imagemReceita: React.createRef(),
         nome: "",
         tipoReceita: "",
         ingredientes: "",
         modoDePreparo: ""
       },
 
-      erroMsg: "",
-      successMsg: "",
-      modal: false
-
+      // modalOferta: {
+      //   usuario: {
+      //     tipoProduto: "",
+      //     tipo: "",
+      //     preco: "",
+      //     peso: "",
+      //     quantidade: ""
+      //   }
+      // },
+      openReceita: false,
+      openOferta: false,
     }
 
   }
+
+
+
+
 
   componentDidMount() {
     this.getOferta();
@@ -146,9 +169,6 @@ class Perfil extends Component {
       })
       .catch(error => console.log(error))
   }
-  //#endregion
-
-  //#region POSTs
 
   atualizaEstadoProduto = (input) => {
     this.setState({
@@ -175,8 +195,7 @@ class Perfil extends Component {
     })
   }
 
-  // 02 - Adicionamos um setState específico
-  postSetStateFile = (input) => {
+  atualizaArquivoOferta = (input) => {
     this.setState({
       postOferta: {
         ...this.state.postOferta, [input.target.name]: input.target.files[0],
@@ -184,7 +203,23 @@ class Perfil extends Component {
     })
   }
 
-  postSetStateFileReceita = (input) => {
+  atualizaArquivoPutOferta = (input) => {
+    this.setState({
+      postOferta: {
+        ...this.state.postOferta, [input.target.name]: input.target.files[0],
+      }
+    })
+  }
+
+  atualizaArquivoReceita = (input) => {
+    this.setState({
+      postReceita: {
+        ...this.state.postReceita, [input.target.name]: input.target.files[0],
+      }
+    })
+  }
+
+  atualizaArquivoPutReceita = (input) => {
     this.setState({
       postReceita: {
         ...this.state.postReceita, [input.target.name]: input.target.files[0],
@@ -276,33 +311,120 @@ class Perfil extends Component {
     }, 1500);
   }
 
-  //#endregion
+  atualizaEstadoPutOferta = (input) => {
+    this.setState({
+      putOferta: {
+        ...this.state.putOferta, [input.target.name]: input.target.value
+      }
+    })
+  }
 
-  //#region DELETEs
-  deleteOferta = (id) =>{
+  atualizaEstadoPutReceita = (input) => {
+    this.setState({
+      putReceita: {
+        ...this.state.putReceita, [input.target.name]: input.target.value
+      }
+    })
+  }
 
-    this.setState({ successMsg: "" })
+  putOferta = async (event) => {
 
+    event.preventDefault();
+
+    console.log(this.state.putOferta)
+    let ofertaAlterada = this.state.putOferta;
+
+
+    await Axios({
+      method: 'put',
+      headers: { 'Authorization': "bearer " + localStorage.getItem('usuario-frigga'), 'Content-Type': 'application/json' },
+      url: 'http://localhost:5000/api/oferta/' + this.state.putOferta.ofertaId,
+      data: JSON.stringify({
+        ofertaId: this.state.putOferta.ofertaId,
+        preco: this.state.putOferta.preco,
+        peso: this.state.putOferta.peso,
+        produtoId: this.state.putOferta.produtoId,
+        usuarioId: this.state.putOferta.usuarioId,
+        quantidade: this.state.putOferta.quantidade
+      }),
+    })
+      .then(response => {console.log(response)})
+      .catch(error => {console.log(error)});
+
+    // api.put('/oferta/' + this.state.putOferta.ofertaId, {ofertaAlterada})
+    //   .then((response) => {
+    //     console.log(response);
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   })
+
+    // setTimeout(() => {
+    //   this.getOferta();
+    // }, 1500);
+
+  }
+
+
+  openModalOferta = (o) => {
+
+
+    this.setState({ openOferta: true, modalOferta: o });
+    this.setState({ putOferta: o });
+
+    console.log("PUT", this.state.putOferta);
+  }
+
+  onCloseModal = () => {
+    this.setState({ openOferta: false });
+  };
+
+  putReceita = (event) => {
+
+    event.preventDefault();
+    let receita_Id = this.state.putReceita.receitaId;
+    let receitaAlterada = this.state.putReceita;
+
+
+    api.put('/receita/' + receita_Id, receitaAlterada)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+
+    setTimeout(() => {
+      this.getOferta();
+    }, 1500);
+
+  }
+
+  openModalReceita = (r) => {
+
+    this.setState({ openReceita: true, modalOferta: r });
+    this.setState({ putReceita: r });
+    console.log("PUT", this.state.putReceita);
+  }
+
+  deleteOferta(id) {
     api.delete('/oferta/' + id)
       .then(response => {
         if (response.status === 200) {
-          this.setState({ successMsg: "Excluído com sucesso" })
+          setTimeout(() => {
+            this.getOferta();
+          }, 1500);
         }
       })
       .catch(error => {
         console.log(error);
-        this.setState({ erroMsg: "Falha ao excluir" })
       })
   }
 
-  deleteReceita(id){
-
-    this.setState({ successMsg: "" })
+  deleteReceita(id) {
     api.delete('/receita/' + id)
       .then(response => {
         if (response.status === 200) {
-          this.setState({ successMsg: "Excluído com sucesso" })
-
           setTimeout(() => {
             this.getReceita();
           }, 1500);
@@ -310,11 +432,11 @@ class Perfil extends Component {
       })
       .catch(error => {
         console.log(error);
-        this.setState({ erroMsg: "Falha ao excluir" })
       })
   }
 
   render() {
+    let { open } = this.state;
     return (
       <>
         <Header />
@@ -405,13 +527,13 @@ class Perfil extends Component {
                 <div className="imagem_incluir">
                   <p>Clique para<br />
                     incluir Imagem</p>
-                  <input accept="image/*" type="file" name="imagemProduto" ref={this.state.postOferta.imagemProduto} onChange={this.postSetStateFile} />
+                  <input accept="image/*" type="file" name="imagemProduto" ref={this.state.postOferta.imagemProduto} onChange={this.atualizaArquivoOferta} />
                 </div>
                 <label >
                   <select
                     name="produtoId"
                     id="categoria__produto"
-                    value={this.state.listaProduto.produtoId}
+                    value={this.state.postOferta.produtoId}
                     onChange={this.atualizaEstadoOferta} >
                     <option value="">Produto a ser cadastrado</option>
                     {
@@ -528,11 +650,11 @@ class Perfil extends Component {
             <h2>Cadastrar Receitas</h2>
             <div className="card_profile">
               <form onSubmit={this.postReceita}>
-              <div className="imagem_incluir">
+                <div className="imagem_incluir">
                   <p>Clique para<br />
                     incluir Imagem</p>
-                  <input accept="image/*" type="file" name="imagemReceita" ref={this.state.postReceita.imagemReceita} onChange={this.postSetStateFileReceita} />
-            </div>
+                  <input accept="image/*" type="file" name="imagemReceita" ref={this.state.postReceita.imagemReceita} onChange={this.atualizaArquivoReceita} />
+                </div>
                 <label>
                   <input
                     type="text"
@@ -584,9 +706,9 @@ class Perfil extends Component {
                     onChange={this.atualizaEstadoReceita}
                   />
                 </label>
-              <button type="submit" alt="botao cadastrar receitas" className="btn_cadastrar_receita">Inserir receita
+                <button type="submit" alt="botao cadastrar receitas" className="btn_cadastrar_receita">Inserir receita
                         <div id="cadastro__receita"></div>
-              </button>
+                </button>
               </form>
             </div>
 
@@ -594,9 +716,6 @@ class Perfil extends Component {
               <table>
                 <thead>
                   <tr>
-                    {/* <th>
-                  <div>Imagem</div>
-                </th> */}
                     <th>Nome da receita</th>
                     <th>Categoria</th>
                     <th className="void"></th>
@@ -648,6 +767,96 @@ class Perfil extends Component {
             </div>
           </section>
         </main>
+
+        <Modal open={this.state.openOferta} onClose={this.onCloseModal} center>
+        <form onSubmit={this.putProduto}>
+            
+                  <input type="text"
+                    id="oferta__produto"
+                    placeholder="Nome do produto..."
+                    name="tipo"
+                    value={this.state.putProduto.tipo}
+                    onChange={this.atualizaEstadoProduto}
+                    required />
+          
+         
+                  <select
+                    name="tipoProduto"
+                    id="categoria__produto"
+                    value={this.state.putProduto.tipoProduto}
+                    onChange={this.atualizaEstadoProduto}>
+                    <option value="">Escolha uma categoria...</option>
+                    {
+                      this.state.listaCategoriaProduto.map(function (cp) {
+                        return (
+                          <option
+                            key={cp.categoriaProdutoId}
+                            value={cp.categoriaProdutoId}
+                          >
+                            {cp.tipoProduto}
+                          </option>
+                        )
+                      })
+                    }
+                  </select>
+                  </form>
+                  <form onSubmit = {this.putProduto}>
+            <input
+              label="Peso"
+              name="peso"
+              value={this.state.putOferta.peso}
+              onChange={this.atualizaEstadoPutOferta}
+            />
+            <input
+              label="Preco"
+              name="preco"
+              value={this.state.putOferta.preco}
+              onChange={this.atualizaEstadoPutOferta}
+            />
+            <input
+              label="Quantidade"
+              name="quantidade"
+              value={this.state.putOferta.quantidade}
+              onChange={this.atualizaEstadoPutOferta}
+            />
+            <button alt="botao salvar alterações" type="submit"> Salvar</button>
+            <button alt="botao fechar modal" onClose={this.onCloseModal}>  Fechar</button>
+         </form>
+        </Modal>
+        <Modal open={this.state.openReceita} onClose={this.onCloseModal} center>
+          <form onSubmit={this.putReceita}>
+            <input accept="image/*" type="file" name="imagemReceita" ref={this.state.putReceita.imagemReceita} onChange={this.atualizaArquivoPutReceita} />
+            <input
+              label="Titulo"
+              name="nome"
+              value={this.state.putReceita.nome}
+              onChange={this.atualizaEstadoPutReceita}
+            />
+            <select
+              name="categoriaReceitaId"
+              id="categoria__receita"
+              value={this.state.postReceita.categoriaReceitaId}
+              onChange={this.atualizaEstadoReceita}
+            >
+              <option value="">Escolha uma categoria...</option>
+              {
+                this.state.listaCategoriaReceita.map(function (cr) {
+                  return (
+                    <option
+                      key={cr.categoriaReceitaId}
+                      value={cr.categoriaReceitaId}
+                    >
+                      {cr.tipoReceita}
+                    </option>
+                  )
+                })
+              }
+            </select>
+            <button type="submit"> Salvar</button>
+            <button type="reset">  Fechar</button>
+          </form>
+        </Modal>
+
         <Footer />
       </>
     )

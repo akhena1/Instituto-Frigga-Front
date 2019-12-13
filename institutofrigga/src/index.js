@@ -13,6 +13,9 @@ import Entrar from '../src/pages/Entrar/Entrar';
 import About from '../src/pages/About/About';
 import NotFound from '../src/pages/NotFound/NotFound';
 
+// React Font Awelsome Css
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 // Css
 import './index.css';
 import './assets/css/entrar.css';
@@ -26,8 +29,7 @@ import './assets/css/receita.css'
 // Dependências necessárias
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 
-// React Font Awelsome Css
-import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 const Rotas = (
     <Router>
