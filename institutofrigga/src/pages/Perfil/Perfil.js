@@ -27,6 +27,11 @@ class Perfil extends Component {
         tipoProduto: ""
       },
 
+      putProduto: {
+        tipo: "",
+        tipoProduto: ""
+      },
+
       postOferta: {
         produtoId: "",
         preco: "",
@@ -40,16 +45,6 @@ class Perfil extends Component {
         imagemProduto: React.createRef(),
         usuarioId: parseJwt().Id,
         produtoId: "",
-        
-        preco: "",
-        peso: "",
-        quantidade: ""
-      },
-
-      putOfertaAlterada: {
-        imagemProduto: React.createRef(),
-        tipo: "",
-        tipoProduto: "",
         preco: "",
         peso: "",
         quantidade: ""
@@ -70,16 +65,6 @@ class Perfil extends Component {
         ingredientes: "",
         modoDePreparo: ""
       },
-
-      // modalOferta: {
-      //   usuario: {
-      //     tipoProduto: "",
-      //     tipo: "",
-      //     preco: "",
-      //     peso: "",
-      //     quantidade: ""
-      //   }
-      // },
       openReceita: false,
       openOferta: false,
     }
@@ -256,6 +241,30 @@ class Perfil extends Component {
     }, 1500);
   }
 
+  putProduto = (p) => {
+
+    console.log("Produto do state: ", this.state.putProduto);
+
+    let produto = {
+      tipo: this.state.putProduto.tipo,
+      categoriaProdutoId: this.state.putProduto.tipoProduto
+    }
+
+    api.put('/produto', produto)
+      .then(response => {
+        console.log(response);
+        window.alert("Produto cadastrado, agora exponha sua oferta!")
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({ erroMsg: "Não foi possível cadastrar oferta" });
+      })
+
+    setTimeout(() => {
+      this.getOferta();
+    }, 1500);
+  }
+
   postOferta = (o) => {
 
     o.preventDefault();
@@ -325,6 +334,14 @@ class Perfil extends Component {
     })
   }
 
+  atualizaEstadoPutProduto= (input) => {
+    this.setState({
+      putProduto: {
+        ...this.state.putProduto, [input.target.name]: input.target.value
+      }
+    })
+  }
+
   atualizaEstadoPutReceita = (input) => {
     this.setState({
       putReceita: {
@@ -338,7 +355,7 @@ class Perfil extends Component {
     event.preventDefault();
 
     console.log(this.state.putOferta)
-    let ofertaAlterada = this.state.putOferta;
+ 
 
 
     await Axios({
@@ -442,7 +459,6 @@ class Perfil extends Component {
   }
 
   render() {
-    let { open } = this.state;
     return (
       <>
         <Header />
@@ -782,7 +798,7 @@ class Perfil extends Component {
                     placeholder="Nome do produto..."
                     name="tipo"
                     value={this.state.putProduto.tipo}
-                    onChange={this.atualizaEstadoProduto}
+                    onChange={this.atualizaEstadoPutProduto}
                     required />
           
          
@@ -790,7 +806,7 @@ class Perfil extends Component {
                     name="tipoProduto"
                     id="categoria__produto"
                     value={this.state.putProduto.tipoProduto}
-                    onChange={this.atualizaEstadoProduto}>
+                    onChange={this.atualizaEstadoPutProduto}>
                     <option value="">Escolha uma categoria...</option>
                     {
                       this.state.listaCategoriaProduto.map(function (cp) {
