@@ -19,7 +19,6 @@ class Perfil extends Component {
       listaReceita: [],
       listaCategoriaProduto: [],
       listaCategoriaReceita: [],
-<<<<<<< HEAD
       usuario: [],
       Role: "",
       nameId: "",
@@ -36,10 +35,6 @@ class Perfil extends Component {
       //   telefone: "",
       //   email: ""
       // },
-=======
-
-      
->>>>>>> 964102a5b06d9ee83cf0ceb7646fc510472c91ee
 
       postProduto: {
         tipo: "",
@@ -110,30 +105,12 @@ class Perfil extends Component {
 
 
   componentDidMount() {
-<<<<<<< HEAD
     this.getOferta();
     this.getCategoriaProduto();
     this.getProduto();
     this.getReceita();
     this.getCategoriaReceita();
     console.log(parseJwt());
-=======
-    setTimeout(() => {
-      this.getOferta();
-    }, 50);
-    setTimeout(() => {
-      this.getCategoriaProduto();
-    }, 100);
-    setTimeout(() => {
-      this.getProduto();
-    }, 150);
-    setTimeout(() => {
-      this.getReceita();
-    }, 200);
-    setTimeout(() => {
-      this.getCategoriaReceita();
-    }, 250);
->>>>>>> 964102a5b06d9ee83cf0ceb7646fc510472c91ee
   }
    
     
@@ -158,15 +135,8 @@ class Perfil extends Component {
   getOferta = () => {
     api.get('/oferta')
       .then(response => {
-<<<<<<< HEAD
         console.log(response)
         this.setState({ listaOferta: response.data })
-=======
-        if (response.status === 200) {
-          this.setState({ listaOferta: response.data })
-        }
-        setTimeout(500);
->>>>>>> 964102a5b06d9ee83cf0ceb7646fc510472c91ee
         console.log("Lista de Ofertas: ", this.state.listaOferta)
       })
       .catch(error => console.log(error))
@@ -366,12 +336,8 @@ class Perfil extends Component {
     })
   }
 
-<<<<<<< HEAD
   //#region DELETEs
   deleteOferta = (id) => {
-=======
-  putOferta = async (event) => {
->>>>>>> 964102a5b06d9ee83cf0ceb7646fc510472c91ee
 
     event.preventDefault();
 
@@ -379,7 +345,7 @@ class Perfil extends Component {
     let ofertaAlterada = this.state.putOferta;
 
 
-    await Axios({
+   /*  await Axios({
       method: 'put',
       headers: { 'Authorization': "bearer " + localStorage.getItem('usuario-frigga'), 'Content-Type': 'application/json' },
       url: 'http://localhost:5000/api/oferta/' + this.state.putOferta.ofertaId,
@@ -393,7 +359,7 @@ class Perfil extends Component {
       }),
     })
       .then(response => {console.log(response)})
-      .catch(error => {console.log(error)});
+      .catch(error => {console.log(error)}); */
 
     // api.put('/oferta/' + this.state.putOferta.ofertaId, {ofertaAlterada})
     //   .then((response) => {
@@ -466,11 +432,8 @@ class Perfil extends Component {
   }
 
   deleteReceita(id) {
-<<<<<<< HEAD
 
     this.setState({ successMsg: "" })
-=======
->>>>>>> 964102a5b06d9ee83cf0ceb7646fc510472c91ee
     api.delete('/receita/' + id)
       .then(response => {
         if (response.status === 200) {
@@ -485,12 +448,7 @@ class Perfil extends Component {
   }
 
   render() {
-<<<<<<< HEAD
     return(
-=======
-    let { open } = this.state;
-    return (
->>>>>>> 964102a5b06d9ee83cf0ceb7646fc510472c91ee
       <>
         <Header />
         <main>
