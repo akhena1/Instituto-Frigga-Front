@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import iconPerfil from '../../assets/img/iconperfil.svg';
 import Axios from 'axios';
 import { api, apiFormData } from '../../services/api';
-import { parseJwt } from '../../services/auth';
+import { parseJwt, usuarioAutenticado } from '../../services/auth';
 import Modal from 'react-responsive-modal';
 
 class Perfil extends Component {
@@ -308,7 +308,7 @@ class Perfil extends Component {
     })
   }
 
-  atualizaEstadoPutProduto= (input) => {
+  atualizaEstadoPutProduto = (input) => {
     this.setState({
       putProduto: {
         ...this.state.putProduto, [input.target.name]: input.target.value
@@ -331,21 +331,21 @@ class Perfil extends Component {
 
     console.log(this.state.putOferta)
 
-   /*  await Axios({
-      method: 'put',
-      headers: { 'Authorization': "bearer " + localStorage.getItem('usuario-frigga'), 'Content-Type': 'application/json' },
-      url: 'http://localhost:5000/api/oferta/' + this.state.putOferta.ofertaId,
-      data: JSON.stringify({
-        ofertaId: this.state.putOferta.ofertaId,
-        preco: this.state.putOferta.preco,
-        peso: this.state.putOferta.peso,
-        produtoId: this.state.putOferta.produtoId,
-        usuarioId: this.state.putOferta.usuarioId,
-        quantidade: this.state.putOferta.quantidade
-      }),
-    })
-      .then(response => {console.log(response)})
-      .catch(error => {console.log(error)}); */
+    /*  await Axios({
+       method: 'put',
+       headers: { 'Authorization': "bearer " + localStorage.getItem('usuario-frigga'), 'Content-Type': 'application/json' },
+       url: 'http://localhost:5000/api/oferta/' + this.state.putOferta.ofertaId,
+       data: JSON.stringify({
+         ofertaId: this.state.putOferta.ofertaId,
+         preco: this.state.putOferta.preco,
+         peso: this.state.putOferta.peso,
+         produtoId: this.state.putOferta.produtoId,
+         usuarioId: this.state.putOferta.usuarioId,
+         quantidade: this.state.putOferta.quantidade
+       }),
+     })
+       .then(response => {console.log(response)})
+       .catch(error => {console.log(error)}); */
 
     // api.put('/oferta/' + this.state.putOferta.ofertaId, {ofertaAlterada})
     //   .then((response) => {
@@ -424,7 +424,7 @@ class Perfil extends Component {
       .then(response => {
         if (response.status === 200) {
           this.setState({ successMsg: "Excluído com sucesso" })
-            this.getReceita();
+          this.getReceita();
         }
       })
       .catch(error => {
@@ -433,58 +433,11 @@ class Perfil extends Component {
   }
 
   render() {
-    return(
+    return (
       <>
         <Header />
         <main>
-          <section className="profile">
-            <div className="profile_icone">
-              <h1>Perfil</h1>
-              <img src={iconPerfil} alt="icone usuario"/>
-            </div>
-              {(this.state.usuario.map(element => {
-                return (
-                  <thead>
-                  <tr>
-                  <td>{element.Nome}</td>
-                  <td>{element.Telefone}</td>
-                  <td>{element.Email}</td>
-                  </tr>
-                </thead>)      
-                }))}
-
-                <div className="profile_dados">
-
-                  <div className="bloco">
-                    <div className="data_data">
-                      Nome:
-</div>
-                    <div className="info_data">
-                    </div>
-                  </div>
-
-                  <div className="bloco">
-                    <div className="data_data">
-                      Telefone:
-                    </div>
-                    <div className="info_data">
-                    k
-                    </div>
-                  </div>
-
-                  <div className="bloco">
-                    <div className="data_data">
-                      E-mail:
-                    </div>
-                    <div className="info_data">
-                      a
-                    </div>
-                  </div>
-                </div>
-
-
-
-          </section>
+          {usuarioAutenticado() && parseJwt().Role}
           <section className="product_recipes">
             <h2>Cadastrar Produto</h2>
             <div className="card_profile">
@@ -530,7 +483,7 @@ class Perfil extends Component {
               </form>
             </div>
 
-
+            
             <div className="card_profile">
               <form onSubmit={this.postOferta}>
                 <div className="imagem_incluir">
@@ -638,22 +591,6 @@ class Perfil extends Component {
                   }
                 </tbody>
 
-                <tfoot>
-                  <tr>
-                    <td className="bg-pager" colSpan="7">
-                      <div className="tablepager">
-                        <Link to='#'>Anterior</Link>
-                        <div className="numtablepager">
-                          <Link to='#'>1</Link>
-                          <Link to='#'>2</Link>
-                          <Link to='#'>3</Link>>
-                        </div>
-                        <Link to='#'>Próxima</Link>
-                      </div>
-                    </td>
-                  </tr>
-                </tfoot>
-
               </table>
 
             </div>
@@ -749,7 +686,7 @@ class Perfil extends Component {
                             </td>
                             <td className="delete">
                               <button onClick={() => this.deleteReceita(r.receitaId)}>
-                                <i className="fas fa-trash"></i>Excluir
+                                <i className="fas fa-trash "></i>Excluir
                               </ button>
                             </td>
                           </tr>
@@ -758,59 +695,44 @@ class Perfil extends Component {
                     )
                   }
                 </tbody>
-                <tfoot>
-                  <tr>
-                    <td className="bg-pager" colSpan="5">
-                      <div className="tablepager">
-                        <Link to='#'>Anterior</Link>
-                        <div className="numtablepager">
-                          <Link to='#'>1</Link>
-                          <Link to='#'>1</Link>
-                          <Link to='#'>1</Link>
-                        </div>
-                        <Link to='#'>Próxima</Link>
-                      </div>
-                    </td>
-                  </tr>
-                </tfoot>
               </table>
             </div>
           </section>
         </main>
 
         <Modal open={this.state.openOferta} onClose={this.onCloseModal} center>
-        <form onSubmit={this.putProduto}>
-            
-                  <input type="text"
-                    id="oferta__produto"
-                    placeholder="Nome do produto..."
-                    name="tipo"
-                    value={this.state.putProduto.tipo}
-                    onChange={this.atualizaEstadoPutProduto}
-                    required />
-          
-         
-                  <select
-                    name="tipoProduto"
-                    id="categoria__produto"
-                    value={this.state.putProduto.tipoProduto}
-                    onChange={this.atualizaEstadoPutProduto}>
-                    <option value="">Escolha uma categoria...</option>
-                    {
-                      this.state.listaCategoriaProduto.map(function (cp) {
-                        return (
-                          <option
-                            key={cp.categoriaProdutoId}
-                            value={cp.categoriaProdutoId}
-                          >
-                            {cp.tipoProduto}
-                          </option>
-                        )
-                      })
-                    }
-                  </select>
-                  </form>
-                  <form onSubmit = {this.putProduto}>
+          <form onSubmit={this.putProduto}>
+
+            <input type="text"
+              id="oferta__produto"
+              placeholder="Nome do produto..."
+              name="tipo"
+              value={this.state.putProduto.tipo}
+              onChange={this.atualizaEstadoPutProduto}
+              required />
+
+
+            <select
+              name="tipoProduto"
+              id="categoria__produto"
+              value={this.state.putProduto.tipoProduto}
+              onChange={this.atualizaEstadoPutProduto}>
+              <option value="">Escolha uma categoria...</option>
+              {
+                this.state.listaCategoriaProduto.map(function (cp) {
+                  return (
+                    <option
+                      key={cp.categoriaProdutoId}
+                      value={cp.categoriaProdutoId}
+                    >
+                      {cp.tipoProduto}
+                    </option>
+                  )
+                })
+              }
+            </select>
+          </form>
+          <form onSubmit={this.putProduto}>
             <input
               label="Peso"
               name="peso"
@@ -831,7 +753,7 @@ class Perfil extends Component {
             />
             <button alt="botao salvar alterações" type="submit"> Salvar</button>
             <button alt="botao fechar modal" onClose={this.onCloseModal}>  Fechar</button>
-         </form>
+          </form>
         </Modal>
         <Modal open={this.state.openReceita} onClose={this.onCloseModal} center>
           <form onSubmit={this.putReceita}>
