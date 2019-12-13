@@ -3,12 +3,10 @@ import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import { Link } from "react-router-dom";
 import iconPerfil from '../../assets/img/iconperfil.svg';
+import Axios from 'axios';
 import { api, apiFormData } from '../../services/api';
 import { parseJwt } from '../../services/auth';
-
-
-
-
+import Modal from 'react-responsive-modal';
 
 class Perfil extends Component {
   constructor(props) {
@@ -21,6 +19,7 @@ class Perfil extends Component {
       listaReceita: [],
       listaCategoriaProduto: [],
       listaCategoriaReceita: [],
+<<<<<<< HEAD
       usuario: [],
       Role: "",
       nameId: "",
@@ -37,6 +36,10 @@ class Perfil extends Component {
       //   telefone: "",
       //   email: ""
       // },
+=======
+
+      
+>>>>>>> 964102a5b06d9ee83cf0ceb7646fc510472c91ee
 
       postProduto: {
         tipo: "",
@@ -52,14 +55,27 @@ class Perfil extends Component {
       },
 
       putOferta: {
-        tipoProduto: "",
+        ofertaId: null,
+        imagemProduto: React.createRef(),
+        usuarioId: parseJwt().Id,
+        produtoId: "",
+        
+        preco: "",
+        peso: "",
+        quantidade: ""
+      },
+
+      putOfertaAlterada: {
+        imagemProduto: React.createRef(),
         tipo: "",
+        tipoProduto: "",
         preco: "",
         peso: "",
         quantidade: ""
       },
 
       postReceita: {
+        imagemReceita: React.createRef(),
         nome: "",
         tipoReceita: "",
         ingredientes: "",
@@ -67,60 +83,98 @@ class Perfil extends Component {
       },
 
       putReceita: {
+        imagemReceita: React.createRef(),
         nome: "",
         tipoReceita: "",
         ingredientes: "",
         modoDePreparo: ""
       },
 
-      erroMsg: "",
-      successMsg: "",
-      modal: false
-
+      // modalOferta: {
+      //   usuario: {
+      //     tipoProduto: "",
+      //     tipo: "",
+      //     preco: "",
+      //     peso: "",
+      //     quantidade: ""
+      //   }
+      // },
+      openReceita: false,
+      openOferta: false,
     }
 
   }
 
+
+
+
+
   componentDidMount() {
+<<<<<<< HEAD
     this.getOferta();
     this.getCategoriaProduto();
     this.getProduto();
     this.getReceita();
     this.getCategoriaReceita();
     console.log(parseJwt());
+=======
+    setTimeout(() => {
+      this.getOferta();
+    }, 50);
+    setTimeout(() => {
+      this.getCategoriaProduto();
+    }, 100);
+    setTimeout(() => {
+      this.getProduto();
+    }, 150);
+    setTimeout(() => {
+      this.getReceita();
+    }, 200);
+    setTimeout(() => {
+      this.getCategoriaReceita();
+    }, 250);
+>>>>>>> 964102a5b06d9ee83cf0ceb7646fc510472c91ee
   }
+   
+    
+    
+    
+    
 
 
 
   getProduto = () => {
-    console.log("Get Produto")
     api.get('/produto')
       .then(response => {
-        console.log(response)
         if (response.status === 200) {
-          this.setState({ listaProduto: response.data }, () => console.log("Lista de Produtos: ", this.state.listaProduto))
+          this.setState({ listaProduto: response.data })
         }
         setTimeout(500);
+        console.log("Lista de Produtos: ", this.state.listaProduto)
       })
       .catch(error => console.log(error))
   }
 
   getOferta = () => {
-    console.log("Get Oferta")
     api.get('/oferta')
       .then(response => {
+<<<<<<< HEAD
         console.log(response)
         this.setState({ listaOferta: response.data })
+=======
+        if (response.status === 200) {
+          this.setState({ listaOferta: response.data })
+        }
+        setTimeout(500);
+>>>>>>> 964102a5b06d9ee83cf0ceb7646fc510472c91ee
         console.log("Lista de Ofertas: ", this.state.listaOferta)
       })
       .catch(error => console.log(error))
   }
 
   getReceita = () => {
-    console.log("Get Receita")
     api.get('/receita')
       .then(response => {
-        console.log(response)
         if (response.status === 200) {
           this.setState({ listaReceita: response.data })
         }
@@ -131,33 +185,28 @@ class Perfil extends Component {
   }
 
   getCategoriaProduto = () => {
-    console.log("Get Categoria Produto")
-    api.get('/categoriaproduto')
+    api.get('/categoriaProduto')
       .then(response => {
-        console.log(response)
         if (response.status === 200) {
-          this.setState({ listaCategoriaProduto: response.data }, () => console.log("Lista de categorias(Produtos): ", this.state.listaCategoriaProduto))
+          this.setState({ listaCategoriaProduto: response.data })
         }
         setTimeout(500);
+        console.log("Lista de categorias(Produto): ", this.state.listaCategoriaProduto)
       })
       .catch(error => console.log(error))
   }
 
   getCategoriaReceita = () => {
-    console.log("Get Categoria receita")
-    api.get('/categoriareceita')
+    api.get('/categoriaReceita')
       .then(response => {
-        console.log(response)
         if (response.status === 200) {
           this.setState({ listaCategoriaReceita: response.data })
         }
         setTimeout(500);
+        console.log("Lista de categorias(Receita): ", this.state.listaCategoriaReceita)
       })
       .catch(error => console.log(error))
   }
-  //#endregion
-
-  //#region POSTs
 
   atualizaEstadoProduto = (input) => {
     this.setState({
@@ -184,8 +233,7 @@ class Perfil extends Component {
     })
   }
 
-  // 02 - Adicionamos um setState específico
-  postSetStateFile = (input) => {
+  atualizaArquivoOferta = (input) => {
     this.setState({
       postOferta: {
         ...this.state.postOferta, [input.target.name]: input.target.files[0],
@@ -193,9 +241,31 @@ class Perfil extends Component {
     })
   }
 
+  atualizaArquivoPutOferta = (input) => {
+    this.setState({
+      postOferta: {
+        ...this.state.postOferta, [input.target.name]: input.target.files[0],
+      }
+    })
+  }
+
+  atualizaArquivoReceita = (input) => {
+    this.setState({
+      postReceita: {
+        ...this.state.postReceita, [input.target.name]: input.target.files[0],
+      }
+    })
+  }
+
+  atualizaArquivoPutReceita = (input) => {
+    this.setState({
+      postReceita: {
+        ...this.state.postReceita, [input.target.name]: input.target.files[0],
+      }
+    })
+  }
+
   postProduto = (p) => {
-
-
 
     console.log("Produto do state: ", this.state.postProduto);
 
@@ -207,6 +277,7 @@ class Perfil extends Component {
     api.post('/produto', produto)
       .then(response => {
         console.log(response);
+        window.alert("Produto cadastrado, agora exponha sua oferta!")
       })
       .catch(error => {
         console.log(error);
@@ -221,6 +292,7 @@ class Perfil extends Component {
   postOferta = (o) => {
 
     o.preventDefault();
+
     console.log("Oferta do POST: ", this.state.postOferta);
 
 
@@ -231,7 +303,8 @@ class Perfil extends Component {
     ofertaForm.set("preco", this.state.postOferta.preco);
     ofertaForm.set("peso", this.state.postOferta.peso);
     ofertaForm.set("quantidade", this.state.postOferta.quantidade);
-    ofertaForm.set('imagemProduto', this.state.postOferta.imagemProduto.current.files[0], this.state.postOferta.imagemProduto);
+    ofertaForm.set('imagemProdutosss', this.state.postOferta.imagemProduto.current.files[0]);
+    ofertaForm.set('imagemProduto', this.state.postOferta.imagemProduto.current.value);
 
     apiFormData.post('/oferta', ofertaForm)
       .then(response => {
@@ -251,7 +324,19 @@ class Perfil extends Component {
 
     r.preventDefault();
 
-    api.post('/receita', this.state.postReceita)
+    console.log("Receita do POST: ", this.state.postReceita);
+
+    let ReceitaForm = new FormData();
+
+    ReceitaForm.set("nome", this.state.postReceita.nome);
+    ReceitaForm.set("ingredientes", this.state.postReceita.ingredientes);
+    ReceitaForm.set('usuarioId', parseJwt().Id);
+    ReceitaForm.set("categoriaReceitaId", this.state.postReceita.categoriaReceitaId);
+    ReceitaForm.set("modoDePreparo", this.state.postReceita.modoDePreparo);
+    ReceitaForm.set('imagemReceitassss', this.state.postReceita.imagemReceita.current.files[0]);
+    ReceitaForm.set('imagemReceita', this.state.postReceita.imagemReceita.current.value);
+
+    api.post('/receita', ReceitaForm)
       .then(response => {
         console.log(response);
       })
@@ -265,46 +350,147 @@ class Perfil extends Component {
     }, 1500);
   }
 
-  //#endregion
+  atualizaEstadoPutOferta = (input) => {
+    this.setState({
+      putOferta: {
+        ...this.state.putOferta, [input.target.name]: input.target.value
+      }
+    })
+  }
 
+  atualizaEstadoPutReceita = (input) => {
+    this.setState({
+      putReceita: {
+        ...this.state.putReceita, [input.target.name]: input.target.value
+      }
+    })
+  }
+
+<<<<<<< HEAD
   //#region DELETEs
   deleteOferta = (id) => {
+=======
+  putOferta = async (event) => {
+>>>>>>> 964102a5b06d9ee83cf0ceb7646fc510472c91ee
 
-    this.setState({ successMsg: "" })
+    event.preventDefault();
 
-    api.delete('/oferta/' + id)
-      .then(response => {
-        if (response.status === 200) {
-          this.setState({ successMsg: "Excluído com sucesso" })
-        }
+    console.log(this.state.putOferta)
+    let ofertaAlterada = this.state.putOferta;
+
+
+    await Axios({
+      method: 'put',
+      headers: { 'Authorization': "bearer " + localStorage.getItem('usuario-frigga'), 'Content-Type': 'application/json' },
+      url: 'http://localhost:5000/api/oferta/' + this.state.putOferta.ofertaId,
+      data: JSON.stringify({
+        ofertaId: this.state.putOferta.ofertaId,
+        preco: this.state.putOferta.preco,
+        peso: this.state.putOferta.peso,
+        produtoId: this.state.putOferta.produtoId,
+        usuarioId: this.state.putOferta.usuarioId,
+        quantidade: this.state.putOferta.quantidade
+      }),
+    })
+      .then(response => {console.log(response)})
+      .catch(error => {console.log(error)});
+
+    // api.put('/oferta/' + this.state.putOferta.ofertaId, {ofertaAlterada})
+    //   .then((response) => {
+    //     console.log(response);
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   })
+
+    // setTimeout(() => {
+    //   this.getOferta();
+    // }, 1500);
+
+  }
+
+
+  openModalOferta = (o) => {
+
+
+    this.setState({ openOferta: true, modalOferta: o });
+    this.setState({ putOferta: o });
+
+    console.log("PUT", this.state.putOferta);
+  }
+
+  onCloseModal = () => {
+    this.setState({ openOferta: false });
+  };
+
+  putReceita = (event) => {
+
+    event.preventDefault();
+    let receita_Id = this.state.putReceita.receitaId;
+    let receitaAlterada = this.state.putReceita;
+
+
+    api.put('/receita/' + receita_Id, receitaAlterada)
+      .then((response) => {
+        console.log(response);
       })
       .catch(error => {
         console.log(error);
-        this.setState({ erroMsg: "Falha ao excluir" })
       })
+
+    setTimeout(() => {
+      this.getOferta();
+    }, 1500);
+
   }
 
-  deleteReceita(id) {
+  openModalReceita = (r) => {
 
-    this.setState({ successMsg: "" })
-    api.delete('/receita/' + id)
+    this.setState({ openReceita: true, modalOferta: r });
+    this.setState({ putReceita: r });
+    console.log("PUT", this.state.putReceita);
+  }
+
+  deleteOferta(id) {
+    api.delete('/oferta/' + id)
       .then(response => {
         if (response.status === 200) {
-          this.setState({ successMsg: "Excluído com sucesso" })
-
           setTimeout(() => {
-            this.getReceita();
+            this.getOferta();
           }, 1500);
         }
       })
       .catch(error => {
         console.log(error);
-        this.setState({ erroMsg: "Falha ao excluir" })
+      })
+  }
+
+  deleteReceita(id) {
+<<<<<<< HEAD
+
+    this.setState({ successMsg: "" })
+=======
+>>>>>>> 964102a5b06d9ee83cf0ceb7646fc510472c91ee
+    api.delete('/receita/' + id)
+      .then(response => {
+        if (response.status === 200) {
+          this.setState({ successMsg: "Excluído com sucesso" })
+            this.getReceita();
+ 
+        }
+      })
+      .catch(error => {
+        console.log(error);
       })
   }
 
   render() {
+<<<<<<< HEAD
     return(
+=======
+    let { open } = this.state;
+    return (
+>>>>>>> 964102a5b06d9ee83cf0ceb7646fc510472c91ee
       <>
         <Header />
         <main>
@@ -407,15 +593,13 @@ class Perfil extends Component {
                 <div className="imagem_incluir">
                   <p>Clique para<br />
                     incluir Imagem</p>
-
-                  <input accept="image/*" type="file" name="imagemProduto" ref={this.state.postOferta.imagemProduto} onChange={this.postSetStateFile} />
-                  {/* <button type="submit" alt="botao incluir imagem" className="btn_incluir_imagem">+</button> */}
+                  <input accept="image/*" type="file" name="imagemProduto" ref={this.state.postOferta.imagemProduto} onChange={this.atualizaArquivoOferta} />
                 </div>
                 <label >
                   <select
                     name="produtoId"
                     id="categoria__produto"
-                    value={this.state.listaProduto.produtoId}
+                    value={this.state.postOferta.produtoId}
                     onChange={this.atualizaEstadoOferta} >
                     <option value="">Produto a ser cadastrado</option>
                     {
@@ -532,27 +716,27 @@ class Perfil extends Component {
             </div>
             <h2>Cadastrar Receitas</h2>
             <div className="card_profile">
-              <div className="imagem_incluir">
-                <p>Clique para<br />
-                  incluir Imagem</p>
-                <button type="submit" alt="botao incluir imagem" className="btn_incluir_imagem">+</button>
-              </div>
               <form onSubmit={this.postReceita}>
+                <div className="imagem_incluir">
+                  <p>Clique para<br />
+                    incluir Imagem</p>
+                  <input accept="image/*" type="file" name="imagemReceita" ref={this.state.postReceita.imagemReceita} onChange={this.atualizaArquivoReceita} />
+                </div>
                 <label>
                   <input
                     type="text"
                     id="nome__receita"
                     placeholder="Nome receita..."
                     name="nome"
-                    value={this.state.listaReceita.nome}
+                    value={this.state.postReceita.nome}
                     onChange={this.atualizaEstadoReceita}
                     required />
                 </label>
                 <label></label>
                 <select
-                  name="tipoReceita"
+                  name="categoriaReceitaId"
                   id="categoria__receita"
-                  value={this.state.listaReceita.tipoReceita}
+                  value={this.state.postReceita.categoriaReceitaId}
                   onChange={this.atualizaEstadoReceita}
                 >
                   <option value="">Escolha uma categoria...</option>
@@ -575,7 +759,7 @@ class Perfil extends Component {
                     id="ingredientes"
                     name="ingredientes"
                     placeholder="Ingredientes..."
-                    value={this.state.listaReceita.ingredientes}
+                    value={this.state.postReceita.ingredientes}
                     onChange={this.atualizaEstadoReceita}
                   />
                 </label>
@@ -585,23 +769,20 @@ class Perfil extends Component {
                     name="modoDePreparo"
                     placeholder="Modo de preparo..."
                     id="modo__preparo"
-                    value={this.state.listaReceita.modoDePreparo}
+                    value={this.state.postReceita.modoDePreparo}
                     onChange={this.atualizaEstadoReceita}
                   />
                 </label>
-              </form>
-              <button type="submit" alt="botao cadastrar receitas" className="btn_cadastrar_receita">Inserir receita
+                <button type="submit" alt="botao cadastrar receitas" className="btn_cadastrar_receita">Inserir receita
                         <div id="cadastro__receita"></div>
-              </button>
+                </button>
+              </form>
             </div>
 
             <div className="tabela_receitas">
               <table>
                 <thead>
                   <tr>
-                    {/* <th>
-                  <div>Imagem</div>
-                </th> */}
                     <th>Nome da receita</th>
                     <th>Categoria</th>
                     <th className="void"></th>
@@ -653,6 +834,96 @@ class Perfil extends Component {
             </div>
           </section>
         </main>
+
+        <Modal open={this.state.openOferta} onClose={this.onCloseModal} center>
+        <form onSubmit={this.putProduto}>
+            
+                  <input type="text"
+                    id="oferta__produto"
+                    placeholder="Nome do produto..."
+                    name="tipo"
+                    value={this.state.putProduto.tipo}
+                    onChange={this.atualizaEstadoProduto}
+                    required />
+          
+         
+                  <select
+                    name="tipoProduto"
+                    id="categoria__produto"
+                    value={this.state.putProduto.tipoProduto}
+                    onChange={this.atualizaEstadoProduto}>
+                    <option value="">Escolha uma categoria...</option>
+                    {
+                      this.state.listaCategoriaProduto.map(function (cp) {
+                        return (
+                          <option
+                            key={cp.categoriaProdutoId}
+                            value={cp.categoriaProdutoId}
+                          >
+                            {cp.tipoProduto}
+                          </option>
+                        )
+                      })
+                    }
+                  </select>
+                  </form>
+                  <form onSubmit = {this.putProduto}>
+            <input
+              label="Peso"
+              name="peso"
+              value={this.state.putOferta.peso}
+              onChange={this.atualizaEstadoPutOferta}
+            />
+            <input
+              label="Preco"
+              name="preco"
+              value={this.state.putOferta.preco}
+              onChange={this.atualizaEstadoPutOferta}
+            />
+            <input
+              label="Quantidade"
+              name="quantidade"
+              value={this.state.putOferta.quantidade}
+              onChange={this.atualizaEstadoPutOferta}
+            />
+            <button alt="botao salvar alterações" type="submit"> Salvar</button>
+            <button alt="botao fechar modal" onClose={this.onCloseModal}>  Fechar</button>
+         </form>
+        </Modal>
+        <Modal open={this.state.openReceita} onClose={this.onCloseModal} center>
+          <form onSubmit={this.putReceita}>
+            <input accept="image/*" type="file" name="imagemReceita" ref={this.state.putReceita.imagemReceita} onChange={this.atualizaArquivoPutReceita} />
+            <input
+              label="Titulo"
+              name="nome"
+              value={this.state.putReceita.nome}
+              onChange={this.atualizaEstadoPutReceita}
+            />
+            <select
+              name="categoriaReceitaId"
+              id="categoria__receita"
+              value={this.state.postReceita.categoriaReceitaId}
+              onChange={this.atualizaEstadoReceita}
+            >
+              <option value="">Escolha uma categoria...</option>
+              {
+                this.state.listaCategoriaReceita.map(function (cr) {
+                  return (
+                    <option
+                      key={cr.categoriaReceitaId}
+                      value={cr.categoriaReceitaId}
+                    >
+                      {cr.tipoReceita}
+                    </option>
+                  )
+                })
+              }
+            </select>
+            <button type="submit"> Salvar</button>
+            <button type="reset">  Fechar</button>
+          </form>
+        </Modal>
+
         <Footer />
       </>
     )
