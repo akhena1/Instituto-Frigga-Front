@@ -365,7 +365,7 @@ class Perfil extends Component {
         <Header />
         <main>
           {usuarioAutenticado() && parseJwt().Role === "2"?(""):(
-            <div>
+            <div className="containerGeralPerfil">
               <h2>Cadastrar Produto</h2>
             <div className="card_profile">
               <form onSubmit={this.postProduto}>
