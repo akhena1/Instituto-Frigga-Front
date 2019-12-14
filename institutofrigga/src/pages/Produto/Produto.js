@@ -24,8 +24,9 @@ class Produto extends Component {
                 }
             },
             open: false,
-            setStateFiltro:  "",
-            setStateTodos: ""
+            setStateFiltro: "",
+            setStateTodos: "",
+            produtoFiltro: ""
         }
     }
 
@@ -43,6 +44,7 @@ class Produto extends Component {
         this.getCategoriaProduto();
         this.getUsuario();
         this.getFilltro();
+        this.getProdutoFiltro();
     }
 
     getOferta = () => {
@@ -104,6 +106,16 @@ class Produto extends Component {
             this.setState({listarOferta : response.data});
         })
         .catch(erro => console.log("Deu erro na busca de ofertas por id categoria: ", erro))
+    }
+    getProdutoFiltro = (id) => {
+        api.get('/produto')
+            .then(response => {
+                return this.setState({produtoFiltro: response.data.tipo}),
+                console.log(this.state.produtoFiltro)
+            })
+            .catch(error => {
+                return ""
+            })
     }
 
     render() {
@@ -174,7 +186,7 @@ class Produto extends Component {
                                             <img src={"http://localhost:5000/Arquivos/" + of.imagemProduto} alt={of.tipo} />
                                             <div className="nav-p nav-p-isa">
 
-                                                <p>{of.produto.tipo}<br></br> R$ {of.preco}</p>
+                                                <p key={of.ofertaId}>{this.state.produtoFiltro}<br></br> R$ {of.preco}</p>
                                                 {
                                                    usuarioAutenticado()? (
                                                     <Link onClick={() => this.onOpenModal(of)}>Reservar</Link>
