@@ -174,7 +174,7 @@ class Produto extends Component {
                                             <img src={"http://localhost:5000/Arquivos/" + of.imagemProduto} alt={of.tipo} />
                                             <div className="nav-p nav-p-isa">
 
-                                                <p>{of.tipo}<br></br> R$ {of.preco}</p>
+                                                <p>{of.produto.tipo}<br></br> R$ {of.preco}</p>
                                                 {
                                                    usuarioAutenticado()? (
                                                     <Link onClick={() => this.onOpenModal(of)}>Reservar</Link>

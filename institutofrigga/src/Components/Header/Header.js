@@ -81,8 +81,9 @@ class Header extends Component {
                                 <Link to="/about">Quem Somos</Link>
                             </ul>
                             <ul className="menuzao_2">
+                            <i class="fas fa-user-circle"></i>
                                 <div className="divPHeader">
-                                    <p className="pHeader">{`Bem vindo:${parseJwt().Nome}`}</p>
+                                    <p className="pHeader">{`Bem vindo: ${parseJwt().Nome}`}</p>
                                 </div>
 
                                 <Link to="/perfil">Painel</Link>
@@ -100,7 +101,9 @@ class Header extends Component {
                                 <Link to="/receitas">Receitas</Link>
                                 <Link to="/about">Quem Somos</Link>
                             </ul>
+                            
                             <ul className="menuzao_2">
+                            <i class="fas fa-user-circle"></i>
                                 <div className="divPHeader">
                                     <p className="pHeader">{`Bem vindo:${parseJwt().Nome}`}</p>
                                 </div>
@@ -122,6 +125,7 @@ class Header extends Component {
                                     </ul>
                                     <ul className="menuzao_2">
 
+                                    <i class="fas fa-user-circle"></i>
                                         <div className="divPHeader">
                                             <p className="pHeader">{`Bem vindo:${parseJwt().Nome}`}</p>
                                         </div>
