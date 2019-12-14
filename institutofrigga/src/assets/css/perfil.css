@@ -119,6 +119,7 @@ body {
     -webkit-box-shadow: 5px 5px 30px -15px rgba(204, 204, 204, 204.75);
     -moz-box-shadow: 5px 5px 30px -15px rgba(204, 204, 204, 204.75);
     box-shadow: 5px 5px 30px -15px rgba(204, 204, 204, 204.75);
+    margin: auto;
     }  
   
     .card_profile input,
@@ -200,24 +201,32 @@ body {
     table,
     td,
     th {
-    border: 2px solid #D9BD9C;
+     border-bottom: 1px solid rgb(219, 219, 219); 
     border-collapse: collapse;
     padding: 8px;
     font-family: var(--fonte1);
-    font-size: 20px;
-    background-color: #006D03;
-    color: white;
+    font-size: 16px;
+    background-color: rgba(214, 236, 215, 0.979);
+    color: black;
     text-align: center;
+    }
+    th{
+      font-size: 15px;
     }
     
     table th {
-    color: white;
-    background-color: var(--cinza);
+    color: dimgray;
+    background-color: #dddddd;
+    font-family: var(--fonte2);
     }
     .editar button, .delete button {
     background-color: white;
-    font-size: 17px;
+    font-size: 15px;
     border: none;
+    
+    }
+    .editar i, .delete i{
+      color: var(--verde);
     }
   
   td button i {
@@ -239,7 +248,7 @@ body {
     height: 30px;
     }
     table .void {
-    background-color: #363636;
+    background-color: #9c9b9b;
     }
     td .verreceitas {
     text-decoration: none;
@@ -342,6 +351,7 @@ body {
     width: 700px;
     display: flex;
     flex-direction: column;
+    margin: auto;
     }
     .card_profile form {
     display: flex;

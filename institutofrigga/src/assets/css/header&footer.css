@@ -171,3 +171,12 @@ display: none;
 .redes img:hover {
 opacity: 0.6;
 }
+.pHeader{
+    width: 180px;
+    font-size: 18px;
+    margin-left: -118px;
+}
+ul p{
+  width: 250px;
+}
+

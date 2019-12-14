@@ -3,7 +3,8 @@ import MenuSanduiche from '../../assets/img/menu-button-of-three-horizontal-line
 import LogoWeb from '../../assets/img/definitivo-fundo-preto.png';
 import LogoMob from '../../assets/img/definitivo-fundo-preto.png';
 import { Link, withRouter } from 'react-router-dom';
-import { usuarioAutenticado } from '../../services/auth';
+import { usuarioAutenticado, parseJwt } from '../../services/auth';
+import iconPerfil from '../../assets/img/iconperfil.svg';
 
 class Header extends Component {
 
@@ -71,7 +72,7 @@ class Header extends Component {
                 <div className="menu_global">
                     <input type="checkbox" id="btt_menu" />
                     <label htmlFor="btt_menu">&#9776;</label>
-                    {usuarioAutenticado() ? (
+                    {usuarioAutenticado() && parseJwt().Role === "1" ? (
                         <nav className="menuzao_ttl">
                             <ul className="menuzao_1">
                                 <Link to="/">Home</Link>
@@ -80,7 +81,30 @@ class Header extends Component {
                                 <Link to="/about">Quem Somos</Link>
                             </ul>
                             <ul className="menuzao_2">
-                                <Link to="/perfil">Perfil</Link>
+                                <div className="divPHeader">
+                                    <p className="pHeader">{`Bem vindo:${parseJwt().Nome}`}</p>
+                                </div>
+
+                                <Link to="/perfil">Painel</Link>
+                                <Link style={{
+                                    backgroundColor: 'white',
+                                    color: 'black'
+                                }} onClick={this.logout} to="/entrar">SAIR</Link>
+                            </ul>
+                        </nav>
+                    ) : (usuarioAutenticado() && parseJwt().Role === "3" ? (
+                        <nav className="menuzao_ttl">
+                            <ul className="menuzao_1">
+                                <Link to="/">Home</Link>
+                                <Link to="/produtos">Produtos</Link>
+                                <Link to="/receitas">Receitas</Link>
+                                <Link to="/about">Quem Somos</Link>
+                            </ul>
+                            <ul className="menuzao_2">
+                                <div className="divPHeader">
+                                    <p className="pHeader">{`Bem vindo:${parseJwt().Nome}`}</p>
+                                </div>
+                                <Link to="/perfil">Painel</Link>
                                 <Link style={{
                                     backgroundColor: 'white',
                                     color: 'black'
@@ -88,19 +112,42 @@ class Header extends Component {
                             </ul>
                         </nav>
                     ) : (
-                            <nav className="menuzao_ttl">
-                                <ul className="menuzao_1">
-                                    <Link to="/">Home</Link>
-                                    <Link to="/produtos">Produtos</Link>
-                                    <Link to="/receitas">Receitas</Link>
-                                    <Link to="/about">Quem Somos</Link>
-                                </ul>
-                                <ul className="menuzao_2">
-                                    <Link to="/perfil">Perfil</Link>
-                                    <Link to="/entrar">Entrar</Link>
-                                </ul>
-                            </nav>
-                        )
+                            usuarioAutenticado() && parseJwt().Role === "2" ? (
+                                <nav className="menuzao_ttl">
+                                    <ul className="menuzao_1">
+                                        <Link to="/">Home</Link>
+                                        <Link to="/produtos">Produtos</Link>
+                                        <Link to="/receitas">Receitas</Link>
+                                        <Link to="/about">Quem Somos</Link>
+                                    </ul>
+                                    <ul className="menuzao_2">
+
+                                        <div className="divPHeader">
+                                            <p className="pHeader">{`Bem vindo:${parseJwt().Nome}`}</p>
+                                        </div>
+                                        <Link to="/perfil">MinhasReceitas</Link>
+                                        <Link style={{
+                                            backgroundColor: 'white',
+                                            color: 'black'
+                                        }} onClick={this.logout} to="/entrar">SAIR</Link>
+                                    </ul>
+                                </nav>
+                            ) : (
+                                    <nav className="menuzao_ttl">
+                                        <ul className="menuzao_1">
+                                            <Link to="/">Home</Link>
+                                            <Link to="/produtos">Produtos</Link>
+                                            <Link to="/receitas">Receitas</Link>
+                                            <Link to="/about">Quem Somos</Link>
+                                        </ul>
+                                        <ul className="menuzao_2">
+
+                                            <Link to="/entrar">Entrar</Link>
+                                        </ul>
+                                    </nav>
+                                )
+
+                        ))
                     }
                 </div>
                 {usuarioAutenticado() ? (
@@ -108,12 +155,12 @@ class Header extends Component {
                         <img className="logotipo_header" src={LogoWeb} alt=" Logo  do instituto" />
                         <Link to="/entrar">Sair</Link>
                     </div>
-                ):(
-                    <div className="logotipo_fri">
-                        <img className="logotipo_header" src={LogoWeb} alt=" Logo  do instituto" />
-                        <Link to="/entrar">Entrar</Link>
-                    </div>
-                )}
+                ) : (
+                        <div className="logotipo_fri">
+                            <img className="logotipo_header" src={LogoWeb} alt=" Logo  do instituto" />
+                            <Link to="/entrar">Entrar</Link>
+                        </div>
+                    )}
             </header>
         );
     }
