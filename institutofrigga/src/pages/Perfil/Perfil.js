@@ -265,6 +265,29 @@ class Perfil extends Component {
     })
   }
 
+  /* putOferta = async (event) => {
+
+    // event.preventDefault();
+
+    console.log(this.state.putOferta)
+
+   /*  await Axios({
+      method: 'put',
+      headers: { 'Authorization': "bearer " + localStorage.getItem('usuario-frigga'), 'Content-Type': 'application/json' },
+      url: 'http://localhost:5000/api/oferta/' + this.state.putOferta.ofertaId,
+      data: JSON.stringify({
+        ofertaId: this.state.putOferta.ofertaId,
+        preco: this.state.putOferta.preco,
+        peso: this.state.putOferta.peso,
+        produtoId: this.state.putOferta.produtoId,
+        usuarioId: this.state.putOferta.usuarioId,
+        quantidade: this.state.putOferta.quantidade
+      }),
+    })
+      .then(response => {console.log(response)})
+      .catch(error => {console.log(error)});
+  } */
+
 
   openModalOferta = (o) => {
 

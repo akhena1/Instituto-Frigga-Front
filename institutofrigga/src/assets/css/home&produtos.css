@@ -544,51 +544,67 @@ padding: 0;
      display: none ;
    }
    /*isabella, fim */
+
+   @media(max-width: 1169px){
+    .container-categorias{
+      width: 900px;
+    }
+    .categorias{
+      width: 850px;  
+    }
+    .container-produtos-isa{
+      width: 850px;
+      justify-content: space-around;
+    }
+  }
+
+  /*css Isabella, responsivo mobile produtos*/
+  @media(max-width: 767px){
+  .container_geral{
+    flex-direction: column;
+  }
+  .container_mobile, .categorias_mobile, .categ_mobile{
+  display: flex ;
+  }
+  .container_mobile{
+  background-color: white;
+  margin: 20px 50px;
+  padding: 20px;
+  width: 450px;
+  height: 200px;
+  }  
+  .categ_mobile {
+    padding-top: 20px;
+    display: block;
+    margin: 8px;
+    margin-top: 30px;
+  }  
+  .categ_mobile p{
+    text-align: center;
+    font-size: 18px;
+  }
+  .container-categorias{
+    display: none;
+  }
+
+  .container-produtos{
+    width: 350px;
+    margin: auto;
+  }
+
+  .card_produto-isa{
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+  .categ_mobile img{
+    width: 100px;
+  }
+  .categ_mobile h2 p{
+  font-size: 1.5em;
+  padding-top: 30px;
+      }
+  }
+  /*mobile Isabella, fim*/
+  
    
-   
-   /*css Isabella, responsivo mobile produtos*/
-   @media(max-width: 767px){
-   .container_geral{
-     flex-direction: column;
-   }
-   .container_mobile, .categorias_mobile, .categ_mobile{
-   display: flex ;
-   }
-   .container_mobile{
-   background-color: white;
-   margin: 20px 50px;
-   padding: 20px;
-   width: 450px;
-   height: 200px;
-   }  
-   .categ_mobile {
-     padding-top: 20px;
-     display: block;
-     margin: 8px;
-     margin-top: 30px;
-   }  
-   .categ_mobile p{
-     text-align: center;
-     font-size: 18px;
-   }
-   .container-categorias{
-     display: none;
-   }
- 
-   .container-produtos{
-     margin: auto;
-   }
-   .card_produtoisa{
-     padding-top: 37px;
-     padding-bottom: 37px;
-   }
-   .categ_mobile img{
-     width: 100px;
-   }
-   .categ_mobile h2 p{
-   font-size: 1.5em;
-   padding-top: 30px;
-       }
-   }
-   /*mobile Isabella, fim*/
    

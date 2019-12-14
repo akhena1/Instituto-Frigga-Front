@@ -6,11 +6,6 @@ import { api } from '../../services/api';
 import { Link } from "react-router-dom";
 
 
-
-
-
-
-
 class Receita extends Component {
 
     constructor() {
@@ -26,6 +21,7 @@ class Receita extends Component {
     componentDidMount() {
         this.getCategoriaReceita();
         this.getReceita();
+        this.getFiltro();
     }
 
     getCategoriaReceita = () => {
@@ -59,7 +55,7 @@ class Receita extends Component {
     atualizaSelect = (value) => {
         this.setState({ setStateFiltro: value })
         setTimeout(() => {
-            this.getFiltro(this.state.filtrarreceita)
+            this.getFiltro(this.state.filtroreceita)
 
         }, 500);
     }
@@ -218,6 +214,5 @@ class Receita extends Component {
 
 
 export default Receita;
-
 
 
