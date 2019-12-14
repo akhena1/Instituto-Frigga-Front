@@ -92,7 +92,7 @@ class Home extends Component {
                                     }
                                 )
                             }
-                            <div className="btn-seemore"><Link to="/receita">Ver mais</Link></div>
+                            
                         </section> 
 
 
@@ -128,7 +128,7 @@ class Home extends Component {
                             }
 
 
-                            <div className="btn-seemore"><Link to="produtos.html" className="btn-seemore">Ver mais..</Link></div>
+                           
                         </section>
 
 

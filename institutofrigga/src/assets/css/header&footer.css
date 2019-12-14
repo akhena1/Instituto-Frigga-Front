@@ -178,5 +178,11 @@ opacity: 0.6;
 }
 ul p{
   width: 250px;
+  color: #363636;
+}
+ul i{
+  color: #363636;
+  margin-right: 128px;
+  margin-left: -100px;
 }
 
