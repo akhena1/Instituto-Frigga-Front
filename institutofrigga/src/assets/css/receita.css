@@ -196,7 +196,7 @@ padding: 0;
     text-align: justify; /*alterado mig*/
   }
 
-  /* Responsivo ver receitas*/
+/* Responsivo ver receitas*/
 @media(max-width: 767px){
   .banner-receita1{
     width: 100vw;

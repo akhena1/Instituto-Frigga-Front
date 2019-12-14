@@ -122,20 +122,18 @@ class Produto extends Component {
                         <div className="bar_bar"></div>
                         <div className= "categorias">
                         {
-                                    // this.state.listarCategoriaProduto.map(function(fo){
+                                    
                                     this.state.listarCategoriaProduto.map(fo =>{
                                         return(
                                             <div className= "align">
                                             <p>{fo.tipoProduto}</p>
-                                                <div className="categ_1" onClick={() => this.filtrarListaPorCategoria(fo.categoriaProdutoId)} className="categ_1">
+                                                <div className="categ_1" onClick={() => this.filtrarListaPorCategoria(fo.categoriaProdutoId)}>
 
                                                 </div>
                                             </div>
                                         )
                                     })
-                                }
-                               
-                                
+                                }  
                            </div>
 
                         </div>
@@ -175,14 +173,26 @@ class Produto extends Component {
                         </section> */}
                         <section className="container_mobile">
                             <div className="categorias_mobile">
-                                <div className="categ_mobile">
+                                {
+                                     this.state.listarCategoriaProduto.map(fo =>{
+                                        return(
+                                            <div className= "categ_mobile">
+                                            <p>{fo.tipoProduto}</p>
+                                                <a onClick={() => this.filtrarListaPorCategoria(fo.categoriaProdutoId)}>
+                                                </a>
+                                            </div>
+                                        )
+                                    })
+                                }
+                                
+                                 {/* <div className="categ_mobile">
                                     <p>LEGUMES</p>
                                     <a href="#"><img src="IMGS/frutas.png" title="#" alt="legumes" /></a>
-                                </div>
-                                <div className="categ_mobile">
+                                </div> 
+                                 <div className="categ_mobile">
                                     <p>FRUTAS</p>
                                     <a href="#"><img src="IMGS/abacaxi.png" title="#" alt="frutas" /></a>
-                                </div>
+                                </div> */}
                             </div>
                         </section>
                         <section className="container-produtos container-produtos-isa">
@@ -234,7 +244,7 @@ class Produto extends Component {
                                                 <p>Preço: {this.state.modalOferta.preco}</p>
                                                
                                             </div>
-                                            {/* <button class="btnModalProduto">OK</button> */}
+                                           
 
                                         </div>  
                                     </Modal>

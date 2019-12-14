@@ -11,6 +11,7 @@ import {Link} from 'react-router-dom'
 
 
 
+
 class About extends Component {
 
     render() {
@@ -70,13 +71,12 @@ class About extends Component {
 
                 </section>
 
-                <section className="container-depoimento">
-                    <div className="depoimento">
-                        <img src={aimg3} alt="Pessoas que participaram do projeto" />
-                        <h3>Depoimentos</h3>
+                <section class="container-depoimento">
+                    <div class="depoimento">
+                    <img src="IMGS/4.jpg" alt="Pessoas que participaram do projeto"/>
+                    <h3>Depoimentos</h3>
                     </div>
                 </section>
-
 
                 <section className="container-galeria-texto">
                     <h3>Galeria</h3>

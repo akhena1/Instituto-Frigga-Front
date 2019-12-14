@@ -552,18 +552,7 @@ padding: 0;
       justify-content: space-around;
     }
   }
-  @media(max-width: 1169px){
-    .container-categorias{
-      width: 900px;
-    }
-    .categorias{
-      width: 850px;  
-    }
-    .container-produtos-isa{
-      width: 850px;
-      justify-content: space-around;
-    }
-  }
+
   /*css Isabella, responsivo mobile produtos*/
   @media(max-width: 767px){
   .container_geral{
