@@ -348,6 +348,11 @@ padding: 0;
   width: 250px;
   height: 140px;
   }
+  
+  .card-receita img {
+    width: 250px;
+    height: 200px;
+  }
   .container-produtos {
   width: 250px;
   }

@@ -13,6 +13,9 @@ padding: 0;
     --fonte2: 'Quicksand', sans-serif;
     }
     
+    .containerGeralPerfil{
+      margin-top: 20px;
+    }
 body {
     font-family: var(--fonte1);
     }
