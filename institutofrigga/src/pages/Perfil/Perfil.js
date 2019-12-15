@@ -45,6 +45,7 @@ class Perfil extends Component {
         ingredientes: "",
         modoDePreparo: ""
       },
+      isLoading : false
 
     }
 
@@ -184,8 +185,9 @@ class Perfil extends Component {
 
   postOferta = (o) => {
 
+    
     o.preventDefault()
-    console.log("Oferta do POST: ", this.state.postOferta);
+    this.setState({isLoading: true})
 
     let ofertaForm = new FormData();
 
@@ -200,20 +202,26 @@ class Perfil extends Component {
     apiFormData.post('/oferta', ofertaForm)
       .then(response => {
         console.log("Oferta Post: ", response);
+        this.setState({isLoading: false})
       })
       .catch(error => {
         console.log(error);
         this.setState({ erroMsg: "Não foi possível cadastrar oferta" });
+        this.setState({isLoading: false})
       })
 
     setTimeout(() => {
       this.getOferta();
     }, 1500);
+
+    
+    window.alert("Oferta cadastrada!")
   }
 
   postReceita = (r) => {
 
     r.preventDefault();
+    this.setState({isLoading: true})
 
     console.log("Receita do POST: ", this.state.postReceita);
 
@@ -230,10 +238,12 @@ class Perfil extends Component {
     api.post('/receita', ReceitaForm)
       .then(response => {
         console.log(response);
+        this.setState({isLoading: false})
       })
       .catch(error => {
         console.log(error);
         this.setState({ erroMsg: "Não foi possível cadastrar receita" });
+        this.setState({isLoading: false})
       })
 
     setTimeout(() => {
@@ -264,31 +274,6 @@ class Perfil extends Component {
       }
     })
   }
-
-  /* putOferta = async (event) => {
-
-    // event.preventDefault();
-
-    console.log(this.state.putOferta)
-
-   /*  await Axios({
-      method: 'put',
-      headers: { 'Authorization': "bearer " + localStorage.getItem('usuario-frigga'), 'Content-Type': 'application/json' },
-      url: 'http://localhost:5000/api/oferta/' + this.state.putOferta.ofertaId,
-      data: JSON.stringify({
-        ofertaId: this.state.putOferta.ofertaId,
-        preco: this.state.putOferta.preco,
-        peso: this.state.putOferta.peso,
-        produtoId: this.state.putOferta.produtoId,
-        usuarioId: this.state.putOferta.usuarioId,
-        quantidade: this.state.putOferta.quantidade
-      }),
-    })
-      .then(response => {console.log(response)})
-      .catch(error => {console.log(error)});
-  } */
-
-
   openModalOferta = (o) => {
 
 
@@ -302,27 +287,6 @@ class Perfil extends Component {
     this.setState({ openOferta: false });
   };
 
-  putReceita = (event) => {
-
-    event.preventDefault();
-    let receita_Id = this.state.putReceita.receitaId;
-    let receitaAlterada = this.state.putReceita;
-
-
-    api.put('/receita/' + receita_Id, receitaAlterada)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error);
-      })
-
-    setTimeout(() => {
-      this.getOferta();
-    }, 1500);
-
-  }
-
   openModalReceita = (r) => {
 
     this.setState({ openReceita: true, modalOferta: r });
@@ -331,31 +295,37 @@ class Perfil extends Component {
   }
 
   deleteOferta(id) {
+    this.setState({isLoading: true})
     api.delete('/oferta/' + id)
       .then(response => {
         if (response.status === 200) {
           setTimeout(() => {
             this.getOferta();
+            this.setState({isLoading: false})
           }, 1500);
         }
       })
       .catch(error => {
         console.log(error);
+        this.setState({isLoading: false})
       })
   }
 
   deleteReceita(id) {
 
+    this.setState({isLoading: true})
     this.setState({ successMsg: "" })
     api.delete('/receita/' + id)
       .then(response => {
         if (response.status === 200) {
           this.setState({ successMsg: "Excluído com sucesso" })
           this.getReceita();
+          this.setState({isLoading: false})
         }
       })
       .catch(error => {
         console.log(error);
+        this.setState({isLoading: false})
       })
   }
 
@@ -511,11 +481,22 @@ class Perfil extends Component {
                     )
                   }
                 </tbody>
+                
+                
 
               </table>
+              
 
             </div>
+            <div className="divLoading">
+            {this.state.isLoading && <i className="fas fa-carrot fa-spin"></i>}
+            {this.state.isLoading && <p>Carregando..</p>}
+            {!this.state.isLoading}
+            {!this.state.isLoading}
             </div>
+            
+            </div>
+            
             
           )}
           <section className="product_recipes">
@@ -591,7 +572,7 @@ class Perfil extends Component {
                   <tr>
                     <th>Nome da receita</th>
                     <th>Categoria</th>
-                    <th className="void"></th>
+                    <th></th>
                     <th className="void "></th>
                   </tr>
                 </thead>
@@ -616,6 +597,13 @@ class Perfil extends Component {
                   }
                 </tbody>
               </table>
+              
+            </div>
+            <div className="divLoading">
+            {this.state.isLoading && <i className="fas fa-carrot fa-spin"></i>}
+            {this.state.isLoading && <p>Carregando..</p>}
+            {!this.state.isLoading}
+            {!this.state.isLoading}
             </div>
           </section>
         </main>

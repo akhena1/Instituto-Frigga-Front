@@ -16,7 +16,20 @@ padding: 0;
     .containerGeralPerfil{
       margin-top: 30px;
     }
-body {
+    .divLoading{
+      width: 40px;
+      margin: auto;
+    }
+    .divLoading i {
+      width: 20px;
+      height: 20px;
+      color: var(--verde);
+    }
+    .divLoading p{
+      margin-left: -30px;
+      font-size: 20px;
+    }
+    body {
     font-family: var(--fonte1);
     }
     .fundoLogin{
