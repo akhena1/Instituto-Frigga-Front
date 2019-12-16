@@ -13,7 +13,12 @@ padding: 0;
     --fonte2: 'Quicksand', sans-serif;
     }
     
-
+    .container_geral img{
+      max-width: 352px;
+      min-width: 352px;
+      max-height: 300px;
+      min-height: 300px;
+    }
 .card_receitas input {
     width: 40px;
     }

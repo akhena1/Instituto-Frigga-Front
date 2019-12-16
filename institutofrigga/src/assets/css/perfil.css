@@ -105,6 +105,11 @@ padding: 0;
     width: 300px;
     padding-bottom: 10px;
     }
+    .align_align{
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+    }
     .profile_dados input,
     textarea {
     padding: 7px;
@@ -157,8 +162,9 @@ padding: 0;
     }
     .imagem_incluir {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-right: 30px;
+    margin-right: 70px;
     }
     .btn_incluir_imagem {
     border-radius: 2px;
