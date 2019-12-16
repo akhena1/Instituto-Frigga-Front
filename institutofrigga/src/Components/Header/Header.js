@@ -157,7 +157,7 @@ class Header extends Component {
                 {usuarioAutenticado() ? (
                     <div className="logotipo_fri">
                         <img className="logotipo_header" src={LogoWeb} alt=" Logo  do instituto" />
-                        <Link to="/entrar">Sair</Link>
+                        <Link to="/entrar" onClick={this.logout}>Sair</Link>
                     </div>
                 ) : (
                         <div className="logotipo_fri">
