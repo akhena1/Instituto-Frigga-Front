@@ -509,6 +509,8 @@ class Perfil extends Component {
                     incluir Imagem</p>
                   <input accept="image/*" type="file" name="imagemReceita" ref={this.state.postReceita.imagemReceita} onChange={this.atualizaArquivoReceita} />
                 </div>
+
+
                 <label>
                   <input
                     type="text"
@@ -541,30 +543,48 @@ class Perfil extends Component {
                   }
                 </select>
                 <label>
-                  <input
+                <textarea name="ingredientes"
+                id="ingredientes" 
+                placeholder="ingredientes..."
+                value={this.state.postReceita.ingredientes}
+                onChange={this.atualizaEstadoReceita}
+                aria-label="Descreva os ingredientes"></textarea>
+                  {/* <input
                     type="text"
                     id="ingredientes"
                     name="ingredientes"
                     placeholder="Ingredientes..."
                     value={this.state.postReceita.ingredientes}
                     onChange={this.atualizaEstadoReceita}
-                  />
+                  /> */}
                 </label>
                 <label>
-                  <input
+                  {/* <input
                     type="text"
                     name="modoDePreparo"
                     placeholder="Modo de preparo..."
                     id="modo__preparo"
+                    className="textarea"
                     value={this.state.postReceita.modoDePreparo}
                     onChange={this.atualizaEstadoReceita}
-                  />
+                  /> */}
+                <textarea name="ingredientes"
+                id="modo__preparo" 
+                placeholder="modo__preparo..."
+                value={this.state.postReceita.modoDePreparo}
+                onChange={this.atualizaEstadoReceita}
+                aria-label="Descreva o modo de preparo"></textarea>
                 </label>
                 <button type="submit" alt="botao cadastrar receitas" className="btn_cadastrar_receita">Inserir receita
-                        <div id="cadastro__receita"></div>
+                    <div id="cadastro__receita"></div>
                 </button>
               </form>
             </div>
+
+
+
+
+
 
             <div className="tabela_receitas">
               <table>

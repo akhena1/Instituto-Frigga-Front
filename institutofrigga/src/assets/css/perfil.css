@@ -113,7 +113,8 @@ padding: 0;
     border-radius: 4px;
     }
     textarea{
-      height: 80px;
+      height: 200px;
+      width: 300px;
     }
     .product_recipes h3 {
     text-align: center;
@@ -343,6 +344,7 @@ padding: 0;
     font-family: var(--fonte1);
     width: 60vw;
     }
+
     /* table end */
   @media (max-width: 1169px) {
     .profile_icone img{

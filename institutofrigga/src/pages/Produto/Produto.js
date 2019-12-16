@@ -6,9 +6,6 @@ import { Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 import { usuarioAutenticado } from '../../services/auth';
 
-
-
-
 class Produto extends Component {
     constructor() {
         super();
@@ -110,7 +107,6 @@ class Produto extends Component {
     }
 
     getProdutoFiltro = (id) => {
-
         
         setTimeout(() => {
             api.get('/produto')
@@ -223,8 +219,6 @@ class Produto extends Component {
 
 
                             <h3 className="isa-produtos">Produtos</h3>
-
-
 
 
                             {
