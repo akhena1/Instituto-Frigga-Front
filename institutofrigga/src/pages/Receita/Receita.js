@@ -61,7 +61,7 @@ class Receita extends Component {
     }
     filtrarListaPorCategoria = (idCategoria) => {
         console.log("Id Categoria: ", idCategoria);
-        api.get("/filtro/filtrarreceita/" + idCategoria)
+        api.get("/filtro/filtroreceita/" + idCategoria)
             .then(response => {
                 this.setState({ listarReceita: response.data });
             })
