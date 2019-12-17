@@ -78,12 +78,6 @@ padding: 0;
   margin: auto;
   width: 1200px;
   }
-  .container img{
-    max-width: 352px;
-    min-width: 352px;
-    max-height: 300px;
-    min-height: 300px;
-  }
   .container-produtos {
   display: flex;
   justify-content: space-between;

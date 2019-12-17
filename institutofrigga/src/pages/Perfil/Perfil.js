@@ -424,7 +424,8 @@ class Perfil extends Component {
                       id="oferta__preco"
                       name="preco"
                       value={this.state.postOferta.preco}
-                      placeholder="Preço por Kg..."
+                      placeholder="Preço..."
+                      step=".01"
                       onChange={this.atualizaEstadoOferta} required />
                   </label>
                   <label>
@@ -579,6 +580,8 @@ class Perfil extends Component {
                       onChange={this.atualizaEstadoReceita}
                       aria-label="Descreva o modo de preparo"></textarea>
                   </label>
+
+                  
                   <button type="submit" alt="botao cadastrar receitas" className="btn_cadastrar_receita">Inserir receita
                         <div id="cadastro__receita"></div>
                   </button>

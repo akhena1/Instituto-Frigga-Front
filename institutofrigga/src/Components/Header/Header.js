@@ -75,6 +75,7 @@ class Header extends Component {
                     {usuarioAutenticado() && parseJwt().Role === "1" ? (
                         <nav className="menuzao_ttl">
                             <ul className="menuzao_1">
+                                <Link to="/perfil">Painel</Link>
                                 <Link to="/">Home</Link>
                                 <Link to="/produtos">Produtos</Link>
                                 <Link to="/receitas">Receitas</Link>
@@ -156,6 +157,7 @@ class Header extends Component {
                 </div>
                 {usuarioAutenticado() ? (
                     <div className="logotipo_fri">
+                        
                         <img className="logotipo_header" src={LogoWeb} alt=" Logo  do instituto" />
                         <Link to="/entrar" onClick={this.logout}>Sair</Link>
                     </div>
