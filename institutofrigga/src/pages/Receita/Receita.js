@@ -122,7 +122,7 @@ class Receita extends Component {
                             this.state.listarReceita.map(
                                 function (r) {
                                     return (
-                                        <div key={r.receitaId} className="card_receitas">
+                                        <div key={r.receitaId} className="card_receitas card_receitas_lari">
                                             <img src={"http://localhost:5000/Arquivos/" + r.imagemReceita} alt='' />
                                             <div className="nav-r">
                                                 <p>{r.nome}</p>
