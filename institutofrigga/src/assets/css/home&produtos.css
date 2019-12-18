@@ -78,6 +78,9 @@ padding: 0;
   margin: auto;
   width: 1200px;
   }
+  .categorias p{
+    margin-bottom: 15px;
+  }
   .container-produtos {
   display: flex;
   justify-content: space-between;
@@ -254,6 +257,7 @@ padding: 0;
   .rodape-container {
   width: 80vw;
   }
+
   /* END Header responsivo para Tablet */
   .container {
   width: 90vw;
