@@ -155,11 +155,12 @@ padding: 0;
     }
     .card_profile_1 input,
     select{
-    width: 100px;
+    width: 190px;
     }
     .card_profile_1 select{
-      width: 140px;;
+      width: 140px;
     }
+
     .imagem_incluir {
     display: flex;
     flex-direction: column;
