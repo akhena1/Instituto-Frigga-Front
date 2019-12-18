@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import { Link } from "react-router-dom";
-
 import Axios from 'axios';
 import { api, apiFormData } from '../../services/api';
 import { parseJwt, usuarioAutenticado } from '../../services/auth';
@@ -554,25 +553,8 @@ class Perfil extends Component {
                       value={this.state.postReceita.ingredientes}
                       onChange={this.atualizaEstadoReceita}
                       aria-label="Descreva os ingredientes"></textarea>
-                    {/* <input
-                        type="text"
-                        id="ingredientes"
-                        name="ingredientes"
-                        placeholder="Ingredientes..."
-                        value={this.state.postReceita.ingredientes}
-                        onChange={this.atualizaEstadoReceita}
-                      /> */}
                   </label>
                   <label>
-                    {/* <input
-                        type="text"
-                        name="modoDePreparo"
-                        placeholder="Modo de preparo..."
-                        id="modo__preparo"
-                        className="textarea"
-                        value={this.state.postReceita.modoDePreparo}
-                        onChange={this.atualizaEstadoReceita}
-                      /> */}
                     <textarea name="modoDePreparo"
                       id="modo__preparo"
                       placeholder="Modo preparo..."
@@ -581,19 +563,12 @@ class Perfil extends Component {
                       aria-label="Descreva o modo de preparo"></textarea>
                   </label>
 
-                  
                   <button type="submit" alt="botao cadastrar receitas" className="btn_cadastrar_receita">Inserir receita
                         <div id="cadastro__receita"></div>
                   </button>
                 </div>
               </form>
             </div>
-
-
-
-
-
-
             <div className="tabela_receitas">
               <table>
                 <thead>
