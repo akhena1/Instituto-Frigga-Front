@@ -114,28 +114,6 @@ class Receita extends Component {
                         </div>
                     </section>
 
-                    <section className="container_mobile">
-                        <div className="categorias_mobile">
-                            <div className="categ_mobile">
-                                <p>LEGUMES</p>
-                                <Link to='#'><img src="img/frutas.png" title="#" alt="legumes" /></Link>
-                            </div>
-                            <div className="categ_mobile">
-                                <p>FRUTAS</p>
-                                <Link to='#'><img src="img/abacaxi.png" title="#" alt="frutas" /></Link>
-                            </div>
-                            <div className="categ_mobile">
-                                <p>MASSAS</p>
-                                <Link to='#'><img src="img/massas.png" title="#" alt="frutas" /></Link>
-                            </div>
-                            <div className="categ_mobile">
-                                <p>SALADAS</p>
-                                <Link to='#'><img src="img/frutas.png" title="#" alt="frutas" /></Link>
-                            </div>
-                        </div>
-
-                    </section>
-
                     <section className="container-receitas">
 
                         <h3 className="receita-la">Cantinho das Receitas</h3>
@@ -155,8 +133,6 @@ class Receita extends Component {
                                 }
                             )
                         }
-
-
 
                         {/* <div className="card_receitas">
                             <img src={rimg} alt="imagem de salada de queijo" />
