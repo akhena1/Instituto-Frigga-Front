@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import { Link } from "react-router-dom";
-import Axios from 'axios';
 import { api, apiFormData } from '../../services/api';
 import { parseJwt, usuarioAutenticado } from '../../services/auth';
-import Modal from 'react-responsive-modal';
+
 
 class Perfil extends Component {
   constructor(props) {
@@ -384,7 +383,7 @@ class Perfil extends Component {
                   <div className="imagem_incluir">
                     <p>Clique para<br />
                       incluir Imagem</p>
-                    <input accept="image/*" type="file" name="imagemProduto" ref={this.state.postOferta.imagemProduto} onChange={this.atualizaArquivoOferta} />
+                    <input accept="image/*" type="file" name="imagemProduto" ref={this.state.postOferta.imagemProduto} onChange={this.atualizaArquivoOferta}/>
                   </div>
                   <label >
                     <select
@@ -509,7 +508,7 @@ class Perfil extends Component {
                 <div className="imagem_incluir">
                   <p>Clique para<br />
                     incluir Imagem</p>
-                  <input accept="image/*" type="file" name="imagemReceita" ref={this.state.postReceita.imagemReceita} onChange={this.atualizaArquivoReceita} />
+                  <input accept="image/*" type="file" name="imagemReceita" ref={this.state.postReceita.imagemReceita} onChange={this.atualizaArquivoReceita}/>
                 </div>
 
 

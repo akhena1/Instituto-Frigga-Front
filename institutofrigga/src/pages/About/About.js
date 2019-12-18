@@ -73,7 +73,7 @@ class About extends Component {
 
                 <section className="container-depoimento">
                     <div className="depoimento">
-                    <img src="IMGS/4.jpg" alt="Pessoas que participaram do projeto"/>
+                    <img src={aimg3} alt="Pessoas que participaram do projeto"/>
                     <h3>Depoimentos</h3>
                     </div>
                 </section>

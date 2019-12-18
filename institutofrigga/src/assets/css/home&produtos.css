@@ -12,7 +12,13 @@ padding: 0;
   --fonte1: 'Barlow Condensed', sans-serif;
   --fonte2: 'Quicksand', sans-serif;
   }
-  
+.card_produtoisa img,
+.card_receitas_lari img{
+max-width: 352px;
+min-width: 352px;
+max-height: 280px;
+min-height: 280px;
+}
 .banner {
     background-image: url(../img/BANNER1.jpg);
     height: 650px;
@@ -72,11 +78,15 @@ padding: 0;
     color: black;
     font-size: 48px;
   }
+
   .container {
   display: flex;
   justify-content: space-between;
   margin: auto;
   width: 1200px;
+  }
+  .categorias p{
+    margin-bottom: 15px;
   }
   .container-produtos {
   display: flex;
@@ -254,6 +264,7 @@ padding: 0;
   .rodape-container {
   width: 80vw;
   }
+
   /* END Header responsivo para Tablet */
   .container {
   width: 90vw;
