@@ -24,7 +24,7 @@ class Produto extends Component {
             open: false,
             setStateFiltro: "",
             setStateTodos: "",
-            produtoFiltro: ""
+            
         }
     }
 

@@ -79,11 +79,11 @@ class VerReceita extends Component {
                                 function (vr) {
                                     return ( 
                                 <div key={vr.receitaId}>
-                                <p> {vr.modoDePreparo}</p>
+                                <p> {vr.nome}</p>
                                 <h3 className="title_receit">Ingredientes</h3>
                                 <p> {vr.ingredientes}</p>
                                 <h3 className="title_receit">Modo de Preparo</h3>
-                                <p>{vr.ingredientes}</p>
+                                <p>{vr.modoDePreparo}</p>
                                         </div>
                                     )
                                 }

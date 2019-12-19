@@ -12,13 +12,13 @@ padding: 0;
     --fonte1: 'Barlow Condensed', sans-serif;
     --fonte2: 'Quicksand', sans-serif;
     }
-    .card_produtoisa img,
-    .card_receitas_lari img{
-    max-width: 352px;
-    min-width: 352px;
-    max-height: 280px;
-    min-height: 280px;
-    }
+.card_produtoisa img,
+.card_receitas_lari img{
+max-width: 352px;
+min-width: 352px;
+max-height: 280px;
+min-height: 280px;
+}
 .card_receitas input {
     width: 40px;
     }
@@ -105,9 +105,13 @@ padding: 0;
       font-size: 37px;
       font-family: var(--fonte1);
   }
-  .container_mobile, .categorias_mobile, .categ_mobile{
+
+
+  /* .container_mobile, .categorias_mobile, .categ_mobile{
     display: none ;
-  }
+  } */
+
+
   /*css  responsivo mobile receitas1*/
   
   /* RESPONSIVO MENU CATEGORIA*/
@@ -124,22 +128,27 @@ padding: 0;
     }
   }
   @media(max-width: 767px){
-    .container_mobile, .categ_mobile{
+
+
+    .categ_1, .categ_2, .categ_3, .categ_4{
+      width: 100px;
+      background-repeat: no-repeat;
+      margin-right: 10px;
+    }
+
+    .container-categorias{
       display: block;
-      width: 90vw; 
-      margin: auto;
+      width: 500px;
     }
-    .categorias_mobile{
-      display: flex;
+    .container-categorias h2{
+      text-align: center;
     }
-    .categ_mobile{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .categorias{
+      width: 500px;
+      justify-content: center;
     }
-    .categ_mobile p{
-      padding-bottom: 5px;
-    } /*FIM ALTERAÇÃO MENU CATEGORIA CATEGORIA*/
+
+    /*FIM ALTERAÇÃO MENU CATEGORIA CATEGORIA*/
     .container-receitas{
       width: 350px;
       margin: auto;

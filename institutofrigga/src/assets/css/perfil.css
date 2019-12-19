@@ -16,7 +16,20 @@ padding: 0;
     .containerGeralPerfil{
       margin-top: 30px;
     }
-body {
+    .divLoading{
+      width: 40px;
+      margin: auto;
+    }
+    .divLoading i {
+      width: 20px;
+      height: 20px;
+      color: var(--verde);
+    }
+    .divLoading p{
+      margin-left: -30px;
+      font-size: 20px;
+    }
+    body {
     font-family: var(--fonte1);
     }
     .fundoLogin{
@@ -92,6 +105,11 @@ body {
     width: 300px;
     padding-bottom: 10px;
     }
+    .align_align{
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+    }
     .profile_dados input,
     textarea {
     padding: 7px;
@@ -100,7 +118,8 @@ body {
     border-radius: 4px;
     }
     textarea{
-      height: 80px;
+      height: 200px;
+      width: 300px;
     }
     .product_recipes h3 {
     text-align: center;
@@ -136,15 +155,17 @@ body {
     }
     .card_profile_1 input,
     select{
-    width: 100px;
+    width: 190px;
     }
     .card_profile_1 select{
-      width: 140px;;
+      width: 140px;
     }
+
     .imagem_incluir {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-right: 30px;
+    margin-right: 70px;
     }
     .btn_incluir_imagem {
     border-radius: 2px;
@@ -330,6 +351,7 @@ body {
     font-family: var(--fonte1);
     width: 60vw;
     }
+
     /* table end */
   @media (max-width: 1169px) {
     .profile_icone img{
