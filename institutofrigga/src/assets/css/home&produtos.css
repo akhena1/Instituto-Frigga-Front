@@ -13,7 +13,8 @@ padding: 0;
   --fonte2: 'Quicksand', sans-serif;
   }
 .card_produtoisa img,
-.card_receitas_lari img{
+.card_receitas_lari img, .card-receita img,
+.container-produtos img{
 max-width: 352px;
 min-width: 352px;
 max-height: 280px;

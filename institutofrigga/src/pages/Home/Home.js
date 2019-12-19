@@ -105,7 +105,7 @@ class Home extends Component {
                                             contOferta++
                                             return (
 
-                                                <div key={o.ofertaId} className="card-produto">
+                                                <div key={o.ofertaId} className="card-produto card_receitas_lari">
                                                     <img src={"http://localhost:5000/arquivos/" + o.imagemProduto} alt='' />
                                                     <div className="nav-p">
                                                         <p>{o.produto.tipo} <br /> R${o.preco}</p>
