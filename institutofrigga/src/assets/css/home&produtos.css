@@ -12,7 +12,14 @@ padding: 0;
   --fonte1: 'Barlow Condensed', sans-serif;
   --fonte2: 'Quicksand', sans-serif;
   }
-  
+  .card_produtoisa img,
+.card_receitas_lari img, .card-receita img,
+.container-produtos img{
+max-width: 352px;
+min-width: 352px;
+max-height: 280px;
+min-height: 280px;
+}
 .banner {
     background-image: url(../img/BANNER1.jpg);
     height: 650px;
@@ -78,14 +85,12 @@ padding: 0;
   margin: auto;
   width: 1200px;
   }
-  
   .container-produtos {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   width: 750px;
   }
-  
   .card-produto {
   height: 350px;
   margin-top: 20px;
@@ -204,6 +209,20 @@ padding: 0;
   /* Media Queries - HOME */
   @media(max-width:1169px) {
   /*  START Header responsivo para Tablet */
+  .card_produtoisa img,
+  .card_receitas_lari img,
+  .container-produtos img{
+  max-width: 450px;
+  min-width: 450px;
+  max-height: 280px;
+  min-height: 280px;
+  }
+  .card-receita img{
+    max-width: 250px;
+    min-width: 250px;
+    max-height: 220px;
+    min-height: 230px;
+  }
   .banner-txt{
       display: none;
   }
@@ -306,6 +325,24 @@ padding: 0;
   /* .navbar-container {
   display: none;
   } */
+  .card_produtoisa img,
+  .card_receitas_lari img,
+  .container-produtos img{
+  max-width: 250px;
+  min-width: 250px;
+  max-height: 180px;
+  min-height: 180px;
+  }
+  .card-receita img{
+    max-width: 250px;
+    min-width: 250px;
+    max-height: 220px;
+    min-height: 230px;
+  }
+
+  .card-produto{
+    margin-bottom: 45px;
+  }
   .banner a{
     display: none;
   }
@@ -588,7 +625,7 @@ padding: 0;
   }
 
   .container-produtos{
-    width: 350px;
+    width: 260px;
     margin: auto;
   }
 

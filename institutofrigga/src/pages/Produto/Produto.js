@@ -6,9 +6,6 @@ import { Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 import { usuarioAutenticado } from '../../services/auth';
 
-
-
-
 class Produto extends Component {
     constructor() {
         super();
@@ -44,15 +41,15 @@ class Produto extends Component {
         this.getProduto();
         this.getCategoriaProduto();
         this.getUsuario();
-        this.getFilltro();
         this.getProdutoFiltro();
+        this.getFiltro();
     }
 
     
     getOferta = () => {
         api.get('/oferta').then(response => {
             if (response.status === 200) {
-                this.setState({ listarOferta: response.data })
+                this.setState({ listarOferta: response.data})
                 console.log(response.data)
             }
         })
@@ -109,15 +106,27 @@ class Produto extends Component {
         })
         .catch(erro => console.log("Deu erro na busca de ofertas por id categoria: ", erro))
     }
+
     getProdutoFiltro = (id) => {
-        api.get('/produto')
+        
+        setTimeout(() => {
+            api.get('/produto')
             .then(response => {
-                return this.setState({produtoFiltro: response.data.tipo}),
-                console.log(this.state.produtoFiltro)
+
+                let id =  response.data.tipo
+                this.setState({
+                    nomeProduto : id
+                })    
+                console.log(response.data.tipo)
+                
             })
             .catch(error => {
-                return ""
+                this.setState({
+                    nomeProduto : ""
+                })
             })
+        }, 500);
+
     }
 
     render() {
@@ -213,8 +222,6 @@ class Produto extends Component {
                             <h3 className="isa-produtos">Produtos</h3>
 
 
-
-
                             {
                                 this.state.listarOferta.map(function (of) {
                                     return (
@@ -222,7 +229,7 @@ class Produto extends Component {
                                             <img src={"http://localhost:5000/Arquivos/" + of.imagemProduto} alt={of.tipo} />
                                             <div className="nav-p nav-p-isa">
 
-                                                <p key={of.ofertaId}>{this.state.produtoFiltro}<br></br> R$ {of.preco}</p>
+                                                <p key={of.ofertaId}>{of.produto.tipo}<br></br> R$ {of.preco} /Kg</p>
                                                 {
                                                    usuarioAutenticado()? (
                                                     <Link onClick={() => this.onOpenModal(of)}>Reservar</Link>
@@ -248,12 +255,12 @@ class Produto extends Component {
                                             <div>
                                                 <h1>{this.state.modalOferta.tipo}</h1>
 
-                                                <h2> Dados do produto para contato </h2>
+                                                <h2> Dados do produtor </h2>
 
-                                                <p>Nome: {this.state.modalOferta.nome}</p>
+                                                <p>Nome: {this.state.modalOferta.usuario.nome}</p>
                                                
-                                                <p>Telefone: {this.state.modalOferta.telefone}</p>
-                                                <p>Preço: {this.state.modalOferta.preco}</p>
+                                                <p>Telefone: {this.state.modalOferta.usuario.telefone}</p>
+                                                <p>Preço: {'R$'+this.state.modalOferta.preco+'/Kg'}</p>
                                                
                                             </div>
                                            
